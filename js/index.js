@@ -30,6 +30,8 @@ function setup() {
     h.player.x = h.player.y = 256;
     initKeyboard();
     h.camera.centerOver(h.player);
+	pauseMenu();
+	h.menuGroup.visible=false;
     h.state = play;
 }
 
@@ -42,7 +44,7 @@ function initKeyboard() {
     h.player.tweening = false;
 
     space.press = () => {
-        console.log("PAUSED IT");
+        h.menuGroup.visible=true;
     }
 
     leftArrow.press = () => {
