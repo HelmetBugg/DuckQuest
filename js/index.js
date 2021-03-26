@@ -41,11 +41,16 @@ function initKeyboard() {
     space = h.keyboard(32);
     h.player.tweening = false;
 
+    space.press = () => {
+        console.log("PAUSED IT");
+    }
+
     leftArrow.press = () => {
         if (!h.player.tweening){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-32, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
         }
     };
 
@@ -54,6 +59,7 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+32, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
         }
     };
 
@@ -62,6 +68,7 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-32, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
         }
     };
 
@@ -70,8 +77,19 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+32, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
         }
     };
+}
+
+function rollAttackChance(){
+    if(Math.floor(Math.random() * 5) == 1){
+        getAttacked();
+    }
+}
+
+function getAttacked() {
+    console.log("got attacked");
 }
 
 function play() {
