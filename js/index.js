@@ -28,10 +28,9 @@ function setup() {
     h.player = h.rectangle(32, 32, "black");
     h.player.speed = 5;
     h.player.x = h.player.y = 256;
+    pauseMenu();
     initKeyboard();
     h.camera.centerOver(h.player);
-	pauseMenu();
-	h.menuGroup.visible=false;
     h.state = play;
 }
 
@@ -44,7 +43,7 @@ function initKeyboard() {
     h.player.tweening = false;
 
     space.press = () => {
-        h.menuGroup.visible=true;
+        h.menuGroup.toggle();
     }
 
     leftArrow.press = () => {
