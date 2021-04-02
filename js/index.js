@@ -16,7 +16,7 @@ function load() {
 }
 
 function setup() {
-    console.log(Object.keys(h));
+    //console.log(Object.keys(h));
     world = h.rectangle(500, 500, "grey");
     h.camera = h.worldCamera(world, 280, 280, h.canvas);
     title = h.text("Duck Quest", "38px puzzler", "red");
@@ -25,9 +25,7 @@ function setup() {
     playButton = h.text("Play", "38px puzzler", "red");
     playButton.x = 400;
     playButton.y = 350;
-    h.player = h.rectangle(32, 32, "black");
-    h.player.speed = 5;
-    h.player.x = h.player.y = 256;
+	initplayer();
     pauseMenu();
     initKeyboard();
     h.camera.centerOver(h.player);
