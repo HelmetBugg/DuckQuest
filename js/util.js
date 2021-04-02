@@ -47,4 +47,20 @@ function pauseMenu() {
 			this.visible = true;
 		}
 	}
+	
 }
+
+
+	function initplayer() {
+		h.player = h.rectangle(32, 32, "black");
+		h.player.speed = 5;
+		h.player.x = h.player.y = 256;	
+		
+		let stat = new Map();
+		stat.set("strength", 5);
+		stat.set("health", 10);
+		stat.set("intelligence", 5);
+		h.player.stat = stat;
+		
+		console.log(h.player.stat);
+	}
