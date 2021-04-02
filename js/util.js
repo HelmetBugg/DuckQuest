@@ -37,14 +37,25 @@ function pauseMenu() {
 	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, spellsButton, quitButton);
 	h.menuGroup.visible = false;
 	h.stage.putCenter(h.menuGroup);	
+	h.slide(h.menuGroup, -514, 0, 30, "decelerationCubed");
 
 	h.menuGroup.toggle = function(){
-		if (this.visible){
-			h.slide(this, -514, 0, 30, "decelerationCubed");
-		    this.visible = false;
-		} else {
-			h.slide(this, 0, 0, 30, "decelerationCubed");
-			this.visible = true;
+		if(!h.menuGroup.tweening){
+			if (this.visible){
+				h.menuGroup.tweening = true;
+				tween = h.slide(this, -514, 0, 30, "decelerationCubed");
+				tween.onComplete = () => {
+					this.visible = false;
+					h.menuGroup.tweening = false;
+				}
+			} else {
+				this.visible = true;
+				h.menuGroup.tweening = true;
+				tween = h.slide(this, 0, 0, 30, "decelerationCubed");
+				tween.onComplete = () => {
+					h.menuGroup.tweening = false;
+				}
+			}
 		}
 	}
 	

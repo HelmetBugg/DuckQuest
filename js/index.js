@@ -89,6 +89,19 @@ function rollAttackChance(){
 
 function getAttacked() {
     console.log("got attacked");
+    combatScreen = h.rectangle(500, 250, 'white');
+
+    runButton = h.text("RUN", "30px puzzler", "black");
+    runButton.x = 100;
+    runButton.y = 100;
+    h.makeInteractive(runButton);
+    
+
+    h.combatGroup = h.group(combatScreen, runButton);
+
+    runButton.press = function() {
+        h.remove(h.combatGroup);
+    }
 }
 
 function play() {
