@@ -4,6 +4,7 @@ let thingsToLoad = [
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
 h.fps = 30;
+version = 0.3;
 h.scaleToWindow();
 h.start();
 
@@ -19,12 +20,9 @@ function setup() {
     //console.log(Object.keys(h));
     world = h.rectangle(500, 500, "grey");
     h.camera = h.worldCamera(world, 280, 280, h.canvas);
-    title = h.text("Duck Quest", "38px puzzler", "red");
+    title = h.text("Version " + version, "18px puzzler", "red");
     h.stage.putCenter(title);
     title.pivotX = title.pivotY = 0.5;
-    playButton = h.text("Play", "38px puzzler", "red");
-    playButton.x = 400;
-    playButton.y = 350;
 	initplayer();
     pauseMenu();
     initKeyboard();
@@ -91,14 +89,15 @@ function getAttacked() {
     console.log("got attacked");
     combatScreen = h.rectangle(500, 250, 'white');
 
+    combatTurn = [h.player];
+    combatTurn.push(createGoose());
+
     runButton = h.text("RUN", "30px puzzler", "black");
     runButton.x = 100;
     runButton.y = 100;
     h.makeInteractive(runButton);
-    
 
     h.combatGroup = h.group(combatScreen, runButton);
-
     runButton.press = function() {
         h.remove(h.combatGroup);
     }
