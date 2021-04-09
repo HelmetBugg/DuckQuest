@@ -88,7 +88,7 @@ function rollAttackChance(){
 function getAttacked() {
     console.log("got attacked");
     combatScreen = h.rectangle(500, 250, 'white');
-    h.combatTurn = initCombatTurn();
+    
 
     runButton = h.text("RUN", "30px puzzler", "black");
     runButton.x = 100;
@@ -101,11 +101,16 @@ function getAttacked() {
     h.makeInteractive(fightButton);
 
     h.combatGroup = h.group(combatScreen, runButton, fightButton);
+    h.combatTurn = initCombatTurn();
     runButton.press = function() {
         h.remove(h.combatGroup);
     }
     fightButton.press = function() {
+        h.combatTurn.participants[1].stat.set('health', 
+            h.combatTurn.participants[1].stat.get('health')-1);
+        
         h.combatTurn.nextTurn();
+        console.log('EnemHP: %s',h.combatTurn.participants[1].stat.get('health'));
     }
 }
 

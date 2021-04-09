@@ -68,7 +68,7 @@ function initplayer() {
 		
 	let stat = new Map();
 	stat.set("strength", 5);
-	stat.set("health", 10);
+	stat.set("health", 100);
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 	h.player.doTurn = function(){
