@@ -109,8 +109,11 @@ function getAttacked() {
         h.combatTurn.participants[1].stat.set('health', 
             h.combatTurn.participants[1].stat.get('health')-1);
         
-        h.combatTurn.nextTurn();
-        console.log('EnemHP: %s',h.combatTurn.participants[1].stat.get('health'));
+        stillFighting = h.combatTurn.nextTurn();
+        //console.log('EnemHP: %s',h.combatTurn.participants[1].stat.get('health'));
+		if (!stillFighting){
+			h.remove(h.combatGroup);
+		}
     }
 }
 

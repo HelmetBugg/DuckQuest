@@ -89,6 +89,15 @@ function initCombatTurn(){
 		}
 		//console.log(combatTurn.currentParticipant);
 		pest = combatTurn.participants[combatTurn.currentParticipant].doTurn();
+		if (test.stat.get("health") <= 0){
+			
+			//combatTurn.participants.splice(1,1);
+			h.remove(combatTurn.participants.splice(1,1));
+		}			
+		if (combatTurn.participants.length <= 1){
+			return false;
+		}
+		return true;
 	}
 	return combatTurn;
 }
