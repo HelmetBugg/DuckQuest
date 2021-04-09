@@ -61,17 +61,34 @@ function pauseMenu() {
 	
 }
 
-
-	function initplayer() {
-		h.player = h.rectangle(32, 32, "black");
-		h.player.speed = 5;
-		h.player.x = h.player.y = 256;	
+function initplayer() {
+	h.player = h.rectangle(32, 32, "black");
+	h.player.speed = 5;
+	h.player.x = h.player.y = 256;	
 		
-		let stat = new Map();
-		stat.set("strength", 5);
-		stat.set("health", 10);
-		stat.set("intelligence", 5);
-		h.player.stat = stat;
-		
-		console.log(h.player.stat);
+	let stat = new Map();
+	stat.set("strength", 5);
+	stat.set("health", 10);
+	stat.set("intelligence", 5);
+	h.player.stat = stat;
+	h.player.doTurn = function(){
+		console.log("player turn");
 	}
+}
+
+function initCombatTurn(){
+    combatTurn = {};
+	test = createGoose();
+	combatTurn.participants = [h.player, test];
+    combatTurn.currentParticipant = 0;
+	combatTurn.nextTurn = function(){
+		if (combatTurn.currentParticipant >= combatTurn.participants.length-1){
+			combatTurn.currentParticipant = 0;
+		} else {
+			combatTurn.currentParticipant++;
+		}
+		//console.log(combatTurn.currentParticipant);
+		pest = combatTurn.participants[combatTurn.currentParticipant].doTurn();
+	}
+	return combatTurn;
+}

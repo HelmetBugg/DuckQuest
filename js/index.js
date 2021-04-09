@@ -88,18 +88,24 @@ function rollAttackChance(){
 function getAttacked() {
     console.log("got attacked");
     combatScreen = h.rectangle(500, 250, 'white');
-
-    combatTurn = [h.player];
-    combatTurn.push(createGoose());
+    h.combatTurn = initCombatTurn();
 
     runButton = h.text("RUN", "30px puzzler", "black");
     runButton.x = 100;
     runButton.y = 100;
     h.makeInteractive(runButton);
 
-    h.combatGroup = h.group(combatScreen, runButton);
+    fightButton = h.text("FIGHT", "30px puzzler", "black");
+    fightButton.x = 200;
+    fightButton.y = 100;
+    h.makeInteractive(fightButton);
+
+    h.combatGroup = h.group(combatScreen, runButton, fightButton);
     runButton.press = function() {
         h.remove(h.combatGroup);
+    }
+    fightButton.press = function() {
+        h.combatTurn.nextTurn();
     }
 }
 
@@ -107,3 +113,4 @@ function play() {
     //h.camera.follow(h.player);
     h.camera.centerOver(h.player);
 }
+
