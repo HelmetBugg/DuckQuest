@@ -23,17 +23,24 @@ function load() {
 }
 
 function setup() {
-    world = h.makeTiledWorld(
+    h.world = h.makeTiledWorld(
         "res/maps/fantasy.json",
         "res/images/fantasy.png"
     );
-    h.camera = h.worldCamera(world, world.worldWidth, world.worldHeight);
+    h.camera = h.worldCamera(h.world, h.world.worldWidth, h.world.worldHeight);
     title = h.text("Version " + version, "18px puzzler", "red");
     title.y = 490;
 	initplayer();
+	var objectsLayer = h.world.getObject("objects");
+	objectsLayer.addChild(h.player);
+	h.player.collisionArea = { x: 0, y: 0, width: h.player.width, height: h.player.height};
     pauseMenu();
     initKeyboard();
     h.camera.centerOver(h.player);
+	h.itemsLayer = h.world.getObject("items");
+	items = h.itemsLayer.children.slice(0);
+	h.itemsMapArray = h.world.getObject("items").data;
+	console.log(items);
     h.state = play;
 }
 
@@ -90,5 +97,10 @@ function cleanupCombat(){
 
 function play() {
     h.camera.follow(h.player);
+	var playerVsItems = h.hitTestTile(h.player, h.itemsMapArray, 0, h.world, "every");
+	console.log(h.player, h.itemsMapArray, 0, h.world, "every");
+	if (!playerVsItems.hit) {
+		console.log("SpaceDudes");
+	}
 }
 
