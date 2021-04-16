@@ -1,5 +1,11 @@
+// https://www.html5gamedevs.com/topic/28648-disable-sprite-smoothing/
+PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+
 let thingsToLoad = [
-    "res/images/goose.png"
+    "res/maps/fantasy.json",
+    "res/images/fantasy.png",
+    "res/images/goose.png",
+    "res/images/duckman.png"    
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -17,66 +23,18 @@ function load() {
 }
 
 function setup() {
-    //console.log(Object.keys(h));
-    world = h.rectangle(500, 500, "grey");
-    h.camera = h.worldCamera(world, 280, 280, h.canvas);
+    world = h.makeTiledWorld(
+        "res/maps/fantasy.json",
+        "res/images/fantasy.png"
+    );
+    h.camera = h.worldCamera(world, world.worldWidth, world.worldHeight);
     title = h.text("Version " + version, "18px puzzler", "red");
-    h.stage.putCenter(title);
-    title.pivotX = title.pivotY = 0.5;
+    title.y = 490;
 	initplayer();
     pauseMenu();
     initKeyboard();
     h.camera.centerOver(h.player);
     h.state = play;
-}
-
-function initKeyboard() {
-    let leftArrow = h.keyboard(37),
-    upArrow = h.keyboard(38),
-    rightArrow = h.keyboard(39),
-    downArrow = h.keyboard(40),
-    space = h.keyboard(32);
-    h.player.tweening = false;
-
-    space.press = () => {
-        h.menuGroup.toggle();
-    }
-
-    leftArrow.press = () => {
-        if (!h.player.tweening){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x-32, h.player.y, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
-            rollAttackChance();
-        }
-    };
-
-    rightArrow.press = () => {
-        if (!h.player.tweening){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x+32, h.player.y, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
-            rollAttackChance();
-        }
-    };
-
-    upArrow.press = () => {
-        if (!h.player.tweening){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y-32, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
-            rollAttackChance();
-        }
-    };
-
-    downArrow.press = () => {
-        if (!h.player.tweening){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y+32, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
-            rollAttackChance();
-        }
-    };
 }
 
 function rollAttackChance(){
@@ -88,37 +46,49 @@ function rollAttackChance(){
 function getAttacked() {
     console.log("got attacked");
     combatScreen = h.rectangle(500, 250, 'white');
-    
 
     runButton = h.text("RUN", "30px puzzler", "black");
     runButton.x = 100;
     runButton.y = 100;
-    h.makeInteractive(runButton);
+   // h.makeInteractive(runButton);
+    runButton.interact = true;
 
     fightButton = h.text("FIGHT", "30px puzzler", "black");
     fightButton.x = 200;
     fightButton.y = 100;
-    h.makeInteractive(fightButton);
+   // h.makeInteractive(fightButton);
+    fightButton.interact = true;
 
     h.combatGroup = h.group(combatScreen, runButton, fightButton);
     h.combatTurn = initCombatTurn();
+
     runButton.press = function() {
-        h.remove(h.combatGroup);
+        cleanupCombat();
+        for(var i=0; i<h.combatTurn.enemies.length; i++){
+            h.remove(combatTurn.enemies[i])
+        }
     }
+
     fightButton.press = function() {
-        h.combatTurn.participants[1].stat.set('health', 
-            h.combatTurn.participants[1].stat.get('health')-1);
+        h.combatTurn.enemies[0].stat.set('health', 
+            h.combatTurn.enemies[0].stat.get('health')-1);
         
         stillFighting = h.combatTurn.nextTurn();
-        //console.log('EnemHP: %s',h.combatTurn.participants[1].stat.get('health'));
 		if (!stillFighting){
-			h.remove(h.combatGroup);
+            cleanupCombat();
 		}
     }
 }
 
+function cleanupCombat(){
+    children = h.combatGroup.children;
+    for (var i=0; i<children.length; i++){
+        children[i].interact = false;
+    }
+    h.remove(h.combatGroup);
+}
+
 function play() {
-    //h.camera.follow(h.player);
-    h.camera.centerOver(h.player);
+    h.camera.follow(h.player);
 }
 

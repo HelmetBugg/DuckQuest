@@ -57,15 +57,65 @@ function pauseMenu() {
 				}
 			}
 		}
-	}
-	
+	}	
 }
 
+
+function initKeyboard() {
+	speed = h.player.width;
+    let leftArrow = h.keyboard(37),
+    upArrow = h.keyboard(38),
+    rightArrow = h.keyboard(39),
+    downArrow = h.keyboard(40),
+    space = h.keyboard(32);
+    h.player.tweening = false;
+
+    space.press = () => {
+        h.menuGroup.toggle();
+    }
+
+    leftArrow.press = () => {
+        if (!h.player.tweening){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x-speed, h.player.y, 20, "decelerationCubed");
+            tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
+        }
+    };
+
+    rightArrow.press = () => {
+        if (!h.player.tweening){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x+speed, h.player.y, 20, "decelerationCubed");
+            tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
+        }
+    };
+
+    upArrow.press = () => {
+        if (!h.player.tweening){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x, h.player.y-speed, 20, "decelerationCubed");
+            tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
+        }
+    };
+
+    downArrow.press = () => {
+        if (!h.player.tweening){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x, h.player.y+speed, 20, "decelerationCubed");
+            tween.onComplete = () => h.player.tweening = false;
+            rollAttackChance();
+        }
+    };
+}
+
+
 function initplayer() {
-	h.player = h.rectangle(32, 32, "black");
-	h.player.speed = 5;
+	h.player = h.sprite("res/images/duckman.png");
+	h.player.scale.x = h.player.scale.y = 2;
 	h.player.x = h.player.y = 256;	
-		
 	let stat = new Map();
 	stat.set("strength", 5);
 	stat.set("health", 100);
@@ -76,25 +126,26 @@ function initplayer() {
 	}
 }
 
+
 function initCombatTurn(){
     combatTurn = {};
-	test = createGoose();
-	combatTurn.participants = [h.player, test];
+	test_enemy = createGoose();
+	combatTurn.enemies = [test_enemy];
     combatTurn.currentParticipant = 0;
 	combatTurn.nextTurn = function(){
-		if (combatTurn.currentParticipant >= combatTurn.participants.length-1){
+		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
 			combatTurn.currentParticipant = 0;
+			h.player.doTurn();
 		} else {
+			//combatTurn.enemies[0].doTurn();
 			combatTurn.currentParticipant++;
 		}
-		//console.log(combatTurn.currentParticipant);
-		pest = combatTurn.participants[combatTurn.currentParticipant].doTurn();
-		if (test.stat.get("health") <= 0){
-			
-			//combatTurn.participants.splice(1,1);
-			h.remove(combatTurn.participants.splice(1,1));
+
+		if (test_enemy.stat.get("health") <= 0){
+			h.remove(combatTurn.enemies[0]);
+			combatTurn.enemies.pop();
 		}			
-		if (combatTurn.participants.length <= 1){
+		if (combatTurn.enemies.length < 1){
 			return false;
 		}
 		return true;
