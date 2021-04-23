@@ -81,7 +81,7 @@ function getAttacked() {
     fightButton.press = function() {
         h.combatTurn.enemies[0].stat.set('health', 
             h.combatTurn.enemies[0].stat.get('health')-1);
-        
+        h.shake(combatTurn.enemies[0]);
         stillFighting = h.combatTurn.nextTurn();
 		if (!stillFighting){
             cleanupCombat();
