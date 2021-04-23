@@ -129,7 +129,8 @@ function initplayer() {
 
 function initCombatTurn(){
     combatTurn = {};
-	test_enemy = createGoose();
+	//test_enemy = createGoose();
+	test_enemy = enemy_from_list("slime", h.randomInt(8, 10), 10, 10, 10, 10);
 	combatTurn.enemies = [test_enemy];
     combatTurn.currentParticipant = 0;
 	combatTurn.nextTurn = function(){

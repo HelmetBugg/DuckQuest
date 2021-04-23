@@ -5,7 +5,8 @@ let thingsToLoad = [
     "res/maps/fantasy.json",
     "res/images/fantasy.png",
     "res/images/goose.png",
-    "res/images/duckman.png"    
+    "res/images/duckman.png",
+    "res/images/Slime0.png"    
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -40,7 +41,8 @@ function setup() {
 	h.itemsLayer = h.world.getObject("items");
 	items = h.itemsLayer.children.slice(0);
 	h.itemsMapArray = h.world.getObject("items").data;
-	console.log(items);
+	//console.log(items);
+    h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
     h.state = play;
 }
 
@@ -56,13 +58,13 @@ function getAttacked() {
 
     runButton = h.text("RUN", "30px puzzler", "black");
     runButton.x = 100;
-    runButton.y = 100;
+    runButton.y = 200;
    // h.makeInteractive(runButton);
     runButton.interact = true;
 
     fightButton = h.text("FIGHT", "30px puzzler", "black");
     fightButton.x = 200;
-    fightButton.y = 100;
+    fightButton.y = 200;
    // h.makeInteractive(fightButton);
     fightButton.interact = true;
 
@@ -98,7 +100,7 @@ function cleanupCombat(){
 function play() {
     h.camera.follow(h.player);
 	var playerVsItems = h.hitTestTile(h.player, h.itemsMapArray, 0, h.world, "every");
-	console.log(h.player, h.itemsMapArray, 0, h.world, "every");
+	//console.log(h.player, h.itemsMapArray, 0, h.world, "every");
 	if (!playerVsItems.hit) {
 		console.log("SpaceDudes");
 	}
