@@ -122,19 +122,37 @@ function initplayer() {
 	//h.player.scale.x = h.player.scale.y = 2;
 	h.player.x = h.player.y = 159;	
 	let stat = new Map();
+	stat.set("experience", 0);
+	stat.set("next_level", 7);
+	stat.set("level", 1);	
 	stat.set("strength", 5);
 	stat.set("health", 100);
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
+
 	h.player.doTurn = function(){
 		console.log("player turn");
 	}
 }
 
+function gainExperience(experience){
+	current_experience = h.player.stat.get("experience");
+    h.player.stat.set("experience", current_experience + experience);
+
+	// check for level ups here.
+	if (h.player.stat.get("experience") >= h.player.stat.get("next_level")){
+
+		current_level = h.player.stat.get("level");
+		h.player.stat.set("level", current_level + 1);
+
+		// Set the next goal post.
+		current_level = h.player.stat.get("next_level");
+		h.player.stat.set("next_level", (current_level + 2) * 2);
+	}
+}
 
 function initCombatTurn(){
     combatTurn = {};
-	//test_enemy = createGoose();
 	test_enemy = enemy_from_list("slime", h.randomInt(8, 10), 10, 10, 10, 10);
 	combatTurn.enemies = [test_enemy];
     combatTurn.currentParticipant = 0;
@@ -148,6 +166,7 @@ function initCombatTurn(){
 		}
 
 		if (test_enemy.stat.get("health") <= 0){
+			gainExperience(test_enemy.stat.get("experience"));
 			h.remove(combatTurn.enemies[0]);
 			combatTurn.enemies.pop();
 		}			

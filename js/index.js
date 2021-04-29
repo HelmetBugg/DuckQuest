@@ -33,10 +33,10 @@ function setup() {
 	initplayer();
     // Making the player a child of the map.
     map.addChild(h.player);
-    // Centering camera over player with map offset.
-    h.camera.x = h.player.x/2;
-    h.camera.y = h.player.y/2;
     //h.player.collisionArea = { x: 0, y: 0, width: h.player.width, height: h.player.height};
+    // Centering camera over player with map offset.
+	h.camera.x = h.player.x/2;
+    h.camera.y = h.player.y/2;
     pauseMenu();
     initKeyboard();
     h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);

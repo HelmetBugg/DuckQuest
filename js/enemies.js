@@ -10,22 +10,23 @@ function enemy(name, sprite_url, x, y, health, damage){
 }
 
 function enemy(name, sprite, x, y, health, damage){
-    let E_stat = new Map();
+    let stat = new Map();
     
-    E_stat.set("strength", damage);
-	E_stat.set("health", health);
-	E_stat.set("intelligence", 5);
+    stat.set("strength", damage);
+	stat.set("health", health);
+	stat.set("intelligence", 5);
+	stat.set("experience", 5);
     sprite.scale.x = sprite.scale.y = 4;
     sprite.x = 150;
     sprite.y = 100;
     sprite.name = name;
-    sprite.stat = E_stat;
+    sprite.stat = stat;
 
     sprite.doTurn = function(){
         h.combatTurn.nextTurn();
         console.log("enemy turn");
         h.shake(this, 0.05, true);
-        currentHP = h.player.stat.get("health")-E_stat.get('strength');
+        currentHP = h.player.stat.get("health")-stat.get('strength');
         console.log(currentHP);
         h.player.stat.set('health', currentHP);
     }
