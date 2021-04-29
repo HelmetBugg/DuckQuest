@@ -126,7 +126,8 @@ function initplayer() {
 	stat.set("next_level", 7);
 	stat.set("level", 1);	
 	stat.set("strength", 5);
-	stat.set("health", 100);
+	stat.set("max_health", 100);
+	stat.set("current_health", 100);
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 
@@ -144,7 +145,16 @@ function gainExperience(experience){
 
 		current_level = h.player.stat.get("level");
 		h.player.stat.set("level", current_level + 1);
-
+		
+		current_str = h.player.stat.get("strength");
+		h.player.stat.set("strength", current_str + h.randomInt(3,5));
+		
+		current_maxhealth = h.player.stat.get("max_health");
+		h.player.stat.set("max_health", current_maxhealth + h.randomInt(5,8));
+		
+		current_intel = h.player.stat.get("intelligence");
+		h.player.stat.set("intelligence", current_intel + h.randomInt(2,4));
+		
 		// Set the next goal post.
 		current_level = h.player.stat.get("next_level");
 		h.player.stat.set("next_level", (current_level + 2) * 2);
