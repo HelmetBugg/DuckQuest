@@ -62,7 +62,7 @@ function pauseMenu() {
 
 
 function initKeyboard() {
-	speed = h.player.width;
+	speed = 16;//h.player.width;
     let leftArrow = h.keyboard(37),
     upArrow = h.keyboard(38),
     rightArrow = h.keyboard(39),
@@ -79,7 +79,9 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-speed, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
-            rollAttackChance();
+            // Multiple by 2 because duck is a child of map which is scaled x2.
+			h.camera.x -= speed * 2;
+			rollAttackChance();
         }
     };
 
@@ -88,6 +90,7 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+speed, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+			h.camera.x += speed * 2;
             rollAttackChance();
         }
     };
@@ -97,8 +100,9 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-speed, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+			h.camera.y -= speed * 2;
             rollAttackChance();
-        }
+		}
     };
 
     downArrow.press = () => {
@@ -106,16 +110,17 @@ function initKeyboard() {
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+speed, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
+			h.camera.y += speed * 2;
             rollAttackChance();
-        }
+		}
     };
 }
 
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
-	h.player.scale.x = h.player.scale.y = 2;
-	h.player.x = h.player.y = 256;	
+	//h.player.scale.x = h.player.scale.y = 2;
+	h.player.x = h.player.y = 159;	
 	let stat = new Map();
 	stat.set("strength", 5);
 	stat.set("health", 100);
