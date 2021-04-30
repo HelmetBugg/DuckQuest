@@ -40,6 +40,7 @@ function setup() {
     pauseMenu();
     initKeyboard();
     h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
+	h.inCombat = false;
     h.state = play;
 }
 
@@ -51,6 +52,7 @@ function rollAttackChance(){
 
 function getAttacked() {
     console.log("got attacked");
+	h.inCombat = true;
     combatScreen = h.rectangle(500, 250, 'white');
 
     runButton = h.text("RUN", "30px puzzler", "black");
@@ -89,6 +91,7 @@ function cleanupCombat(){
         children[i].interact = false;
     }
     h.remove(h.combatGroup);
+	h.inCombat = false;
 }
 
 function play() {
