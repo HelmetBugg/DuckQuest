@@ -75,7 +75,7 @@ function initKeyboard() {
     }
 
     leftArrow.press = () => {
-        if (!h.player.tweening){
+        if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-speed, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
@@ -86,7 +86,7 @@ function initKeyboard() {
     };
 
     rightArrow.press = () => {
-        if (!h.player.tweening){
+        if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+speed, h.player.y, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
@@ -96,7 +96,7 @@ function initKeyboard() {
     };
 
     upArrow.press = () => {
-        if (!h.player.tweening){
+        if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-speed, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
@@ -106,7 +106,7 @@ function initKeyboard() {
     };
 
     downArrow.press = () => {
-        if (!h.player.tweening){
+        if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+speed, 20, "decelerationCubed");
             tween.onComplete = () => h.player.tweening = false;
