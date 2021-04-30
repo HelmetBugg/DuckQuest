@@ -32,9 +32,13 @@ function enemy(name, sprite, x, y, health, damage){
         }	
         console.log("enemy turn");
         h.shake(this, 0.05, true);
-        currentHP = h.player.stat.get("health")-stat.get('strength');
+        currentHP = h.player.stat.get("current_health")-stat.get('strength');
         console.log(currentHP);
-        h.player.stat.set('health', currentHP);
+        h.player.stat.set('current_health', currentHP);
+        if (currentHP <= 0){
+            title = h.text("YOU SUCK", "90px puzzler", "red");
+            h.pause();
+        }
         return true;
     }
     return sprite;
