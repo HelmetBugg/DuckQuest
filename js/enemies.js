@@ -23,12 +23,19 @@ function enemy(name, sprite, x, y, health, damage){
     sprite.stat = stat;
 
     sprite.doTurn = function(){
-        h.combatTurn.nextTurn();
+        //h.combatTurn.nextTurn();
+        if (h.combatTurn.enemies[0].stat.get("health") <= 0){
+			gainExperience(test_enemy.stat.get("experience"));
+			h.remove(combatTurn.enemies[0]);
+			combatTurn.enemies.pop();
+            return false;
+        }	
         console.log("enemy turn");
         h.shake(this, 0.05, true);
         currentHP = h.player.stat.get("health")-stat.get('strength');
         console.log(currentHP);
         h.player.stat.set('health', currentHP);
+        return true;
     }
     return sprite;
 }

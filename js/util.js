@@ -132,6 +132,9 @@ function initplayer() {
 
 	h.player.doTurn = function(){
 		console.log("player turn");
+		h.combatTurn.enemies[0].stat.set('health', 
+		    h.combatTurn.enemies[0].stat.get('health')-1);
+	    h.shake(combatTurn.enemies[0]);
 	}
 }
 
@@ -159,7 +162,7 @@ function initCombatTurn(){
 	combatTurn.nextTurn = function(){
 		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
 			combatTurn.currentParticipant = 0;
-			h.player.doTurn();
+			
 		} else {
 			//combatTurn.enemies[0].doTurn();
 			combatTurn.currentParticipant++;
