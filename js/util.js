@@ -143,24 +143,44 @@ function gainExperience(experience){
 	current_experience = h.player.stat.get("experience");
     h.player.stat.set("experience", current_experience + experience);
 
+	experienceGainBox = h.rectangle(250, 100, "white");
+	experienceGainText = h.text("You have gained:\n" + experience + " experience.",
+	"20px puzzler","black");
+	h.stage.putCenter(experienceGainBox);
+	experienceGainBox.putCenter(experienceGainText);
+
+	h.wait(2000, () => h.remove(experienceGainBox, experienceGainText));
+
 	// check for level ups here.
 	if (h.player.stat.get("experience") >= h.player.stat.get("next_level")){
 
 		current_level = h.player.stat.get("level");
 		h.player.stat.set("level", current_level + 1);
 		
+		strengthIncrease = h.randomInt(3,5);
 		current_str = h.player.stat.get("strength");
-		h.player.stat.set("strength", current_str + h.randomInt(3,5));
+		h.player.stat.set("strength", current_str + strengthIncrease);
 		
+		healthIncrease = h.randomInt(5,8);
 		current_maxhealth = h.player.stat.get("max_health");
-		h.player.stat.set("max_health", current_maxhealth + h.randomInt(5,8));
+		h.player.stat.set("max_health", current_maxhealth + healthIncrease);
 		
+		intelligenceIncrease = h.randomInt(2,4);
 		current_intel = h.player.stat.get("intelligence");
-		h.player.stat.set("intelligence", current_intel + h.randomInt(2,4));
+		h.player.stat.set("intelligence", current_intel + intelligenceIncrease);
 		
 		// Set the next goal post.
 		current_level = h.player.stat.get("next_level");
 		h.player.stat.set("next_level", (current_level + 2) * 2);
+
+		levelGainBox = h.rectangle(250, 500, "white");
+		levelGainText = h.text("You have gained a level!\nStats increased:\n" +
+		"Strength: " + current_str + " + " + strengthIncrease +
+		"\nMax Health: " + current_maxhealth + " + " + healthIncrease +
+		"\nIntelligence: " + current_intel + " + " + intelligenceIncrease,
+		"20px puzzler","black");
+		h.stage.putCenter(levelGainBox);
+		levelGainBox.putCenter(levelGainText);
 	}
 }
 
