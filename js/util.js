@@ -119,8 +119,8 @@ function initKeyboard() {
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
-	//h.player.scale.x = h.player.scale.y = 2;
 	h.player.x = h.player.y = 159;	
+	//h.player.collisionArea = {x: h.player.x, y: h.player.y, width: h.player.width, height: h.player.height};
 	let stat = new Map();
 	stat.set("experience", 0);
 	stat.set("next_level", 7);

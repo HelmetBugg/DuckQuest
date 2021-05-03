@@ -9,7 +9,7 @@ let thingsToLoad = [
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
-h.fps = 30;
+h.fps = 15;
 version = 0.4;
 h.scaleToWindow();
 h.start();
@@ -23,17 +23,14 @@ function load() {
 }
 
 function setup() {
-    let map = h.sprite("res/maps/1_lvl_map.png");
-    map.scale.x = map.scale.y = 2;
-    h.camera =  h.worldCamera(map, map.width*2, map.height*2);
     title = h.text("Version " + version, "18px puzzler", "white");
     title.y = 490;
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
+    initMap();
 	initplayer();
-    // Making the player a child of the map.
-    map.addChild(h.player);
-    //h.player.collisionArea = { x: 0, y: 0, width: h.player.width, height: h.player.height};
+    // Making the player a child of the map for easy movement.
+    h.map.addChild(h.player);
     // Centering camera over player with map offset.
 	h.camera.x = h.player.x/2;
     h.camera.y = h.player.y/2;
@@ -51,7 +48,7 @@ function rollAttackChance(){
 }
 
 function getAttacked() {
-    console.log("got attacked");
+    //console.log("got attacked");
 	h.inCombat = true;
     combatScreen = h.rectangle(500, 250, 'white');
 
@@ -95,5 +92,6 @@ function cleanupCombat(){
 }
 
 function play() {
+    h.map.triggers.forEach(checkTriggerCollision);
 }
 
