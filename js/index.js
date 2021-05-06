@@ -29,6 +29,10 @@ function setup() {
     h.backgroundColor = 0x000000;
     initMap();
 	initplayer();
+
+    h.player.x = h.map.start_x;
+    h.player.y = h.map.start_y;
+
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
     // Centering camera over player with map offset.

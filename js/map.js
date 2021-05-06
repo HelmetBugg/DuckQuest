@@ -6,6 +6,9 @@ function initMap(){
 	/// Later layer will be passed as a param, we can make it load different maps that way.
 	h.map.layer = test_layer;
 	h.map.layer.forEach(placeTrigger);
+	h.map.start_x = 150;
+	h.map.start_y = 300;
+
 }
 
 function placeTrigger(object, index){

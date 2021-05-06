@@ -119,7 +119,7 @@ function initKeyboard() {
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
-	h.player.x = h.player.y = 159;	
+	//h.player.x = h.player.y = 159;	No longer needed if map Player_Spawn works. 
 	//h.player.collisionArea = {x: h.player.x, y: h.player.y, width: h.player.width, height: h.player.height};
 	let stat = new Map();
 	stat.set("experience", 0);
