@@ -148,40 +148,44 @@ function gainExperience(experience){
 	"20px puzzler","black");
 	h.stage.putCenter(experienceGainBox);
 	experienceGainBox.putCenter(experienceGainText);
-
-	h.wait(2000, () => h.remove(experienceGainBox, experienceGainText));
+	popUp(h.group(experienceGainBox, experienceGainText));
 
 	// check for level ups here.
 	if (h.player.stat.get("experience") >= h.player.stat.get("next_level")){
-
-		current_level = h.player.stat.get("level");
-		h.player.stat.set("level", current_level + 1);
-		
-		strengthIncrease = h.randomInt(3,5);
-		current_str = h.player.stat.get("strength");
-		h.player.stat.set("strength", current_str + strengthIncrease);
-		
-		healthIncrease = h.randomInt(5,8);
-		current_maxhealth = h.player.stat.get("max_health");
-		h.player.stat.set("max_health", current_maxhealth + healthIncrease);
-		
-		intelligenceIncrease = h.randomInt(2,4);
-		current_intel = h.player.stat.get("intelligence");
-		h.player.stat.set("intelligence", current_intel + intelligenceIncrease);
-		
-		// Set the next goal post.
-		current_level = h.player.stat.get("next_level");
-		h.player.stat.set("next_level", (current_level + 2) * 2);
-
-		levelGainBox = h.rectangle(250, 500, "white");
-		levelGainText = h.text("You have gained a level!\nStats increased:\n" +
-		"Strength: " + current_str + " + " + strengthIncrease +
-		"\nMax Health: " + current_maxhealth + " + " + healthIncrease +
-		"\nIntelligence: " + current_intel + " + " + intelligenceIncrease,
-		"20px puzzler","black");
-		h.stage.putCenter(levelGainBox);
-		levelGainBox.putCenter(levelGainText);
+		levelUp();
 	}
+}
+
+function levelUp(){
+	current_level = h.player.stat.get("level");
+	h.player.stat.set("level", current_level + 1);
+	
+	strengthIncrease = h.randomInt(3,5);
+	current_str = h.player.stat.get("strength");
+	h.player.stat.set("strength", current_str + strengthIncrease);
+	
+	healthIncrease = h.randomInt(5,8);
+	current_maxhealth = h.player.stat.get("max_health");
+	h.player.stat.set("max_health", current_maxhealth + healthIncrease);
+	
+	intelligenceIncrease = h.randomInt(2,4);
+	current_intel = h.player.stat.get("intelligence");
+	h.player.stat.set("intelligence", current_intel + intelligenceIncrease);
+	
+	// Set the next goal post.
+	current_level = h.player.stat.get("next_level");
+	h.player.stat.set("next_level", (current_level + 2) * 2);
+
+	levelGainBox = h.rectangle(250, 500, "white");
+	levelGainText = h.text("You have gained a level!\nStats increased:\n" +
+	"Strength: " + current_str + " + " + strengthIncrease +
+	"\nMax Health: " + current_maxhealth + " + " + healthIncrease +
+	"\nIntelligence: " + current_intel + " + " + intelligenceIncrease,
+	"20px puzzler","black");
+	h.stage.putCenter(levelGainBox);
+	levelGainBox.putCenter(levelGainText);
+	
+	popUp(h.group(levelGainBox, levelGainText));
 }
 
 function initCombatTurn(){
@@ -192,12 +196,10 @@ function initCombatTurn(){
 	combatTurn.nextTurn = function(){
 		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
 			combatTurn.currentParticipant = 0;
-			
 		} else {
 			//combatTurn.enemies[0].doTurn();
 			combatTurn.currentParticipant++;
 		}
-
 		if (test_enemy.stat.get("health") <= 0){
 			gainExperience(test_enemy.stat.get("experience"));
 			h.remove(combatTurn.enemies[0]);
@@ -209,4 +211,14 @@ function initCombatTurn(){
 		return true;
 	}
 	return combatTurn;
+}
+
+// Takes in an element, waits X time and then fades and removes it.
+function popUp(element){
+	h.wait(2000, function() {
+		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
+		tween.onComplete = () => {
+			h.remove(element);
+		}
+	});
 }

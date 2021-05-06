@@ -23,7 +23,6 @@ function enemy(name, sprite, x, y, health, damage){
     sprite.stat = stat;
 
     sprite.doTurn = function(){
-        //h.combatTurn.nextTurn();
         if (h.combatTurn.enemies[0].stat.get("health") <= 0){
 			gainExperience(test_enemy.stat.get("experience"));
 			h.remove(combatTurn.enemies[0]);
@@ -36,12 +35,18 @@ function enemy(name, sprite, x, y, health, damage){
         console.log(currentHP);
         h.player.stat.set('current_health', currentHP);
         if (currentHP <= 0){
-            title = h.text("YOU SUCK", "90px puzzler", "red");
-            h.pause();
+            h.state = gameOver;
         }
         return true;
     }
     return sprite;
+}
+
+function gameOver(){
+    h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
+    title = h.text("You Died", "90px puzzler", "red");
+    h.stage.putCenter(title);
+    h.pause();
 }
 
 function createGoose(){

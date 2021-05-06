@@ -9,7 +9,7 @@ function initMap(){
 }
 
 function placeTrigger(object, index){
-	trigger = h.rectangle(16, 16, "powderBlue", "black", 2, 0, 0);
+	trigger = h.rectangle(16, 16, "white", "black", 1, 0, 0);
 	h.map.addChild(trigger);
 	trigger.x = object.x;
 	trigger.y = object.y;
