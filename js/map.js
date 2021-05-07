@@ -12,7 +12,7 @@ function initMap(){
 }
 
 function placeTrigger(object, index){
-	trigger = h.rectangle(16, 16, "white", "black", 1, 0, 0);
+	trigger = h.rectangle(16, 16, "white", "black", 0, 0, 0);
 	h.map.addChild(trigger);
 	trigger.x = object.x;
 	trigger.y = object.y;
@@ -23,7 +23,7 @@ function placeTrigger(object, index){
 }
 
 function checkTriggerCollision(trigger, index){
-    if(h.hitTestRectangle({x: h.player.x-1, y: h.player.y-1, width: h.player.width-1, height: h.player.height-1}, trigger)){
+    if(h.hitTestRectangle({x: h.player.directionFacingBox.x, y: h.player.directionFacingBox.y, width: h.player.directionFacingBox.width, height: h.player.directionFacingBox.height}, trigger)){
 		console.log("I'm touching youuuu!");
 	}
 }

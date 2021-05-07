@@ -100,6 +100,7 @@ function cleanupCombat(){
 }
 
 function play() {
-    h.map.triggers.forEach(checkTriggerCollision);
+    
+	
 }
 

@@ -72,6 +72,7 @@ function initKeyboard() {
 
     space.press = () => {
         h.menuGroup.toggle();
+		h.map.triggers.forEach(checkTriggerCollision);
     }
 
     leftArrow.press = () => {
@@ -137,7 +138,7 @@ function initKeyboard() {
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
 
-	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 1, 0, 0);
+	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
 
 	//h.player.x = h.player.y = 159;	No longer needed if map Player_Spawn works. 
 	//h.player.collisionArea = {x: h.player.x, y: h.player.y, width: h.player.width, height: h.player.height};
