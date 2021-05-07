@@ -12,7 +12,7 @@ function initMap(){
 }
 
 function placeTrigger(object, index){
-	trigger = h.rectangle(16, 16, "white", "black", 0, 0, 0);
+	trigger = h.rectangle(16, 16, "blue", "black", 0, 0, 0);
 	h.map.addChild(trigger);
 	trigger.x = object.x;
 	trigger.y = object.y;
@@ -42,8 +42,8 @@ test_layer =
      "type":"",
      "visible":false,
      "width":47.5247524752475,
-     "x":432.673267326733,
-     "y":15.3465346534653
+     "x":432,
+     "y":16
     }, 
     {
      "height":17.3267326732673,
@@ -53,8 +53,8 @@ test_layer =
      "type":"",
      "visible":false,
      "width":17.3267326732673,
-     "x":368.811881188119,
-     "y":319.306930693069
+     "x":370,
+     "y":320
     }, 
     {
      "height":13.8613861386139,
@@ -63,8 +63,8 @@ test_layer =
      "rotation":0,
      "type":"",
      "visible":false,
-     "width":16.8316831683168,
-     "x":447.029702970297,
-     "y":239.60396039604
+     "width":16,
+     "x":448,
+     "y":240
     }]
 };

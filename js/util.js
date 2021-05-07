@@ -78,7 +78,7 @@ function initKeyboard() {
     leftArrow.press = () => {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x-speed, h.player.y, 20, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x-speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x - 16;
@@ -94,7 +94,7 @@ function initKeyboard() {
     rightArrow.press = () => {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x+speed, h.player.y, 20, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x+speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x + 16;
@@ -108,7 +108,7 @@ function initKeyboard() {
     upArrow.press = () => {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y-speed, 20, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x, h.player.y-speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
@@ -122,7 +122,7 @@ function initKeyboard() {
     downArrow.press = () => {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y+speed, 20, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x, h.player.y+speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
@@ -137,11 +137,8 @@ function initKeyboard() {
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
-
 	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
-
-	//h.player.x = h.player.y = 159;	No longer needed if map Player_Spawn works. 
-	//h.player.collisionArea = {x: h.player.x, y: h.player.y, width: h.player.width, height: h.player.height};
+    h.player.directionFacingBox.visible = false;
 	let stat = new Map();
 	stat.set("experience", 0);
 	stat.set("next_level", 7);
