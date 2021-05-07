@@ -78,7 +78,12 @@ function initKeyboard() {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-speed, h.player.y, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x - 16;
+				h.player.directionFacingBox.y = h.player.y;
+			}
+			
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.camera.x -= speed * 2;
 			rollAttackChance();
@@ -89,7 +94,11 @@ function initKeyboard() {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+speed, h.player.y, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x + 16;
+				h.player.directionFacingBox.y = h.player.y;
+			}
 			h.camera.x += speed * 2;
             rollAttackChance();
         }
@@ -99,7 +108,11 @@ function initKeyboard() {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-speed, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x;
+				h.player.directionFacingBox.y = h.player.y - 16;
+			}
 			h.camera.y -= speed * 2;
             rollAttackChance();
 		}
@@ -109,7 +122,11 @@ function initKeyboard() {
         if (!h.player.tweening && !h.inCombat){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+speed, 20, "decelerationCubed");
-            tween.onComplete = () => h.player.tweening = false;
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x;
+				h.player.directionFacingBox.y = h.player.y + 16;
+			}
 			h.camera.y += speed * 2;
             rollAttackChance();
 		}
@@ -119,6 +136,9 @@ function initKeyboard() {
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
+
+	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 1, 0, 0);
+
 	//h.player.x = h.player.y = 159;	No longer needed if map Player_Spawn works. 
 	//h.player.collisionArea = {x: h.player.x, y: h.player.y, width: h.player.width, height: h.player.height};
 	let stat = new Map();

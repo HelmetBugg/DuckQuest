@@ -31,9 +31,9 @@ function setup() {
 	initplayer();
 
 
-
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
+    h.map.addChild(h.player.directionFacingBox);
     // Centering camera over player with map offset.
 
     h.player.x = h.map.layer.player_spawn_x;//start_x;
