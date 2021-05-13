@@ -1,4 +1,3 @@
-
 function enemy_from_list(name, index, x, y, health, damage){
     let sprite = h.sprite(h.enemy_list[index]);
     return enemy(name, sprite, x, y, health, damage);
@@ -14,14 +13,14 @@ function enemy(name, sprite, x, y, health, damage){
     
     stat.set("strength", damage);
 	stat.set("health", health);
-	stat.set("intelligence", 5);
+	stat.set("max_health", health);
+    stat.set("intelligence", 5);
 	stat.set("experience", 5);
     sprite.scale.x = sprite.scale.y = 4;
-    sprite.x = 150;
-    sprite.y = 100;
+    sprite.x = 350;
+    sprite.y = 80;
     sprite.name = name;
     sprite.stat = stat;
-
     sprite.doTurn = function(){
         if (h.combatTurn.enemies[0].stat.get("health") <= 0){
 			gainExperience(test_enemy.stat.get("experience"));

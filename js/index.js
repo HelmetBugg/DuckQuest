@@ -65,13 +65,19 @@ function getAttacked() {
     fightButton.y = 200;
     fightButton.interact = true;
 
-    h.combatGroup = h.group(combatScreen, runButton, fightButton);
-    h.combatTurn = initCombatTurn();
+    h.enemyHealth = h.text("Enemy Health: " + 0/0, "20px puzzler", "black");
+    h.enemyHealth.y = 50;
+    h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
+    h.playerHealth.y = 100;
 
+    h.combatGroup = h.group(combatScreen, runButton, fightButton, h.enemyHealth, h.playerHealth);
+    h.combatTurn = initCombatTurn();
+    updateHealth();
+        
     runButton.press = function() {
         cleanupCombat();
         for(var i=0; i<h.combatTurn.enemies.length; i++){
-            h.remove(combatTurn.enemies[i])
+            h.remove(combatTurn.enemies[i]);
         }
     }
 
@@ -82,7 +88,13 @@ function getAttacked() {
 		if (!stillFighting){
             cleanupCombat();
 		}
+        updateHealth();
     }
+}
+
+function updateHealth(){
+    h.playerHealth.text = "Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health");
+    h.enemyHealth.text = "Enemy Health: " + combatTurn.enemies[0].stat.get("health") + " / " + combatTurn.enemies[0].stat.get("max_health")
 }
 
 function cleanupCombat(){
