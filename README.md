@@ -9,4 +9,4 @@ chrome.exe --disable-web-security  --user-data-dir=~/chromeTemp
 # Warren
 
 # B
-
+chrome.exe --disable-web-security  --user-data-dir=C:/Users/b/chromeTemp
