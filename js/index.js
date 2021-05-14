@@ -82,13 +82,16 @@ function getAttacked() {
     }
 
     fightButton.press = function() {
-        h.player.doTurn();
+         updateHealth();
+		h.player.doTurn();
+		 updateHealth();
         stillFighting = combatTurn.enemies[0].doTurn();
         //stillFighting = h.combatTurn.nextTurn();
+		
 		if (!stillFighting){
             cleanupCombat();
 		}
-        updateHealth();
+       
     }
 }
 

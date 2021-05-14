@@ -185,6 +185,7 @@ function levelUp(){
 	healthIncrease = h.randomInt(5,8);
 	current_maxhealth = h.player.stat.get("max_health");
 	h.player.stat.set("max_health", current_maxhealth + healthIncrease);
+	h.player.stat.set("current_health", current_maxhealth + healthIncrease);
 	
 	intelligenceIncrease = h.randomInt(2,4);
 	current_intel = h.player.stat.get("intelligence");
@@ -231,9 +232,11 @@ function initCombatTurn(){
 	return combatTurn;
 }
 
+
+
 // Takes in an element, waits X time and then fades and removes it.
-function popUp(element){
-	h.wait(2000, function() {
+function popUp(element, timeInNS=2000){
+	h.wait(timeInNS, function() {
 		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
 		tween.onComplete = () => {
 			h.remove(element);
