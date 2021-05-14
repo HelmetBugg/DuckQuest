@@ -151,9 +151,17 @@ function initplayer() {
 
 	h.player.doTurn = function(){
 		console.log("player turn");
-		h.combatTurn.enemies[0].stat.set('health', 
-		    h.combatTurn.enemies[0].stat.get('health')-1);
-	    h.shake(combatTurn.enemies[0]);
+		
+		currentEnemy = h.combatTurn.enemies[0];
+		currentEnemy.stat.set('health', 
+		currentEnemy.stat.get('health') - stat.get("strength"));
+
+		damageText = h.text("-" + stat.get("strength"), "25px puzzler", "red");
+		damageText.x = currentEnemy.x;
+		damageText.y = currentEnemy.y - 16;
+
+		popUp(damageText);
+	    h.shake(currentEnemy);
 	}
 }
 
