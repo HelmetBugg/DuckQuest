@@ -24,8 +24,10 @@ function placeTrigger(object, index){
 
 function checkTriggerCollision(trigger, index){
     if(h.hitTestRectangle({x: h.player.directionFacingBox.x, y: h.player.directionFacingBox.y, width: h.player.directionFacingBox.width, height: h.player.directionFacingBox.height}, trigger)){
-		console.log("I'm touching youuuu!");
+		
+        return true;
 	}
+    return false;
 }
 
 test_layer = 

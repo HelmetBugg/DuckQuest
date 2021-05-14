@@ -68,11 +68,29 @@ function initKeyboard() {
     rightArrow = h.keyboard(39),
     downArrow = h.keyboard(40),
     space = h.keyboard(32);
+	dialogue = h.keyboard(90);
     h.player.tweening = false;
+
+	dialogue.press = () => {
+		for (i = 0; i <= h.map.triggers.length; i++) {
+			if (checkTriggerCollision(h.map.triggers[i])){
+				h.rectangle(500, 250, 'white');
+				console.log("I'm touching youuuu!");
+			}
+			
+		}
+		
+		/*h.menuGroup.tweening = true;
+		tween = h.slide(this, -514, 0, 30, "decelerationCubed");
+		tween.onComplete = () => {
+			this.visible = false;
+			h.menuGroup.tweening = false;
+			*/
+	}
 
     space.press = () => {
         h.menuGroup.toggle();
-		h.map.triggers.forEach(checkTriggerCollision);
+		
     }
 
     leftArrow.press = () => {
