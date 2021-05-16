@@ -72,14 +72,17 @@ function initKeyboard() {
     h.player.tweening = false;
 
 	dialogue.press = () => {
+
+		// Think we will refactor to just make layer and map the same.
+		
+		/*		
 		for (i = 0; i <= h.map.triggers.length; i++) {
 			if (checkTriggerCollision(h.map.triggers[i])){
 				h.rectangle(500, 250, 'white');
 				console.log("I'm touching youuuu!");
-			}
-			
+			}	
 		}
-		
+		*/
 		/*h.menuGroup.tweening = true;
 		tween = h.slide(this, -514, 0, 30, "decelerationCubed");
 		tween.onComplete = () => {
@@ -90,11 +93,13 @@ function initKeyboard() {
 
     space.press = () => {
         h.menuGroup.toggle();
-		
     }
 
     leftArrow.press = () => {
-        if (!h.player.tweening && !h.inCombat){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x-speed, y: h.player.y, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -102,7 +107,6 @@ function initKeyboard() {
 				h.player.directionFacingBox.x = h.player.x - 16;
 				h.player.directionFacingBox.y = h.player.y;
 			}
-			
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.camera.x -= speed * 2;
 			rollAttackChance();
@@ -110,7 +114,10 @@ function initKeyboard() {
     };
 
     rightArrow.press = () => {
-        if (!h.player.tweening && !h.inCombat){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x+speed, y: h.player.y, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -124,7 +131,10 @@ function initKeyboard() {
     };
 
     upArrow.press = () => {
-        if (!h.player.tweening && !h.inCombat){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x, y: h.player.y-speed, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -138,7 +148,10 @@ function initKeyboard() {
     };
 
     downArrow.press = () => {
-        if (!h.player.tweening && !h.inCombat){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {

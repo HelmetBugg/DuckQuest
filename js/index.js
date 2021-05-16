@@ -29,6 +29,7 @@ function setup() {
     h.backgroundColor = 0x000000;
     initMap();
 	initplayer();
+    //checkDebugCollision(h.map.layer);
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
     h.map.addChild(h.player.directionFacingBox);
@@ -51,7 +52,6 @@ function rollAttackChance(){
 }
 
 function getAttacked() {
-    //console.log("got attacked");
 	h.inCombat = true;
     combatScreen = h.rectangle(500, 250, 'white');
 
@@ -82,12 +82,10 @@ function getAttacked() {
     }
 
     fightButton.press = function() {
-         updateHealth();
+        updateHealth();
 		h.player.doTurn();
-		 updateHealth();
-        stillFighting = combatTurn.enemies[0].doTurn();
-        //stillFighting = h.combatTurn.nextTurn();
-		
+		updateHealth();
+        stillFighting = combatTurn.enemies[0].doTurn();		
 		if (!stillFighting){
             cleanupCombat();
 		}
@@ -110,7 +108,5 @@ function cleanupCombat(){
 }
 
 function play() {
-    
-	
 }
 
