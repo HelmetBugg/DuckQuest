@@ -8,7 +8,6 @@ function initMap(){
 	h.map.layer.triggers.forEach(placeTrigger);
 	//h.map.start_x = 150;
 	//h.map.start_y = 300;
-
 }
 
 function placeTrigger(object, index){
@@ -16,6 +15,7 @@ function placeTrigger(object, index){
 	h.map.addChild(trigger);
 	trigger.x = object.x;
 	trigger.y = object.y;
+    trigger.dialog = "test;
 	if (!object.visible){
         trigger.visible = false;
 	}
@@ -24,7 +24,6 @@ function placeTrigger(object, index){
 
 function checkTriggerCollision(trigger, index){
     if(h.hitTestRectangle({x: h.player.directionFacingBox.x, y: h.player.directionFacingBox.y, width: h.player.directionFacingBox.width, height: h.player.directionFacingBox.height}, trigger)){
-		
         return true;
 	}
     return false;
@@ -45,18 +44,20 @@ test_layer =
      "visible":false,
      "width":47.5247524752475,
      "x":432,
-     "y":16
+     "y":16,
+     "dialog": "Halt traveler.."
     }, 
     {
-     "height":17.3267326732673,
      "id":4,
      "name":"sage_npc",
      "rotation":0,
      "type":"",
      "visible":false,
-     "width":17.3267326732673,
+     "width":16,
+     "height":16,
      "x":370,
-     "y":320
+     "y":320,
+     "dialog": "Hello there traveler.."
     }, 
     {
      "height":13.8613861386139,
@@ -67,6 +68,7 @@ test_layer =
      "visible":false,
      "width":16,
      "x":448,
-     "y":240
+     "y":240,
+     "dialog": "Hello there ninja.."
     }]
 };

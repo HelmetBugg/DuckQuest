@@ -72,25 +72,16 @@ function initKeyboard() {
     h.player.tweening = false;
 
 	dialogue.press = () => {
-		for (i = 0; i <= h.map.triggers.length; i++) {
-			if (checkTriggerCollision(h.map.triggers[i])){
-				h.rectangle(500, 250, 'white');
-				console.log("I'm touching youuuu!");
-			}
-			
+		for (i=0; i<=h.map.triggers.length; i++) {
+			if (checkTriggerCollision(h.map.layer.triggers[i])){
+				//h.rectangle(500, 250, 'white');
+				console.log(h.map.triggers[i].dialog);
+			}	
 		}
-		
-		/*h.menuGroup.tweening = true;
-		tween = h.slide(this, -514, 0, 30, "decelerationCubed");
-		tween.onComplete = () => {
-			this.visible = false;
-			h.menuGroup.tweening = false;
-			*/
 	}
 
     space.press = () => {
         h.menuGroup.toggle();
-		
     }
 
     leftArrow.press = () => {
@@ -102,7 +93,6 @@ function initKeyboard() {
 				h.player.directionFacingBox.x = h.player.x - 16;
 				h.player.directionFacingBox.y = h.player.y;
 			}
-			
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.camera.x -= speed * 2;
 			rollAttackChance();
@@ -156,7 +146,7 @@ function initKeyboard() {
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
 	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
-    h.player.directionFacingBox.visible = false;
+    //h.player.directionFacingBox.visible = false;
 	let stat = new Map();
 	stat.set("experience", 0);
 	stat.set("next_level", 7);
