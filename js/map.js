@@ -15,7 +15,7 @@ function placeTrigger(object, index){
 	h.map.addChild(trigger);
 	trigger.x = object.x;
 	trigger.y = object.y;
-    trigger.dialog = "test;
+    trigger.dialog = object.dialog;
 	if (!object.visible){
         trigger.visible = false;
 	}
