@@ -159,7 +159,7 @@ function initKeyboard() {
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
 	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
-    //h.player.directionFacingBox.visible = false;
+    h.player.directionFacingBox.visible = false;
 	let stat = new Map();
 	stat.set("experience", 0);
 	stat.set("next_level", 7);
