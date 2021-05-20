@@ -72,23 +72,13 @@ function initKeyboard() {
     h.player.tweening = false;
 
 	dialogue.press = () => {
-
-		// Think we will refactor to just make layer and map the same.
-		
-		/*		
+		// Think we will refactor to just make layer and map the same.		
 		for (i = 0; i <= h.map.triggers.length; i++) {
 			if (checkTriggerCollision(h.map.triggers[i])){
 				h.rectangle(500, 250, 'white');
 				console.log("I'm touching youuuu!");
 			}	
 		}
-		*/
-		/*h.menuGroup.tweening = true;
-		tween = h.slide(this, -514, 0, 30, "decelerationCubed");
-		tween.onComplete = () => {
-			this.visible = false;
-			h.menuGroup.tweening = false;
-			*/
 	}
 
     space.press = () => {
