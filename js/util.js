@@ -72,11 +72,11 @@ function initKeyboard() {
     h.player.tweening = false;
 
 	dialogue.press = () => {
-		// Think we will refactor to just make layer and map the same.		
-		for (i = 0; i <= h.map.triggers.length; i++) {
-			if (checkTriggerCollision(h.map.triggers[i])){
-				h.rectangle(500, 250, 'white');
-				console.log("I'm touching youuuu!");
+
+		for (i=0; i<=h.map.triggers.length; i++) {
+			if (checkTriggerCollision(h.map.layer.triggers[i])){
+				//h.rectangle(500, 250, 'white');
+				console.log(h.map.triggers[i].dialog);
 			}	
 		}
 	}
@@ -159,7 +159,7 @@ function initKeyboard() {
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
 	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
-    h.player.directionFacingBox.visible = false;
+    //h.player.directionFacingBox.visible = false;
 	let stat = new Map();
 	stat.set("experience", 0);
 	stat.set("next_level", 7);
