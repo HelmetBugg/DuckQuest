@@ -75,8 +75,12 @@ function initKeyboard() {
 
 		for (i=0; i<=h.map.triggers.length; i++) {
 			if (checkTriggerCollision(h.map.layer.triggers[i])){
-				//h.rectangle(500, 250, 'white');
-				console.log(h.map.triggers[i].dialog);
+				dialogueBox = h.rectangle(512, 150, 'white');
+				dialogueBoxText = h.text(h.map.triggers[i].dialog, "30px puzzler", "black");
+				dialogueBox.x = 0;
+				dialogueBox.y = 362;
+				dialogueBoxText.x = 0;
+				dialogueBoxText.y = 362;
 			}	
 		}
 	}
@@ -100,7 +104,10 @@ function initKeyboard() {
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.camera.x -= speed * 2;
 			rollAttackChance();
-        }
+        } else {
+			h.player.directionFacingBox.x = h.player.x - 16;
+			h.player.directionFacingBox.y = h.player.y;
+		}
     };
 
     rightArrow.press = () => {
@@ -117,7 +124,10 @@ function initKeyboard() {
 			}
 			h.camera.x += speed * 2;
             rollAttackChance();
-        }
+        } else {
+			h.player.directionFacingBox.x = h.player.x + 16;
+			h.player.directionFacingBox.y = h.player.y;
+		}
     };
 
     upArrow.press = () => {
@@ -134,6 +144,9 @@ function initKeyboard() {
 			}
 			h.camera.y -= speed * 2;
             rollAttackChance();
+		} else {
+			h.player.directionFacingBox.x = h.player.x;
+			h.player.directionFacingBox.y = h.player.y - 16;
 		}
     };
 
@@ -151,6 +164,9 @@ function initKeyboard() {
 			}
 			h.camera.y += speed * 2;
             rollAttackChance();
+		} else {
+			h.player.directionFacingBox.x = h.player.x;
+			h.player.directionFacingBox.y = h.player.y + 16;
 		}
     };
 }
