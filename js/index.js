@@ -21,32 +21,26 @@ function load() {
     console.log(`progress: ${h.loadingProgress}`);
     h.loadingBar();
 }
+
 function setup() {
-    title = h.text("DUCKER QUESTER", "50px puzzler", "purple");
+    title = h.text("Duck Quest", "50px puzzler", "purple");
     title.x = 35;
     title.y = 35;
-    startButton = h.text("START", "30px puzzler", "black");
+    startButton = h.text("New Game", "30px puzzler", "black");
     startButton.x = 100;
-    startButton.y = 100;
+    startButton.y = 200;
     startButton.interact = true;
-    closeButton = h.text("CLOSE", "30px puzzler", "black");
-    closeButton.x = 100;
-    closeButton.y = 300;
-    closeButton.interact = true;
-
+    loadButton = h.text("Load Game", "30px puzzler", "black");
+    loadButton.x = 100;
+    loadButton.y = 300;
     startButton.press = function() {
+        this.interact = false;
         newGame();
     }
-
-    closeButton.press = function() {
-        
-
+    loadButton.press = function() {
+        console.log("Loads your game");
     }
-
-
-    
 }
-
 
 function newGame() {
     title = h.text("Version " + version, "18px puzzler", "white");

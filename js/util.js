@@ -60,6 +60,15 @@ function pauseMenu() {
 	}	
 }
 
+function createDialog(text){
+	dialogueBox = h.rectangle(512, 150, 'white');
+	dialogueBoxText = h.text(text, "30px puzzler", "black");
+	dialogueBox.x = 0;
+	dialogueBox.y = 362;
+	dialogueBoxText.x = 0;
+	dialogueBoxText.y = 362;
+	h.player.dialogGroup = h.group(dialogueBox, dialogueBoxText);
+}
 
 function initKeyboard() {
 	speed = 16;//h.player.width;
@@ -72,16 +81,16 @@ function initKeyboard() {
     h.player.tweening = false;
 
 	dialogue.press = () => {
-
-		for (i=0; i<=h.map.triggers.length; i++) {
-			if (checkTriggerCollision(h.map.layer.triggers[i])){
-				dialogueBox = h.rectangle(512, 150, 'white');
-				dialogueBoxText = h.text(h.map.triggers[i].dialog, "30px puzzler", "black");
-				dialogueBox.x = 0;
-				dialogueBox.y = 362;
-				dialogueBoxText.x = 0;
-				dialogueBoxText.y = 362;
-			}	
+		if (h.player.talking) {
+			h.player.talking = false;
+			h.remove(h.player.dialogGroup);
+		} else {
+			for (i=0; i<=h.map.triggers.length; i++) {
+				if (checkTriggerCollision(h.map.layer.triggers[i])){
+					h.player.talking = true;
+	    	        createDialog(h.map.layer.triggers[i].dialog);
+				}
+			}
 		}
 	}
 
