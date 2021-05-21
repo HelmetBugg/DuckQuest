@@ -21,8 +21,34 @@ function load() {
     console.log(`progress: ${h.loadingProgress}`);
     h.loadingBar();
 }
-
 function setup() {
+    title = h.text("DUCKER QUESTER", "50px puzzler", "purple");
+    title.x = 35;
+    title.y = 35;
+    startButton = h.text("START", "30px puzzler", "black");
+    startButton.x = 100;
+    startButton.y = 100;
+    startButton.interact = true;
+    closeButton = h.text("CLOSE", "30px puzzler", "black");
+    closeButton.x = 100;
+    closeButton.y = 300;
+    closeButton.interact = true;
+
+    startButton.press = function() {
+        newGame();
+    }
+
+    closeButton.press = function() {
+        
+
+    }
+
+
+    
+}
+
+
+function newGame() {
     title = h.text("Version " + version, "18px puzzler", "white");
     title.y = 490;
     // Make the space around the map black.
