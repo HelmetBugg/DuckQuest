@@ -30,19 +30,34 @@ function setup() {
     startButton.x = 100;
     startButton.y = 200;
     startButton.interact = true;
+    startButton.press = function() {
+        // Just to hide the button after click.
+        newGame(false);
+    }
+
     loadButton = h.text("Load Game", "30px puzzler", "black");
+    if(localStorage.getItem('duckQuest') != null){
+        loadButton.interact = true;
+        console.log(loadButton);
+    } else {
+        loadButton.alpha = 0.5;
+    }
     loadButton.x = 100;
     loadButton.y = 300;
-    startButton.press = function() {
-        this.interact = false;
-        newGame();
-    }
     loadButton.press = function() {
-        console.log("Loads your game");
+        loadButton.x = -5000;
+        newGame(true);
     }
+    h.destroy = h.group(loadButton, startButton);
 }
 
-function newGame() {
+/*
+// Takes a bool to determine if game data should be loaded after init. 
+*/
+function newGame(load_data) {
+    h.destroy.x = -50000;
+    h.remove(h.destroy);
+
     title = h.text("Version " + version, "18px puzzler", "white");
     title.y = 490;
     // Make the space around the map black.
@@ -53,15 +68,24 @@ function newGame() {
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
     h.map.addChild(h.player.directionFacingBox);
-    h.player.x = h.map.layer.player_spawn_x;
-    h.player.y = h.map.layer.player_spawn_y;
-    // Centering camera over player with map offset.
-    h.camera.x = h.player.x;
-    h.camera.y = h.player.y;
+    h.player.x = h.player.directionFacingBox.x = h.map.layer.player_spawn_x;
+    h.player.y = h.player.directionFacingBox.y = h.map.layer.player_spawn_y;
     pauseMenu();
     initKeyboard();
     h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
 	h.inCombat = false;
+    // Must happen before camera is centered.
+    if (load_data){
+        loadGame();
+    }
+    //h.map.addChild(h.camera);
+    // Centering camera over player with map offset.
+    h.camera.x = h.player.x;
+    //console.log("HERE!!" + h.map.x);
+    h.camera.y = (h.player.y);
+    //h.map.x -= h.player.x;
+    //h.map.y -= h.player.y;
+    //h.map.scale.x = h.map.scale.y = 1.2;
     h.state = play;
 }
 
@@ -93,14 +117,12 @@ function getAttacked() {
     h.combatGroup = h.group(combatScreen, runButton, fightButton, h.enemyHealth, h.playerHealth);
     h.combatTurn = initCombatTurn();
     updateHealth();
-        
     runButton.press = function() {
         cleanupCombat();
         for(var i=0; i<h.combatTurn.enemies.length; i++){
             h.remove(combatTurn.enemies[i]);
         }
     }
-
     fightButton.press = function() {
         updateHealth();
 		h.player.doTurn();
@@ -109,7 +131,6 @@ function getAttacked() {
 		if (!stillFighting){
             cleanupCombat();
 		}
-       
     }
 }
 
@@ -128,5 +149,7 @@ function cleanupCombat(){
 }
 
 function play() {
+    //h.camera.follow(h.player);
+    //h.followConstant(h.camera, h.player, 10);
 }
 

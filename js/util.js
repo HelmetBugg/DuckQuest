@@ -18,12 +18,15 @@ function pauseMenu() {
         console.log("questsbutton pressed");
     }
 
-	spellsButton = h.text("Spells", "30px puzzler", "black");
-	spellsButton.x = 50; 
-	spellsButton.y = 150; 
-	h.makeInteractive(spellsButton);
-    spellsButton.press = function () {
-        console.log("spellsbutton pressed");
+	saveButton = h.text("Save Game", "30px puzzler", "black");
+	saveButton.x = 50; 
+	saveButton.y = 150; 
+	h.makeInteractive(saveButton);
+    saveButton.press = function () {
+        saveGame();
+		saveText = h.text("Game Saved!", "30px puzzler", "green");
+		saveText.y = 470;
+		popUp(saveText);
     }
 
 	quitButton = h.text("Quit", "30px puzzler", "black");
@@ -34,7 +37,7 @@ function pauseMenu() {
         console.log("YOU CAN NEVER QUIT!");
     }
 
-	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, spellsButton, quitButton);
+	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, quitButton);
 	h.menuGroup.visible = false;
 	h.stage.putCenter(h.menuGroup);	
 	h.slide(h.menuGroup, -514, 0, 30, "decelerationCubed");
@@ -58,6 +61,28 @@ function pauseMenu() {
 			}
 		}
 	}	
+}
+
+function saveGame(){
+	let data = JSON.stringify({
+		x: h.player.x,
+		y: h.player.y,
+		level: h.player.stat.get("level"),
+		next_level: h.player.stat.get("next_level"),
+		experience: h.player.stat.get("experience")
+	});
+	localStorage.setItem('duckQuest', data);
+	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
+}
+
+function loadGame(){
+	let data = JSON.parse(localStorage.getItem('duckQuest'));
+    h.player.x = data.x;
+    h.player.y = data.y;
+    h.player.stat.level = data.level;
+    h.player.stat.next_level = data.next_level;
+    h.player.stat.experience = data.experience;
+	console.log("Game Loaded.. ");// + data.x);
 }
 
 function createDialog(text){
@@ -285,7 +310,6 @@ function initCombatTurn(){
 	}
 	return combatTurn;
 }
-
 
 
 // Takes in an element, waits X time and then fades and removes it.
