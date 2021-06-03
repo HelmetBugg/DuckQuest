@@ -138,7 +138,7 @@ function getAttacked() {
         skillBoxText.x = 0;
         skillBoxText.y = 362;
         h.player.dialogGroup = h.group(skillBox, skillBoxText);
- 
+
     }
 }
 
@@ -157,7 +157,5 @@ function cleanupCombat(){
 }
 
 function play() {
-    //h.followConstant(h.camera, h.player, 10);
-    //h.camera.centerOver(h.player);
 }
 

@@ -63,6 +63,27 @@ function pauseMenu() {
 	}	
 }
 
+function createListMenu(list){
+	var menuBox = h.rectangle(150, 512, 'white');
+	for(var i=0; i<list.length; i++){
+		//console.log(list[i]);
+        boxText = h.text(list[i], "20px puzzler", "black");
+		boxText.interact = true;
+		boxText.y = 50 * i;
+		boxText.x = 10;
+		menuBox.addChild(boxText);
+	}
+
+	var quitButton = h.text("Quit", "20px puzzler", "black");
+	quitButton.y = 50 * list.length;
+	quitButton.interact = true;
+	menuBox.addChild(quitButton);
+	quitButton.press = function() {
+	    menuBox.x += 50000;
+		h.remove(menuBox);
+    }
+}
+
 function saveGame(){
 	let data = JSON.stringify({
 		x: h.player.x,
