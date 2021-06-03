@@ -227,6 +227,11 @@ function initplayer() {
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 
+	let ability = new Map();
+	ability.set("Bam");
+	ability.set("Pow");
+	ability.set("Kiss");
+
 	h.player.doTurn = function(){
 		console.log("player turn");
 		

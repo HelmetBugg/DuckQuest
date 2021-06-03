@@ -93,21 +93,26 @@ function getAttacked() {
     combatScreen = h.rectangle(500, 250, 'white');
 
     runButton = h.text("RUN", "30px puzzler", "black");
-    runButton.x = 100;
+    runButton.x = 50;
     runButton.y = 200;
     runButton.interact = true;
 
     fightButton = h.text("FIGHT", "30px puzzler", "black");
-    fightButton.x = 200;
+    fightButton.x = 150;
     fightButton.y = 200;
     fightButton.interact = true;
+
+    skillButton = h.text("SKILLS", "30px puzzler", "black");
+    skillButton.x = 300;
+    skillButton.y = 200;
+    skillButton.interact = true;
 
     h.enemyHealth = h.text("Enemy Health: " + 0/0, "20px puzzler", "black");
     h.enemyHealth.y = 50;
     h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
     h.playerHealth.y = 100;
 
-    h.combatGroup = h.group(combatScreen, runButton, fightButton, h.enemyHealth, h.playerHealth);
+    h.combatGroup = h.group(combatScreen, runButton, fightButton,skillButton, h.enemyHealth, h.playerHealth);
     h.combatTurn = initCombatTurn();
     updateHealth();
     runButton.press = function() {
@@ -124,6 +129,16 @@ function getAttacked() {
 		if (!stillFighting){
             cleanupCombat();
 		}
+    }
+    skillButton.press = function() {
+        skillBox = h.rectangle(512, 150, 'gray');
+        skillBoxText = h.text("TEXTING", "30px puzzler", "black");
+        skillBox.x = 0;
+        skillBox.y = 362;
+        skillBoxText.x = 0;
+        skillBoxText.y = 362;
+        h.player.dialogGroup = h.group(skillBox, skillBoxText);
+ 
     }
 }
 
