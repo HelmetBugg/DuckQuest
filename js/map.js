@@ -1,15 +1,11 @@
 function initMap(){
 	h.map = h.sprite("res/maps/1_lvl_map.png");
-    h.map.scale.x = h.map.scale.y = 2;
-	h.map.triggers = [];
-    //h.camera =  h.worldCamera(h.map, h.canvas.width*20, h.canvas.height*20);
-    //h.camera =  h.worldCamera(h.map, h.map.width*2, h.map.height*2);
-    h.camera =  h.worldCamera(h.map, h.map.width, h.map.height);
-	/// Later layer will be passed as a param, we can make it load different maps that way.
+    //h.map.scale.x = h.map.scale.y = 2;
+    h.map.triggers = [];
+    h.camera =  h.worldCamera(h.map, h.canvas.width*20, h.canvas.height*20);
+    /// Later layer will be passed as a param, we can make it load different maps that way.
 	h.map.layer = test_layer;
 	h.map.layer.triggers.forEach(placeTrigger);
-	//h.map.start_x = 150;
-	//h.map.start_y = 300;
 }
 
 function placeTrigger(object, index){

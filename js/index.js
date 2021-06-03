@@ -48,7 +48,7 @@ function setup() {
         loadButton.x = -5000;
         newGame(true);
     }
-    h.destroy = h.group(loadButton, startButton);
+    h.destroy = h.group(loadButton, startButton, title);
 }
 
 /*
@@ -57,7 +57,6 @@ function setup() {
 function newGame(load_data) {
     h.destroy.x = -50000;
     h.remove(h.destroy);
-
     title = h.text("Version " + version, "18px puzzler", "white");
     title.y = 490;
     // Make the space around the map black.
@@ -74,18 +73,12 @@ function newGame(load_data) {
     initKeyboard();
     h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
 	h.inCombat = false;
+
     // Must happen before camera is centered.
     if (load_data){
         loadGame();
-    }
-    //h.map.addChild(h.camera);
-    // Centering camera over player with map offset.
-    h.camera.x = h.player.x;
-    //console.log("HERE!!" + h.map.x);
-    h.camera.y = (h.player.y);
-    //h.map.x -= h.player.x;
-    //h.map.y -= h.player.y;
-    //h.map.scale.x = h.map.scale.y = 1.2;
+    } 
+    h.camera.centerOver(h.player);
     h.state = play;
 }
 
@@ -149,7 +142,7 @@ function cleanupCombat(){
 }
 
 function play() {
-    //h.camera.follow(h.player);
     //h.followConstant(h.camera, h.player, 10);
+    //h.camera.centerOver(h.player);
 }
 

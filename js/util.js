@@ -104,6 +104,7 @@ function initKeyboard() {
     space = h.keyboard(32);
 	dialogue = h.keyboard(90);
     h.player.tweening = false;
+	//h.camera = h.map;
 
 	dialogue.press = () => {
 		if (h.player.talking) {
@@ -136,7 +137,8 @@ function initKeyboard() {
 				h.player.directionFacingBox.y = h.player.y;
 			}
             // Multiple by 2 because duck is a child of map which is scaled x2.
-			h.camera.x -= speed * 2;
+			h.map.x += speed * 2;
+			h.camera.centerOver(h.player);
 			rollAttackChance();
         } else {
 			h.player.directionFacingBox.x = h.player.x - 16;
@@ -156,8 +158,9 @@ function initKeyboard() {
 				h.player.directionFacingBox.x = h.player.x + 16;
 				h.player.directionFacingBox.y = h.player.y;
 			}
-			h.camera.x += speed * 2;
-            rollAttackChance();
+			h.map.x -= speed * 2;
+			h.camera.centerOver(h.player);
+			rollAttackChance();
         } else {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;
@@ -175,9 +178,11 @@ function initKeyboard() {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
 				h.player.directionFacingBox.y = h.player.y - 16;
+				h.camera.centerOver(h.player);
 			}
-			h.camera.y -= speed * 2;
-            rollAttackChance();
+			h.map.y += speed * 2;
+			h.camera.centerOver(h.player);
+			rollAttackChance();
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y - 16;
@@ -196,8 +201,10 @@ function initKeyboard() {
 				h.player.directionFacingBox.x = h.player.x;
 				h.player.directionFacingBox.y = h.player.y + 16;
 			}
-			h.camera.y += speed * 2;
+			h.map.y -= speed * 2;
+			h.camera.centerOver(h.player);
             rollAttackChance();
+
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y + 16;
@@ -235,6 +242,7 @@ function initplayer() {
 	    h.shake(currentEnemy);
 	}
 }
+
 
 function gainExperience(experience){
 	current_experience = h.player.stat.get("experience");
