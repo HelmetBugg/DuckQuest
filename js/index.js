@@ -131,13 +131,8 @@ function getAttacked() {
 		}
     }
     skillButton.press = function() {
-        skillBox = h.rectangle(512, 150, 'gray');
-        skillBoxText = h.text("TEXTING", "30px puzzler", "black");
-        skillBox.x = 0;
-        skillBox.y = 362;
-        skillBoxText.x = 0;
-        skillBoxText.y = 362;
-        h.player.dialogGroup = h.group(skillBox, skillBoxText);
+        var skillList = h.player.skills;
+		createListMenu(skillList);
 
     }
 }

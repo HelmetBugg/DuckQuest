@@ -29,15 +29,17 @@ function pauseMenu() {
 		popUp(saveText);
     }
 
-	quitButton = h.text("Quit", "30px puzzler", "black");
-	quitButton.x = 50; 
-	quitButton.y = 200; 
-	h.makeInteractive(quitButton);
-    quitButton.press = function () {
-        console.log("YOU CAN NEVER QUIT!");
+	skillsButton = h.text("Skills", "30px puzzler", "black");
+	skillsButton.x = 50; 
+	skillsButton.y = 200; 
+	h.makeInteractive(skillsButton);
+    skillsButton.press = function () {
+		var skillList = h.player.skills;
+		createListMenu(skillList);
+        //console.log("YOU CAN NEVER SKILLS!");
     }
 
-	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, quitButton);
+	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, skillsButton);
 	h.menuGroup.visible = false;
 	h.stage.putCenter(h.menuGroup);	
 	h.slide(h.menuGroup, -514, 0, 30, "decelerationCubed");
@@ -67,11 +69,15 @@ function createListMenu(list){
 	var menuBox = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){
 		//console.log(list[i]);
-        boxText = h.text(list[i], "20px puzzler", "black");
+        boxText = h.text(list[i].name, "20px puzzler", "black");
 		boxText.interact = true;
 		boxText.y = 50 * i;
 		boxText.x = 10;
+	boxText.description = list[i].descrip;
 		menuBox.addChild(boxText);
+		boxText.press = function() {
+			console.log(this.description);
+		}			
 	}
 
 	var quitButton = h.text("Quit", "20px puzzler", "black");
@@ -234,6 +240,7 @@ function initKeyboard() {
 }
 
 
+
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
 	h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
@@ -248,10 +255,11 @@ function initplayer() {
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 
-	let ability = new Map();
-	ability.set("Bam");
-	ability.set("Pow");
-	ability.set("Kiss");
+	let skills = new Map();
+	skills.set("Peck");
+	skills.set("Float");
+	skills.set("Duster");
+	h.player.skills = initSkills();
 
 	h.player.doTurn = function(){
 		console.log("player turn");
