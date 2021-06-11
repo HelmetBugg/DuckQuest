@@ -13,6 +13,7 @@ h.fps = 15;
 version = 0.4;
 h.scaleToWindow();
 h.start();
+var skills_menu, blurb_group;
 
 function load() {
     //Display the file currently being loaded
@@ -62,6 +63,7 @@ function newGame(load_data) {
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
     initMap();
+    initSkills();
 	initplayer();
     //checkDebugCollision(h.map.layer);
     // Making the player a child of the map for easy movement.
@@ -131,9 +133,7 @@ function getAttacked() {
 		}
     }
     skillButton.press = function() {
-        var skillList = h.player.skills;
-		createListMenu(skillList);
-
+		createListMenu(h.player.skills);
     }
 }
 

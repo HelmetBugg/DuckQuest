@@ -66,28 +66,45 @@ function pauseMenu() {
 }
 
 function createListMenu(list){
-	var menuBox = h.rectangle(150, 512, 'white');
+	skillsMenu = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){
 		//console.log(list[i]);
         boxText = h.text(list[i].name, "20px puzzler", "black");
 		boxText.interact = true;
 		boxText.y = 50 * i;
 		boxText.x = 10;
-	boxText.description = list[i].descrip;
-		menuBox.addChild(boxText);
+		boxText.description = list[i].descrip;
+		skillsMenu.addChild(boxText);
 		boxText.press = function() {
-			console.log(this.description);
+			if(blurb_group != null){
+				console.log(blurb_group);
+				blurb_group.x += 5000;
+  			    h.remove(blurb_group);
+				blurb_group = null;
+			}
+            var box =  h.rectangle(350, 512, 'white');
+			var blurb = h.text(this.description, "18px puzzler", "black");
+			blurb_group = h.group(box, blurb);
+			blurb_group.x = 120;
 		}			
 	}
 
 	var quitButton = h.text("Quit", "20px puzzler", "black");
 	quitButton.y = 50 * list.length;
 	quitButton.interact = true;
-	menuBox.addChild(quitButton);
+	skillsMenu.addChild(quitButton);
 	quitButton.press = function() {
-	    menuBox.x += 50000;
-		h.remove(menuBox);
-    }
+		if(blurb_group != null){
+			console.log(2);
+			blurb_group.x += 5000;
+			h.remove(blurb_group);
+			blurb_group = null;
+	    }
+		skillsMenu.x += 50000;
+		if(skillsMenu != null){
+  		    h.remove(skillsMenu);
+		}
+	}
 }
 
 function saveGame(){
@@ -254,24 +271,17 @@ function initplayer() {
 	stat.set("current_health", 100);
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
-
-	let skills = new Map();
-	skills.set("Peck");
-	skills.set("Float");
-	skills.set("Duster");
-	h.player.skills = initSkills();
+	h.player.skills = [];
+	//initSkills();
 
 	h.player.doTurn = function(){
 		console.log("player turn");
-		
 		currentEnemy = h.combatTurn.enemies[0];
 		currentEnemy.stat.set('health', 
 		currentEnemy.stat.get('health') - stat.get("strength"));
-
 		damageText = h.text("-" + stat.get("strength"), "25px puzzler", "red");
 		damageText.x = currentEnemy.x;
 		damageText.y = currentEnemy.y - 16;
-
 		popUp(damageText);
 	    h.shake(currentEnemy);
 	}
@@ -315,6 +325,8 @@ function levelUp(){
 	// Set the next goal post.
 	current_level = h.player.stat.get("next_level");
 	h.player.stat.set("next_level", (current_level + 2) * 2);
+
+	h.player.skills = checkSkills(h.player.stat.get("level"));
 
 	levelGainBox = h.rectangle(250, 500, "white");
 	levelGainText = h.text("You have gained a level!\nStats increased:\n" +
