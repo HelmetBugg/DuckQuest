@@ -67,6 +67,7 @@ function pauseMenu() {
 
 function createListMenu(list){
 	skillsMenu = h.rectangle(150, 512, 'white');
+	
 	for(var i=0; i<list.length; i++){
 		//console.log(list[i]);
         boxText = h.text(list[i].name, "20px puzzler", "black");
@@ -74,20 +75,39 @@ function createListMenu(list){
 		boxText.y = 50 * i;
 		boxText.x = 10;
 		boxText.description = list[i].descrip;
+		boxText.type = list[i].type;
+		boxText.effect = list[i].effect;
 		skillsMenu.addChild(boxText);
 		boxText.press = function() {
 			if(blurb_group != null){
+
 				console.log(blurb_group);
 				blurb_group.x += 5000;
   			    h.remove(blurb_group);
 				blurb_group = null;
 			}
+
+
             var box =  h.rectangle(350, 512, 'white');
 			var blurb = h.text(this.description, "18px puzzler", "black");
 			blurb_group = h.group(box, blurb);
 			blurb_group.x = 120;
+
+	
+
+			if (boxText.type == 'skill'){
+				var invokeSkillEffect =h.text("ACTIVATE", "18px puzzler", "black",80,100);
+				invokeSkillEffect.interact = true;
+				invokeSkillEffect.press = function(){
+					boxText.effect();
+				}
+				blurb_group.addChild(invokeSkillEffect);
+			}
+			
 		}			
 	}
+}
+	
 
 	var quitButton = h.text("Quit", "20px puzzler", "black");
 	quitButton.y = 50 * list.length;
@@ -105,7 +125,7 @@ function createListMenu(list){
   		    h.remove(skillsMenu);
 		}
 	}
-}
+
 
 function saveGame(){
 	let data = JSON.stringify({
