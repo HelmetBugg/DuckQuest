@@ -5,7 +5,7 @@ let thingsToLoad = [
     "res/images/goose.png",
     "res/images/duckman.png",
     "res/images/Slime0.png", 
-    "res/maps/1_lvl_map.png"  
+    "res/maps/1_lvl_map.png"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -35,7 +35,6 @@ function setup() {
         // Just to hide the button after click.
         newGame(false);
     }
-
     loadButton = h.text("Load Game", "30px puzzler", "black");
     if(localStorage.getItem('duckQuest') != null){
         loadButton.interact = true;
@@ -62,7 +61,7 @@ function newGame(load_data) {
     title.y = 490;
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
-    initMap();
+    initMap(test_map1);
     initSkills();
 	initplayer();
     //checkDebugCollision(h.map.layer);
