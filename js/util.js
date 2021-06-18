@@ -354,7 +354,7 @@ function levelUp(){
 
 function initCombatTurn(){
     combatTurn = {};
-	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,2)]);
+	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
 	combatTurn.enemies = [currentFoe];
     combatTurn.currentParticipant = 0;
 	combatTurn.nextTurn = function(){
