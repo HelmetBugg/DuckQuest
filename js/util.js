@@ -362,8 +362,8 @@ function levelUp(){
 
 function initCombatTurn(){
     combatTurn = {};
-	test_enemy = enemy_from_list("slime", h.randomInt(8, 10), 10, 10, 10, 10);
-	combatTurn.enemies = [test_enemy];
+	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,2)]);
+	combatTurn.enemies = [currentFoe];
     combatTurn.currentParticipant = 0;
 	combatTurn.nextTurn = function(){
 		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
@@ -372,8 +372,8 @@ function initCombatTurn(){
 			//combatTurn.enemies[0].doTurn();
 			combatTurn.currentParticipant++;
 		}
-		if (test_enemy.stat.get("health") <= 0){
-			gainExperience(test_enemy.stat.get("experience"));
+		if (currentFoe.stat.get("health") <= 0){
+			gainExperience(currentFoe.stat.get("experience"));
 			h.remove(combatTurn.enemies[0]);
 			combatTurn.enemies.pop();
 		}			

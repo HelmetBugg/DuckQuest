@@ -3,12 +3,15 @@ function enemy_from_list(name, index, x, y, health, damage) {
     return enemy(name, sprite, x, y, health, damage);
 }
 
-function enemy(name, sprite_url, x, y, health, damage) {
-    let sprite = h.sprite(sprite_url);
-    return enemy(name, sprite, x, y, health, damage);
+function createEnemy(jsoninput){
+	
+	filmStrip= h.filmstrip(jsoninput.sprite, 16, 16);
+	sprite= h.sprite(filmStrip[jsoninput.index]);
+	return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage);
+	
 }
 
-function enemy(name, sprite, x, y, health, damage) {
+function enemy(name, sprite, health, damage) {
     let stat = new Map();
 
     stat.set("strength", damage);
@@ -23,7 +26,7 @@ function enemy(name, sprite, x, y, health, damage) {
     sprite.stat = stat;
     sprite.doTurn = function () {
         if (h.combatTurn.enemies[0].stat.get("health") <= 0) {
-            gainExperience(test_enemy.stat.get("experience"));
+            gainExperience(currentFoe.stat.get("experience"));
             h.remove(combatTurn.enemies[0]);
             combatTurn.enemies.pop();
             return false;
