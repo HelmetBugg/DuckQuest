@@ -5,7 +5,9 @@ let thingsToLoad = [
     "res/images/goose.png",
     "res/images/duckman.png",
     "res/images/Slime0.png", 
-    "res/maps/1_lvl_map.png"
+    "res/maps/1_lvl_map.png",
+    "res/images/Elemental0.png",
+    "res/images/plant1.png"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
