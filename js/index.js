@@ -110,12 +110,18 @@ function getAttacked() {
     skillButton.y = 200;
     skillButton.interact = true;
 
+    h.enemyName = h.text("Enemy", "20px puzzler", "black");
+    h.enemyName.y = 20;
+    h.enemyName.x = 270;
+
     h.enemyHealth = h.text("Enemy Health: " + 0/0, "20px puzzler", "black");
     h.enemyHealth.y = 50;
-    h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
-    h.playerHealth.y = 100;
+    h.enemyHealth.x = 270;
 
-    h.combatGroup = h.group(combatScreen, runButton, fightButton,skillButton, h.enemyHealth, h.playerHealth);
+    h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
+    h.playerHealth.y = 50;
+
+    h.combatGroup = h.group(combatScreen, runButton, fightButton,skillButton, h.enemyHealth, h.playerHealth, h.enemyName);
     h.combatTurn = initCombatTurn();
     updateHealth();
     runButton.press = function() {
@@ -140,7 +146,8 @@ function getAttacked() {
 
 function updateHealth(){
     h.playerHealth.text = "Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health");
-    h.enemyHealth.text = "Enemy Health: " + combatTurn.enemies[0].stat.get("health") + " / " + combatTurn.enemies[0].stat.get("max_health")
+    h.enemyHealth.text = "Enemy Health: " + combatTurn.enemies[0].stat.get("health") + " / " + combatTurn.enemies[0].stat.get("max_health");
+    h.enemyName.text = combatTurn.enemies[0].name;
 }
 
 function cleanupCombat(){
