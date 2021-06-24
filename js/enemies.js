@@ -36,6 +36,7 @@ function enemy(name, sprite, health, damage) {
 
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
+            damageAnimation();
             h.player.stat.set('current_health', currentHP);
 
             if (currentHP <= 0) {
@@ -62,4 +63,14 @@ function gameOver() {
 
 function createGoose() {
     return enemy("goose", "res/images/goose.png", 10, 10, 10, 10);
+}
+
+function damageAnimation(){
+  
+    damageFlash = h.rectangle(500, 250, 'red');//h.rectangle(h.canvas.width, h.canvas.height, "red", "red", 0, 0, 0);
+    tween = h.fadeOut(damageFlash);    
+    tween.onComplete = () => {
+        h.remove(damageFlash);       
+    }
+    
 }
