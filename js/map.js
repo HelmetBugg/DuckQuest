@@ -76,7 +76,7 @@ test_map1 =  {
     "sprite": "res/maps/1_lvl_map.png",
 	"enemies": [
         {
-            "name":"Slimeon",
+            "name":"Slimon",
 	        "sprite":"res/images/Slime0.png",
             "health": 10,
 	        "damage": 5,
