@@ -143,12 +143,23 @@ function loadGame(){
 
 function createDialog(text){
 	dialogueBox = h.rectangle(512, 150, 'white');
-	dialogueBoxText = h.text(text, "30px puzzler", "black");
+	dialogueBoxText = h.text("", "30px puzzler", "black");
 	dialogueBox.x = 0;
 	dialogueBox.y = 362;
 	dialogueBoxText.x = 0;
 	dialogueBoxText.y = 362;
 	h.player.dialogGroup = h.group(dialogueBox, dialogueBoxText);
+	recursiveTextFadeIn(text, dialogueBoxText, 1);
+}
+
+function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
+	if(currentLength >= finalText.length){
+		h.remove(h.player.dialogGroup);
+		return;
+	}
+	dialogueBoxText.text = finalText.substring(0, currentLength);
+	console.log(currentLength);
+	h.wait(100, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
 }
 
 function initKeyboard() {
