@@ -1,5 +1,3 @@
-//JEXXT
-
 function createSkill(name,descrip,level,effect){
 	var skill = {};
 	skill.type = 'skill';

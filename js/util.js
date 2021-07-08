@@ -96,7 +96,6 @@ function createListMenu(list){
 				}
 				blurb_group.addChild(invokeSkillEffect);
 			}
-			
 		}			
 	}
 
@@ -398,3 +397,21 @@ function popUp(element, timeInNS=2000){
 		}
 	});
 }
+
+
+function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
+
+	button1Text = h.text(text1, "20px puzzler", "black");
+	button1Text.interact = true;
+	button1Text.press = function() {
+		function1();
+	}
+
+	button2Text = h.text(text2, "20px puzzler", "black");
+	button2Text.y = 50;
+	button2Text.interact = true;
+	button2Text.press = function() {
+		function2();
+	}
+}
+
