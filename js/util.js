@@ -140,19 +140,20 @@ function loadGame(){
 	console.log("Game Loaded.. ");// + data.x);
 }
 
-function createDialog(text){
+function createDialogBox(){
 	dialogueBox = h.rectangle(512, 150, 'white');
 	dialogueBoxText = h.text("", "30px puzzler", "black");
 	dialogueBox.x = 0;
 	dialogueBox.y = 362;
 	dialogueBoxText.x = 0;
 	dialogueBoxText.y = 362;
+	h.player.dialogueBoxText = dialogueBoxText;
 	h.player.dialogGroup = h.group(dialogueBox, dialogueBoxText);
-	recursiveTextFadeIn(text, dialogueBoxText, 1);
+	//recursiveTextFadeIn(text, dialogueBoxText, 1);
 }
 
 function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
-	if(currentLength >= finalText.length){
+	if(currentLength > finalText.length){
 		h.remove(h.player.dialogGroup);
 		return;
 	}
@@ -180,7 +181,13 @@ function initKeyboard() {
 			for (i=0; i<=h.map.triggers.length; i++) {
 				if (checkTriggerCollision(h.map.layer.triggers[i])){
 					h.player.talking = true;
-	    	        createDialog(h.map.layer.triggers[i].dialog);
+	    	        //createDialog(h.map.layer.triggers[i].dialog);
+					//get first line of dialogue
+					dialogArray = h.map.layer.triggers[i].dialog;
+					createDialogBox();
+					//fense post first dialog spawn
+					recursiveTextFadeIn("test_string", h.player.dialogueBoxText, 1);
+					// Then we spawn the next button and figure out the logic to clear the dialog and place new one.
 				}
 			}
 		}
@@ -414,4 +421,5 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 		function2();
 	}
 }
+
 

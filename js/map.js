@@ -144,7 +144,7 @@ test_map1 =  {
      "width":47.5247524752475,
      "x":432,
      "y":16,
-     "dialog": "Halt traveler.."
+     "dialog": ["lizard_dialogue_1", "lizard_dialogue_2", "lizard_dialogue_3"]
     }, 
     {
      "id":4,
@@ -156,7 +156,7 @@ test_map1 =  {
      "height":16,
      "x":370,
      "y":320,
-     "dialog": "Hello there traveler.."
+     "dialog": ["sage_dialogue_1", "sage_dialogue_2", "sage_dialogue_3"]
     }, 
     {
      "height":13.8613861386139,
@@ -168,7 +168,7 @@ test_map1 =  {
      "width":16,
      "x":448,
      "y":240,
-     "dialog": "Hello there ninja.."
+     "dialog": ["ninja_dialogue_1", "ninja_dialogue_2", "ninja_dialogue_3"]
     }]
 };
 
