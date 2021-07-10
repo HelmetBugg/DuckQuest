@@ -68,7 +68,6 @@ function pauseMenu() {
 function createListMenu(list){
 	skillsMenu = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){
-		//console.log(list[i]);
         boxText = h.text(list[i].name, "20px puzzler", "black");
 		boxText.interact = true;
 		boxText.y = 50 * i;
@@ -140,25 +139,49 @@ function loadGame(){
 	console.log("Game Loaded.. ");// + data.x);
 }
 
+
+function startDialog(dialogueArray){
+	h.player.talking = true;
+	createDialogBox();
+	//fense post first dialog spawn
+	recursiveTextFadeIn(dialogueArray[0], h.player.dialogueBoxText, 1);
+	h.dialogueIncrement=1;
+	h.player.dialogueBoxNext.interact = true;
+	h.player.dialogueBoxNext.press = function() {
+		// If there is no more dialog, clear increment, remove text box.
+		if (h.dialogueIncrement >= dialogueArray.length){
+			h.dialogueIncrement = 1;
+			h.remove(h.player.dialogueGroup);
+			h.player.talking = false;
+		// Otherwise replace the current text with the next section.
+		} else {
+			recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
+			h.dialogueIncrement++;
+		}
+	}
+}
+
+
 function createDialogBox(){
 	dialogueBox = h.rectangle(512, 150, 'white');
 	dialogueBoxText = h.text("", "30px puzzler", "black");
+	dialogueBoxNext = h.text(">>", "30px puzzler", "black");
 	dialogueBox.x = 0;
 	dialogueBox.y = 362;
 	dialogueBoxText.x = 0;
 	dialogueBoxText.y = 362;
+	dialogueBoxNext.y = 490;
+	dialogueBoxNext.x = 490;
+	h.player.dialogueBoxNext = dialogueBoxNext;	
 	h.player.dialogueBoxText = dialogueBoxText;
-	h.player.dialogGroup = h.group(dialogueBox, dialogueBoxText);
-	//recursiveTextFadeIn(text, dialogueBoxText, 1);
+	h.player.dialogueGroup = h.group(dialogueBox, dialogueBoxText, dialogueBoxNext);
 }
 
 function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
 	if(currentLength > finalText.length){
-		h.remove(h.player.dialogGroup);
 		return;
 	}
 	dialogueBoxText.text = finalText.substring(0, currentLength);
-	console.log(currentLength);
 	h.wait(100, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
 }
 
@@ -180,14 +203,9 @@ function initKeyboard() {
 		} else {
 			for (i=0; i<=h.map.triggers.length; i++) {
 				if (checkTriggerCollision(h.map.layer.triggers[i])){
-					h.player.talking = true;
-	    	        //createDialog(h.map.layer.triggers[i].dialog);
-					//get first line of dialogue
-					dialogArray = h.map.layer.triggers[i].dialog;
-					createDialogBox();
-					//fense post first dialog spawn
-					recursiveTextFadeIn("test_string", h.player.dialogueBoxText, 1);
-					// Then we spawn the next button and figure out the logic to clear the dialog and place new one.
+					// rename less inane.
+					let dialogueArray = h.map.layer.triggers[i].dialog;
+					startDialog(dialogueArray);
 				}
 			}
 		}
@@ -201,7 +219,7 @@ function initKeyboard() {
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x-speed, y: h.player.y, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide){
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x-speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -223,7 +241,7 @@ function initKeyboard() {
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x+speed, y: h.player.y, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide){
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x+speed, h.player.y, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -244,7 +262,7 @@ function initKeyboard() {
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x, y: h.player.y-speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide){
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y-speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {
@@ -266,7 +284,7 @@ function initKeyboard() {
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide){
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
             tween = h.slide(h.player, h.player.x, h.player.y+speed, speed, "decelerationCubed");
             tween.onComplete = () =>  {
