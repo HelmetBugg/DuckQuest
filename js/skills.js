@@ -28,16 +28,13 @@ function initSkills(){
 
 function Peck() {
 	chance = h.randomInt(0,10);
-	
 	if (chance > 4){
 		console.log("peck");	
 	}
-	
 }
 
 function Float() {
 	chance = h.randomInt(0,10);
-	
 	if (chance > 4){
 		console.log("float");	
 	}
@@ -46,9 +43,7 @@ function Float() {
 
 function Duster() {
 	chance = h.randomInt(0,10);
-	
 	if (chance > 4){
 		console.log("dust");	
 	}
-	
 }

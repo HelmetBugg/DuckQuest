@@ -1,0 +1,13 @@
+{ "columns":46,
+ "image":"..\/images\/duckquest_tileset.png",
+ "imageheight":576,
+ "imagewidth":744,
+ "margin":0,
+ "name":"duckquest_tileset",
+ "spacing":0,
+ "tilecount":1656,
+ "tileheight":16,
+ "tilewidth":16,
+ "transparentcolor":"#ffffff",
+ "type":"tileset"
+}

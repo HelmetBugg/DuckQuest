@@ -18,7 +18,6 @@ function initMap(json_input){
         h.map.layer = json_input;
         h.map.layer.triggers.forEach(placeTrigger);
     }
-
 }
 
 function placeTrigger(object, index){
