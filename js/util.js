@@ -143,7 +143,7 @@ function loadGame(){
 function startDialog(dialogueArray){
 	h.player.talking = true;
 	createDialogBox();
-	//fense post first dialog spawn
+	//fence post first dialog spawn
 	recursiveTextFadeIn(dialogueArray[0], h.player.dialogueBoxText, 1);
 	h.dialogueIncrement=1;
 	h.player.dialogueBoxNext.interact = true;
@@ -155,7 +155,12 @@ function startDialog(dialogueArray){
 			h.player.talking = false;
 		// Otherwise replace the current text with the next section.
 		} else {
-			recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
+			if (typeof dialogueArray[h.dialogueIncrement] === 'string'){
+				recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
+			}
+			else{
+				spawnChoiceButton(function(){console.log("yes")},function(){console.log("no")});
+			}
 			h.dialogueIncrement++;
 		}
 	}
@@ -164,8 +169,8 @@ function startDialog(dialogueArray){
 
 function createDialogBox(){
 	dialogueBox = h.rectangle(512, 150, 'white');
-	dialogueBoxText = h.text("", "30px puzzler", "black");
-	dialogueBoxNext = h.text(">>", "30px puzzler", "black");
+	dialogueBoxText = h.text("", "20px puzzler", "black");
+	dialogueBoxNext = h.text(">>", "20px puzzler", "black");
 	dialogueBox.x = 0;
 	dialogueBox.y = 362;
 	dialogueBoxText.x = 0;
@@ -430,6 +435,7 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 	button1Text.interact = true;
 	button1Text.press = function() {
 		function1();
+		h.remove(button1Text,button2Text);
 	}
 
 	button2Text = h.text(text2, "20px puzzler", "black");
@@ -437,6 +443,7 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 	button2Text.interact = true;
 	button2Text.press = function() {
 		function2();
+		h.remove(button1Text,button2Text);
 	}
 }
 

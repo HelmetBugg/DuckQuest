@@ -155,7 +155,7 @@ test_map1 =  {
      "height":16,
      "x":370,
      "y":320,
-     "dialog": ["sage_dialogue_1", "sage_dialogue_2", "sage_dialogue_3"]
+     "dialog": ["Hail, traveler!", "I was wondering if I could ask of you a favor?\nRecently the number of local slimes has been increasing.\nCould I trouble you to slay some?", {}]
     }, 
     {
      "height":13.8613861386139,
