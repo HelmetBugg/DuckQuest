@@ -6,13 +6,18 @@ function createQuest(name, desc, goal, effect){
 	quest.desc = desc;
 	quest.goal = goal;
 	quest.effect = effect;
-	quest.validate = function(){
+	quest.isComplete = function(){
 		if (goal()){
 			effect();
 			this.active = false;
 		}
 	};
-	return quest;
+	h.player.quests.push(quest);
+}
+
+function startKillThreeSlimesQuest(){
+	console.log("quest accepted!");
+    createQuest('Slime Hunt','Kill 3 slimes.',goalKillThreeSlimes,effectKillThreeSlimes);
 }
 
 function goalKillThreeSlimes(){

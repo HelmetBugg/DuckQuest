@@ -159,8 +159,7 @@ function startDialog(dialogueArray){
 				recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
 			}
 			else{
-				spawnChoiceButton(createQuest('SLIME HUNT','Defeat 3 slimes',goalKillThreeSlimes,effectKillThreeSlimes),function(){console.log("no")});
-				
+				spawnChoiceButton(dialogueArray[h.dialogueIncrement],function(){console.log("no")});
 			}
 			h.dialogueIncrement++;
 		}
@@ -188,7 +187,7 @@ function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
 		return;
 	}
 	dialogueBoxText.text = finalText.substring(0, currentLength);
-	h.wait(100, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
+	h.wait(60, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
 }
 
 function initKeyboard() {
@@ -241,6 +240,7 @@ function initKeyboard() {
 			h.player.directionFacingBox.x = h.player.x - 16;
 			h.player.directionFacingBox.y = h.player.y;
 		}
+		checkQuests();
     };
 
     rightArrow.press = () => {
@@ -262,7 +262,8 @@ function initKeyboard() {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;
 		}
-    };
+		checkQuests();
+	};
 
     upArrow.press = () => {
 		// Check if moving to this square would cause collision and prevent it.
@@ -284,6 +285,7 @@ function initKeyboard() {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y - 16;
 		}
+		checkQuests();
     };
 
     downArrow.press = () => {
@@ -306,6 +308,7 @@ function initKeyboard() {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y + 16;
 		}
+		checkQuests();
     };
 }
 
@@ -325,6 +328,7 @@ function initplayer() {
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 	h.player.skills = [];
+	h.player.quests = [];
 	//initSkills();
 
 	h.player.doTurn = function(){
@@ -452,3 +456,10 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 }
 
 
+function checkQuests(){
+    for(var i=0; i < h.player.quests.length; i++){
+		if (h.player.quests[i].active){
+			h.player.quests[i].isComplete();
+		}
+	}
+}

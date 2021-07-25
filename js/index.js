@@ -157,6 +157,7 @@ function cleanupCombat(){
     }
     h.remove(h.combatGroup);
 	h.inCombat = false;
+    checkQuests();
 }
 
 function play() {

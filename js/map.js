@@ -155,7 +155,7 @@ test_map1 =  {
      "height":16,
      "x":370,
      "y":320,
-     "dialog": ["Hail, traveler!", "I was wondering if I could ask of you a favor?\nRecently the number of local slimes has been increasing.\nCould I trouble you to slay some?",{},'Zounds! There are still good people in this realm.']
+     "dialog": ["Hail, traveler!", "I was wondering if I could ask of you a favor?\nRecently the number of local slimes has been increasing.\nCould I trouble you to slay some?",startKillThreeSlimesQuest,'Zounds! There are still good people in this realm.']
     }, 
     {
      "height":13.8613861386139,
