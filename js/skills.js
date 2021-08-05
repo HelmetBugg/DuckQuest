@@ -2,7 +2,7 @@ function createSkill(name,descrip,level,effect){
 	var skill = {};
 	skill.type = 'skill';
 	skill.name = name;
-	skill.descrip = descrip;
+	skill.description = descrip;
 	skill.level = level;
 	skill.effect = effect;
 	return skill;

@@ -15,7 +15,16 @@ function pauseMenu() {
 	questsButton.y = 100; 
 	h.makeInteractive(questsButton);
     questsButton.press = function () {
-        console.log("questsbutton pressed");
+		console.log("questsbutton pressed");
+		activeQuests = [];
+        for (var i=0; i<h.player.quests.length; i++){
+			if (h.player.quests[i].active){
+                activeQuests.push(h.player.quests[i]);
+			}
+		}
+		if(0 < activeQuests.length){
+            createListMenu(activeQuests);
+		}
     }
 
 	saveButton = h.text("Save Game", "30px puzzler", "black");
@@ -72,7 +81,7 @@ function createListMenu(list){
 		boxText.interact = true;
 		boxText.y = 50 * i;
 		boxText.x = 10;
-		boxText.description = list[i].descrip;
+		boxText.description = list[i].description;
 		boxText.type = list[i].type;
 		boxText.effect = list[i].effect;
 		skillsMenu.addChild(boxText);
@@ -88,7 +97,7 @@ function createListMenu(list){
 			blurb_group = h.group(box, blurb);
 			blurb_group.x = 120;
 			if (boxText.type == 'skill'){
-				var invokeSkillEffect =h.text("ACTIVATE", "18px puzzler", "black",80,100);
+				var invokeSkillEffect=h.text("ACTIVATE", "18px puzzler", "black",80,100);
 				invokeSkillEffect.interact = true;
 				invokeSkillEffect.press = function(){
 					boxText.effect();
@@ -433,7 +442,6 @@ function popUp(element, timeInNS=2000){
 	});
 }
 
-
 function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 
 	button1Text = h.text(text1, "20px puzzler", "black");
@@ -454,7 +462,6 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 		h.remove(button1Text,button2Text);
 	}
 }
-
 
 function checkQuests(){
     for(var i=0; i < h.player.quests.length; i++){

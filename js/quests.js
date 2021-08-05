@@ -3,7 +3,7 @@ function createQuest(name, desc, goal, effect){
 	quest.type = 'quest';
 	quest.active = true;
 	quest.name = name;
-	quest.desc = desc;
+	quest.description = desc;
 	quest.goal = goal;
 	quest.effect = effect;
 	quest.isComplete = function(){
