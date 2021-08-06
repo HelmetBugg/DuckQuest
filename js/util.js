@@ -450,6 +450,8 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 	button1Text.interact = true;
 	button1Text.press = function() {
 		function1();
+		button1Text.x = 1000;
+		button2Text.x = 1000;
 		h.remove(button1Text,button2Text);
 	}
 
@@ -459,6 +461,8 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 	button2Text.interact = true;
 	button2Text.press = function() {
 		function2();
+		button1Text.x = 1000;
+		button2Text.x = 1000;
 		h.remove(button1Text,button2Text);
 	}
 }
