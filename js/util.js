@@ -321,7 +321,14 @@ function initKeyboard() {
     };
 }
 
-
+function teleportCollisionCheck() {
+	for(i = 0; i < h.map.layer.triggers.length; i++){
+		if(h.map.layer.triggers[i].type == "teleporterTile"){
+			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i]))
+				spawnChoiceButton(transitionMap1,{});
+		}
+	}
+}
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");

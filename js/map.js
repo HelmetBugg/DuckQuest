@@ -190,7 +190,18 @@ test_map1 = {
             "x": 448,
             "y": 240,
             "dialog": ["ninja_dialogue_1", "ninja_dialogue_2", "ninja_dialogue_3"]
-        }
+        }, {
+            "height":48.5148514851485,
+            "id":6,
+            "name":"teleporterOne",
+            "rotation":0,
+            "type":"teleporterTile",
+            "visible":true,
+            "width":47.5247524752475,
+            "x":300,
+            "y":300,
+            "destination":transitionMap2
+           }
     ]
 };
 
