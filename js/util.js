@@ -153,6 +153,7 @@ function startDialog(dialogueArray){
 	h.player.talking = true;
 	createDialogBox();
 	//fence post first dialog spawn
+	toggleOffScreen(h.player.dialogueBoxNext);
 	recursiveTextFadeIn(dialogueArray[0], h.player.dialogueBoxText, 1);
 	h.dialogueIncrement=1;
 	h.player.dialogueBoxNext.interact = true;
@@ -165,6 +166,7 @@ function startDialog(dialogueArray){
 		// Otherwise replace the current text with the next section.
 		} else {
 			if (typeof dialogueArray[h.dialogueIncrement] === 'string'){
+				toggleOffScreen(h.player.dialogueBoxNext);
 				recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
 			}
 			else{
@@ -175,6 +177,20 @@ function startDialog(dialogueArray){
 	}
 }
 
+function toggleOffScreen(objectToToggle){
+	if(typeof objectToToggle.offScreen == 'undefined'){
+		objectToToggle.offScreen = objectToToggle.x;
+		objectToToggle.x = objectToToggle.offScreen + 1000;
+	} else {
+		if(objectToToggle.offScreen == objectToToggle.x){
+			console.log("is onscreen");
+			objectToToggle.x = objectToToggle.offScreen + 1000;
+		} else {
+			console.log("is offscreen");
+			objectToToggle.x = objectToToggle.offScreen;
+		}
+	}
+}
 
 function createDialogBox(){
 	dialogueBox = h.rectangle(512, 150, 'white');
@@ -193,10 +209,11 @@ function createDialogBox(){
 
 function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
 	if(currentLength > finalText.length){
+		toggleOffScreen(h.player.dialogueBoxNext);
 		return;
 	}
 	dialogueBoxText.text = finalText.substring(0, currentLength);
-	h.wait(60, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
+	h.wait(30, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
 }
 
 function initKeyboard() {
