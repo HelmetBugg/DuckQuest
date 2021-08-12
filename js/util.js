@@ -239,12 +239,13 @@ function initKeyboard() {
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.map.x += speed * 2;
 			h.camera.centerOver(h.player);
-			rollAttackChance();
+			resolveMove();
+			
         } else {
 			h.player.directionFacingBox.x = h.player.x - 16;
 			h.player.directionFacingBox.y = h.player.y;
 		}
-		checkQuests();
+		
     };
 
     rightArrow.press = () => {
@@ -261,12 +262,13 @@ function initKeyboard() {
 			}
 			h.map.x -= speed * 2;
 			h.camera.centerOver(h.player);
-			rollAttackChance();
+			resolveMove();
+			
         } else {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;
 		}
-		checkQuests();
+		
 	};
 
     upArrow.press = () => {
@@ -284,7 +286,8 @@ function initKeyboard() {
 			}
 			h.map.y += speed * 2;
 			h.camera.centerOver(h.player);
-			rollAttackChance();
+			resolveMove();
+			
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y - 16;
@@ -306,7 +309,8 @@ function initKeyboard() {
 			}
 			h.map.y -= speed * 2;
 			h.camera.centerOver(h.player);
-            rollAttackChance();
+			resolveMove();
+            
 
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
@@ -316,7 +320,21 @@ function initKeyboard() {
     };
 }
 
+function resolveMove(){
+	rollAttackChance();
+	checkQuests();
+	teleportCollisionCheck();
 
+}
+
+function teleportCollisionCheck() {
+	for(i = 0; i < h.map.layer.triggers.length; i++){
+		if(h.map.layer.triggers[i].type == "teleporterTile"){
+			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i]))
+				spawnChoiceButton(h.map.layer.triggers[i].destination,{})//transitionMap2,{});
+		}
+	}
+}
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
