@@ -21,25 +21,19 @@ function initMap(json_input) {
 }
 
 function transitionMap1() {
-
     initMap(test_map1);
 	console.log("1");
-
 }
 
 function transitionMap2() {
-
     initMap(test_map2);
 	console.log("2");
 }
 
-
 function transitionMap3() {
-
     initMap(test_map3);
 	console.log("3");
 }
-
 
 function placeTrigger(object, index) {
     trigger = h.rectangle(16, 16, "blue", "black", 0, 0, 0);

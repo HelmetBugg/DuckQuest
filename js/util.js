@@ -211,16 +211,11 @@ function initKeyboard() {
 	//h.camera = h.map;
 
 	dialogue.press = () => {
-		if (h.player.talking) {
-			h.player.talking = false;
-			h.remove(h.player.dialogGroup);
-		} else {
-			for (i=0; i<=h.map.triggers.length; i++) {
-				if (checkTriggerCollision(h.map.layer.triggers[i])){
-					// rename less inane.
-					let dialogueArray = h.map.layer.triggers[i].dialog;
-					startDialog(dialogueArray);
-				}
+		for (i=0; i<=h.map.triggers.length; i++) {
+			if (checkTriggerCollision(h.map.layer.triggers[i]) && !h.player.talking){
+				// rename less inane.
+				let dialogueArray = h.map.layer.triggers[i].dialog;
+				startDialog(dialogueArray);
 			}
 		}
 	}
