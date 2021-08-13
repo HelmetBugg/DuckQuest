@@ -247,7 +247,7 @@ function initKeyboard() {
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x-speed, h.player.y, speed, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x-speed, h.player.y, 8, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x - 16;
@@ -271,7 +271,7 @@ function initKeyboard() {
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x+speed, h.player.y, speed, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x+speed, h.player.y, 8, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x + 16;
@@ -294,7 +294,7 @@ function initKeyboard() {
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y-speed, speed, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x, h.player.y-speed, 8, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
@@ -318,7 +318,7 @@ function initKeyboard() {
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y+speed, speed, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x, h.player.y+speed, 8, "decelerationCubed");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
@@ -348,7 +348,7 @@ function teleportCollisionCheck() {
 	for(i = 0; i < h.map.layer.triggers.length; i++){
 		if(h.map.layer.triggers[i].type == "teleporterTile"){
 			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i]))
-				spawnChoiceButton(h.map.layer.triggers[i].destination,{})//transitionMap2,{});
+				spawnChoiceButton(h.map.layer.triggers[i].destination,()=>console.log("no"));//transitionMap2,{});
 		}
 	}
 }
@@ -474,6 +474,11 @@ function popUp(element, timeInNS=2000){
 
 function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 
+	menu = h.rectangle(100, 100, "white");
+	menu.x = 240;
+	menu.y = 256;
+	
+
 	button1Text = h.text(text1, "20px puzzler", "black");
 	button1Text.x = 256;
 	button1Text.y = 256;
@@ -482,7 +487,7 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 		function1();
 		button1Text.x = 1000;
 		button2Text.x = 1000;
-		h.remove(button1Text,button2Text);
+		h.remove(button1Text,button2Text,menu);
 	}
 
 	button2Text = h.text(text2, "20px puzzler", "black");
@@ -493,8 +498,11 @@ function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
 		function2();
 		button1Text.x = 1000;
 		button2Text.x = 1000;
-		h.remove(button1Text,button2Text);
+		h.remove(button1Text,button2Text,menu);
 	}
+	
+	
+	
 }
 
 function checkQuests(){
