@@ -228,7 +228,7 @@ function initKeyboard() {
 	//h.camera = h.map;
 
 	dialogue.press = () => {
-		for (i=0; i<=h.map.triggers.length; i++) {
+		for (i=0; i < h.map.triggers.length; i++) {
 			if (checkTriggerCollision(h.map.layer.triggers[i]) && !h.player.talking){
 				// rename less inane.
 				let dialogueArray = h.map.layer.triggers[i].dialog;
