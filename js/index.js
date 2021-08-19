@@ -7,7 +7,8 @@ let thingsToLoad = [
     "res/images/Slime0.png", 
     "res/maps/1_lvl_map.png",
     "res/images/Elemental0.png",
-    "res/images/plant1.png"
+    "res/images/plant1.png",
+    "res/maps/map_collisions_1.bmp"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -51,29 +52,6 @@ function setup() {
         newGame(true);
     }
     h.destroy = h.group(loadButton, startButton, title);
-
-    // Testing collisions
-    var canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext('2d');
-
-    const img = new Image();
-    img.src = 'res/maps/map_collisions_1.bmp';
-
-    img.onload = function() {
-        ctx.drawImage(img, 0, 0);
-        var imgd = ctx.getImageData(0, 0, 30, 30);
-        var pix = [];
-
-        // 120 is 30 length by 4 values per pixel; RBG and Alpha.
-        for (var i=0; i<imgd.data.length; i+=120) {
-            row = []
-            for (var j=0; j<120; j+=4) {
-                row.push(255 - imgd.data[j+i]);
-            }
-            pix.push(row);
-        }
-        console.log(pix);
-    }
 }
 
 /*
