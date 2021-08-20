@@ -132,7 +132,14 @@ function saveGame(){
 		y: h.player.y,
 		level: h.player.stat.get("level"),
 		next_level: h.player.stat.get("next_level"),
-		experience: h.player.stat.get("experience")
+		experience: h.player.stat.get("experience"),
+		strength: h.player.stat.get("strength"),
+		intelligence: h.player.stat.get("intelligence"),
+		max_health: h.player.stat.get("max_health"),
+		current_health: h.player.stat.get("current_health"),
+		map: h.map.name
+		
+		
 	});
 	localStorage.setItem('duckQuest', data);
 	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
@@ -145,6 +152,22 @@ function loadGame(){
     h.player.stat.level = data.level;
     h.player.stat.next_level = data.next_level;
     h.player.stat.experience = data.experience;
+	h.player.stat= data.stat;
+	h.player.stat= data.strength;
+	h.player.stat= data.intelligence;
+	h.player.stat= data.max_health;
+	h.player.stat= data.current_health;
+	
+	let stat = new Map();
+	stat.set("experience", data.experience);
+	stat.set("next_level", data.next_level);
+	stat.set("level", data.level);	
+	stat.set("strength", data.strength);
+	stat.set("max_health", data.max_health);
+	stat.set("current_health", data.current_health);
+	stat.set("intelligence", data.intelligence);
+	h.player.stat = stat;
+	
 	console.log("Game Loaded.. ");// + data.x);
 }
 
