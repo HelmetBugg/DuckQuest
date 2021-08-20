@@ -7,8 +7,19 @@ function pauseMenu() {
 	statusButton.y = 50; 
 	h.makeInteractive(statusButton);
     statusButton.press = function () {
-        console.log("statusbutton pressed");
-    }
+		keys = Array.from( h.player.stat.keys());
+		values = Array.from(h.player.stat.values());
+		stats = [];
+		for (let i=0; i<keys.length; i++){
+			stats.push({
+				name: keys[i] + " " + values[i], 
+				value: values[i],
+				description: "Buncha words",
+				type: 'stat'
+			});
+		}
+		createListMenu(stats);
+	}
 
 	questsButton = h.text("Quests", "30px puzzler", "black");
 	questsButton.x = 50; 

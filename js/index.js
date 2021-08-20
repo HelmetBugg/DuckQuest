@@ -13,7 +13,7 @@ let thingsToLoad = [
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
 h.fps = 15;
-version = 0.4;
+version = 0.6;
 h.scaleToWindow();
 h.start();
 var skills_menu, blurb_group;
