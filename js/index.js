@@ -64,7 +64,7 @@ function newGame(load_data) {
     title.y = 490;
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
-    initMap(test_map1);
+    initMap(maps[1]);
     initSkills();
 	initplayer();
     //checkDebugCollision(h.map.layer);

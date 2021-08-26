@@ -26,7 +26,6 @@ function pauseMenu() {
 	questsButton.y = 100; 
 	h.makeInteractive(questsButton);
     questsButton.press = function () {
-		console.log("questsbutton pressed");
 		activeQuests = [];
         for (var i=0; i<h.player.quests.length; i++){
 			if (h.player.quests[i].active){
@@ -56,7 +55,6 @@ function pauseMenu() {
     skillsButton.press = function () {
 		var skillList = h.player.skills;
 		createListMenu(skillList);
-        //console.log("YOU CAN NEVER SKILLS!");
     }
 
 	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, skillsButton);
@@ -98,7 +96,6 @@ function createListMenu(list){
 		skillsMenu.addChild(boxText);
 		boxText.press = function() {
 			if(blurb_group != null){
-				console.log(blurb_group);
 				blurb_group.x += 5000;
   			    h.remove(blurb_group);
 				blurb_group = null;
@@ -124,7 +121,6 @@ function createListMenu(list){
 	skillsMenu.addChild(quitButton);
 	quitButton.press = function() {
 		if(blurb_group != null){
-			console.log(2);
 			blurb_group.x += 5000;
 			h.remove(blurb_group);
 			blurb_group = null;
@@ -217,10 +213,8 @@ function toggleOffScreen(objectToToggle){
 		objectToToggle.x = objectToToggle.offScreen + 1000;
 	} else {
 		if(objectToToggle.offScreen == objectToToggle.x){
-			console.log("is onscreen");
 			objectToToggle.x = objectToToggle.offScreen + 1000;
 		} else {
-			console.log("is offscreen");
 			objectToToggle.x = objectToToggle.offScreen;
 		}
 	}
