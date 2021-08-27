@@ -1,5 +1,6 @@
 maps = [{
     "name": "map_1",
+	"id": 0,
     "sprite": "res/maps/2_lvl_map.png",
     "collisionMap": "res/maps/map_collisions_1.bmp",
     "enemies": [{
@@ -30,7 +31,8 @@ maps = [{
     "tilesHigh": 15,
     "triggers": []
 },{
-    "name": "map_1",
+    "name": "map_2",
+	"id": 1,
     "sprite": "res/maps/1_lvl_map.png",
     "collisionMap": "res/maps/map_collisions_1.bmp",
     "enemies": [{

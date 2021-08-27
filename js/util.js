@@ -144,8 +144,7 @@ function saveGame(){
 		intelligence: h.player.stat.get("intelligence"),
 		max_health: h.player.stat.get("max_health"),
 		current_health: h.player.stat.get("current_health"),
-		map: h.map.name
-		
+		map: h.map.layer.id
 		
 	});
 	localStorage.setItem('duckQuest', data);
@@ -164,6 +163,8 @@ function loadGame(){
 	h.player.stat= data.intelligence;
 	h.player.stat= data.max_health;
 	h.player.stat= data.current_health;
+	console.log(data.map);
+	initMap(maps[data.map]);
 	
 	let stat = new Map();
 	stat.set("experience", data.experience);
