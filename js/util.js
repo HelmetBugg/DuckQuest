@@ -271,83 +271,50 @@ function initKeyboard() {
     }
 
     leftArrow.press = () => {
-		// Check if moving to this square would cause collision and prevent it.
-		var newLocation = {x: h.player.x-speed, y: h.player.y, width: 16, height: 16};
-		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x-speed, h.player.y, 8, "decelerationCubed");
-            tween.onComplete = () =>  {
-				h.player.tweening = false;
-				h.player.directionFacingBox.x = h.player.x - 16;
-				h.player.directionFacingBox.y = h.player.y;
-			}
-            // Multiple by 2 because duck is a child of map which is scaled x2.
-			h.map.x += speed * 2;
-			h.camera.centerOver(h.player);
-			resolveMove();
-			
-        } else {
-			h.player.directionFacingBox.x = h.player.x - 16;
-			h.player.directionFacingBox.y = h.player.y;
-		}
+		h.leftArrowPressed = true;
+		
+    };
+
+	leftArrow.release = () => {
+		h.leftArrowPressed = false;
 		
     };
 
     rightArrow.press = () => {
-		// Check if moving to this square would cause collision and prevent it.
-		var newLocation = {x: h.player.x+speed, y: h.player.y, width: 16, height: 16};
-		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x+speed, h.player.y, 8, "decelerationCubed");
-            tween.onComplete = () =>  {
-				h.player.tweening = false;
-				h.player.directionFacingBox.x = h.player.x + 16;
-				h.player.directionFacingBox.y = h.player.y;
-			}
-			h.map.x -= speed * 2;
-			h.camera.centerOver(h.player);
-			resolveMove();
-			
-        } else {
-			h.player.directionFacingBox.x = h.player.x + 16;
-			h.player.directionFacingBox.y = h.player.y;
-		}
+		h.rightArrowPressed = true;
+		
+	};
+
+	rightArrow.release = () => {
+		h.rightArrowPressed = false;
 		
 	};
 
     upArrow.press = () => {
-		// Check if moving to this square would cause collision and prevent it.
-		var newLocation = {x: h.player.x, y: h.player.y-speed, width: 16, height: 16};
-		wouldCollide = checkCollision(h.map.layer, newLocation);
-        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
-            h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y-speed, 8, "decelerationCubed");
-            tween.onComplete = () =>  {
-				h.player.tweening = false;
-				h.player.directionFacingBox.x = h.player.x;
-				h.player.directionFacingBox.y = h.player.y - 16;
-				h.camera.centerOver(h.player);
-			}
-			h.map.y += speed * 2;
-			h.camera.centerOver(h.player);
-			resolveMove();
-			
-		} else {
-			h.player.directionFacingBox.x = h.player.x;
-			h.player.directionFacingBox.y = h.player.y - 16;
-		}
-		checkQuests();
+		h.upArrowPressed = true;
+    };
+
+	upArrow.release = () => {
+		h.upArrowPressed = false;
     };
 
     downArrow.press = () => {
+		h.downArrowPressed = true;
 		// Check if moving to this square would cause collision and prevent it.
-		var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
+		
+    };
+	downArrow.release = () => {
+		h.downArrowPressed = false;
+	}
+}
+
+function handleKeyboard(){
+	if(h.downArrowPressed == true){
+        var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
             h.player.tweening = true;
-            tween = h.slide(h.player, h.player.x, h.player.y+speed, 8, "decelerationCubed");
+            tween = h.slide(h.player, h.player.x, h.player.y+speed, 8, "linear");
             tween.onComplete = () =>  {
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
@@ -363,7 +330,76 @@ function initKeyboard() {
 			h.player.directionFacingBox.y = h.player.y + 16;
 		}
 		checkQuests();
-    };
+    }
+
+	if(h.upArrowPressed == true){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x, y: h.player.y-speed, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x, h.player.y-speed, 8, "linear");
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x;
+				h.player.directionFacingBox.y = h.player.y - 16;
+				h.camera.centerOver(h.player);
+			}
+			h.map.y += speed * 2;
+			h.camera.centerOver(h.player);
+			resolveMove();
+			
+		} else {
+			h.player.directionFacingBox.x = h.player.x;
+			h.player.directionFacingBox.y = h.player.y - 16;
+		}
+		checkQuests();
+	}
+
+	if(h.leftArrowPressed == true){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x-speed, y: h.player.y, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x-speed, h.player.y, 8, "linear");
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x - 16;
+				h.player.directionFacingBox.y = h.player.y;
+			}
+            // Multiple by 2 because duck is a child of map which is scaled x2.
+			h.map.x += speed * 2;
+			h.camera.centerOver(h.player);
+			resolveMove();
+			
+        } else {
+			h.player.directionFacingBox.x = h.player.x - 16;
+			h.player.directionFacingBox.y = h.player.y;
+		}
+	}
+
+	if(h.rightArrowPressed == true){
+		// Check if moving to this square would cause collision and prevent it.
+		var newLocation = {x: h.player.x+speed, y: h.player.y, width: 16, height: 16};
+		wouldCollide = checkCollision(h.map.layer, newLocation);
+        if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
+            h.player.tweening = true;
+            tween = h.slide(h.player, h.player.x+speed, h.player.y, 8, "linear");
+            tween.onComplete = () =>  {
+				h.player.tweening = false;
+				h.player.directionFacingBox.x = h.player.x + 16;
+				h.player.directionFacingBox.y = h.player.y;
+			}
+			h.map.x -= speed * 2;
+			h.camera.centerOver(h.player);
+			resolveMove();
+			
+        } else {
+			h.player.directionFacingBox.x = h.player.x + 16;
+			h.player.directionFacingBox.y = h.player.y;
+		}
+	}
 }
 
 function resolveMove(){

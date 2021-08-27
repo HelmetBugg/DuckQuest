@@ -163,5 +163,6 @@ function cleanupCombat(){
 }
 
 function play() {
+    handleKeyboard();
 }
 
