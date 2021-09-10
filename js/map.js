@@ -101,9 +101,10 @@ function checkCollision(map, location) {
                 width: map.tileWidth,
                 height: map.tileHeight
             }
+            /*
             if (h.hitTestRectangle(location, tileCollision) && h.map.tileCollisions[j][i] != 0) {
                 return true;
-            }
+            }*/
         }
     }
     return false;

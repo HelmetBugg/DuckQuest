@@ -31,6 +31,38 @@ maps = [{
     "tilesHigh": 15,
     "triggers": []
 },{
+    "name": "overworld_map",
+	"id": 0,
+    "sprite": "res/maps/overworld_map.png",
+    "collisionMap": "res/maps/map_collisions_1.bmp",
+    "enemies": [{
+            "name": "Silverleaf",
+            "sprite": "res/images/plant1.png",
+            "health": 40,
+            "damage": 30,
+            "index": 0,
+        }, {
+            "name": "Barkbreath",
+            "sprite": "res/images/plant1.png",
+            "health": 42,
+            "damage": 25,
+            "index": 8,
+        }, {
+            "name": "Forest Shrieker",
+            "sprite": "res/images/Elemental0.png",
+            "health": 30,
+            "damage": 10,
+            "index": 27,
+        },
+    ],
+    "player_spawn_x": 512,
+    "player_spawn_y": 368,
+    "tileWidth": 16,
+    "tileHeight": 16,
+    "tilesWide": 45,
+    "tilesHigh": 45,
+    "triggers": []
+},{
     "name": "map_2",
 	"id": 1,
     "sprite": "res/maps/1_lvl_map.png",
@@ -38,19 +70,19 @@ maps = [{
     "enemies": [{
             "name": "Slimon",
             "sprite": "res/images/Slime0.png",
-            "health": 10,
+            "health": 100,
             "damage": 5,
             "index": 9
         }, {
             "name": "Slimeer",
             "sprite": "res/images/Slime0.png",
-            "health": 10,
+            "health": 100,
             "damage": 5,
             "index": 8
         }, {
             "name": "Clyde",
             "sprite": "res/images/Slime0.png",
-            "health": 10,
+            "health": 100,
             "damage": 5,
             "index": 10
         }

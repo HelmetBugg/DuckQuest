@@ -4,16 +4,13 @@ function enemy_from_list(name, index, x, y, health, damage) {
 }
 
 function createEnemy(jsoninput){
-	
 	filmStrip= h.filmstrip(jsoninput.sprite, 16, 16);
 	sprite= h.sprite(filmStrip[jsoninput.index]);
 	return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage);
-	
 }
 
 function enemy(name, sprite, health, damage) {
     let stat = new Map();
-
     stat.set("strength", damage);
     stat.set("health", health);
     stat.set("max_health", health);
@@ -31,25 +28,19 @@ function enemy(name, sprite, health, damage) {
             combatTurn.enemies.pop();
             return false;
         }
-        console.log("enemy turn");
         h.shake(this, 0.05, true);
-
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
             damageAnimation();
             h.player.stat.set('current_health', currentHP);
-
             if (currentHP <= 0) {
                 h.state = gameOver;
             }
-
         } else {
             miss = h.text("Enemy has missed!", "25px puzzler", "red");
 			popUp(miss, 200);
         }
-
         return true;
-
     }
     return sprite;
 }
@@ -66,11 +57,9 @@ function createGoose() {
 }
 
 function damageAnimation(){
-  
     damageFlash = h.rectangle(500, 250, 'red');//h.rectangle(h.canvas.width, h.canvas.height, "red", "red", 0, 0, 0);
     tween = h.fadeOut(damageFlash);    
     tween.onComplete = () => {
         h.remove(damageFlash);       
     }
-    
 }

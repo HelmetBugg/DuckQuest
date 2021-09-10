@@ -8,7 +8,8 @@ let thingsToLoad = [
     "res/maps/1_lvl_map.png",
     "res/images/Elemental0.png",
     "res/images/plant1.png",
-    "res/maps/map_collisions_1.bmp"
+    "res/maps/map_collisions_1.bmp",
+    "res/maps/overworld_map.png"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
