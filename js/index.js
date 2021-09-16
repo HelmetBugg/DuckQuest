@@ -9,6 +9,7 @@ let thingsToLoad = [
     "res/images/Elemental0.png",
     "res/images/plant1.png",
     "res/maps/map_collisions_1.bmp",
+    "res/maps/overworld_collision.bmp",
     "res/maps/overworld_map.png"
 ];
 
@@ -68,7 +69,6 @@ function newGame(load_data) {
     initMap(maps[1]);
     initSkills();
 	initplayer();
-    //checkDebugCollision(h.map.layer);
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
     h.map.addChild(h.player.directionFacingBox);

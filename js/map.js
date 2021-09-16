@@ -28,7 +28,7 @@ function loadMapCollisions(image, width, height){
     const img = new Image();
     img.src = image;
     ctx.drawImage(img, 0, 0);
-    var imgd = ctx.getImageData(0, 0, 30, 30);
+    var imgd = ctx.getImageData(0, 0, width, height);
     var pix = [];
     // 120 is 30 length by 4 values per pixel; RBG and Alpha.
     for (var i=0; i<imgd.data.length; i+=4*width) {
@@ -101,10 +101,10 @@ function checkCollision(map, location) {
                 width: map.tileWidth,
                 height: map.tileHeight
             }
-            /*
+            
             if (h.hitTestRectangle(location, tileCollision) && h.map.tileCollisions[j][i] != 0) {
                 return true;
-            }*/
+            }
         }
     }
     return false;
