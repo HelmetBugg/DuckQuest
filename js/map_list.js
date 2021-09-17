@@ -79,7 +79,27 @@ maps = [{
         "y": 256,
         "dialog": [],
         "spriteSheet" : "res/images/Player0.png"
-    }
+    },
+	{
+            "id": 6,
+            "name": "teleporterTown",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 496,
+            "y": 288,
+            "destination": {}
+        },
+		{
+            "id": 6,
+            "name": "teleporterDungeon",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 208,
+            "y": 64,
+            "destination": {}
+        }
     ]
 },{
     "name": "map_2",
