@@ -61,7 +61,26 @@ maps = [{
     "tileHeight": 16,
     "tilesWide": 45,
     "tilesHigh": 45,
-    "triggers": []
+    "triggers": [{
+        "id": 3,
+        "name": "concernedFisherman",
+        "type": "NPC",
+        "visible": true,
+        "x": 384,
+        "y": 256,
+        "dialog": ["I am very concerned."],
+        "spriteSheet" : "res/images/Player0.png"
+    }, {
+        "id": 4,
+        "name": "turtleTrader",
+        "type": "NPC",
+        "visible": true,
+        "x": 144,
+        "y": 256,
+        "dialog": [],
+        "spriteSheet" : "res/images/Player0.png"
+    }
+    ]
 },{
     "name": "map_2",
 	"id": 1,

@@ -55,7 +55,13 @@ function transitionMap3() {
 }
 
 function placeTrigger(object, index) {
-    trigger = h.rectangle(16, 16, "blue", "black", 0, 0, 0);
+    if(object.type == "NPC"){
+        console.log("NPC placeTrigger Called");
+        filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
+        trigger = h.sprite(filmStrip[object.id]);
+    } else {
+        trigger = h.rectangle(16, 16, "blue", "black", 0, 0, 0);
+    }
     h.map.addChild(trigger);
     trigger.x = object.x;
     trigger.y = object.y;

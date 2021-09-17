@@ -10,7 +10,8 @@ let thingsToLoad = [
     "res/images/plant1.png",
     "res/maps/map_collisions_1.bmp",
     "res/maps/overworld_collision.bmp",
-    "res/maps/overworld_map.png"
+    "res/maps/overworld_map.png",
+    "res/images/Player0.png"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -90,7 +91,7 @@ function newGame(load_data) {
 
 function rollAttackChance(){
     if(Math.floor(Math.random() * 5) == 1){
-        getAttacked();
+        //getAttacked();
     }
 }
 
