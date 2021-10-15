@@ -201,7 +201,9 @@ function startDialog(dialogueArray){
 				recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
 			}
 			else{
+				// This is broken need to come fix.
 				spawnChoiceButton(dialogueArray[h.dialogueIncrement],function(){console.log("no")});
+				
 			}
 			h.dialogueIncrement++;
 		}
@@ -319,12 +321,11 @@ function handleKeyboard(){
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
 				h.player.directionFacingBox.y = h.player.y + 16;
+				resolveMove();
 			}
 			h.map.y -= speed * 2;
 			h.camera.centerOver(h.player);
-			resolveMove();
-            
-
+			//resolveMove();
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y + 16;
@@ -344,10 +345,11 @@ function handleKeyboard(){
 				h.player.directionFacingBox.x = h.player.x;
 				h.player.directionFacingBox.y = h.player.y - 16;
 				h.camera.centerOver(h.player);
+				resolveMove();
 			}
 			h.map.y += speed * 2;
 			h.camera.centerOver(h.player);
-			resolveMove();
+			//resolveMove();
 			
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
@@ -367,11 +369,12 @@ function handleKeyboard(){
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x - 16;
 				h.player.directionFacingBox.y = h.player.y;
+				resolveMove();
 			}
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.map.x += speed * 2;
 			h.camera.centerOver(h.player);
-			resolveMove();
+			//resolveMove();
 			
         } else {
 			h.player.directionFacingBox.x = h.player.x - 16;
@@ -390,11 +393,11 @@ function handleKeyboard(){
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x + 16;
 				h.player.directionFacingBox.y = h.player.y;
+				resolveMove();
 			}
 			h.map.x -= speed * 2;
 			h.camera.centerOver(h.player);
-			resolveMove();
-			
+			//resolveMove();
         } else {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;
@@ -402,21 +405,25 @@ function handleKeyboard(){
 	}
 }
 
+
 function resolveMove(){
 	rollAttackChance();
 	checkQuests();
 	teleportCollisionCheck();
-
 }
 
+
 function teleportCollisionCheck() {
-	for(i = 0; i < h.map.layer.triggers.length; i++){
+	for(i=0; i<h.map.layer.triggers.length; i++){
 		if(h.map.layer.triggers[i].type == "teleporterTile"){
-			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i]))
-				spawnChoiceButton(h.map.layer.triggers[i].destination,()=>console.log("no"));//transitionMap2,{});
+			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i])){
+				//spawnChoiceButton(h.map.layer.triggers[i].destination,()=>console.log("no"));//transitionMap2,{});
+				spawnTeleporterChoice(h.map.layer.triggers[i].destination);
+			}
 		}
 	}
 }
+
 
 function initplayer() {
 	h.player = h.sprite("res/images/duckman.png");
@@ -466,6 +473,7 @@ function gainExperience(experience){
 	}
 }
 
+
 function levelUp(){
 	current_level = h.player.stat.get("level");
 	h.player.stat.set("level", current_level + 1);
@@ -500,6 +508,7 @@ function levelUp(){
 	
 	popUp(h.group(levelGainBox, levelGainText));
 }
+
 
 function initCombatTurn(){
     combatTurn = {};
@@ -537,38 +546,53 @@ function popUp(element, timeInNS=2000){
 	});
 }
 
-function spawnChoiceButton(function1, function2, text1="Yes", text2="No"){
-
-	menu = h.rectangle(100, 100, "white");
+function spawnChoiceButton(text1="Yes", text2="No"){
+	var menu = h.rectangle(100, 100, "white");
 	menu.x = 240;
 	menu.y = 256;
 	
+	var title = h.text("Title", "12px puzzler", "black");
+	menu.addChild(title);
 
-	button1Text = h.text(text1, "20px puzzler", "black");
+	var button1Text = h.text(text1, "20px puzzler", "black");
 	button1Text.x = 256;
-	button1Text.y = 256;
+	button1Text.y = 276;
 	button1Text.interact = true;
-	button1Text.press = function() {
-		function1();
-		button1Text.x = 1000;
-		button2Text.x = 1000;
-		h.remove(button1Text,button2Text,menu);
-	}
 
-	button2Text = h.text(text2, "20px puzzler", "black");
+	var button2Text = h.text(text2, "20px puzzler", "black");
 	button2Text.x = 256;
 	button2Text.y = 306;
 	button2Text.interact = true;
-	button2Text.press = function() {
-		function2();
-		button1Text.x = 1000;
-		button2Text.x = 1000;
-		h.remove(button1Text,button2Text,menu);
+
+	var container = {
+		"menu": menu,
+		"title": title,
+		"button1": button1Text,
+		"button2": button2Text
 	}
-	
-	
-	
+	return container;
 }
+
+
+function spawnTeleporterChoice(destination){
+	var choiceMenu = spawnChoiceButton();
+	choiceMenu.title.text = "Would you like to travel to " + destination + "?";
+    choiceMenu.button1.press = function() {
+        initMap(maps[0]);
+        /*button1Text.x = 1000;
+        button2Text.x = 1000;
+        h.remove(button1Text,button2Text,menu);*/
+    }
+    choiceMenu.button2.press = function() {
+		console.log("NOPE");
+        function1();
+		/*
+        button1Text.x = 1000;
+        button2Text.x = 1000;
+        h.remove(button1Text,button2Text,menu);*/
+    }
+}
+
 
 function checkQuests(){
     for(var i=0; i < h.player.quests.length; i++){

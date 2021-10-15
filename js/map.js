@@ -56,7 +56,7 @@ function transitionMap3() {
 
 function placeTrigger(object, index) {
     if(object.type == "NPC"){
-        console.log("NPC placeTrigger Called");
+        //console.log("NPC placeTrigger Called");
         filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
         trigger = h.sprite(filmStrip[object.id]);
     } else {

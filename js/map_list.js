@@ -1,8 +1,8 @@
 maps = [{
-    "name": "map_1",
+    "name": "village_map",
 	"id": 0,
-    "sprite": "res/maps/2_lvl_map.png",
-    "collisionMap": "res/maps/map_collisions_1.bmp",
+    "sprite": "res/maps/village_map.png",
+    "collisionMap": "res/maps/village_collision.bmp",
     "enemies": [{
             "name": "Silverleaf",
             "sprite": "res/images/plant1.png",
@@ -68,6 +68,8 @@ maps = [{
         "visible": true,
         "x": 384,
         "y": 256,
+        "width": 16,
+        "height": 16,        
         "dialog": ["I am very concerned."],
         "spriteSheet" : "res/images/Player0.png"
     }, {
@@ -77,10 +79,11 @@ maps = [{
         "visible": true,
         "x": 144,
         "y": 256,
+        "width": 16,
+        "height": 16,
         "dialog": [],
         "spriteSheet" : "res/images/Player0.png"
-    },
-	{
+    },{
             "id": 6,
             "name": "teleporterTown",
             "rotation": 0,
@@ -88,9 +91,10 @@ maps = [{
             "visible": true,
             "x": 496,
             "y": 288,
-            "destination": {}
-        },
-		{
+            "width": 16,
+            "height": 16,
+            "destination": "village_map"
+        },{
             "id": 6,
             "name": "teleporterDungeon",
             "rotation": 0,
@@ -98,6 +102,8 @@ maps = [{
             "visible": true,
             "x": 208,
             "y": 64,
+            "width": 16,
+            "height": 16,
             "destination": {}
         }
     ]
