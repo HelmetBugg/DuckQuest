@@ -27,8 +27,8 @@ maps = [{
     "player_spawn_y": 400,
     "tileWidth": 16,
     "tileHeight": 16,
-    "tilesWide": 15,
-    "tilesHigh": 15,
+    "tilesWide": 45,
+    "tilesHigh": 45,
     "triggers": []
 },{
     "name": "overworld_map",
