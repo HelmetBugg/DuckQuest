@@ -576,20 +576,18 @@ function spawnChoiceButton(text1="Yes", text2="No"){
 
 function spawnTeleporterChoice(destination){
 	var choiceMenu = spawnChoiceButton();
+	
+	var contents = [choiceMenu.menu, choiceMenu.title, choiceMenu.button1, choiceMenu.button2];
+
 	choiceMenu.title.text = "Would you like to travel to " + destination + "?";
     choiceMenu.button1.press = function() {
         initMap(maps[0]);
-        /*button1Text.x = 1000;
-        button2Text.x = 1000;
-        h.remove(button1Text,button2Text,menu);*/
+		cleanup(contents);
     }
     choiceMenu.button2.press = function() {
 		console.log("NOPE");
-        function1();
-		/*
-        button1Text.x = 1000;
-        button2Text.x = 1000;
-        h.remove(button1Text,button2Text,menu);*/
+
+		cleanup(contents);
     }
 }
 
@@ -600,4 +598,12 @@ function checkQuests(){
 			h.player.quests[i].isComplete();
 		}
 	}
+}
+
+function cleanup(doomedArray){
+	for (i = 0; i < doomedArray.length; i = i+1){
+		doomedArray[i].x = doomedArray[i] + 20000;
+		h.remove(doomedArray[i]);
+	}
+
 }
