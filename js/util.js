@@ -325,7 +325,6 @@ function handleKeyboard(){
 			}
 			h.map.y -= speed * 2;
 			h.camera.centerOver(h.player);
-			//resolveMove();
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y + 16;
@@ -348,9 +347,7 @@ function handleKeyboard(){
 				resolveMove();
 			}
 			h.map.y += speed * 2;
-			h.camera.centerOver(h.player);
-			//resolveMove();
-			
+			h.camera.centerOver(h.player);			
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y - 16;
@@ -373,9 +370,7 @@ function handleKeyboard(){
 			}
             // Multiple by 2 because duck is a child of map which is scaled x2.
 			h.map.x += speed * 2;
-			h.camera.centerOver(h.player);
-			//resolveMove();
-			
+			h.camera.centerOver(h.player);			
         } else {
 			h.player.directionFacingBox.x = h.player.x - 16;
 			h.player.directionFacingBox.y = h.player.y;
@@ -397,7 +392,6 @@ function handleKeyboard(){
 			}
 			h.map.x -= speed * 2;
 			h.camera.centerOver(h.player);
-			//resolveMove();
         } else {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;

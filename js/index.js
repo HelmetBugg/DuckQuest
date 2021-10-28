@@ -91,8 +91,9 @@ function newGame(load_data) {
 }
 
 function rollAttackChance(){
-    if(Math.floor(Math.random() * 5) == 1){
-        //getAttacked();
+    // If no enemies we just don't do combat.
+    if(Math.floor(Math.random() * 5) == 1 && h.map.layer.enemies.length > 0){
+        getAttacked();
     }
 }
 

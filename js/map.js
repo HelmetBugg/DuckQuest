@@ -38,7 +38,6 @@ function loadMapCollisions(image, width, height){
         }
         pix.push(row);
     }
-    console.log(pix);
     return pix;
 }
 
