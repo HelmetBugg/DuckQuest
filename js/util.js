@@ -83,6 +83,17 @@ function pauseMenu() {
 	}	
 }
 
+function spawnInstructions() {
+	menu = h.rectangle(200, 500, "white");
+	menuTitle = h.text("Instructions\n\nArrow keys to move\n\nMouse to interact\n\nClose", "24px puzzler", "black");
+	
+	
+	h.makeInteractive(menuTitle);
+    menuTitle.press = function () {
+		cleanup([menu,menuTitle]);
+	}
+}
+
 function createListMenu(list){
 	skillsMenu = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){

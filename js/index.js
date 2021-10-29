@@ -84,8 +84,9 @@ function newGame(load_data) {
     // Must happen before camera is centered.
     if (load_data){
         loadGame();
-    } 
-
+    } else{
+		spawnInstructions();
+		}
     h.camera.centerOver(h.player);
     h.state = play;
 }
