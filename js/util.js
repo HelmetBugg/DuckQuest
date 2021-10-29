@@ -408,6 +408,8 @@ function handleKeyboard(){
 			h.player.directionFacingBox.y = h.player.y;
 		}
 	}
+	console.log(h.player.x/16+", "+h.player.y/16);
+
 }
 
 
