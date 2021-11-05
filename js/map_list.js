@@ -154,4 +154,17 @@ maps = [{
             "destination": {}
         }
     ]
+},{
+    "name": "aligator_hideout",
+	"id": 0,
+    "sprite": "res/maps/aligator_hideout.png",
+    "collisionMap": "res/maps/village_collisions.bmp",
+    "enemies": [],
+    "player_spawn_x": 560,
+    "player_spawn_y": 576,
+    "tileWidth": 16,
+    "tileHeight": 16,
+    "tilesWide": 45,
+    "tilesHigh": 45,
+    "triggers": []
 }];
