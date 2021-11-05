@@ -83,16 +83,16 @@ function pauseMenu() {
 	}	
 }
 
+
 function spawnInstructions() {
 	menu = h.rectangle(200, 500, "white");
 	menuTitle = h.text("Instructions\n\nArrow keys to move\n\nMouse to interact\n\nClose", "24px puzzler", "black");
-	
-	
 	h.makeInteractive(menuTitle);
     menuTitle.press = function () {
 		cleanup([menu,menuTitle]);
 	}
 }
+
 
 function createListMenu(list){
 	skillsMenu = h.rectangle(150, 512, 'white');
@@ -161,6 +161,7 @@ function saveGame(){
 	localStorage.setItem('duckQuest', data);
 	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
 }
+
 
 function loadGame(){
 	let data = JSON.parse(localStorage.getItem('duckQuest'));
@@ -249,6 +250,7 @@ function createDialogBox(){
 	h.player.dialogueGroup = h.group(dialogueBox, dialogueBoxText, dialogueBoxNext);
 }
 
+
 function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
 	if(currentLength > finalText.length){
 		toggleOffScreen(h.player.dialogueBoxNext);
@@ -257,6 +259,7 @@ function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
 	dialogueBoxText.text = finalText.substring(0, currentLength);
 	h.wait(30, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
 }
+
 
 function initKeyboard() {
 	speed = 16;//h.player.width;
@@ -285,22 +288,18 @@ function initKeyboard() {
 
     leftArrow.press = () => {
 		h.leftArrowPressed = true;
-		
     };
 
 	leftArrow.release = () => {
 		h.leftArrowPressed = false;
-		
     };
 
     rightArrow.press = () => {
 		h.rightArrowPressed = true;
-		
 	};
 
 	rightArrow.release = () => {
 		h.rightArrowPressed = false;
-		
 	};
 
     upArrow.press = () => {
@@ -313,13 +312,12 @@ function initKeyboard() {
 
     downArrow.press = () => {
 		h.downArrowPressed = true;
-		// Check if moving to this square would cause collision and prevent it.
-		
     };
 	downArrow.release = () => {
 		h.downArrowPressed = false;
 	}
 }
+
 
 function handleKeyboard(){
 	if(h.downArrowPressed == true){
@@ -408,15 +406,15 @@ function handleKeyboard(){
 			h.player.directionFacingBox.y = h.player.y;
 		}
 	}
-	console.log(h.player.x/16+", "+h.player.y/16);
-
+	// Player location is helpful.
+	//console.log(h.player.x/16+", "+h.player.y/16);
 }
 
 
 function resolveMove(){
-	rollAttackChance();
-	checkQuests();
 	teleportCollisionCheck();
+	checkQuests();
+	rollAttackChance();
 }
 
 
@@ -553,6 +551,7 @@ function popUp(element, timeInNS=2000){
 	});
 }
 
+
 function spawnChoiceButton(text1="Yes", text2="No"){
 	var menu = h.rectangle(100, 100, "white");
 	menu.x = 240;
@@ -607,10 +606,10 @@ function checkQuests(){
 	}
 }
 
+
 function cleanup(doomedArray){
 	for (i = 0; i < doomedArray.length; i = i+1){
 		doomedArray[i].x = doomedArray[i] + 20000;
 		h.remove(doomedArray[i]);
 	}
-
 }
