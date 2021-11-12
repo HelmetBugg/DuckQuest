@@ -170,7 +170,31 @@ maps = [{
 	"id": 0,
     "sprite": "res/maps/aligator_hideout.png",
     "collisionMap": "res/maps/village_collisions.bmp",
-    "enemies": [],
+    "enemies": [{
+        "name": "Swamper",
+        "sprite": "res/images/Player0.png",
+        "health": 100,
+        "damage": 5,
+        "index": 112
+    },{
+        "name": "GoonScale",
+        "sprite": "res/images/Player0.png",
+        "health": 100,
+        "damage": 6,
+        "index": 113
+    },{
+        "name": "Brocodile",
+        "sprite": "res/images/Player0.png",
+        "health": 110,
+        "damage": 7,
+        "index": 114
+    },{
+        "name": "Krush",
+        "sprite": "res/images/Player0.png",
+        "health": 120,
+        "damage": 8,
+        "index": 115
+    }],
     "player_spawn_x": 560,
     "player_spawn_y": 576,
     "tileWidth": 16,
