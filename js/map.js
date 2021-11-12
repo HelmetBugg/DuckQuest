@@ -106,7 +106,6 @@ function checkCollision(map, location) {
                 width: map.tileWidth,
                 height: map.tileHeight
             }
-            
             if (h.hitTestRectangle(location, tileCollision) && h.map.tileCollisions[j][i] != 0) {
                 return true;
             }
@@ -115,3 +114,12 @@ function checkCollision(map, location) {
     return false;
 }
 
+function findMapByName(target){
+    for(var i=0; i<maps.length; i++){
+        console.log(maps[i].name);
+        if(maps[i].name == target){
+            return maps[i];
+        }
+    }
+    return null;
+}

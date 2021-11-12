@@ -10,8 +10,19 @@ maps = [{
     "tileHeight": 16,
     "tilesWide": 45,
     "tilesHigh": 45,
-    "triggers": []
-},{
+    "triggers": [{
+        "id": 6,
+        "name": "teleporterOverworld",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 560,
+        "y": 576,
+        "width": 16,
+        "height": 16,
+        "destination": "overworld_map"
+    }]
+  },{
     "name": "overworld_map",
 	"id": 0,
     "sprite": "res/maps/overworld_map.png",
@@ -85,7 +96,7 @@ maps = [{
             "y": 64,
             "width": 16,
             "height": 16,
-            "destination": {}
+            "destination": "alligator_hideout"
         }
     ]
 },{
@@ -155,7 +166,7 @@ maps = [{
         }
     ]
 },{
-    "name": "aligator_hideout",
+    "name": "alligator_hideout",
 	"id": 0,
     "sprite": "res/maps/aligator_hideout.png",
     "collisionMap": "res/maps/village_collisions.bmp",
@@ -166,5 +177,16 @@ maps = [{
     "tileHeight": 16,
     "tilesWide": 45,
     "tilesHigh": 45,
-    "triggers": []
+    "triggers": [{
+        "id": 6,
+        "name": "teleporterOverworld",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 576,
+        "y": 576,
+        "width": 16,
+        "height": 16,
+        "destination": "overworld_map"
+    }]
 }];
