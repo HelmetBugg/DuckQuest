@@ -58,6 +58,7 @@ function createGoose() {
 
 function damageAnimation(){
     damageFlash = h.rectangle(500, 250, 'red');//h.rectangle(h.canvas.width, h.canvas.height, "red", "red", 0, 0, 0);
+    damageFlash.alpha = 1-h.player.stat.get("current_health") / h.player.stat.get("max_health");
     tween = h.fadeOut(damageFlash);    
     tween.onComplete = () => {
         h.remove(damageFlash);       

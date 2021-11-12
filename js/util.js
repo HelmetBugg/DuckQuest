@@ -439,7 +439,7 @@ function initplayer() {
 	stat.set("level", 1);	
 	stat.set("strength", 5);
 	stat.set("max_health", 100);
-	stat.set("current_health", 100);
+	stat.set("current_health", 50);
 	stat.set("intelligence", 5);
 	h.player.stat = stat;
 	h.player.skills = [];
