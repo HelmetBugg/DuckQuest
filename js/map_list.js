@@ -11,6 +11,50 @@ maps = [{
     "tilesWide": 45,
     "tilesHigh": 45,
     "triggers": [{
+        "id": 70, 
+        "name": "Turtle_Mayor",
+        "type": "NPC",
+        "visible": true,
+        "x": 336,
+        "y": 272,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["I am very concerned."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 2,
+        "name": "Frog_Minstrel",
+        "type": "NPC",
+        "visible": true,
+        "x": 528,
+        "y": 464,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["I am very concerned."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 11,
+        "name": "IsoKid",
+        "type": "NPC",
+        "visible": true,
+        "x": 112,
+        "y": 192,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["I am very concerned."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 35,
+        "name": "Rattavan",
+        "type": "NPC",
+        "visible": true,
+        "x": 16,
+        "y": 48,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["I am very concerned."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
         "id": 6,
         "name": "teleporterOverworld",
         "rotation": 0,
