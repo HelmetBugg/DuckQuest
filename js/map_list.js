@@ -19,7 +19,7 @@ maps = [{
         "y": 272,
         "width": 16,
         "height": 16,        
-        "dialog": ["I am very concerned."],
+        "dialog": ["I am very concerned...","The Goose Gang...","has taken over...","the Pond...","Please we need...", "Help!!"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 2,
@@ -30,7 +30,7 @@ maps = [{
         "y": 464,
         "width": 16,
         "height": 16,        
-        "dialog": ["I am very concerned."],
+        "dialog": ["Would you like to hear a song about this land?","Great!","Put song here-Dev note"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 11,
@@ -41,7 +41,7 @@ maps = [{
         "y": 192,
         "width": 16,
         "height": 16,        
-        "dialog": ["I am very concerned."],
+        "dialog": ["I've been searching for monster friends in the grass all day!", "I hope I can find a shiny one!"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 35,
@@ -52,7 +52,7 @@ maps = [{
         "y": 48,
         "width": 16,
         "height": 16,        
-        "dialog": ["I am very concerned."],
+        "dialog": ["Welcome to Rattavan's Gently Used Fine Goods!", "No Refunds kid."],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,
