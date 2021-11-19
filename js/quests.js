@@ -29,3 +29,7 @@ function effectKillThreeSlimes(){
 	gainExperience(100);
 	console.log("Quest 'Kill Three Slimes' Complete");
 }
+
+function killAlligatorBoss(){
+	getAttacked();
+}

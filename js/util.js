@@ -214,7 +214,8 @@ function startDialog(dialogueArray){
 			}
 			else{
 				// This is broken need to come fix.
-				spawnChoiceButton(dialogueArray[h.dialogueIncrement],function(){console.log("no")});
+			//	spawnChoiceButton(dialogueArray[h.dialogueIncrement],function(){console.log("no")});
+				dialogueArray[h.dialogueIncrement]();
 				
 			}
 			h.dialogueIncrement++;

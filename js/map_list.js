@@ -254,7 +254,7 @@ maps = [{
         "y": 272,
         "width": 16,
         "height": 16,        
-        "dialog": ["You come to challenge.. ME?"],
+        "dialog": ["You come to challenge.. ME?", killAlligatorBoss],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 113,
