@@ -213,7 +213,7 @@ maps = [{
     "name": "alligator_hideout",
 	"id": 0,
     "sprite": "res/maps/aligator_hideout.png",
-    "collisionMap": "res/maps/village_collisions.bmp",
+    "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
     "enemies": [{
         "name": "Swamper",
         "sprite": "res/images/Player0.png",
@@ -246,6 +246,28 @@ maps = [{
     "tilesWide": 45,
     "tilesHigh": 45,
     "triggers": [{
+        "id": 112, 
+        "name": "Bossman",
+        "type": "NPC",
+        "visible": true,
+        "x": 336,
+        "y": 272,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["You come to challenge.. ME?"],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Swampy",
+        "type": "NPC",
+        "visible": true,
+        "x": 528,
+        "y": 464,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["zzzZZZzzz.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
         "id": 6,
         "name": "teleporterOverworld",
         "rotation": 0,

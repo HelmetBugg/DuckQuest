@@ -12,7 +12,9 @@ let thingsToLoad = [
     "res/maps/overworld_collision.bmp",
     "res/maps/overworld_map.png",
     "res/images/Player0.png",
-	"res/maps/village_collisions.bmp"
+	"res/maps/village_collisions.bmp",
+    "res/maps/empty_collisions.bmp",
+    "res/maps/alligator_hideout_collisions.bmp"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
