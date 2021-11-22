@@ -41,6 +41,7 @@ function loadMapCollisions(image, width, height){
     return pix;
 }
 
+/*
 function transitionMap1() {
     initMap(maps[0]);
 }
@@ -51,11 +52,10 @@ function transitionMap2() {
 
 function transitionMap3() {
     initMap(maps[2]);
-}
+}*/
 
 function placeTrigger(object, index) {
-    if(object.type == "NPC"){
-        //console.log("NPC placeTrigger Called");
+    if(object.type == "npc"){
         filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
         trigger = h.sprite(filmStrip[object.id]);
     } else {
@@ -71,6 +71,7 @@ function placeTrigger(object, index) {
     h.map.triggers.push(trigger);
 }
 
+
 function checkTriggerCollision(trigger, index) {
     if (h.hitTestRectangle({
             x: h.player.directionFacingBox.x,
@@ -83,21 +84,9 @@ function checkTriggerCollision(trigger, index) {
     return false;
 }
 
-function checkDebugCollision(map) {
-    for (let i = 0; i < map.tilesWide; i++) {
-        for (let j = 0; j < map.tilesHigh; j++) {
-            let color = "blue";
-            if (map.tileCollisions[j][i]) {
-                color = "red";
-            }
-            let collisionDebug = h.rectangle(map.tileWidth, map.tileHeight, color, "black", 1, map.tileWidth * i, map.tileHeight * j);
-            collisionDebug.alpha = 0.5;
-            h.map.addChild(collisionDebug);
-        }
-    }
-}
 
 function checkCollision(map, location) {
+    // Check bitmap tiles for walls and boundaries
     for (let i = 0; i <= map.tilesWide; i++) {
         for (let j = 0; j <= map.tilesHigh; j++) {
             var tileCollision = {
@@ -109,6 +98,12 @@ function checkCollision(map, location) {
             if (h.hitTestRectangle(location, tileCollision) && h.map.tileCollisions[j][i] != 0) {
                 return true;
             }
+        }
+    }
+    // Check Trigger collisions for NPCs
+    for(var j=0; j<map.triggers.length; j++){
+        if(map.triggers[j].type == "npc" && h.hitTestRectangle(location, map.triggers[j])){
+            return true;
         }
     }
     return false;

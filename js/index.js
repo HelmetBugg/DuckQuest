@@ -63,8 +63,6 @@ function setup() {
 function newGame(load_data) {
     h.destroy.x = -50000;
     h.remove(h.destroy);
-    title = h.text("Version " + version, "18px puzzler", "white");
-    title.y = 490;
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
     initMap(maps[1]);
@@ -107,4 +105,52 @@ function gameOver() {
     title = h.text("You Died", "90px puzzler", "red");
     h.stage.putCenter(title);
     h.pause();
+}
+
+
+function saveGame(){
+	let data = JSON.stringify({
+		x: h.player.x,
+		y: h.player.y,
+		level: h.player.stat.get("level"),
+		next_level: h.player.stat.get("next_level"),
+		experience: h.player.stat.get("experience"),
+		strength: h.player.stat.get("strength"),
+		intelligence: h.player.stat.get("intelligence"),
+		max_health: h.player.stat.get("max_health"),
+		current_health: h.player.stat.get("current_health"),
+		map: h.map.layer.id
+		
+	});
+	localStorage.setItem('duckQuest', data);
+	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
+}
+
+
+function loadGame(){
+	let data = JSON.parse(localStorage.getItem('duckQuest'));
+    h.player.x = data.x;
+    h.player.y = data.y;
+    h.player.stat.level = data.level;
+    h.player.stat.next_level = data.next_level;
+    h.player.stat.experience = data.experience;
+	h.player.stat= data.stat;
+	h.player.stat= data.strength;
+	h.player.stat= data.intelligence;
+	h.player.stat= data.max_health;
+	h.player.stat= data.current_health;
+	console.log(data.map);
+	initMap(maps[data.map]);
+	
+	let stat = new Map();
+	stat.set("experience", data.experience);
+	stat.set("next_level", data.next_level);
+	stat.set("level", data.level);	
+	stat.set("strength", data.strength);
+	stat.set("max_health", data.max_health);
+	stat.set("current_health", data.current_health);
+	stat.set("intelligence", data.intelligence);
+	h.player.stat = stat;
+	
+	console.log("Game Loaded.. ");// + data.x);
 }

@@ -13,7 +13,7 @@ maps = [{
     "triggers": [{
         "id": 70, 
         "name": "Turtle_Mayor",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 336,
         "y": 272,
@@ -24,7 +24,7 @@ maps = [{
     },{
         "id": 2,
         "name": "Frog_Minstrel",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 528,
         "y": 464,
@@ -35,7 +35,7 @@ maps = [{
     },{
         "id": 11,
         "name": "IsoKid",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 112,
         "y": 192,
@@ -46,7 +46,7 @@ maps = [{
     },{
         "id": 35,
         "name": "Rattavan",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 16,
         "y": 48,
@@ -100,7 +100,7 @@ maps = [{
     "triggers": [{
         "id": 3,
         "name": "concernedFisherman",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 384,
         "y": 256,
@@ -111,7 +111,7 @@ maps = [{
     }, {
         "id": 4,
         "name": "turtleTrader",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 144,
         "y": 256,
@@ -179,7 +179,7 @@ maps = [{
             "id": 3,
             "name": "lizard_wall_npc",
             "rotation": 0,
-            "type": "",
+            "type": "npc",
             "visible": false,
             "width": 47.5247524752475,
             "x": 432,
@@ -189,7 +189,7 @@ maps = [{
             "id": 4,
             "name": "sage_npc",
             "rotation": 0,
-            "type": "",
+            "type": "npc",
             "visible": false,
             "width": 16,
             "height": 16,
@@ -248,7 +248,7 @@ maps = [{
     "triggers": [{
         "id": 112, 
         "name": "Bossman",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 336,
         "y": 272,
@@ -259,7 +259,7 @@ maps = [{
     },{
         "id": 113,
         "name": "Swampy",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 528,
         "y": 464,
