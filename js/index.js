@@ -18,11 +18,12 @@ let thingsToLoad = [
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
-h.fps = 15;
+h.fps = 18;
 version = 0.6;
 h.scaleToWindow();
 h.start();
-var skills_menu, blurb_group;
+var blurb_group;
+
 
 function load() {
     //Display the file currently being loaded
@@ -31,6 +32,7 @@ function load() {
     console.log(`progress: ${h.loadingProgress}`);
     h.loadingBar();
 }
+
 
 function setup() {
     title = h.text("Duck\n    Quest", "50px Press Start 2P", "purple");
@@ -75,9 +77,7 @@ function newGame(load_data) {
     h.player.y = h.player.directionFacingBox.y = h.map.layer.player_spawn_y;
     pauseMenu();
     initKeyboard();
-    h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
 	h.inCombat = false;
-
     // Must happen before camera is centered.
     if (load_data){
         loadGame();
@@ -88,6 +88,7 @@ function newGame(load_data) {
     h.state = play;
 }
 
+
 function rollAttackChance(){
     // If no enemies we just don't do combat.
     if(Math.floor(Math.random() * 5) == 1 && h.map.layer.enemies.length > 0){
@@ -95,76 +96,15 @@ function rollAttackChance(){
     }
 }
 
-function getAttacked() {
-	h.inCombat = true;
-    combatScreen = h.rectangle(500, 250, 'white');
-
-    runButton = h.text("RUN", "30px puzzler", "black");
-    runButton.x = 50;
-    runButton.y = 200;
-    runButton.interact = true;
-
-    fightButton = h.text("FIGHT", "30px puzzler", "black");
-    fightButton.x = 150;
-    fightButton.y = 200;
-    fightButton.interact = true;
-
-    skillButton = h.text("SKILLS", "30px puzzler", "black");
-    skillButton.x = 300;
-    skillButton.y = 200;
-    skillButton.interact = true;
-
-    h.enemyName = h.text("Enemy", "20px puzzler", "black");
-    h.enemyName.y = 20;
-    h.enemyName.x = 270;
-
-    h.enemyHealth = h.text("Enemy Health: " + 0/0, "20px puzzler", "black");
-    h.enemyHealth.y = 50;
-    h.enemyHealth.x = 270;
-
-    h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
-    h.playerHealth.y = 50;
-
-    h.combatGroup = h.group(combatScreen, runButton, fightButton,skillButton, h.enemyHealth, h.playerHealth, h.enemyName);
-    h.combatTurn = initCombatTurn();
-    updateHealth();
-    runButton.press = function() {
-        cleanupCombat();
-        for(var i=0; i<h.combatTurn.enemies.length; i++){
-            h.remove(combatTurn.enemies[i]);
-        }
-    }
-    fightButton.press = function() {
-        updateHealth();
-		h.player.doTurn();
-		updateHealth();
-        stillFighting = combatTurn.enemies[0].doTurn();		
-		if (!stillFighting){
-            cleanupCombat();
-		}
-    }
-    skillButton.press = function() {
-		createListMenu(h.player.skills);
-    }
-}
-
-function updateHealth(){
-    h.playerHealth.text = "Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health");
-    h.enemyHealth.text = "Enemy Health: " + combatTurn.enemies[0].stat.get("health") + " / " + combatTurn.enemies[0].stat.get("max_health");
-    h.enemyName.text = combatTurn.enemies[0].name;
-}
-
-function cleanupCombat(){
-    children = h.combatGroup.children;
-    for (var i=0; i<children.length; i++){
-        children[i].interact = false;
-    }
-    h.remove(h.combatGroup);
-	h.inCombat = false;
-    checkQuests();
-}
 
 function play() {
     handleKeyboard();
 }
 
+
+function gameOver() {
+    h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
+    title = h.text("You Died", "90px puzzler", "red");
+    h.stage.putCenter(title);
+    h.pause();
+}

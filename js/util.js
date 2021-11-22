@@ -1,5 +1,5 @@
 function pauseMenu() {
-	menu = h.rectangle(200, 500, "white");
+	var menu = h.rectangle(200, 500, "white");
 	menuTitle = h.text("Pause", "38px puzzler", "black");
 
 	statusButton = h.text("Status", "30px puzzler", "black");
@@ -85,17 +85,16 @@ function pauseMenu() {
 
 
 function spawnInstructions() {
-	menu = h.rectangle(200, 500, "white");
-	menuTitle = h.text("Instructions\n\nArrow keys to move\n\nMouse to interact\n\nClose", "24px puzzler", "black");
-	h.makeInteractive(menuTitle);
-    menuTitle.press = function () {
-		cleanup([menu,menuTitle]);
+	let menuTitle = button(0, 0, "==Instructions==\n\nArrow Keys to\nmove.\n\n'z' to interact\n\n'space' to open\n menu.\n\n Close", 200, 500);
+	menuTitle.text.style.fontSize = "12px";
+	menuTitle.press = function () {
+		cleanup([menuTitle]);
 	}
 }
 
 
 function createListMenu(list){
-	skillsMenu = h.rectangle(150, 512, 'white');
+	let skillsMenu = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){
         boxText = h.text(list[i].name, "20px puzzler", "black");
 		boxText.interact = true;
@@ -282,35 +281,27 @@ function initKeyboard() {
 			}
 		}
 	}
-
     space.press = () => {
         h.menuGroup.toggle();
     }
-
     leftArrow.press = () => {
 		h.leftArrowPressed = true;
     };
-
 	leftArrow.release = () => {
 		h.leftArrowPressed = false;
     };
-
     rightArrow.press = () => {
 		h.rightArrowPressed = true;
 	};
-
 	rightArrow.release = () => {
 		h.rightArrowPressed = false;
 	};
-
     upArrow.press = () => {
 		h.upArrowPressed = true;
     };
-
 	upArrow.release = () => {
 		h.upArrowPressed = false;
     };
-
     downArrow.press = () => {
 		h.downArrowPressed = true;
     };
@@ -515,31 +506,6 @@ function levelUp(){
 }
 
 
-function initCombatTurn(){
-    combatTurn = {};
-	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
-	combatTurn.enemies = [currentFoe];
-    combatTurn.currentParticipant = 0;
-	combatTurn.nextTurn = function(){
-		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
-			combatTurn.currentParticipant = 0;
-		} else {
-			combatTurn.currentParticipant++;
-		}
-		if (currentFoe.stat.get("health") <= 0){
-			gainExperience(currentFoe.stat.get("experience"));
-			h.remove(combatTurn.enemies[0]);
-			combatTurn.enemies.pop();
-		}			
-		if (combatTurn.enemies.length < 1){
-			return false;
-		}
-		return true;
-	}
-	return combatTurn;
-}
-
-
 // Takes in an element, waits X time and then fades and removes it.
 function popUp(element, timeInNS=2000){
 	h.wait(timeInNS, function() {
@@ -552,25 +518,15 @@ function popUp(element, timeInNS=2000){
 
 
 function spawnChoiceButton(text1="Yes", text2="No"){
-	var menu = h.rectangle(100, 100, "white");
-	menu.x = 240;
-	menu.y = 256;
-	var title = h.text("Title", "12px puzzler", "black");
-	menu.addChild(title);
-
-	var button1Text = h.text(text1, "20px puzzler", "black");
-	button1Text.x = 256;
-	button1Text.y = 276;
-	button1Text.interact = true;
-
-	var button2Text = h.text(text2, "20px puzzler", "black");
-	button2Text.x = 256;
-	button2Text.y = 306;
-	button2Text.interact = true;
-
+	var menu = button(0, 100, "Would you like\n   to travel to?", 400, 80);
+	menu.interactive = false;
+	var button1Text = button(0, 40, text1);
+	menu.addChild(button1Text);
+	var button2Text = button(0, 80, text2);
+	menu.addChild(button2Text);
 	var container = {
 		"menu": menu,
-		"title": title,
+		"title": menu.text,
 		"button1": button1Text,
 		"button2": button2Text
 	}
@@ -581,8 +537,7 @@ function spawnChoiceButton(text1="Yes", text2="No"){
 function spawnTeleporterChoice(destination){
 	var choiceMenu = spawnChoiceButton();
 	var contents = [choiceMenu.menu, choiceMenu.title, choiceMenu.button1, choiceMenu.button2];
-
-	choiceMenu.title.text = "Would you like to travel to " + destination + "?";
+	choiceMenu.title.text = "Would you like to \ntravel to " + destination + "?";
     choiceMenu.button1.press = function() {
 		let map = findMapByName(destination);
         initMap(map);
@@ -604,9 +559,14 @@ function checkQuests(){
 }
 
 
-function cleanup(doomedArray){
-	for (i = 0; i < doomedArray.length; i = i+1){
-		doomedArray[i].x = doomedArray[i] + 20000;
-		h.remove(doomedArray[i]);
+function cleanup(input){
+	if(Array.isArray(input)){
+		for (i=0; i<input.length; i=i+1){
+			input[i].x += 20000;
+			h.remove(input[i]);
+		}
+	} else {
+		input.x += 20000;
+		h.remove(input);		
 	}
 }
