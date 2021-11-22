@@ -33,26 +33,21 @@ function load() {
 }
 
 function setup() {
-    title = h.text("Duck Quest", "50px puzzler", "purple");
-    title.x = 35;
-    title.y = 35;
-    startButton = h.text("New Game", "30px puzzler", "black");
-    startButton.x = 100;
-    startButton.y = 200;
-    startButton.interact = true;
+    title = h.text("Duck\n    Quest", "50px Press Start 2P", "purple");
+    title.font = fontStyle.font;
+    title.x =  title.y = 35;
+    let startButton = button(100, 200, "New Game");
     startButton.press = function() {
         // Just to hide the button after click.
         newGame(false);
     }
-    loadButton = h.text("Load Game", "30px puzzler", "black");
+    let loadButton = button(100, 320, "Load Game");
     if(localStorage.getItem('duckQuest') != null){
         loadButton.interact = true;
-        //console.log(loadButton);
     } else {
+        loadButton.interact = false;
         loadButton.alpha = 0.5;
     }
-    loadButton.x = 100;
-    loadButton.y = 300;
     loadButton.press = function() {
         loadButton.x = -5000;
         newGame(true);
@@ -88,7 +83,7 @@ function newGame(load_data) {
         loadGame();
     } else{
 		spawnInstructions();
-		}
+	}
     h.camera.centerOver(h.player);
     h.state = play;
 }
