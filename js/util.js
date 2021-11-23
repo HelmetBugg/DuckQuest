@@ -143,14 +143,15 @@ function createListMenu(list){
 }
 
 
-function startDialog(dialogueArray){
+function startDialog(trigger){
+	var dialogueArray = trigger.dialog;
 	h.player.talking = true;
 	var dialogBox = createDialogBox();
-
+	// Add speaker's name tag.
+	dialogBox.Tag.text.text = trigger.name;
 	// Show first Dialog output before automatically adding.
-	//toggleOffScreen(dialogBox.Next);
 	var dialogueIncrement = 0;
-	recursiveTextFadeIn(dialogueArray[dialogueIncrement], dialogBox, 1);
+	dialogBox.Text.text = dialogueArray[dialogueIncrement];
 	dialogueIncrement++;
 
 	dialogBox.Next.press = () => {
@@ -162,8 +163,7 @@ function startDialog(dialogueArray){
 		} else {
 			// Otherwise replace the current text with the next section.
 			if (typeof dialogueArray[dialogueIncrement] === 'string'){
-				//toggleOffScreen(dialogBox.Next);
-				recursiveTextFadeIn(dialogueArray[dialogueIncrement], dialogBox, 1);
+				dialogBox.Text.text = dialogueArray[dialogueIncrement];
 			// Else it's a function and we invoke it.
 			}else{
 				dialogueArray[h.dialogueIncrement]();
@@ -187,13 +187,17 @@ function toggleOffScreen(objectToToggle){
 }
 
 function createDialogBox(){
-	var dialogBox = button(0, 362, "", 505, 145); 
+	var dialogBox = button(0, 415, "", 505, 110); 
 	dialogBox.Text = h.text("", "20px puzzler", "black");
 	dialogBox.Text.style = fontStyle;
+	dialogBox.Text.fontSize = 4;
+	dialogBox.Text.x = 24;
+	dialogBox.Text.y = 440;
 	dialogBox.Next = button(470, 470, "");
-	dialogBox.Text.x = 18;
-	dialogBox.Text.y = 380;
-	dialogBox.children = [dialogBox.Text, dialogBox.Next];
+	dialogBox.Tag = button(0, 390, "", 150, 28);
+	console.log(dialogBox.Tag.text);
+	dialogBox.Tag.text.fontSize = 4;
+	dialogBox.children = [dialogBox.Text, dialogBox.Next, dialogBox.Tag];
 	return dialogBox;
 }
 
@@ -227,9 +231,7 @@ function initKeyboard() {
 		for (i=0; i < h.map.triggers.length; i++) {
 			let trigger = h.map.layer.triggers[i];
 			if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
-				// rename less inane.
-				let dialogueArray = h.map.layer.triggers[i].dialog;
-				startDialog(dialogueArray);
+				startDialog(h.map.layer.triggers[i]);
 			}
 		}
 	}

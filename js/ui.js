@@ -9,7 +9,9 @@ const fontStyle = {
     fill: "black", 
     font: "16px Press Start 2P",
     size: 14,
-    align: "center"
+    align: "center",
+    wordWrapWidth: 490,
+    wordWrap: true
 };
 
 
