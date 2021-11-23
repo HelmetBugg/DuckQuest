@@ -41,18 +41,6 @@ function loadMapCollisions(image, width, height){
     return pix;
 }
 
-/*
-function transitionMap1() {
-    initMap(maps[0]);
-}
-
-function transitionMap2() {
-    initMap(maps[1]);
-}
-
-function transitionMap3() {
-    initMap(maps[2]);
-}*/
 
 function placeTrigger(object, index) {
     if(object.type == "npc"){
@@ -111,7 +99,6 @@ function checkCollision(map, location) {
 
 function findMapByName(target){
     for(var i=0; i<maps.length; i++){
-        console.log(maps[i].name);
         if(maps[i].name == target){
             return maps[i];
         }

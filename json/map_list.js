@@ -30,7 +30,7 @@ maps = [{
         "y": 464,
         "width": 16,
         "height": 16,        
-        "dialog": ["Would you like to hear a song about this land?","Great!","Put song here-Dev note"],
+        "dialog": ["Would you like to hear a song \nabout this land?","Great!","Put song here-Dev note"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 11,
@@ -41,7 +41,7 @@ maps = [{
         "y": 192,
         "width": 16,
         "height": 16,        
-        "dialog": ["I've been searching for monster friends in the grass all day!", "I hope I can find a shiny one!"],
+        "dialog": ["I've been searching for monster \nfriends in the grass all day!", "I hope I can find a \nshiny one!"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 35,
@@ -52,7 +52,7 @@ maps = [{
         "y": 48,
         "width": 16,
         "height": 16,        
-        "dialog": ["Welcome to Rattavan's Gently Used Fine Goods!", "No Refunds kid."],
+        "dialog": ["Welcome to Rattavan's Gently \nUsed Fine Goods!", "No Refunds kid."],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,

@@ -7,8 +7,8 @@ function updateHealth(menu){
 
 function damageAnimation(){
     var damageFlash = h.rectangle(500, 250, 'red');
-    damageFlash.alpha = 1-h.player.stat.get("current_health") / h.player.stat.get("max_health");
-    tween = h.fadeOut(damageFlash);    
+    damageFlash.alpha = h.player.stat.get("current_health") / h.player.stat.get("max_health");
+    tween = h.fadeOut(damageFlash, 10);    
     tween.onComplete = () => {
         h.remove(damageFlash);       
     }
@@ -26,15 +26,19 @@ function getAttacked() {
             h.remove(combatTurn.enemies[i]);
         }
     }
+	
     combatMenu.attackButton.press = () =>  {
+		this.interactive = false;
         updateHealth(combatMenu);
 		h.player.doTurn();
 		updateHealth(combatMenu);
-        stillFighting = combatTurn.enemies[0].doTurn();		
+		stillFighting = combatTurn.enemies[0].doTurn();		
 		if (!stillFighting){
-            cleanupCombat(combatMenu);
+			cleanupCombat(combatMenu);
 		}
-    }
+		this.interactive = true;
+	}
+
     combatMenu.skillsButton.press = () =>  {
 		createListMenu(h.player.skills);
     }
@@ -81,8 +85,11 @@ function initCombatTurn(){
 		}
 		if (currentFoe.stat.get("health") <= 0){
 			gainExperience(currentFoe.stat.get("experience"));
-			h.remove(combatTurn.enemies[0]);
-			combatTurn.enemies.pop();
+			var tween = h.fadeOut(combatTurn.enemies[0]);
+			tween.onComplete = () => {
+				h.remove(combatTurn.enemies[0]);
+				combatTurn.enemies.pop();
+			}
 		}			
 		if (combatTurn.enemies.length < 1){
 			return false;
@@ -94,8 +101,11 @@ function initCombatTurn(){
 
 
 function cleanupCombat(combatMenu){
-    cleanup(combatMenu.children);
-    cleanup(combatMenu);
-	h.inCombat = false;
-    checkQuests();
+	var tween = h.fadeOut(combatMenu, 8);
+	tween.onComplete = () => {
+		cleanup(combatMenu.children);
+		cleanup(combatMenu);
+		h.inCombat = false;
+		checkQuests();
+	}
 }
