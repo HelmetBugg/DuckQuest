@@ -202,17 +202,6 @@ function createDialogBox(){
 }
 
 
-function recursiveTextFadeIn(finalText, dialogueBox, currentLength){
-	if(currentLength > finalText.length){
-		console.log(dialogueBox.Next)
-		//toggleOffScreen(dialogueBox.Next);
-		return;
-	}
-	dialogueBox.Text.text = finalText.substring(0, currentLength);
-	h.wait(30, () => recursiveTextFadeIn(finalText, dialogueBox, currentLength + 1));
-}
-
-
 function initKeyboard() {
 	speed = 16;//h.player.width;
     let leftArrow = h.keyboard(37),
@@ -425,8 +414,6 @@ function initplayer() {
 	h.player.skills = [];
 	h.player.quests = [];
 	h.player.tweening = false;
-	//initSkills();
-
 	h.player.doTurn = () =>{
 		currentEnemy = h.combatTurn.enemies[0];
 		currentEnemy.stat.set('health', 
@@ -443,15 +430,12 @@ function initplayer() {
 function gainExperience(experience){
 	current_experience = h.player.stat.get("experience");
     h.player.stat.set("experience", current_experience + experience);
-
-	experienceGainBox = h.rectangle(250, 100, "white");
-	experienceGainText = h.text("You have gained:\n" + experience + " experience.",
-	"20px puzzler","black");
-	h.stage.putCenter(experienceGainBox);
+	var experienceGainBox = createMenu(0, 0, 265, 100);
+	var experienceGainText = h.text("You have gained:\n" + experience + " experience.");
+	experienceGainText.style = fontStyle;
 	experienceGainBox.putCenter(experienceGainText);
 	popUp(h.group(experienceGainBox, experienceGainText));
 
-	// check for level ups here.
 	if (h.player.stat.get("experience") >= h.player.stat.get("next_level")){
 		levelUp();
 	}
@@ -459,49 +443,54 @@ function gainExperience(experience){
 
 
 function levelUp(){
-	current_level = h.player.stat.get("level");
+	var current_level = h.player.stat.get("level");
 	h.player.stat.set("level", current_level + 1);
 	
-	strengthIncrease = h.randomInt(3,5);
+	var strengthIncrease = h.randomInt(3, 5);
 	current_str = h.player.stat.get("strength");
 	h.player.stat.set("strength", current_str + strengthIncrease);
 	
-	healthIncrease = h.randomInt(5,8);
+	var healthIncrease = h.randomInt(5, 8);
 	current_maxhealth = h.player.stat.get("max_health");
 	h.player.stat.set("max_health", current_maxhealth + healthIncrease);
 	h.player.stat.set("current_health", current_maxhealth + healthIncrease);
 	
-	intelligenceIncrease = h.randomInt(2,4);
+	var intelligenceIncrease = h.randomInt(2, 4);
 	current_intel = h.player.stat.get("intelligence");
 	h.player.stat.set("intelligence", current_intel + intelligenceIncrease);
 	
 	// Set the next goal post.
 	current_level = h.player.stat.get("next_level");
 	h.player.stat.set("next_level", (current_level + 2) * 2);
-
 	h.player.skills = checkSkills(h.player.stat.get("level"));
 
-	levelGainBox = h.rectangle(250, 500, "white");
-	levelGainText = h.text("You have gained a level!\nStats increased:\n" +
-	"Strength: " + current_str + " + " + strengthIncrease +
-	"\nMax Health: " + current_maxhealth + " + " + healthIncrease +
-	"\nIntelligence: " + current_intel + " + " + intelligenceIncrease,
-	"20px puzzler","black");
-	h.stage.putCenter(levelGainBox);
+	var levelGainBox = createMenu(0, 100, 265, 300);
+	var levelGainText = h.text("Congrats, you\nleveled up!\n\nNew Stats:\n" +
+	"STR: " + current_str + " + " + strengthIncrease +
+	"\nHP: " + current_maxhealth + " + " + healthIncrease +
+	"\nINT: " + current_intel + " + " + intelligenceIncrease);
+	levelGainText.style = fontStyle;
+
 	levelGainBox.putCenter(levelGainText);
-	
 	popUp(h.group(levelGainBox, levelGainText));
 }
 
 
 // Takes in an element, waits X time and then fades and removes it.
-function popUp(element, timeInNS=2000){
+function popUp(element, timeInNS=20000){
 	h.wait(timeInNS, function() {
 		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
 		tween.onComplete = () => {
 			h.remove(element);
 		}
 	});
+	h.makeInteractive(element);
+	element.press = () =>{
+		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
+		tween.onComplete = () => {
+			h.remove(element);
+		}
+	};
 }
 
 
