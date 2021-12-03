@@ -421,7 +421,7 @@ function initplayer() {
 		damageText = h.text("-" + stat.get("strength"), "25px puzzler", "red");
 		damageText.x = currentEnemy.x;
 		damageText.y = currentEnemy.y - 16;
-		popUp(damageText);
+		popUp(damageText,850);
 		h.shake(currentEnemy);
 	};
 }

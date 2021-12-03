@@ -16,7 +16,7 @@ function enemy(name, sprite, health, damage) {
     sprite.y = 95;
     sprite.name = name;
     sprite.stat = stat;
-    // Highly convuluted, need to come back adn fix this up.
+    // Highly convuluted, need to come back and fix this up.
     sprite.doTurn = function () {
         if (h.combatTurn.enemies[0].stat.get("health") <= 0) {
             gainExperience(currentFoe.stat.get("experience"));
