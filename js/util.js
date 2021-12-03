@@ -477,7 +477,7 @@ function levelUp(){
 
 
 // Takes in an element, waits X time and then fades and removes it.
-function popUp(element, timeInNS=20000){
+function popUp(element, timeInNS=3000){
 	h.wait(timeInNS, function() {
 		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
 		tween.onComplete = () => {
@@ -521,7 +521,6 @@ function spawnTeleporterChoice(destination){
 		cleanup(contents);
     }
     choiceMenu.button2.press = function() {
-		console.log("NOPE");
 		cleanup(contents);
     }
 }
