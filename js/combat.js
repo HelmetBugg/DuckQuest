@@ -67,7 +67,12 @@ function spawnCombatMenu(){
 	menu.playerHealth.style = fontStyle;
 	menu.playerHealth.y = 50;
 
-	menu.children = [menu.runButton, menu.attackButton, menu.skillsButton, menu.enemyName, menu.enemyHealth, menu.playerHealth];
+	var combatLog = new createDialogBox();
+
+	menu.children = [menu.runButton, menu.attackButton, menu.skillsButton, menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog];
+
+	
+
 	return menu;
 }
 
@@ -107,5 +112,6 @@ function cleanupCombat(combatMenu){
 		cleanup(combatMenu);
 		h.inCombat = false;
 		checkQuests();
+		
 	//}
 }
