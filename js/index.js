@@ -18,11 +18,12 @@ let thingsToLoad = [
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
-h.fps = 15;
+h.fps = 18;
 version = 0.6;
 h.scaleToWindow();
 h.start();
-var skills_menu, blurb_group;
+var blurb_group;
+
 
 function load() {
     //Display the file currently being loaded
@@ -32,27 +33,23 @@ function load() {
     h.loadingBar();
 }
 
+
 function setup() {
-    title = h.text("Duck Quest", "50px puzzler", "purple");
-    title.x = 35;
-    title.y = 35;
-    startButton = h.text("New Game", "30px puzzler", "black");
-    startButton.x = 100;
-    startButton.y = 200;
-    startButton.interact = true;
+    title = h.text("Duck\n    Quest", "50px Press Start 2P", "purple");
+    title.font = fontStyle.font;
+    title.x =  title.y = 35;
+    let startButton = button(100, 200, "New Game");
     startButton.press = function() {
         // Just to hide the button after click.
         newGame(false);
     }
-    loadButton = h.text("Load Game", "30px puzzler", "black");
+    let loadButton = button(100, 320, "Load Game");
     if(localStorage.getItem('duckQuest') != null){
         loadButton.interact = true;
-        //console.log(loadButton);
     } else {
+        loadButton.interact = false;
         loadButton.alpha = 0.5;
     }
-    loadButton.x = 100;
-    loadButton.y = 300;
     loadButton.press = function() {
         loadButton.x = -5000;
         newGame(true);
@@ -66,8 +63,6 @@ function setup() {
 function newGame(load_data) {
     h.destroy.x = -50000;
     h.remove(h.destroy);
-    title = h.text("Version " + version, "18px puzzler", "white");
-    title.y = 490;
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
     initMap(maps[1]);
@@ -80,18 +75,17 @@ function newGame(load_data) {
     h.player.y = h.player.directionFacingBox.y = h.map.layer.player_spawn_y;
     pauseMenu();
     initKeyboard();
-    h.enemy_list = h.filmstrip("res/images/Slime0.png", 16, 16);
 	h.inCombat = false;
-
     // Must happen before camera is centered.
     if (load_data){
         loadGame();
     } else{
 		spawnInstructions();
-		}
+	}
     h.camera.centerOver(h.player);
     h.state = play;
 }
+
 
 function rollAttackChance(){
     // If no enemies we just don't do combat.
@@ -100,76 +94,63 @@ function rollAttackChance(){
     }
 }
 
-function getAttacked() {
-	h.inCombat = true;
-    combatScreen = h.rectangle(500, 250, 'white');
-
-    runButton = h.text("RUN", "30px puzzler", "black");
-    runButton.x = 50;
-    runButton.y = 200;
-    runButton.interact = true;
-
-    fightButton = h.text("FIGHT", "30px puzzler", "black");
-    fightButton.x = 150;
-    fightButton.y = 200;
-    fightButton.interact = true;
-
-    skillButton = h.text("SKILLS", "30px puzzler", "black");
-    skillButton.x = 300;
-    skillButton.y = 200;
-    skillButton.interact = true;
-
-    h.enemyName = h.text("Enemy", "20px puzzler", "black");
-    h.enemyName.y = 20;
-    h.enemyName.x = 270;
-
-    h.enemyHealth = h.text("Enemy Health: " + 0/0, "20px puzzler", "black");
-    h.enemyHealth.y = 50;
-    h.enemyHealth.x = 270;
-
-    h.playerHealth = h.text("Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"), "20px puzzler", "black");
-    h.playerHealth.y = 50;
-
-    h.combatGroup = h.group(combatScreen, runButton, fightButton,skillButton, h.enemyHealth, h.playerHealth, h.enemyName);
-    h.combatTurn = initCombatTurn();
-    updateHealth();
-    runButton.press = function() {
-        cleanupCombat();
-        for(var i=0; i<h.combatTurn.enemies.length; i++){
-            h.remove(combatTurn.enemies[i]);
-        }
-    }
-    fightButton.press = function() {
-        updateHealth();
-		h.player.doTurn();
-		updateHealth();
-        stillFighting = combatTurn.enemies[0].doTurn();		
-		if (!stillFighting){
-            cleanupCombat();
-		}
-    }
-    skillButton.press = function() {
-		createListMenu(h.player.skills);
-    }
-}
-
-function updateHealth(){
-    h.playerHealth.text = "Player Health: " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health");
-    h.enemyHealth.text = "Enemy Health: " + combatTurn.enemies[0].stat.get("health") + " / " + combatTurn.enemies[0].stat.get("max_health");
-    h.enemyName.text = combatTurn.enemies[0].name;
-}
-
-function cleanupCombat(){
-    children = h.combatGroup.children;
-    for (var i=0; i<children.length; i++){
-        children[i].interact = false;
-    }
-    h.remove(h.combatGroup);
-	h.inCombat = false;
-    checkQuests();
-}
 
 function play() {
     handleKeyboard();
 }
 
+
+function gameOver() {
+    h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
+    title = h.text("You Died", "90px puzzler", "red");
+    h.stage.putCenter(title);
+    h.pause();
+}
+
+
+function saveGame(){
+	let data = JSON.stringify({
+		x: h.player.x,
+		y: h.player.y,
+		level: h.player.stat.get("level"),
+		next_level: h.player.stat.get("next_level"),
+		experience: h.player.stat.get("experience"),
+		strength: h.player.stat.get("strength"),
+		intelligence: h.player.stat.get("intelligence"),
+		max_health: h.player.stat.get("max_health"),
+		current_health: h.player.stat.get("current_health"),
+		map: h.map.layer.id
+		
+	});
+	localStorage.setItem('duckQuest', data);
+	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
+}
+
+
+function loadGame(){
+	let data = JSON.parse(localStorage.getItem('duckQuest'));
+    h.player.x = data.x;
+    h.player.y = data.y;
+    h.player.stat.level = data.level;
+    h.player.stat.next_level = data.next_level;
+    h.player.stat.experience = data.experience;
+	h.player.stat= data.stat;
+	h.player.stat= data.strength;
+	h.player.stat= data.intelligence;
+	h.player.stat= data.max_health;
+	h.player.stat= data.current_health;
+	console.log(data.map);
+	initMap(maps[data.map]);
+	
+	let stat = new Map();
+	stat.set("experience", data.experience);
+	stat.set("next_level", data.next_level);
+	stat.set("level", data.level);	
+	stat.set("strength", data.strength);
+	stat.set("max_health", data.max_health);
+	stat.set("current_health", data.current_health);
+	stat.set("intelligence", data.intelligence);
+	h.player.stat = stat;
+	
+	console.log("Game Loaded.. ");// + data.x);
+}

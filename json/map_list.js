@@ -1,5 +1,5 @@
 maps = [{
-    "name": "village_map",
+    "name": "Pondville",
 	"id": 0,
     "sprite": "res/maps/village_map.png",
     "collisionMap": "res/maps/village_collisions.bmp",
@@ -11,48 +11,81 @@ maps = [{
     "tilesWide": 45,
     "tilesHigh": 45,
     "triggers": [{
+        "id": 28, 
+        "name": "Rocky",
+        "type": "npc",
+        "visible": true,
+        "x": 528,
+        "y": 320,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["Duckman, you're alive dude!", "Wh-what has Gooseman done to you?", "He's clipped your wings and cut your feet webs!?", "I see.. you won't be able to swim or fly again.", "But at least you came back with your life."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 29, 
+        "name": "James",
+        "type": "npc",
+        "visible": true,
+        "x": 608,
+        "y": 160,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["..."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 24, 
+        "name": "Jim",
+        "type": "npc",
+        "visible": true,
+        "x": 624,
+        "y": 448,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["It's unbelievable what Gooseman's done..", "He's left so many from our village dead in his quest to take over the pond.", "So many that we've started burying people outside the walls.", "My Brother James is out there now.", "Please stop him Duckman, not for me, but.. for them."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
         "id": 70, 
-        "name": "Turtle_Mayor",
-        "type": "NPC",
+        "name": "Mayor D.",
+        "type": "npc",
         "visible": true,
         "x": 336,
         "y": 272,
         "width": 16,
         "height": 16,        
-        "dialog": ["I am very concerned...","The Goose Gang...","has taken over...","the Pond...","Please we need...", "Help!!"],
+        "dialog": ["I am very concerned...", "The Goose Gang...", "has taken over...", "the Pond...", "Please.. ", "Save us Duckman!"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 2,
-        "name": "Frog_Minstrel",
-        "type": "NPC",
+        "name": "Croaky",
+        "type": "npc",
         "visible": true,
         "x": 528,
         "y": 464,
         "width": 16,
         "height": 16,        
-        "dialog": ["Would you like to hear a song about this land?","Great!","Put song here-Dev note"],
+        "dialog": ["Fa-lalala~", "Tra-lalala", "OH, did you enjoy my song?", "[Choice goes here]"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 11,
         "name": "IsoKid",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 112,
         "y": 192,
         "width": 16,
         "height": 16,        
-        "dialog": ["I've been searching for monster friends in the grass all day!", "I hope I can find a shiny one!"],
+        "dialog": ["I've been searching for monster friends in the grass all day!", "I hope I can find a \nshiny one!"],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 35,
         "name": "Rattavan",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 16,
         "y": 48,
         "width": 16,
         "height": 16,        
-        "dialog": ["Welcome to Rattavan's Gently Used Fine Goods!", "No Refunds kid."],
+        "dialog": ["Welcome to Rattavan's Gently \nUsed Fine Goods!", "No Refunds kid."],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,
@@ -60,14 +93,14 @@ maps = [{
         "rotation": 0,
         "type": "teleporterTile",
         "visible": true,
-        "x": 560,
-        "y": 576,
+        "x": 672,
+        "y": 336,
         "width": 16,
         "height": 16,
-        "destination": "overworld_map"
+        "destination": "Overworld"
     }]
   },{
-    "name": "overworld_map",
+    "name": "Overworld",
 	"id": 0,
     "sprite": "res/maps/overworld_map.png",
     "collisionMap": "res/maps/overworld_collision.bmp",
@@ -100,7 +133,7 @@ maps = [{
     "triggers": [{
         "id": 3,
         "name": "concernedFisherman",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 384,
         "y": 256,
@@ -111,7 +144,7 @@ maps = [{
     }, {
         "id": 4,
         "name": "turtleTrader",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 144,
         "y": 256,
@@ -129,7 +162,7 @@ maps = [{
             "y": 288,
             "width": 16,
             "height": 16,
-            "destination": "village_map"
+            "destination": "Pondville"
         },{
             "id": 6,
             "name": "teleporterDungeon",
@@ -140,7 +173,7 @@ maps = [{
             "y": 64,
             "width": 16,
             "height": 16,
-            "destination": "alligator_hideout"
+            "destination": "Alligator Hideout"
         }
     ]
 },{
@@ -179,7 +212,7 @@ maps = [{
             "id": 3,
             "name": "lizard_wall_npc",
             "rotation": 0,
-            "type": "",
+            "type": "npc",
             "visible": false,
             "width": 47.5247524752475,
             "x": 432,
@@ -189,7 +222,7 @@ maps = [{
             "id": 4,
             "name": "sage_npc",
             "rotation": 0,
-            "type": "",
+            "type": "npc",
             "visible": false,
             "width": 16,
             "height": 16,
@@ -210,7 +243,7 @@ maps = [{
         }
     ]
 },{
-    "name": "alligator_hideout",
+    "name": "Alligator Hideout",
 	"id": 0,
     "sprite": "res/maps/aligator_hideout.png",
     "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
@@ -248,7 +281,7 @@ maps = [{
     "triggers": [{
         "id": 112, 
         "name": "Bossman",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 336,
         "y": 272,
@@ -259,7 +292,7 @@ maps = [{
     },{
         "id": 113,
         "name": "Swampy",
-        "type": "NPC",
+        "type": "npc",
         "visible": true,
         "x": 528,
         "y": 464,
@@ -277,6 +310,6 @@ maps = [{
         "y": 576,
         "width": 16,
         "height": 16,
-        "destination": "overworld_map"
+        "destination": "Overworld"
     }]
 }];

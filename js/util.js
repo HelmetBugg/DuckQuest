@@ -1,5 +1,5 @@
 function pauseMenu() {
-	menu = h.rectangle(200, 500, "white");
+	var menu = h.rectangle(200, 500, "white");
 	menuTitle = h.text("Pause", "38px puzzler", "black");
 
 	statusButton = h.text("Status", "30px puzzler", "black");
@@ -85,17 +85,16 @@ function pauseMenu() {
 
 
 function spawnInstructions() {
-	menu = h.rectangle(200, 500, "white");
-	menuTitle = h.text("Instructions\n\nArrow keys to move\n\nMouse to interact\n\nClose", "24px puzzler", "black");
-	h.makeInteractive(menuTitle);
-    menuTitle.press = function () {
-		cleanup([menu,menuTitle]);
+	let menuTitle = button(0, 0, "==Instructions==\n\nWASD Keys to\nmove.\n\nMouse to \ninteract.\n\n'c' to talk \nwith NPCs\n\n'space' to open\n menu.\n\n\n Click to \nClose", 200, 500);
+	menuTitle.text.style.fontSize = "12px";
+	menuTitle.press = function () {
+		cleanup([menuTitle]);
 	}
 }
 
 
 function createListMenu(list){
-	skillsMenu = h.rectangle(150, 512, 'white');
+	let skillsMenu = h.rectangle(150, 512, 'white');
 	for(var i=0; i<list.length; i++){
         boxText = h.text(list[i].name, "20px puzzler", "black");
 		boxText.interact = true;
@@ -144,81 +143,32 @@ function createListMenu(list){
 }
 
 
-function saveGame(){
-	let data = JSON.stringify({
-		x: h.player.x,
-		y: h.player.y,
-		level: h.player.stat.get("level"),
-		next_level: h.player.stat.get("next_level"),
-		experience: h.player.stat.get("experience"),
-		strength: h.player.stat.get("strength"),
-		intelligence: h.player.stat.get("intelligence"),
-		max_health: h.player.stat.get("max_health"),
-		current_health: h.player.stat.get("current_health"),
-		map: h.map.layer.id
-		
-	});
-	localStorage.setItem('duckQuest', data);
-	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
-}
-
-
-function loadGame(){
-	let data = JSON.parse(localStorage.getItem('duckQuest'));
-    h.player.x = data.x;
-    h.player.y = data.y;
-    h.player.stat.level = data.level;
-    h.player.stat.next_level = data.next_level;
-    h.player.stat.experience = data.experience;
-	h.player.stat= data.stat;
-	h.player.stat= data.strength;
-	h.player.stat= data.intelligence;
-	h.player.stat= data.max_health;
-	h.player.stat= data.current_health;
-	console.log(data.map);
-	initMap(maps[data.map]);
-	
-	let stat = new Map();
-	stat.set("experience", data.experience);
-	stat.set("next_level", data.next_level);
-	stat.set("level", data.level);	
-	stat.set("strength", data.strength);
-	stat.set("max_health", data.max_health);
-	stat.set("current_health", data.current_health);
-	stat.set("intelligence", data.intelligence);
-	h.player.stat = stat;
-	
-	console.log("Game Loaded.. ");// + data.x);
-}
-
-
-function startDialog(dialogueArray){
+function startDialog(trigger){
+	var dialogueArray = trigger.dialog;
 	h.player.talking = true;
-	createDialogBox();
-	//fence post first dialog spawn
-	toggleOffScreen(h.player.dialogueBoxNext);
-	recursiveTextFadeIn(dialogueArray[0], h.player.dialogueBoxText, 1);
-	h.dialogueIncrement=1;
-	h.player.dialogueBoxNext.interact = true;
-	h.player.dialogueBoxNext.press = function() {
-		// If there is no more dialog, clear increment, remove text box.
-		if (h.dialogueIncrement >= dialogueArray.length){
-			h.dialogueIncrement = 1;
-			h.remove(h.player.dialogueGroup);
+	var dialogBox = createDialogBox();
+	// Add speaker's name tag.
+	dialogBox.Tag.text.text = trigger.name;
+	// Show first Dialog output before automatically adding.
+	var dialogueIncrement = 0;
+	dialogBox.Text.text = dialogueArray[dialogueIncrement];
+	dialogueIncrement++;
+
+	dialogBox.Next.press = () => {
+		// If there is no more dialog, cleanup.
+		if (dialogueIncrement >= dialogueArray.length){
+			cleanup(dialogBox.children);
+			cleanup(dialogBox);
 			h.player.talking = false;
-		// Otherwise replace the current text with the next section.
 		} else {
-			if (typeof dialogueArray[h.dialogueIncrement] === 'string'){
-				toggleOffScreen(h.player.dialogueBoxNext);
-				recursiveTextFadeIn(dialogueArray[h.dialogueIncrement], h.player.dialogueBoxText, 1);
-			}
-			else{
-				// This is broken need to come fix.
-			//	spawnChoiceButton(dialogueArray[h.dialogueIncrement],function(){console.log("no")});
+			// Otherwise replace the current text with the next section.
+			if (typeof dialogueArray[dialogueIncrement] === 'string'){
+				dialogBox.Text.text = dialogueArray[dialogueIncrement];
+			// Else it's a function and we invoke it.
+			}else{
 				dialogueArray[h.dialogueIncrement]();
-				
 			}
-			h.dialogueIncrement++;
+			dialogueIncrement++;
 		}
 	}
 }
@@ -226,10 +176,10 @@ function startDialog(dialogueArray){
 function toggleOffScreen(objectToToggle){
 	if(typeof objectToToggle.offScreen == 'undefined'){
 		objectToToggle.offScreen = objectToToggle.x;
-		objectToToggle.x = objectToToggle.offScreen + 1000;
+		objectToToggle.x = objectToToggle.offScreen + 10000;
 	} else {
 		if(objectToToggle.offScreen == objectToToggle.x){
-			objectToToggle.x = objectToToggle.offScreen + 1000;
+			objectToToggle.x = objectToToggle.offScreen + 10000;
 		} else {
 			objectToToggle.x = objectToToggle.offScreen;
 		}
@@ -237,28 +187,29 @@ function toggleOffScreen(objectToToggle){
 }
 
 function createDialogBox(){
-	dialogueBox = h.rectangle(512, 150, 'white');
-	dialogueBoxText = h.text("", "20px puzzler", "black");
-	dialogueBoxNext = h.text(">>", "20px puzzler", "black");
-	dialogueBox.x = 0;
-	dialogueBox.y = 362;
-	dialogueBoxText.x = 0;
-	dialogueBoxText.y = 362;
-	dialogueBoxNext.y = 490;
-	dialogueBoxNext.x = 490;
-	h.player.dialogueBoxNext = dialogueBoxNext;	
-	h.player.dialogueBoxText = dialogueBoxText;
-	h.player.dialogueGroup = h.group(dialogueBox, dialogueBoxText, dialogueBoxNext);
+	var dialogBox = button(0, 415, "", 505, 110); 
+	dialogBox.Text = h.text("", "20px puzzler", "black");
+	dialogBox.Text.style = fontStyle;
+	dialogBox.Text.fontSize = 4;
+	dialogBox.Text.x = 24;
+	dialogBox.Text.y = 440;
+	dialogBox.Next = button(470, 470, "");
+	dialogBox.Tag = button(0, 390, "", 150, 28);
+	console.log(dialogBox.Tag.text);
+	dialogBox.Tag.text.fontSize = 4;
+	dialogBox.children = [dialogBox.Text, dialogBox.Next, dialogBox.Tag];
+	return dialogBox;
 }
 
 
-function recursiveTextFadeIn(finalText, dialogueBoxText, currentLength){
+function recursiveTextFadeIn(finalText, dialogueBox, currentLength){
 	if(currentLength > finalText.length){
-		toggleOffScreen(h.player.dialogueBoxNext);
+		console.log(dialogueBox.Next)
+		//toggleOffScreen(dialogueBox.Next);
 		return;
 	}
-	dialogueBoxText.text = finalText.substring(0, currentLength);
-	h.wait(30, () => recursiveTextFadeIn(finalText, dialogueBoxText, currentLength + 1));
+	dialogueBox.Text.text = finalText.substring(0, currentLength);
+	h.wait(30, () => recursiveTextFadeIn(finalText, dialogueBox, currentLength + 1));
 }
 
 
@@ -268,50 +219,74 @@ function initKeyboard() {
     upArrow = h.keyboard(38),
     rightArrow = h.keyboard(39),
     downArrow = h.keyboard(40),
+    wKey = h.keyboard(87),
+    sKey = h.keyboard(83),
+    dKey = h.keyboard(68),
+    aKey = h.keyboard(65),
     space = h.keyboard(32);
-	dialogue = h.keyboard(90);
-    h.player.tweening = false;
-	//h.camera = h.map;
+	dialogue = h.keyboard(67);
+
 
 	dialogue.press = () => {
 		for (i=0; i < h.map.triggers.length; i++) {
-			if (checkTriggerCollision(h.map.layer.triggers[i]) && !h.player.talking){
-				// rename less inane.
-				let dialogueArray = h.map.layer.triggers[i].dialog;
-				startDialog(dialogueArray);
+			let trigger = h.map.layer.triggers[i];
+			if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
+				startDialog(h.map.layer.triggers[i]);
 			}
 		}
 	}
 
+	/* Disabling for now because it's confusing.
     space.press = () => {
         h.menuGroup.toggle();
-    }
+    }*/
 
-    leftArrow.press = () => {
+    aKey.press = () => {
 		h.leftArrowPressed = true;
     };
-
+	aKey.release = () => {
+		h.leftArrowPressed = false;
+    };
+	leftArrow.press = () => {
+		h.leftArrowPressed = true;
+    };
 	leftArrow.release = () => {
 		h.leftArrowPressed = false;
     };
 
+    dKey.press = () => {
+		h.rightArrowPressed = true;
+	};
+	dKey.release = () => {
+		h.rightArrowPressed = false;
+	};	
     rightArrow.press = () => {
 		h.rightArrowPressed = true;
 	};
-
 	rightArrow.release = () => {
 		h.rightArrowPressed = false;
 	};
 
+    wKey.press = () => {
+		h.upArrowPressed = true;
+    };
+	wKey.release = () => {
+		h.upArrowPressed = false;
+    };
     upArrow.press = () => {
 		h.upArrowPressed = true;
     };
-
 	upArrow.release = () => {
 		h.upArrowPressed = false;
     };
-
-    downArrow.press = () => {
+	
+    sKey.press = () => {
+		h.downArrowPressed = true;
+    };
+	sKey.release = () => {
+		h.downArrowPressed = false;
+	}
+	downArrow.press = () => {
 		h.downArrowPressed = true;
     };
 	downArrow.release = () => {
@@ -413,9 +388,11 @@ function handleKeyboard(){
 
 
 function resolveMove(){
-	teleportCollisionCheck();
-	checkQuests();
-	rollAttackChance();
+	// This fixes being attacked while moving onto teleporters which looks glitchy.
+	if (!teleportCollisionCheck()){
+		checkQuests();
+		rollAttackChance();
+	}
 }
 
 
@@ -424,9 +401,11 @@ function teleportCollisionCheck() {
 		if(h.map.layer.triggers[i].type == "teleporterTile"){
 			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i])){
 				spawnTeleporterChoice(h.map.layer.triggers[i].destination);
+				return true;
 			}
 		}
 	}
+	return false;
 }
 
 
@@ -445,10 +424,10 @@ function initplayer() {
 	h.player.stat = stat;
 	h.player.skills = [];
 	h.player.quests = [];
+	h.player.tweening = false;
 	//initSkills();
 
-	h.player.doTurn = function(){
-		console.log("player turn");
+	h.player.doTurn = () =>{
 		currentEnemy = h.combatTurn.enemies[0];
 		currentEnemy.stat.set('health', 
 		currentEnemy.stat.get('health') - stat.get("strength"));
@@ -456,8 +435,8 @@ function initplayer() {
 		damageText.x = currentEnemy.x;
 		damageText.y = currentEnemy.y - 16;
 		popUp(damageText);
-	    h.shake(currentEnemy);
-	}
+		h.shake(currentEnemy);
+	};
 }
 
 
@@ -515,31 +494,6 @@ function levelUp(){
 }
 
 
-function initCombatTurn(){
-    combatTurn = {};
-	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
-	combatTurn.enemies = [currentFoe];
-    combatTurn.currentParticipant = 0;
-	combatTurn.nextTurn = function(){
-		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
-			combatTurn.currentParticipant = 0;
-		} else {
-			combatTurn.currentParticipant++;
-		}
-		if (currentFoe.stat.get("health") <= 0){
-			gainExperience(currentFoe.stat.get("experience"));
-			h.remove(combatTurn.enemies[0]);
-			combatTurn.enemies.pop();
-		}			
-		if (combatTurn.enemies.length < 1){
-			return false;
-		}
-		return true;
-	}
-	return combatTurn;
-}
-
-
 // Takes in an element, waits X time and then fades and removes it.
 function popUp(element, timeInNS=2000){
 	h.wait(timeInNS, function() {
@@ -552,25 +506,15 @@ function popUp(element, timeInNS=2000){
 
 
 function spawnChoiceButton(text1="Yes", text2="No"){
-	var menu = h.rectangle(100, 100, "white");
-	menu.x = 240;
-	menu.y = 256;
-	var title = h.text("Title", "12px puzzler", "black");
-	menu.addChild(title);
-
-	var button1Text = h.text(text1, "20px puzzler", "black");
-	button1Text.x = 256;
-	button1Text.y = 276;
-	button1Text.interact = true;
-
-	var button2Text = h.text(text2, "20px puzzler", "black");
-	button2Text.x = 256;
-	button2Text.y = 306;
-	button2Text.interact = true;
-
+	var menu = button(0, 100, "Would you like\n   to travel to?", 400, 80);
+	menu.interactive = false;
+	var button1Text = button(0, 40, text1);
+	menu.addChild(button1Text);
+	var button2Text = button(0, 80, text2);
+	menu.addChild(button2Text);
 	var container = {
 		"menu": menu,
-		"title": title,
+		"title": menu.text,
 		"button1": button1Text,
 		"button2": button2Text
 	}
@@ -581,8 +525,7 @@ function spawnChoiceButton(text1="Yes", text2="No"){
 function spawnTeleporterChoice(destination){
 	var choiceMenu = spawnChoiceButton();
 	var contents = [choiceMenu.menu, choiceMenu.title, choiceMenu.button1, choiceMenu.button2];
-
-	choiceMenu.title.text = "Would you like to travel to " + destination + "?";
+	choiceMenu.title.text = "Would you like to \ntravel to " + destination + "?";
     choiceMenu.button1.press = function() {
 		let map = findMapByName(destination);
         initMap(map);
@@ -604,9 +547,14 @@ function checkQuests(){
 }
 
 
-function cleanup(doomedArray){
-	for (i = 0; i < doomedArray.length; i = i+1){
-		doomedArray[i].x = doomedArray[i] + 20000;
-		h.remove(doomedArray[i]);
+function cleanup(input){
+	if(Array.isArray(input)){
+		for (i=0; i<input.length; i=i+1){
+			input[i].x += 20000;
+			h.remove(input[i]);
+		}
+	} else {
+		input.x += 20000;
+		h.remove(input);		
 	}
 }
