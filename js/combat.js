@@ -20,7 +20,7 @@ function getAttacked() {
     var combatMenu = spawnCombatMenu();
     h.combatTurn = initCombatTurn();
     updateHealth(combatMenu);
-    combatMenu.runButton.press = () =>  {
+    /*combatMenu.runButton.press = () =>  {
         cleanupCombat(combatMenu);
         for(var i=0; i<h.combatTurn.enemies.length; i++){
             h.remove(combatTurn.enemies[i]);
@@ -41,18 +41,20 @@ function getAttacked() {
 
     combatMenu.skillsButton.press = () =>  {
 		createListMenu(h.player.skills);
-    }
+    }*/
 }
 
 
 function spawnCombatMenu(){
 	var menu = h.rectangle(500, 250, color.background);
-	menu.runButton = button(0, 200, "Run");
+	/*menu.runButton = button(0, 200, "Run");
 	menu.attackButton = button(100, 200, "Attack");
 	menu.skillsButton = button(255, 200, "Skills");
 	menu.skillsButton.interact = false;
 	menu.skillsButton.alpha = 0.5;
-
+	*/
+	//menu.skillsMenu= skillsMenu();
+	
 	menu.enemyName = h.text("Enemy Name:\n");
 	menu.enemyName.style = fontStyle;
     menu.enemyName.y = 20;
@@ -68,7 +70,7 @@ function spawnCombatMenu(){
 	menu.playerHealth.y = 50;
 
 	var combatLog = new createDialogBox();
-	menu.addChild(menu.runButton, menu.attackButton, menu.skillsButton, menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog);
+	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog);
 	return menu;
 }
 
