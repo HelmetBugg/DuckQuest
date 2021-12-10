@@ -68,11 +68,7 @@ function spawnCombatMenu(){
 	menu.playerHealth.y = 50;
 
 	var combatLog = new createDialogBox();
-
-	menu.children = [menu.runButton, menu.attackButton, menu.skillsButton, menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog];
-
-	
-
+	menu.addChild(menu.runButton, menu.attackButton, menu.skillsButton, menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog);
 	return menu;
 }
 
@@ -90,11 +86,8 @@ function initCombatTurn(){
 		}
 		if (currentFoe.stat.get("health") <= 0){
 			gainExperience(currentFoe.stat.get("experience"));
-			//var tween = h.fadeOut(combatTurn.enemies[0]);
-			//tween.onComplete = () => {
-				h.remove(combatTurn.enemies[0]);
-				combatTurn.enemies.pop();
-			//}
+			h.remove(combatTurn.enemies[0]);
+			combatTurn.enemies.pop();
 		}			
 		if (combatTurn.enemies.length < 1){
 			return false;
@@ -106,12 +99,8 @@ function initCombatTurn(){
 
 
 function cleanupCombat(combatMenu){
-	//var tween = h.fadeOut(combatMenu, 8);
-	//tween.onComplete = () => {
-		cleanup(combatMenu.children);
-		cleanup(combatMenu);
-		h.inCombat = false;
-		checkQuests();
-		
-	//}
+	cleanup(combatMenu.children);
+	cleanup(combatMenu);
+	h.inCombat = false;
+	checkQuests();
 }

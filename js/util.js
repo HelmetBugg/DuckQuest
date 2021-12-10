@@ -186,18 +186,20 @@ function toggleOffScreen(objectToToggle){
 	}
 }
 
+
 function createDialogBox(){
-	var dialogBox = button(0, 415, "", 505, 110); 
+	var dialogBox = button(0, 415, "", 505, 110);
 	dialogBox.Text = h.text("", "20px puzzler", "black");
 	dialogBox.Text.style = fontStyle;
 	dialogBox.Text.fontSize = 4;
-	dialogBox.Text.x = 24;
-	dialogBox.Text.y = 440;
-	dialogBox.Next = button(470, 470, "");
-	dialogBox.Tag = button(0, 390, "", 150, 28);
-	console.log(dialogBox.Tag.text);
+	dialogBox.Text.x = 0;
+	dialogBox.Text.y = -15;
+	//dialogBox.Text.text = "test";
+	dialogBox.Text.pivotX = dialogBox.Text.pivotY = 0.5;
+	dialogBox.Next = button(dialogBox.width/2 - 50, dialogBox.height/2 - 40, "");
+	dialogBox.Tag = button(-dialogBox.width/2, -dialogBox.height/2 - 30, "", 150, 28);
 	dialogBox.Tag.text.fontSize = 4;
-	dialogBox.children = [dialogBox.Text, dialogBox.Next, dialogBox.Tag];
+	dialogBox.addChild(dialogBox.Text, dialogBox.Next, dialogBox.Tag);
 	return dialogBox;
 }
 
