@@ -554,4 +554,8 @@ function shuffleArray(array) {
 	newArray = array;
 	newArray.sort(() => Math.random() - 0.5);
 	return newArray;
-  }
+}
+
+function sleep (time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+}

@@ -53,3 +53,10 @@ function Duster() {
 		console.log("dust");	
 	}
 }
+
+function Run(){
+	cleanupCombat(h.combatTurn.menu);
+	for(var i=0; i<h.combatTurn.enemies.length; i++){
+		h.remove(h.combatTurn.enemies[i]);
+	}
+}

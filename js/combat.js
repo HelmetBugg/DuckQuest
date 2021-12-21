@@ -6,9 +6,9 @@ function updateHealth(menu){
 
 
 function damageAnimation(){
-    var damageFlash = h.rectangle(500, 250, 'red');
+    var damageFlash = h.rectangle(500, 400, 'red');
     damageFlash.alpha = h.player.stat.get("current_health") / h.player.stat.get("max_health");
-    tween = h.fadeOut(damageFlash, 10);    
+    tween = h.fadeOut(damageFlash, 60);    
     tween.onComplete = () => {
         h.remove(damageFlash);       
     }
@@ -21,19 +21,12 @@ function getAttacked() {
     h.combatTurn = initCombatTurn(combatMenu);
 	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
-    /*combatMenu.runButton.press = () =>  {
-        cleanupCombat(combatMenu);
-        for(var i=0; i<h.combatTurn.enemies.length; i++){
-            h.remove(combatTurn.enemies[i]);
-        }
-    }*/
 }
 
 
 function spawnCombatMenu(){
-	var menu = h.rectangle(500, 350, color.background);
+	var menu = h.rectangle(500, 400, color.background);
 	menu.skillsMenu = skillsMenu();
-	//menu.skillsMenu.drawSkills();
 	
 	menu.enemyName = h.text("Enemy Name:\n");
 	menu.enemyName.style = fontStyle;
@@ -49,8 +42,8 @@ function spawnCombatMenu(){
 	menu.playerHealth.style = fontStyle;
 	menu.playerHealth.y = 30;
 
-	var combatLog = new createDialogBox();
-	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, combatLog);
+	//var combatLog = new createDialogBox();
+	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth);
 	return menu;
 }
 
@@ -60,6 +53,8 @@ function initCombatTurn(menu){
 	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
 	combatTurn.enemies = [currentFoe];
     combatTurn.currentParticipant = 0;
+	combatTurn.menu = menu;
+	// The Combat Loop.
 	combatTurn.nextTurn = function(){
 		updateHealth(menu);
 		// Check if battle is over.
@@ -69,45 +64,53 @@ function initCombatTurn(menu){
 			cleanupCombat(menu);
 			return false;
 		}
+
+		currentFoe.doTurn();
+		updateHealth(menu);
+
+		if (h.player.stat.get("current_health") <= 0) {
+			h.state = gameOver;
+		}
 		return true;
 	}
 	return combatTurn;
 }
 
 
-function cleanupCombat(combatMenu){
-	combatMenu.skillsMenu.clear();
-	cleanup(combatMenu.children);
-	cleanup(combatMenu);
-	h.inCombat = false;
-	checkQuests();
-}
-
 function skillsMenu(){
 	var skillDeck = checkSkills(h.player.stat.get("level"));
+	var runSkill = createSkill("Run","Flee to fight again another day.", 0, Run, 0, 100);
 	var menu = h.rectangle(1, 1, color.background);
-	menu.x = -50;
+	menu.x = -25;
 
 	menu.drawSkills = function() {
 		// Shuffle and pick only 3 skills a round.
 		var skills = shuffleArray(skillDeck).slice(0, 3);
+		skills.push(runSkill);
 		for (var i=0; i<skills.length; i++) {
 			var desc = skills[i].name + " DMG:"+ skills[i].damage + " CHANCE:" + skills[i].accuracy + "%";
-			var btn = button(50, 175 + (50 * i), desc);
+			var btn = button(-500, 185 + (50 * i), desc);
+			h.slide(btn, h.canvas.width/2, btn.y, 30, "decelerationCubed");
 			menu.addChild(btn);
+
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;
+			btn.name = skills[i].name;
 			btn.press = function() {
 				menu.clear();
 				this.interactive = false;
 				this.effect();
-				// Need to come back and fix enemies if we are only going to do singles.
-				var enemy = h.combatTurn.enemies[0];
-				enemy.stat.set("health", enemy.stat.get("health") - this.damage); 
-				h.shake(enemy, 0.09, true);
-				var combatNotDone = combatTurn.nextTurn();
-				if (combatNotDone){
-					menu.drawSkills(enemy);
+				if(this.name != "Run"){
+					// Need to come back and fix enemies if we are only going to do singles.
+					var enemy = h.combatTurn.enemies[0];
+					enemy.stat.set("health", enemy.stat.get("health") - this.damage); 
+					h.shake(enemy, 0.09, true);
+					sleep(1500).then(() => {
+						var combatNotDone = combatTurn.nextTurn();
+						if (combatNotDone){
+							menu.drawSkills(enemy);
+						}
+					});
 				}
 			}
 		}
@@ -122,4 +125,13 @@ function skillsMenu(){
 	}
 
 	return menu;
+}
+
+
+function cleanupCombat(combatMenu){
+	combatMenu.skillsMenu.clear();
+	cleanup(combatMenu.children);
+	cleanup(combatMenu);
+	h.inCombat = false;
+	checkQuests();
 }
