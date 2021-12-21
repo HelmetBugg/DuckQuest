@@ -25,9 +25,9 @@ function initSkills(){
   	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 2, 95),
 	    createSkill("Shield","A basic defensive move halving enemy damage", 1, Float, 1, 100),
 	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 4, 85),
-		createSkill("Peck","A basic melee attack using a beak", 2, Peck, 2, 95),
-	    createSkill("Float","A basic defensive move halving enemy damage", 5, Float, 0, 100),
-	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 7, Duster, 4, 85)
+		createSkill("Peck","A basic melee attack using a beak", 1, Peck, 2, 95),
+	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 0, 100),
+	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 4, 85)
 	];
 }
 
@@ -52,6 +52,4 @@ function Duster() {
 	if (chance > 4){
 		console.log("dust");	
 	}
-	
-
 }

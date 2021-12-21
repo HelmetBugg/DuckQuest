@@ -548,3 +548,10 @@ function cleanup(input){
 		h.remove(input);		
 	}
 }
+
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffleArray(array) {
+	newArray = array;
+	newArray.sort(() => Math.random() - 0.5);
+	return newArray;
+  }

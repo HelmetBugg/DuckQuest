@@ -18,45 +18,22 @@ function damageAnimation(){
 function getAttacked() {
 	h.inCombat = true;
     var combatMenu = spawnCombatMenu();
-    h.combatTurn = initCombatTurn();
+    h.combatTurn = initCombatTurn(combatMenu);
+	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
     /*combatMenu.runButton.press = () =>  {
         cleanupCombat(combatMenu);
         for(var i=0; i<h.combatTurn.enemies.length; i++){
             h.remove(combatTurn.enemies[i]);
         }
-    }
-	
-    combatMenu.attackButton.press = () =>  {
-		this.interactive = false;
-        updateHealth(combatMenu);
-		h.player.doTurn();
-		updateHealth(combatMenu);
-		stillFighting = combatTurn.enemies[0].doTurn();		
-		if (!stillFighting){
-			cleanupCombat(combatMenu);
-		}
-		this.interactive = true;
-	}
-
-    combatMenu.skillsButton.press = () =>  {
-		createListMenu(h.player.skills);
     }*/
 }
 
 
 function spawnCombatMenu(){
-	var menu = h.rectangle(500, 250, color.background);
-
-
-
-	/*menu.runButton = button(0, 200, "Run");
-	menu.attackButton = button(100, 200, "Attack");
-	menu.skillsButton = button(255, 200, "Skills");
-	menu.skillsButton.interact = false;
-	menu.skillsButton.alpha = 0.5;
-	*/
-	menu.skillsMenu= skillsMenu();
+	var menu = h.rectangle(500, 350, color.background);
+	menu.skillsMenu = skillsMenu();
+	//menu.skillsMenu.drawSkills();
 	
 	menu.enemyName = h.text("Enemy Name:\n");
 	menu.enemyName.style = fontStyle;
@@ -78,23 +55,18 @@ function spawnCombatMenu(){
 }
 
 
-function initCombatTurn(){
+function initCombatTurn(menu){
     combatTurn = {};
 	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
 	combatTurn.enemies = [currentFoe];
     combatTurn.currentParticipant = 0;
 	combatTurn.nextTurn = function(){
-		if (combatTurn.currentParticipant >= combatTurn.enemies.length){
-			combatTurn.currentParticipant = 0;
-		} else {
-			combatTurn.currentParticipant++;
-		}
+		updateHealth(menu);
+		// Check if battle is over.
 		if (currentFoe.stat.get("health") <= 0){
-			gainExperience(currentFoe.stat.get("experience"));
 			h.remove(combatTurn.enemies[0]);
-			combatTurn.enemies.pop();
-		}			
-		if (combatTurn.enemies.length < 1){
+			gainExperience(currentFoe.stat.get("experience"));
+			cleanupCombat(menu);
 			return false;
 		}
 		return true;
@@ -104,6 +76,7 @@ function initCombatTurn(){
 
 
 function cleanupCombat(combatMenu){
+	combatMenu.skillsMenu.clear();
 	cleanup(combatMenu.children);
 	cleanup(combatMenu);
 	h.inCombat = false;
@@ -111,20 +84,42 @@ function cleanupCombat(combatMenu){
 }
 
 function skillsMenu(){
-	
-	var skills = checkSkills(h.player.stat.get("level"));
+	var skillDeck = checkSkills(h.player.stat.get("level"));
 	var menu = h.rectangle(1, 1, color.background);
 	menu.x = -50;
 
-	for (i=0; i <  skills.length; i++) {
-		var desc = skills[i].name + " DMG:"+ skills[i].damage + " CHANCE:" + skills[i].accuracy;
-		menu.addChild(button(50,175+50*i, desc));
-		
+	menu.drawSkills = function() {
+		// Shuffle and pick only 3 skills a round.
+		var skills = shuffleArray(skillDeck).slice(0, 3);
+		for (var i=0; i<skills.length; i++) {
+			var desc = skills[i].name + " DMG:"+ skills[i].damage + " CHANCE:" + skills[i].accuracy + "%";
+			var btn = button(50, 175 + (50 * i), desc);
+			menu.addChild(btn);
+			btn.effect = skills[i].effect;
+			btn.damage = skills[i].damage;
+			btn.press = function() {
+				menu.clear();
+				this.interactive = false;
+				this.effect();
+				// Need to come back and fix enemies if we are only going to do singles.
+				var enemy = h.combatTurn.enemies[0];
+				enemy.stat.set("health", enemy.stat.get("health") - this.damage); 
+				h.shake(enemy, 0.09, true);
+				var combatNotDone = combatTurn.nextTurn();
+				if (combatNotDone){
+					menu.drawSkills(enemy);
+				}
+			}
+		}
+	}	
 
-		
-		
+	menu.clear = function(){
+		//cleanup(menu.children);
+		for (var i=0; i<menu.children.length; i++) {
+			menu.children[i].x += 5000;
+		}
+		menu.children = [];
 	}
 
-
-
+	return menu;
 }

@@ -17,17 +17,17 @@ function enemy(name, sprite, health, damage) {
     sprite.name = name;
     sprite.stat = stat;
     // Highly convuluted, need to come back and fix this up.
-    sprite.doTurn = function () {
-        if (h.combatTurn.enemies[0].stat.get("health") <= 0) {
+    sprite.doTurn = async function () {
+        /*if (h.combatTurn.enemies[0].stat.get("health") <= 0) {
             gainExperience(currentFoe.stat.get("experience"));
             h.remove(combatTurn.enemies[0]);
             combatTurn.enemies.pop();
             return false;
-        }
-        h.shake(this, 0.05, true);
+        }*/
+        //h.shake(this, 0.05, true);
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
-            damageAnimation();
+            //damageAnimation();
             h.player.stat.set('current_health', currentHP);
             if (currentHP <= 0) {
                 h.state = gameOver;
