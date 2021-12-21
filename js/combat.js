@@ -98,14 +98,15 @@ function skillsMenu(){
 			btn.name = skills[i].name;
 			btn.press = function() {
 				menu.clear();
-				this.interactive = false;
+				var attack = h.text("You hit for " + this.damage, "16px Press Start 2P", "red");
+				popUp(attack, 1800);
 				this.effect();
 				if(this.name != "Run"){
 					// Need to come back and fix enemies if we are only going to do singles.
 					var enemy = h.combatTurn.enemies[0];
 					enemy.stat.set("health", enemy.stat.get("health") - this.damage); 
 					h.shake(enemy, 0.09, true);
-					sleep(1500).then(() => {
+					sleep(1800).then(() => {
 						var combatNotDone = combatTurn.nextTurn();
 						if (combatNotDone){
 							menu.drawSkills(enemy);

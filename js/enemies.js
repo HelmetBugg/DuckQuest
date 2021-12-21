@@ -23,16 +23,12 @@ function enemy(name, sprite, health, damage) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
 
             damageAnimation();
-            attack = h.text("Enemy hit for " + stat.get('strength'), "25px puzzler", "red");
-			popUp(attack, 2000);
-
+            var attack = h.text("Enemy hit for " + stat.get('strength'), "16px Press Start 2P", "red");
+			popUp(attack, 1800);
             h.player.stat.set('current_health', currentHP);
-            if (currentHP <= 0) {
-                h.state = gameOver;
-            }
         } else {
-            miss = h.text("Enemy has missed!", "25px puzzler", "red");
-			popUp(miss, 2000);
+            var miss = h.text("Enemy has missed!", "16px Press Start 2P", "red");
+			popUp(miss, 1800);
         }
         return true;
     }
