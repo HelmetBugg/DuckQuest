@@ -94,26 +94,36 @@ function skillsMenu(){
 		var skills = shuffleArray(skillDeck).slice(0, 3);
 		skills.push(runSkill);
 		for (var i=0; i<skills.length; i++) {
-			var desc = skills[i].name + "\n\nDMG:"+ skills[i].damage + "\nCHANCE:\n" + skills[i].accuracy + "%";
+			var desc = skills[i].name + "" + "\n\nCHANCE:\n" + skills[i].accuracy + "%" + "\n\nDMG:"+ skills[i].damage + "+" + h.player.stat.get("strength"); ;
 			var btn = button(-500, 250, desc, 155, 180);
 			h.slide(btn, 125+(100*i), h.canvas.height * 0.55, 30, "decelerationCubed");
 			menu.addChild(btn);
-
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;
 			btn.name = skills[i].name;
 			btn.desc = skills[i].desc;
+			btn.accuracy = skills[i].accuracy;
+
 			btn.press = function() {
 				menu.clear();
-				/*var attack = h.text("You hit for " + this.damage, "16px Press Start 2P", "red");
-				popUp(attack, 1800);*/
-				h.combatTurn.menu.combatLog.Text.text = "You hit for "+ this.damage;
-				this.effect();
-				if(this.name != "Run"){
-					// Need to come back and fix enemies if we are only going to do singles.
-					var enemy = h.combatTurn.enemies[0];
-					enemy.stat.set("health", enemy.stat.get("health") - this.damage); 
-					h.shake(enemy, 0.09, true);
+				var successful = rollHitChance(this.accuracy);
+				if(successful){
+					this.effect();
+					h.combatTurn.menu.combatLog.Text.text = "You hit for " + (this.damage + h.player.stat.get("strength"));
+					if(this.name != "Run"){
+						// Need to come back and fix enemies if we are only going to do singles.
+						var enemy = h.combatTurn.enemies[0];
+						enemy.stat.set("health", enemy.stat.get("health") - (this.damage + h.player.stat.get("strength"))); 
+						h.shake(enemy, 0.09, true);
+						sleep(1800).then(() => {
+							var combatNotDone = h.combatTurn.nextTurn();
+							if (combatNotDone){
+								menu.drawSkills(enemy);
+							}
+						});
+					}
+				} else {
+					h.combatTurn.menu.combatLog.Text.text = "Your attack missed.";
 					sleep(1800).then(() => {
 						var combatNotDone = h.combatTurn.nextTurn();
 						if (combatNotDone){

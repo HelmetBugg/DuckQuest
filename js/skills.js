@@ -22,12 +22,14 @@ function checkSkills(level){
 
 function initSkills(){
 	h.globalSkills = [
-  	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 2, 95),
-	    createSkill("Shield","A basic defensive move halving enemy damage", 1, Float, 1, 100),
-	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 4, 85),
-		createSkill("Peck","A basic melee attack using a beak", 1, Peck, 2, 95),
-	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 0, 100),
-	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 4, 85)
+  	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 4, 95),
+	    createSkill("Shield","A basic defensive move halving enemy damage", 1, Float, 2, 100),
+	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 8, 85),
+	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 2, 100),
+	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
+	    createSkill("Sword\nAttack","A basic defensive move halving enemy damage", 2, Float, 2, 90),
+	    createSkill("Feign","Low power attack that never misses.", 3, Float, 2, 100),
+	    createSkill("Rage","Damages extra based on current health.", 3, Float, 2, 80)
 	];
 }
 
@@ -59,4 +61,12 @@ function Run(){
 	for(var i=0; i<h.combatTurn.enemies.length; i++){
 		h.remove(h.combatTurn.enemies[i]);
 	}
+}
+
+function rollHitChance(accuracy){
+	var outcome = h.randomInt(0, 100);
+	if(accuracy >= outcome){
+		return true;
+	}
+	return false;
 }

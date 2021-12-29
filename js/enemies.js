@@ -22,14 +22,9 @@ function enemy(name, sprite, health, damage) {
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
             damageAnimation();
-            /*var attack = h.text("Enemy hit for " + stat.get('strength'), "16px Press Start 2P", "red");
-			popUp(attack, 1800);
-            */
             h.combatTurn.menu.combatLog.Text.text = "Enemy hit for "+ stat.get('strength');
             h.player.stat.set('current_health', currentHP);
         } else {
-            /*var miss = h.text("Enemy has missed!", "16px Press Start 2P", "red");
-			popUp(miss, 1800);*/
             h.combatTurn.menu.combatLog.Text.text = "Enemy missed!";
         }
         return true;
