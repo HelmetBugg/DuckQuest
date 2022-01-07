@@ -89,7 +89,7 @@ function skillsMenu(){
 	var menu = h.rectangle(1, 1, color.background);
 	menu.x = -25;
 	menu.y = 150;
-
+	menu.runnable = true;
 	menu.drawSkills = function() {
 		// Shuffle and pick only 3 skills a round. Plus the run skill!
 		var skills = shuffleArray(skillDeck).slice(0, 3);

@@ -50,6 +50,7 @@ function AlligatorBossFight(){
         "index": 112
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
+    combatMenu.skillsMenu.runnable = false;
 	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
