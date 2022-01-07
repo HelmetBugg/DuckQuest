@@ -4,7 +4,6 @@ function updateHealth(menu){
     menu.enemyName.text = h.combatTurn.enemies[0].name;
 }
 
-
 function damageAnimation(){
     var damageFlash = h.rectangle(512, 512, 'red');
     damageFlash.alpha = h.player.stat.get("current_health") / h.player.stat.get("max_health");
@@ -14,7 +13,6 @@ function damageAnimation(){
     }
 	return tween;
 }
-
 
 function getAttacked() {
 	h.inCombat = true;
@@ -92,15 +90,15 @@ function skillsMenu(){
 	menu.runnable = true;
 	menu.drawSkills = function() {
 		// Shuffle and pick only 3 skills a round. Plus the run skill!
-		
 		var skills = shuffleArray(skillDeck).slice(0, 3);
 		if(menu.runnable){
 			skills.push(runSkill);
 		};
+
 		for (var i=0; i<skills.length; i++) {
 			var desc = skills[i].name + "" + "\n\nCHANCE:\n" + skills[i].accuracy + "%" + "\n\nDMG:"+ skills[i].damage + "+" + h.player.stat.get("strength"); ;
 			var btn = button(-500, 250, desc, 155, 180);
-			h.slide(btn, 125+(100*i), h.canvas.height * 0.55, 30, "decelerationCubed");
+			h.slide(btn, 105+(120*i), h.canvas.height * 0.55, 3, "decelerationCubed");
 			menu.addChild(btn);
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;
