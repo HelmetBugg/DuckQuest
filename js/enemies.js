@@ -11,30 +11,21 @@ function enemy(name, sprite, health, damage) {
     stat.set("max_health", health);
     stat.set("intelligence", 5);
     stat.set("experience", 5);
-    sprite.scale.x = sprite.scale.y = 5;
-    sprite.x = 335;
-    sprite.y = 95;
+    sprite.scale.x = sprite.scale.y = 6;
+    sprite.pixotX = 1;
+    sprite.x = 330;
+    sprite.y = 75;
     sprite.name = name;
     sprite.stat = stat;
     // Highly convuluted, need to come back and fix this up.
     sprite.doTurn = function () {
-        if (h.combatTurn.enemies[0].stat.get("health") <= 0) {
-            gainExperience(currentFoe.stat.get("experience"));
-            h.remove(combatTurn.enemies[0]);
-            combatTurn.enemies.pop();
-            return false;
-        }
-        h.shake(this, 0.05, true);
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health") - stat.get('strength');
             damageAnimation();
+            h.combatTurn.menu.combatLog.Text.text = "Enemy hit for "+ stat.get('strength');
             h.player.stat.set('current_health', currentHP);
-            if (currentHP <= 0) {
-                h.state = gameOver;
-            }
         } else {
-            miss = h.text("Enemy has missed!", "25px puzzler", "red");
-			popUp(miss, 200);
+            h.combatTurn.menu.combatLog.Text.text = "Enemy missed!";
         }
         return true;
     }
