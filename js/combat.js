@@ -92,8 +92,11 @@ function skillsMenu(){
 	menu.runnable = true;
 	menu.drawSkills = function() {
 		// Shuffle and pick only 3 skills a round. Plus the run skill!
+		
 		var skills = shuffleArray(skillDeck).slice(0, 3);
-		skills.push(runSkill);
+		if(menu.runnable){
+			skills.push(runSkill);
+		};
 		for (var i=0; i<skills.length; i++) {
 			var desc = skills[i].name + "" + "\n\nCHANCE:\n" + skills[i].accuracy + "%" + "\n\nDMG:"+ skills[i].damage + "+" + h.player.stat.get("strength"); ;
 			var btn = button(-500, 250, desc, 155, 180);
