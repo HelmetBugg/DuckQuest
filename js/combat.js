@@ -19,11 +19,10 @@ function damageAnimation(){
 function getAttacked() {
 	h.inCombat = true;
     var combatMenu = spawnCombatMenu();
-    h.combatTurn = initCombatTurn(combatMenu);
+    h.combatTurn = initCombatTurn(combatMenu, undefined);
 	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
-
 
 function spawnCombatMenu(){
 	var menu = h.rectangle(512, 512, color.background);
@@ -55,9 +54,11 @@ function spawnCombatMenu(){
 }
 
 
-function initCombatTurn(menu){
+function initCombatTurn(menu, currentFoe){
     var combatTurn = {};
-	currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
+	if (currentFoe == undefined){
+		currentFoe = createEnemy(h.map.layer.enemies[h.randomInt(0,h.map.layer.enemies.length-1)]);
+	} 
 	combatTurn.enemies = [currentFoe];
     combatTurn.currentParticipant = 0;
 	combatTurn.menu = menu;

@@ -38,3 +38,18 @@ function createGoose() {
     return enemy("goose", "res/images/goose.png", 10, 10, 10, 10);
 }
 
+
+function AlligatorBossFight(){
+    h.inCombat = true;
+    var combatMenu = spawnCombatMenu();
+    var boss = new createEnemy({
+        "name": "Al-ligator",
+        "sprite": "res/images/Player0.png",
+        "health": 250,
+        "damage": 40,
+        "index": 112
+    });
+    h.combatTurn = initCombatTurn(combatMenu, boss);
+	combatMenu.skillsMenu.drawSkills();
+    updateHealth(combatMenu);
+}
