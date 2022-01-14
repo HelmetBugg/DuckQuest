@@ -153,28 +153,28 @@ maps = [{
         "dialog": [],
         "spriteSheet" : "res/images/Player0.png"
     },{
-            "id": 6,
-            "name": "teleporterTown",
-            "rotation": 0,
-            "type": "teleporterTile",
-            "visible": true,
-            "x": 496,
-            "y": 288,
-            "width": 16,
-            "height": 16,
-            "destination": "Pondville"
-        },{
-            "id": 6,
-            "name": "teleporterDungeon",
-            "rotation": 0,
-            "type": "teleporterTile",
-            "visible": true,
-            "x": 208,
-            "y": 64,
-            "width": 16,
-            "height": 16,
-            "destination": "Alligator Hideout"
-        }
+        "id": 6,
+        "name": "teleporterTown",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 496,
+        "y": 288,
+        "width": 16,
+        "height": 16,
+        "destination": "Pondville"
+     },{
+        "id": 6,
+        "name": "teleporterDungeon",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 208,
+        "y": 64,
+        "width": 16,
+        "height": 16,
+        "destination": "Alligator Hideout"
+    }
     ]
 },{
     "name": "map_2",
@@ -218,7 +218,7 @@ maps = [{
             "x": 432,
             "y": 16,
             "dialog": ["lizard_dialogue_1", "lizard_dialogue_2", "lizard_dialogue_3"]
-        }, {
+        },{
             "id": 4,
             "name": "sage_npc",
             "rotation": 0,
@@ -229,7 +229,7 @@ maps = [{
             "x": 370,
             "y": 320,
             "dialog": ["Hail, traveler!", "I was wondering if I could ask of you a favor?\nRecently the number of local slimes has been increasing.Could I trouble you to slay some?", startKillThreeSlimesQuest, 'Zounds! There are still good people in this realm.']
-        }, {
+        },{
             "height": 48.5148514851485,
             "id": 6,
             "name": "teleporterOne",
@@ -283,8 +283,8 @@ maps = [{
         "name": "Bossman",
         "type": "npc",
         "visible": true,
-        "x": 336,
-        "y": 272,
+        "x": 480,
+        "y": 352,
         "width": 16,
         "height": 16,        
         "dialog": ["...hahaha. Wait who is this guy?", "You've come to challenge.. ME?", AlligatorBossFight],
@@ -294,11 +294,33 @@ maps = [{
         "name": "Swampy",
         "type": "npc",
         "visible": true,
-        "x": 528,
-        "y": 464,
+        "x": 576,
+        "y": 544,
         "width": 16,
         "height": 16,        
         "dialog": ["zzzZZZzzz.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Stinky",
+        "type": "npc",
+        "visible": true,
+        "x": 560,
+        "y": 400,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["Move along little duck.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Butch",
+        "type": "npc",
+        "visible": true,
+        "x": 320,
+        "y": 336,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["Move along little duck.."],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,
@@ -306,8 +328,8 @@ maps = [{
         "rotation": 0,
         "type": "teleporterTile",
         "visible": true,
-        "x": 576,
-        "y": 576,
+        "x": 560,
+        "y": 672,
         "width": 16,
         "height": 16,
         "destination": "Overworld"
