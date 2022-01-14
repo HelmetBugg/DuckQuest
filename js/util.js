@@ -166,8 +166,7 @@ function startDialog(trigger){
 				dialogBox.Text.text = dialogueArray[dialogueIncrement];
 			// Else it's a function and we invoke it.
 			}else{
-				console.log(h.dialogueIncrement);
-				dialogueArray[h.dialogueIncrement]();
+				dialogueArray[dialogueIncrement]();
 			}
 			dialogueIncrement++;
 		}
