@@ -1,7 +1,6 @@
 function pauseMenu() {
 	var menu = h.rectangle(200, 500, "white");
 	menuTitle = h.text("Pause", "38px puzzler", "black");
-
 	statusButton = h.text("Status", "30px puzzler", "black");
 	statusButton.x = 50; 
 	statusButton.y = 50; 
@@ -173,6 +172,7 @@ function startDialog(trigger){
 	}
 }
 
+
 function toggleOffScreen(objectToToggle){
 	if(typeof objectToToggle.offScreen == 'undefined'){
 		objectToToggle.offScreen = objectToToggle.x;
@@ -217,7 +217,6 @@ function initKeyboard() {
     space = h.keyboard(32);
 	dialogue = h.keyboard(67);
 
-
 	dialogue.press = () => {
 		for (i=0; i < h.map.triggers.length; i++) {
 			let trigger = h.map.layer.triggers[i];
@@ -226,12 +225,10 @@ function initKeyboard() {
 			}
 		}
 	}
-
 	/* Disabling for now because it's confusing.
     space.press = () => {
         h.menuGroup.toggle();
     }*/
-
     aKey.press = () => {
 		h.leftArrowPressed = true;
     };
@@ -412,6 +409,11 @@ function initplayer() {
 	stat.set("max_health", 100);
 	stat.set("current_health", 50);
 	stat.set("intelligence", 5);
+	h.player.killed = {
+		"total": 0,
+		"slimes": 0,
+		"Aligatorboss": 0
+	};
 	h.player.stat = stat;
 	h.player.skills = [];
 	h.player.quests = [];
@@ -437,7 +439,6 @@ function gainExperience(experience){
 	experienceGainText.style = fontStyle;
 	experienceGainBox.putCenter(experienceGainText);
 	popUp(h.group(experienceGainBox, experienceGainText));
-
 	if (h.player.stat.get("experience") >= h.player.stat.get("next_level")){
 		levelUp();
 	}
@@ -549,12 +550,14 @@ function cleanup(input){
 	}
 }
 
+
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
 	newArray = array;
 	newArray.sort(() => Math.random() - 0.5);
 	return newArray;
 }
+
 
 function sleep (time) {
 	return new Promise((resolve) => setTimeout(resolve, time));

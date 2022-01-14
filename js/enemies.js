@@ -1,16 +1,18 @@
 function createEnemy(jsoninput){
 	filmStrip = h.filmstrip(jsoninput.sprite, 16, 16);
 	sprite = h.sprite(filmStrip[jsoninput.index]);
-	return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage);
+	return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage, jsoninput.type);
 }
 
-function enemy(name, sprite, health, damage) {
+
+function enemy(name, sprite, health, damage, type) {
     let stat = new Map();
     stat.set("strength", damage);
     stat.set("health", health);
     stat.set("max_health", health);
     stat.set("intelligence", 5);
     stat.set("experience", 5);
+    sprite.type = type;
     sprite.scale.x = sprite.scale.y = 6;
     sprite.pixotX = 1;
     sprite.x = 330;
@@ -31,7 +33,6 @@ function enemy(name, sprite, health, damage) {
     }
     return sprite;
 }
-
 
 
 function createGoose() {

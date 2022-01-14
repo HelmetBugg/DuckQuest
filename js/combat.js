@@ -67,6 +67,7 @@ function initCombatTurn(menu, currentFoe){
 		if (currentFoe.stat.get("health") <= 0){
 			h.remove(combatTurn.enemies[0]);
 			gainExperience(currentFoe.stat.get("experience"));
+			updateKills(currentFoe);
 			cleanupCombat(menu);
 			return false;
 		}
@@ -78,6 +79,13 @@ function initCombatTurn(menu, currentFoe){
 		return true;
 	}
 	return combatTurn;
+}
+
+function updateKills(currentFoe){
+	h.player.killed.total += 1;
+	if(currentFoe.type == "slime"){
+		h.player.killed.slimes += 1;
+	}
 }
 
 

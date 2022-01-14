@@ -63,7 +63,7 @@ maps = [{
         "y": 464,
         "width": 16,
         "height": 16,        
-        "dialog": ["Fa-lalala~", "Tra-lalala", "OH, did you enjoy my song?", "[Choice goes here]"],
+        "dialog": ["Fa-lalala~", "Tra-lalala", "OH, did you enjoy my song?", "Kill three slimes for me and I'll sing you something new!", startKillThreeSlimesQuest],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 11,
@@ -109,36 +109,42 @@ maps = [{
             "sprite": "res/images/Slime0.png",
             "health": 20,
             "damage": 5,
+            "type": "slime",
             "index": 9
         },{
             "name": "Slimeer",
             "sprite": "res/images/Slime0.png",
             "health": 30,
             "damage": 5,
+            "type": "slime",
             "index": 8
         },{
             "name": "Clyde",
             "sprite": "res/images/Slime0.png",
             "health": 25,
             "damage": 5,
+            "type": "slime",
             "index": 10
         },{
             "name": "Thrombosteve",
             "sprite": "res/images/Slime0.png",
             "health": 35,
             "damage": 6,
+            "type": "slime",
             "index": 5
         },{
             "name": "Dry Eye Guy",
             "sprite": "res/images/Slime0.png",
             "health": 30,
             "damage": 5,
+            "type": "slime",
             "index": 16
         },{
             "name": "Green Shite",
             "sprite": "res/images/Slime0.png",
             "health": 25,
             "damage": 4,
+            "type": "slime",
             "index": 32
         }
     ],
@@ -259,24 +265,28 @@ maps = [{
         "sprite": "res/images/Player0.png",
         "health": 100,
         "damage": 5,
+        "type": "reptile",
         "index": 112
     },{
         "name": "GoonScale",
         "sprite": "res/images/Player0.png",
         "health": 100,
         "damage": 6,
+        "type": "reptile",
         "index": 113
     },{
         "name": "Brocodile",
         "sprite": "res/images/Player0.png",
         "health": 110,
         "damage": 7,
+        "type": "reptile",
         "index": 114
     },{
         "name": "Krush",
         "sprite": "res/images/Player0.png",
         "health": 120,
         "damage": 8,
+        "type": "reptile",
         "index": 115
     }],
     "player_spawn_x": 560,

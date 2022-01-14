@@ -16,13 +16,17 @@ function createQuest(name, desc, goal, effect){
 }
 
 function startKillThreeSlimesQuest(){
-	console.log("quest accepted!");
+	popUp(button(0, 0, "New Quest Started!"));
     createQuest('Slime Hunt','Kill 3 slimes.',goalKillThreeSlimes,effectKillThreeSlimes);
 }
 
 function goalKillThreeSlimes(){
-    // todo
-	return true;
+	if (h.player.killed.slimes > 2){
+		popUp(button(0, 0, "Quest Complete!"));
+		gainExperience(100);
+		return true;
+	}
+	return false;
 }
 
 function effectKillThreeSlimes(){
