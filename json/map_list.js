@@ -122,6 +122,24 @@ maps = [{
             "health": 25,
             "damage": 5,
             "index": 10
+        },{
+            "name": "Thrombosteve",
+            "sprite": "res/images/Slime0.png",
+            "health": 35,
+            "damage": 6,
+            "index": 5
+        },{
+            "name": "Dry Eye Guy",
+            "sprite": "res/images/Slime0.png",
+            "health": 30,
+            "damage": 5,
+            "index": 16
+        },{
+            "name": "Green Shite",
+            "sprite": "res/images/Slime0.png",
+            "health": 25,
+            "damage": 4,
+            "index": 32
         }
     ],
     "player_spawn_x": 512,
@@ -131,17 +149,6 @@ maps = [{
     "tilesWide": 45,
     "tilesHigh": 45,
     "triggers": [{
-        "id": 3,
-        "name": "concernedFisherman",
-        "type": "npc",
-        "visible": true,
-        "x": 384,
-        "y": 256,
-        "width": 16,
-        "height": 16,        
-        "dialog": ["I am very concerned."],
-        "spriteSheet" : "res/images/Player0.png"
-    }, {
         "id": 4,
         "name": "turtleTrader",
         "type": "npc",
