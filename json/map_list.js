@@ -97,7 +97,8 @@ maps = [{
         "y": 336,
         "width": 16,
         "height": 16,
-        "destination": "Overworld"
+        "destination": "Overworld",
+        "spawn": {"x": 496, "y": 304}
     }]
   },{
     "name": "Overworld",
@@ -175,7 +176,8 @@ maps = [{
         "y": 288,
         "width": 16,
         "height": 16,
-        "destination": "Pondville"
+        "destination": "Pondville",
+        "spawn": {"x": 624, "y": 336}
      },{
         "id": 6,
         "name": "teleporterDungeon",
@@ -186,7 +188,8 @@ maps = [{
         "y": 64,
         "width": 16,
         "height": 16,
-        "destination": "Alligator Hideout"
+        "destination": "Alligator Hideout",
+        "spawn": {"x": 592, "y": 640}
     }
     ]
 },{
@@ -349,6 +352,7 @@ maps = [{
         "y": 672,
         "width": 16,
         "height": 16,
-        "destination": "Overworld"
+        "destination": "Overworld",
+        "spawn": {"x": 208, "y": 80}
     }]
 }];

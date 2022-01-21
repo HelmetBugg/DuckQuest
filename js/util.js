@@ -388,7 +388,7 @@ function teleportCollisionCheck() {
 	for(i=0; i<h.map.layer.triggers.length; i++){
 		if(h.map.layer.triggers[i].type == "teleporterTile"){
 			if(h.hitTestRectangle(h.player, h.map.layer.triggers[i])){
-				spawnTeleporterChoice(h.map.layer.triggers[i].destination);
+				spawnTeleporterChoice(h.map.layer.triggers[i].destination, h.map.layer.triggers[i].spawn);
 				return true;
 			}
 		}
@@ -411,8 +411,12 @@ function initplayer() {
 	stat.set("intelligence", 5);
 	h.player.killed = {
 		"total": 0,
-		"slimes": 0,
-		"Aligatorboss": 0
+		"slime": 0,
+		"AligatorBoss": 0,
+		"SpiderBoss": 0,
+		"SnakeBoss": 0,
+		"ClownBoss": 0,
+		"GooseBoss": 0
 	};
 	h.player.stat = stat;
 	h.player.skills = [];
@@ -514,13 +518,15 @@ function spawnChoiceButton(text1="Yes", text2="No"){
 }
 
 
-function spawnTeleporterChoice(destination){
+function spawnTeleporterChoice(destination, spawn){
 	var choiceMenu = spawnChoiceButton();
 	var contents = [choiceMenu.menu, choiceMenu.title, choiceMenu.button1, choiceMenu.button2];
 	choiceMenu.title.text = "Would you like to \ntravel to " + destination + "?";
     choiceMenu.button1.press = function() {
 		let map = findMapByName(destination);
-        initMap(map);
+		map.player_spawn_x = spawn.x;
+		map.player_spawn_y = spawn.y;
+		initMap(map);
 		cleanup(contents);
     }
     choiceMenu.button2.press = function() {
