@@ -85,7 +85,7 @@ maps = [{
         "y": 448,
         "width": 16,
         "height": 16,        
-        "dialog": ["Welcome to Rattavan's Gently \nUsed Fine Goods!", "No Refunds kid."],
+        "dialog": ["Welcome to Rattavan's Gently \nUsed Fine Goods!", "No Refunds kid.", "Hey kid, buisiness has been slow.  Why don't you go uh... clean out the cave to the east.","I might be able to sell the local yuppies some spelunking tours.","How about it?","...","You dont talk much do ya?", startClearCavesForRat],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,

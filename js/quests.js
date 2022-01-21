@@ -36,7 +36,7 @@ function effectKillThreeSlimes(){
 
 
 function startKillAligatorBoss(){
-    createQuest('Slime Hunt','Kill 3 slimes.',
+    createQuest('Kill Lord Gator','Liberate the sewers from lord Gator',
 	function(){
 		if (h.player.killed.AligatorBoss > 0){
 			return true;
@@ -45,4 +45,16 @@ function startKillAligatorBoss(){
 	},function(){
 		gainExperience(500);
 	});
+}
+
+function startClearCavesForRat() {
+	createQuest('Alternate Revenue Streams', 'Rativan wants to expand out from sundries.  Clear out wildlife from a cave for payment and a discount on future spelunking tours (he says).',
+		function () {
+			if (h.player.killed.SpiderBoss > 0) {
+				return true;
+			}
+			return false;
+		}, function () {
+			gainExperience(300);
+		});
 }
