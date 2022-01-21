@@ -83,15 +83,13 @@ function initCombatTurn(menu, currentFoe){
 
 function updateKills(currentFoe){
 	h.player.killed.total += 1;
-	var values = Object.values(h.player.killed);
-	var keys = Object.keys(h.player.killed);
-	for(var i=0; i<keys.length; i++){
-		console.log(currentFoe.type + " " + keys[i]);
-		if(currentFoe.type == keys[i]){
-			console.log(values[i]);
-			//h.player.killed.keys[i] += 1; //?
-		}
+
+
+	if (h.player.killed[currentFoe.type] != undefined) {
+		h.player.killed[currentFoe.type] += 1;
 	}
+
+		
 }
 
 
