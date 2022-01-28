@@ -306,33 +306,33 @@ maps = [{
     "sprite": "res/maps/spider_cave.png",
     "collisionMap": "res/maps/spider_cave_collisions.bmp",
     "enemies": [{
-        "name": "Swamper",
-        "sprite": "res/images/Player0.png",
+        "name": "Peter",
+        "sprite": "res/images/Misc0.png",
         "health": 100,
         "damage": 5,
         "type": "reptile",
-        "index": 112
+        "index": 41
     },{
-        "name": "GoonScale",
-        "sprite": "res/images/Player0.png",
+        "name": "Ben",
+        "sprite": "res/images/Misc0.png",
         "health": 100,
         "damage": 6,
         "type": "reptile",
-        "index": 113
+        "index": 42
     },{
-        "name": "Brocodile",
-        "sprite": "res/images/Player0.png",
+        "name": "Gwen",
+        "sprite": "res/images/Misc0.png",
         "health": 110,
         "damage": 7,
         "type": "reptile",
-        "index": 114
+        "index": 43
     },{
-        "name": "Krush",
-        "sprite": "res/images/Player0.png",
+        "name": "Miles",
+        "sprite": "res/images/Misc0.png",
         "health": 120,
         "damage": 8,
         "type": "reptile",
-        "index": 115
+        "index": 40
     }],
     "player_spawn_x": 560,
     "player_spawn_y": 576,
