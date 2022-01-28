@@ -22,14 +22,7 @@ function checkSkills(level){
 
 function initSkills(){
 	h.globalSkills = [
-  	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 4, 95),
-	    createSkill("Shield","A basic defensive move halving enemy damage", 1, Float, 2, 100),
-	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 8, 85),
 	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 2, 100),
-	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
-	    createSkill("Sword\nAttack","A basic defensive move halving enemy damage", 2, Float, 2, 90),
-	    createSkill("Feign","Low power attack that never misses.", 3, Float, 2, 100),
-	    createSkill("Rage","Damages extra based on current health.", 3, Float, 2, 80)
 	];
 }
 
@@ -41,10 +34,8 @@ function Peck() {
 }
 
 function Float() {
-	chance = h.randomInt(0,10);
-	if (chance > 4){
-		console.log("float");	
-	}
+	console.log("float");
+	h.player.status["protected"]
 }
 
 function Duster() {
@@ -61,8 +52,12 @@ function Run(){
 	}
 }
 
-function rollHitChance(accuracy){
+function rollHitChance(accuracy) {
+
 	var outcome = h.randomInt(0, 100);
+	console.log(" Roll passed in:"+ accuracy)
+	console.log(" Roll:" + outcome)
+	console.log(Boolean(accuracy >= outcome) + "True or False?")
 	if(accuracy >= outcome){
 		return true;
 	}

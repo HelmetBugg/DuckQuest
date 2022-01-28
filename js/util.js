@@ -418,6 +418,9 @@ function initplayer() {
 		"ClownBoss": 0,
 		"GooseBoss": 0
 	};
+	h.player.status = {
+		"protected": false,
+	};
 	h.player.stat = stat;
 	h.player.skills = [];
 	h.player.quests = [];

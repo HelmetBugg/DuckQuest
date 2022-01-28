@@ -119,7 +119,7 @@ function skillsMenu(){
 				menu.clear();
 				var successful = rollHitChance(this.accuracy);
 				if(successful){
-					this.effect();
+					this.effect();					
 					h.combatTurn.menu.combatLog.Text.text = "You hit for " + (this.damage + h.player.stat.get("strength"));
 					if(this.name != "Run"){
 						// Need to come back and fix enemies if we are only going to do singles.
