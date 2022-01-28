@@ -201,9 +201,8 @@ maps = [{
         "width": 16,
         "height": 16,
         "destination": "Spider Cave",
-        "spawn": {"x": 592, "y": 640}
-    }
-    ]
+        "spawn": {"x": 192, "y": 368}
+    }]
 },{
     "name": "Alligator Hideout",
 	"id": 0,
@@ -304,8 +303,8 @@ maps = [{
 },{
     "name": "Spider Cave",
 	"id": 0,
-    "sprite": "res/maps/aligator_hideout.png",
-    "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+    "sprite": "res/maps/spider_cave.png",
+    "collisionMap": "res/maps/spider_cave_collisions.bmp",
     "enemies": [{
         "name": "Swamper",
         "sprite": "res/images/Player0.png",
@@ -339,51 +338,18 @@ maps = [{
     "player_spawn_y": 576,
     "tileWidth": 16,
     "tileHeight": 16,
-    "tilesWide": 45,
-    "tilesHigh": 45,
+    "tilesWide": 15,
+    "tilesHigh": 25,
     "triggers": [{
         "id": 112, 
-        "name": "Bossman",
+        "name": "Spider Queen",
         "type": "npc",
         "visible": true,
         "x": 480,
         "y": 352,
         "width": 16,
         "height": 16,        
-        "dialog": ["...hahaha. Wait who is this guy?", "You've come to challenge.. ME?", AlligatorBossFight],
-        "spriteSheet" : "res/images/Player0.png"
-    },{
-        "id": 113,
-        "name": "Swampy",
-        "type": "npc",
-        "visible": true,
-        "x": 576,
-        "y": 544,
-        "width": 16,
-        "height": 16,        
-        "dialog": ["zzzZZZzzz.."],
-        "spriteSheet" : "res/images/Player0.png"
-    },{
-        "id": 113,
-        "name": "Stinky",
-        "type": "npc",
-        "visible": true,
-        "x": 560,
-        "y": 400,
-        "width": 16,
-        "height": 16,        
-        "dialog": ["Move along little duck.."],
-        "spriteSheet" : "res/images/Player0.png"
-    },{
-        "id": 113,
-        "name": "Butch",
-        "type": "npc",
-        "visible": true,
-        "x": 320,
-        "y": 336,
-        "width": 16,
-        "height": 16,        
-        "dialog": ["Move along little duck.."],
+        "dialog": ["Hissss...", AlligatorBossFight],
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 6,
@@ -391,12 +357,11 @@ maps = [{
         "rotation": 0,
         "type": "teleporterTile",
         "visible": true,
-        "x": 560,
-        "y": 672,
+        "x": 208,
+        "y": 368,
         "width": 16,
         "height": 16,
         "destination": "Overworld",
-        "spawn": {"x": 208, "y": 80}
+        "spawn": {"x": 672, "y": 342}
     }]
-}
-];
+}];
