@@ -47,7 +47,7 @@ function placeTrigger(object, index) {
         filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
         trigger = h.sprite(filmStrip[object.id]);
     } else {
-        trigger = h.rectangle(16, 16, "blue", "black", 0, 0, 0);
+        trigger = h.rectangle(16, 16, "black", "black", 0, 0, 0);
     }
     h.map.addChild(trigger);
     trigger.x = object.x;

@@ -81,15 +81,12 @@ function initCombatTurn(menu, currentFoe){
 	return combatTurn;
 }
 
+
 function updateKills(currentFoe){
 	h.player.killed.total += 1;
-
-
 	if (h.player.killed[currentFoe.type] != undefined) {
 		h.player.killed[currentFoe.type] += 1;
-	}
-
-		
+	}	
 }
 
 
