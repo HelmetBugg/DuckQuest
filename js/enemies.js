@@ -1,9 +1,8 @@
-function createEnemy(jsoninput){
-	filmStrip = h.filmstrip(jsoninput.sprite, 16, 16);
-	sprite = h.sprite(filmStrip[jsoninput.index]);
-	return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage, jsoninput.type);
+function createEnemy(jsoninput) {
+    filmStrip = h.filmstrip(jsoninput.sprite, 16, 16);
+    sprite = h.sprite(filmStrip[jsoninput.index]);
+    return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage, jsoninput.type);
 }
-
 
 function enemy(name, sprite, health, damage, type) {
     let stat = new Map();
@@ -22,15 +21,15 @@ function enemy(name, sprite, health, damage, type) {
     // Highly convuluted, need to come back and fix this up.
     sprite.doTurn = function () {
         if (h.randomInt(0, 100) < 80) {
-            currentHP = h.player.stat.get("current_health") - (stat.get('strength')/2);
+            currentHP = h.player.stat.get("current_health");
             damageAnimation();
+			damageTaken = stat.get('strength');
             if (h.player.status["protected"]) {
-                h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + (stat.get('strength') / 2);
-                h.player.stat.set('current_health', currentHP);
-            } else {
-                h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + stat.get('strength');
-                h.player.stat.set('current_health', currentHP);
+                damageTaken = Math.round((stat.get('strength') / 2));
+				popUp(button(0, 0, "Protected!"));
             } 
+            h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + damageTaken;
+            h.player.stat.set('current_health', currentHP - damageTaken);
         } else {
             h.combatTurn.menu.combatLog.Text.text = "Enemy missed!";
         }
@@ -39,13 +38,11 @@ function enemy(name, sprite, health, damage, type) {
     return sprite;
 }
 
-
 function createGoose() {
     return enemy("goose", "res/images/goose.png", 10, 10, 10, 10);
 }
 
-
-function AlligatorBossFight(){
+function AlligatorBossFight() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
@@ -54,15 +51,15 @@ function AlligatorBossFight(){
         "health": 250,
         "damage": 40,
         "index": 112,
-        "type": "AligatorBoss"        
+        "type": "AligatorBoss"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
-	combatMenu.skillsMenu.drawSkills();
+    combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
 
-function SpiderBossFight(){
+function SpiderBossFight() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
@@ -75,6 +72,6 @@ function SpiderBossFight(){
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
-	combatMenu.skillsMenu.drawSkills();
+    combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
