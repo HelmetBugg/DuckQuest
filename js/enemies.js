@@ -22,10 +22,15 @@ function enemy(name, sprite, health, damage, type) {
     // Highly convuluted, need to come back and fix this up.
     sprite.doTurn = function () {
         if (h.randomInt(0, 100) < 80) {
-            currentHP = h.player.stat.get("current_health") - stat.get('strength');
+            currentHP = h.player.stat.get("current_health") - (stat.get('strength')/2);
             damageAnimation();
-            h.combatTurn.menu.combatLog.Text.text = "Enemy hit for "+ stat.get('strength');
-            h.player.stat.set('current_health', currentHP);
+            if (h.player.status["protected"]) {
+                h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + (stat.get('strength') / 2);
+                h.player.stat.set('current_health', currentHP);
+            } else {
+                h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + stat.get('strength');
+                h.player.stat.set('current_health', currentHP);
+            } 
         } else {
             h.combatTurn.menu.combatLog.Text.text = "Enemy missed!";
         }
