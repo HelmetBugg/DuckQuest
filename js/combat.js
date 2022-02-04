@@ -169,5 +169,6 @@ function cleanupCombat(combatMenu){
 	cleanup(combatMenu.children);
 	cleanup(combatMenu);
 	h.inCombat = false;
+	h.player.status["protected"] = false;
 	checkQuests();
 }
