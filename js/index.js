@@ -16,7 +16,7 @@ let thingsToLoad = [
 	"res/maps/village_collisions.bmp",
     "res/maps/empty_collisions.bmp",
     "res/maps/alligator_hideout_collisions.bmp",
-    "res/maps/alligator_hideout.png",
+    "res/maps/aligator_hideout.png",
 	"res/images/Misc0.png"
 ];
 

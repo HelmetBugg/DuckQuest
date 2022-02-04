@@ -341,16 +341,16 @@ maps = [{
     "tilesWide": 15,
     "tilesHigh": 25,
     "triggers": [{
-        "id": 112, 
+        "id": 44, 
         "name": "Spider Queen",
         "type": "npc",
         "visible": true,
-        "x": 480,
-        "y": 352,
+        "x": 160,
+        "y": 80,
         "width": 16,
         "height": 16,        
-        "dialog": ["Hissss...", AlligatorBossFight],
-        "spriteSheet" : "res/images/Player0.png"
+        "dialog": ["Hiiiissss...", SpiderBossFight],
+        "spriteSheet" : "res/images/Misc0.png"
     },{
         "id": 6,
         "name": "teleporterOverworld",

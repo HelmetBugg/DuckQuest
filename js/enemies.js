@@ -48,7 +48,25 @@ function AlligatorBossFight(){
         "sprite": "res/images/Player0.png",
         "health": 250,
         "damage": 40,
-        "index": 112
+        "index": 112,
+        "type": "AligatorBoss"        
+    });
+    h.combatTurn = initCombatTurn(combatMenu, boss);
+    combatMenu.skillsMenu.runnable = false;
+	combatMenu.skillsMenu.drawSkills();
+    updateHealth(combatMenu);
+}
+
+function SpiderBossFight(){
+    h.inCombat = true;
+    var combatMenu = spawnCombatMenu();
+    var boss = new createEnemy({
+        "name": "Spider Queen",
+        "sprite": "res/images/Misc0.png",
+        "health": 350,
+        "damage": 50,
+        "index": 44,
+        "type": "SpiderBoss"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
