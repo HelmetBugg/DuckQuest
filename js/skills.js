@@ -61,11 +61,7 @@ function Run(){
 }
 
 function rollHitChance(accuracy) {
-
 	var outcome = h.randomInt(0, 100);
-	console.log(" Roll passed in:"+ accuracy)
-	console.log(" Roll:" + outcome)
-	console.log(Boolean(accuracy >= outcome) + "True or False?")
 	if(accuracy >= outcome){
 		return true;
 	}

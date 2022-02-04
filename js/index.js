@@ -11,12 +11,13 @@ let thingsToLoad = [
     "res/maps/map_collisions_1.bmp",
     "res/maps/overworld_collision.bmp",
     "res/maps/overworld_map.png",
-    "res/maps/spider_cave.png",
     "res/images/Player0.png",
 	"res/maps/village_collisions.bmp",
     "res/maps/empty_collisions.bmp",
     "res/maps/alligator_hideout_collisions.bmp",
     "res/maps/aligator_hideout.png",
+    "res/maps/spider_cave_collisions.bmp",
+    "res/maps/spider_cave.png",
 	"res/images/Misc0.png"
 ];
 
