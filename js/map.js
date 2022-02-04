@@ -72,6 +72,17 @@ function checkTriggerCollision(trigger, index) {
     return false;
 }
 
+function debugCollisions(map){
+    // Check bitmap tiles for walls and boundaries
+    for (let i = 0; i < map.tilesWide; i++) {
+        for (let j = 0; j < map.tilesHigh; j++) {
+            if (h.map.tileCollisions[j][i] != 0) {
+                h.map.addChild(h.rectangle(16, 16, "red", "red", 0, map.tileWidth * i, map.tileHeight * j));
+            }
+        }
+    }
+}
+
 
 function checkCollision(map, location) {
     // Check bitmap tiles for walls and boundaries
