@@ -420,21 +420,12 @@ function initplayer() {
 	};
 	h.player.status = {
 		"protected": false,
+		"rage": false
 	};
 	h.player.stat = stat;
 	h.player.skills = [];
 	h.player.quests = [];
 	h.player.tweening = false;
-	h.player.doTurn = () =>{
-		currentEnemy = h.combatTurn.enemies[0];
-		currentEnemy.stat.set('health', 
-		currentEnemy.stat.get('health') - stat.get("strength"));
-		damageText = h.text("-" + stat.get("strength"), "25px puzzler", "red");
-		damageText.x = currentEnemy.x;
-		damageText.y = currentEnemy.y - 16;
-		popUp(damageText,850);
-		h.shake(currentEnemy);
-	};
 }
 
 

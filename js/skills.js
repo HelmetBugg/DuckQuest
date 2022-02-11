@@ -28,10 +28,13 @@ function initSkills(){
 	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
 	    createSkill("Sword\nAttack","A basic defensive move halving enemy damage", 2, Float, 2, 90),
 	    createSkill("Feign","Low power attack that never misses.", 3, Float, 2, 100),
-	    createSkill("Rage","Damages extra based on current health.", 3, Float, 2, 80)
+	    createSkill("Rage","Damages extra based on current health.", 3, Rage, 2, 80)
 	];
 }
 
+function Rage(){
+	h.player.status["rage"] = true;
+}
 
 function Peck() {
 	chance = h.randomInt(0,10);

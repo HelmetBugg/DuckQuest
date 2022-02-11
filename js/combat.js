@@ -124,7 +124,11 @@ function skillsMenu(){
 					if(this.name != "Run"){
 						// Need to come back and fix enemies if we are only going to do singles.
 						var enemy = h.combatTurn.enemies[0];
-						enemy.stat.set("health", enemy.stat.get("health") - (this.damage + h.player.stat.get("strength"))); 
+						damageDone = (this.damage + h.player.stat.get("strength"));
+						if(h.player.status["rage"]){
+							damageDone = Math.round((damageDone * 1.2));
+						}
+						enemy.stat.set("health", enemy.stat.get("health") - damageDone); 
 						h.shake(enemy, 0.09, true);
 						sleep(1800).then(() => {
 							var combatNotDone = h.combatTurn.nextTurn();
@@ -169,6 +173,8 @@ function cleanupCombat(combatMenu){
 	cleanup(combatMenu.children);
 	cleanup(combatMenu);
 	h.inCombat = false;
-	h.player.status["protected"] = false;
+	for(currentStatus in h.player.status){
+		h.player.status[currentStatus] = false;
+	}
 	checkQuests();
 }
