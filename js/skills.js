@@ -22,7 +22,7 @@ function checkSkills(level){
 function initSkills(){
 	h.globalSkills = [
   	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 4, 95),
-	    createSkill("Shield","A basic defensive move halving enemy damage", 1, Float, 2, 100),
+	    createSkill("Heal","A basic utility move recovering HP", 3, Heal, 0, 100),
 	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 8, 85),
 	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 2, 100),
 	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
@@ -51,6 +51,13 @@ function Duster() {
 	if (chance > 4){
 		console.log("dust");	
 	}
+}
+
+function Heal() {
+	healing = h.randomInt(10,20)*h.player.stat.get("level");
+	playerHealth = h.player.stat.get("current_health");
+	newHealth = Math.min((playerHealth + healing),h.player.stat.get("max_health"));
+	h.player.stat.set("current_health", newHealth);
 }
 
 function Run(){
