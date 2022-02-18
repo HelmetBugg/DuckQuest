@@ -43,8 +43,7 @@ function pauseMenu() {
 
 	skillsButton = new button(50, 200, "Skills");
     skillsButton.press = function () {
-		var skillList = h.player.skills;
-		createListMenu(skillList);
+		createListMenu(checkSkills(h.player.stat.get("level")));
     }
 
 	pauseButton = new button(240, 0, "Menu");
@@ -102,14 +101,14 @@ function createListMenu(list){
 		boxText.type = list[i].type;
 		boxText.effect = list[i].effect;
 		skillsMenu.addChild(boxText);
-		/*boxText.press = function() {
+	/*	boxText.press = function() {
 			if(blurb_group != null){
 				blurb_group.x += 5000;
   			    h.remove(blurb_group);
 				blurb_group = null;
 			}
-            var box =  h.rectangle(350, 512, 'white');
-			var blurb = h.text(this.description, "18px puzzler", "black");
+            var box =  createMenu(100, 100, 200, 200);
+			var blurb = h.text(this.description, fontStyle.font, "black");
 			blurb_group = h.group(box, blurb);
 			blurb_group.x = 120;
 			if (boxText.type == 'skill'){
@@ -120,7 +119,7 @@ function createListMenu(list){
 				}
 				blurb_group.addChild(invokeSkillEffect);
 			}
-		}*/			
+		}			*/
 	}
 	var quitButton = button(leftMargin, 50 * list.length, "Quit");
 	skillsMenu.addChild(quitButton);

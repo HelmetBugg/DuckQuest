@@ -1,8 +1,8 @@
-function createSkill(name,descrip,level,effect,damage,accuracy){
+function createSkill(name,description,level,effect,damage,accuracy){
 	var skill = {};
 	skill.type = 'skill';
 	skill.name = name;
-	skill.desc = descrip;
+	skill.description = description;
 	skill.level = level;
 	skill.effect = effect;
 	skill.damage = damage;

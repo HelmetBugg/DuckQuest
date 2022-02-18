@@ -112,7 +112,7 @@ function skillsMenu(){
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;
 			btn.name = skills[i].name;
-			btn.desc = skills[i].desc;
+			btn.desc = skills[i].description;
 			btn.accuracy = skills[i].accuracy;
 
 			btn.press = function() {
