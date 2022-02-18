@@ -1,6 +1,8 @@
 function pauseMenu() {
-	var menu = h.rectangle(200, 500, "white");
-	menuTitle = h.text("Pause", "38px puzzler", "black");
+	var menu = createMenu(0, 0, 240, 505);
+	menuTitle = h.text("Pause", fontStyle.font, color.text);
+	menuTitle.x = 20;
+	menuTitle.y = 20;
 
 	statusButton = new button(50, 50, "Status");
     statusButton.press = function () {
