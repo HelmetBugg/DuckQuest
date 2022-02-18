@@ -422,6 +422,8 @@ function initplayer() {
 	h.player.skills = [];
 	h.player.quests = [];
 	h.player.tweening = false;
+
+	startKillAligatorBoss();
 }
 
 
