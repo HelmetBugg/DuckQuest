@@ -106,8 +106,9 @@ function skillsMenu(){
 
 		for (var i=0; i<skills.length; i++) {
 			var desc = skills[i].name + "" + "\n\nCHANCE:\n" + skills[i].accuracy + "%" + "\n\nDMG:"+ skills[i].damage + "+" + h.player.stat.get("strength"); ;
-			var btn = button(-500, 250, desc, 155, 180);
-			h.slide(btn, 105+(120*i), h.canvas.height * 0.55, 3, "decelerationCubed");
+			var btn = button(-500, 250, desc, 135, 180);
+			btn.text.style.fontSize = "14px";
+			h.slide(btn, 90+(130*i), h.canvas.height * 0.55, 3, "decelerationCubed");
 			menu.addChild(btn);
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;

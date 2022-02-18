@@ -1,5 +1,5 @@
 function createQuest(name, desc, goal, effect){
-	popUp(button(0, 0, "New Quest Started!"));
+	popUp(button(100, 0, "New Quest Started!"), 5000);
 	var quest = {};
 	quest.type = 'quest';
 	quest.active = true;
@@ -10,7 +10,7 @@ function createQuest(name, desc, goal, effect){
 	quest.isComplete = function(){
 		if (goal()){
 			effect();
-			popUp(button(0, 0, "Quest Complete!"));
+			popUp(button(100, 0, "Quest Complete!"), 5000);
 			this.active = false;
 		}
 	};

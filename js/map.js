@@ -79,7 +79,9 @@ function debugCollisions(map){
     for (let i = 0; i < map.tilesWide; i++) {
         for (let j = 0; j < map.tilesHigh; j++) {
             if (h.map.tileCollisions[j][i] != 0) {
-                h.map.addChild(h.rectangle(16, 16, "red", "red", 0, map.tileWidth * i, map.tileHeight * j));
+                var tangle = h.rectangle(16, 16, "red", "red", 0, map.tileWidth * i, map.tileHeight * j);
+                tangle.alpha = 0.5;
+                h.map.addChild(tangle);
             }
         }
     }
