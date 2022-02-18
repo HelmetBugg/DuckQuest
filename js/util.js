@@ -1,10 +1,8 @@
 function pauseMenu() {
 	var menu = h.rectangle(200, 500, "white");
 	menuTitle = h.text("Pause", "38px puzzler", "black");
-	statusButton = h.text("Status", "30px puzzler", "black");
-	statusButton.x = 50; 
-	statusButton.y = 50; 
-	h.makeInteractive(statusButton);
+
+	statusButton = new button(50, 50, "Status");
     statusButton.press = function () {
 		keys = Array.from( h.player.stat.keys());
 		values = Array.from(h.player.stat.values());
@@ -20,10 +18,7 @@ function pauseMenu() {
 		createListMenu(stats);
 	}
 
-	questsButton = h.text("Quests", "30px puzzler", "black");
-	questsButton.x = 50; 
-	questsButton.y = 100; 
-	h.makeInteractive(questsButton);
+	questsButton = new button(50, 100, "Quest");
     questsButton.press = function () {
 		activeQuests = [];
         for (var i=0; i<h.player.quests.length; i++){
@@ -36,10 +31,7 @@ function pauseMenu() {
 		}
     }
 
-	saveButton = h.text("Save Game", "30px puzzler", "black");
-	saveButton.x = 50; 
-	saveButton.y = 150; 
-	h.makeInteractive(saveButton);
+	saveButton = new button(50, 150, "Save Game");
     saveButton.press = function () {
         saveGame();
 		saveText = h.text("Game Saved!", "30px puzzler", "green");
@@ -47,10 +39,7 @@ function pauseMenu() {
 		popUp(saveText);
     }
 
-	skillsButton = h.text("Skills", "30px puzzler", "black");
-	skillsButton.x = 50; 
-	skillsButton.y = 200; 
-	h.makeInteractive(skillsButton);
+	skillsButton = new button(50, 200, "Skills");
     skillsButton.press = function () {
 		var skillList = h.player.skills;
 		createListMenu(skillList);
