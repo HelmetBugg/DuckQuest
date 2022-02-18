@@ -161,6 +161,8 @@ function startDialog(trigger){
 			// Else it's a function and we invoke it.
 			}else{
 				dialogueArray[dialogueIncrement]();
+				dialogueIncrement++;
+				dialogBox.Next.press();
 			}
 			dialogueIncrement++;
 		}
