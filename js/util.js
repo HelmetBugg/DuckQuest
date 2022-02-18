@@ -225,10 +225,10 @@ function initKeyboard() {
 			}
 		}
 	}
-	/* Disabling for now because it's confusing.
+	// Disabling for now because it's confusing.
     space.press = () => {
         h.menuGroup.toggle();
-    }*/
+    }
     aKey.press = () => {
 		h.leftArrowPressed = true;
     };

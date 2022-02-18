@@ -120,7 +120,6 @@ function skillsMenu(){
 				var successful = rollHitChance(this.accuracy);
 				if(successful){
 					this.effect();					
-					h.combatTurn.menu.combatLog.Text.text = "You hit for " + (this.damage + h.player.stat.get("strength"));
 					if(this.name != "Run"){
 						// Need to come back and fix enemies if we are only going to do singles.
 						var enemy = h.combatTurn.enemies[0];
@@ -128,8 +127,13 @@ function skillsMenu(){
 						if(h.player.status["rage"]){
 							damageDone = Math.round((damageDone * 1.2));
 						}
-						enemy.stat.set("health", enemy.stat.get("health") - damageDone); 
-						h.shake(enemy, 0.09, true);
+						if(this.name != "Heal"){
+							h.combatTurn.menu.combatLog.Text.text = "You hit for " + (this.damage + h.player.stat.get("strength"));
+							enemy.stat.set("health", enemy.stat.get("health") - damageDone); 
+							h.shake(enemy, 0.09, true);
+						} else {
+							h.combatTurn.menu.combatLog.Text.text = "You healed!";
+						}
 						sleep(1800).then(() => {
 							var combatNotDone = h.combatTurn.nextTurn();
 							if (combatNotDone){
