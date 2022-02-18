@@ -362,6 +362,6 @@ maps = [{
         "width": 16,
         "height": 16,
         "destination": "Overworld",
-        "spawn": {"x": 672, "y": 342}
+        "spawn": {"x": 624, "y": 144}
     }]
 }];
