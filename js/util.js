@@ -47,24 +47,29 @@ function pauseMenu() {
 		createListMenu(skillList);
     }
 
-	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, skillsButton);
-	h.menuGroup.visible = false;
+	pauseButton = new button(240, 0, "Menu");
+    pauseButton.press = function () {
+        h.menuGroup.toggle();
+	}
+
+	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, skillsButton, pauseButton);
+	h.menuGroup.hidden = false;
 	h.stage.putCenter(h.menuGroup);	
-	h.slide(h.menuGroup, -514, 0, 30, "decelerationCubed");
+	h.menuGroup.x = -248;
 
 	h.menuGroup.toggle = function(){
 		if(!h.menuGroup.tweening){
-			if (this.visible){
+			if (this.hidden){
 				h.menuGroup.tweening = true;
-				tween = h.slide(this, -514, 0, 30, "decelerationCubed");
+				tween = h.slide(this, -248, 0, 10, "linear");
 				tween.onComplete = () => {
-					this.visible = false;
+					this.hidden = false;
 					h.menuGroup.tweening = false;
 				}
 			} else {
-				this.visible = true;
+				this.hidden = true;
 				h.menuGroup.tweening = true;
-				tween = h.slide(this, 0, 0, 30, "decelerationCubed");
+				tween = h.slide(this, 0, 0, 10, "linear");
 				tween.onComplete = () => {
 					h.menuGroup.tweening = false;
 				}
