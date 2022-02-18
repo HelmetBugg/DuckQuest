@@ -53,6 +53,7 @@ function pauseMenu() {
 	}
 
 	h.menuGroup = h.group(menu, menuTitle, statusButton, questsButton, saveButton, skillsButton, pauseButton);
+	h.menuGroup.togglebutton = pauseButton;
 	h.menuGroup.hidden = false;
 	h.stage.putCenter(h.menuGroup);	
 	h.menuGroup.x = -248;
@@ -89,17 +90,19 @@ function spawnInstructions() {
 
 
 function createListMenu(list){
-	let skillsMenu = h.rectangle(150, 512, 'white');
+	var leftMargin = 20;
+	let skillsMenu = createMenu(h.menuGroup.width-h.menuGroup.togglebutton.width, 0, 250, 505);
+	skillsMenu.pivotY = skillsMenu.pivotX = 0;
 	for(var i=0; i<list.length; i++){
-        boxText = h.text(list[i].name, "20px puzzler", "black");
+        boxText = h.text(list[i].name, "10px Press Start 2p", color.text);
 		boxText.interact = true;
-		boxText.y = 50 * i;
-		boxText.x = 10;
+		boxText.y = 25 * (i + 1);
+		boxText.x = leftMargin;
 		boxText.description = list[i].description;
 		boxText.type = list[i].type;
 		boxText.effect = list[i].effect;
 		skillsMenu.addChild(boxText);
-		boxText.press = function() {
+		/*boxText.press = function() {
 			if(blurb_group != null){
 				blurb_group.x += 5000;
   			    h.remove(blurb_group);
@@ -117,12 +120,9 @@ function createListMenu(list){
 				}
 				blurb_group.addChild(invokeSkillEffect);
 			}
-		}			
+		}*/			
 	}
-
-	var quitButton = h.text("Quit", "20px puzzler", "black");
-	quitButton.y = 50 * list.length;
-	quitButton.interact = true;
+	var quitButton = button(leftMargin, 50 * list.length, "Quit");
 	skillsMenu.addChild(quitButton);
 	quitButton.press = function() {
 		if(blurb_group != null){
