@@ -193,7 +193,9 @@ function createDialogBox(){
 	dialogBox.Text.y = -15;
 	//dialogBox.Text.text = "test";
 	dialogBox.Text.pivotX = dialogBox.Text.pivotY = 0.5;
-	dialogBox.Next = button(dialogBox.width/2 - 50, dialogBox.height/2 - 40, "");
+	dialogBox.Next = button(dialogBox.width/2 - 50, dialogBox.height/2 - 50, ">>");
+	//dialogBox.nextText = h.text(">", "12px puzzler", "black");
+	//dialogBox.Next.addChild(dialogBox.nextText);
 	dialogBox.Tag = button(-dialogBox.width/2, -dialogBox.height/2 - 30, "", 150, 28);
 	dialogBox.Tag.text.fontSize = 4;
 	dialogBox.addChild(dialogBox.Text, dialogBox.Next, dialogBox.Tag);

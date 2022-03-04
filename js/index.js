@@ -91,17 +91,6 @@ function newGame(load_data) {
 }
 
 
-function rollAttackChance(){
-    // If no enemies we just don't do combat.
- 
-        if(h.player.encounter_Chance >= 100){
-            getAttacked();
-            h.player.encounter_Chance = 0;
-        }else {
-            h.player.encounter_Chance = h.player.encounter_Chance + h.randomInt(1,8);
-        }
-    
-}
 
 function play() {
     handleKeyboard();

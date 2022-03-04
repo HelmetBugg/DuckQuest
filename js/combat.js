@@ -85,6 +85,18 @@ function initCombatTurn(menu, currentFoe){
 }
 
 
+function rollAttackChance(){
+    // If no enemies we just don't do combat.
+	if (h.map.layer.enemies.length > 0){
+		if(h.player.encounter_Chance >= 100){
+			getAttacked();
+			h.player.encounter_Chance = 0;
+		} else {
+			h.player.encounter_Chance = h.player.encounter_Chance + h.randomInt(11, 18);
+		}
+	}
+}
+
 function updateKills(currentFoe){
 	h.player.killed.total += 1;
 	if (h.player.killed[currentFoe.type] != undefined) {

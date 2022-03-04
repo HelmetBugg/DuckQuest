@@ -24,6 +24,7 @@ function initMap(json_input) {
     }
 }
 
+
 function loadMapCollisions(image, width, height){
     var canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext('2d');
@@ -74,6 +75,7 @@ function checkTriggerCollision(trigger, index) {
     return false;
 }
 
+
 function debugCollisions(map){
     // Check bitmap tiles for walls and boundaries
     for (let i = 0; i < map.tilesWide; i++) {
@@ -101,6 +103,7 @@ function checkCollision(map, location) {
     }
     return false;
 }
+
 
 function findMapByName(target){
     for(var i=0; i<maps.length; i++){
