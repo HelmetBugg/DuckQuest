@@ -91,7 +91,6 @@ function newGame(load_data) {
 }
 
 
-
 function play() {
     handleKeyboard();
 }

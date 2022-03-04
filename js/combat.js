@@ -190,6 +190,8 @@ function skillsMenu(){
 
 function cleanupCombat(combatMenu){
 	combatMenu.skillsMenu.clear();
+	h.player.status["rage"] = false;
+	h.player.status["protected"] = false;
 	cleanup(combatMenu.children);
 	cleanup(combatMenu);
 	h.inCombat = false;

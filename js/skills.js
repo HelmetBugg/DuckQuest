@@ -21,15 +21,19 @@ function checkSkills(level){
 }
 function initSkills(){
 	h.globalSkills = [
-  	    createSkill("Peck","A basic melee attack using a beak", 1, Peck, 4, 95),
-	    createSkill("Heal","A basic utility move recovering HP", 3, Heal, 0, 100),
-	    createSkill("Duck Kick","A special magic attack that deals damage and lowers enemy accuracy", 1, Duster, 8, 85),
-	    createSkill("Float","A basic defensive move halving enemy damage", 1, Float, 2, 100),
-	    createSkill("Duster","A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
-	    createSkill("Sword\nAttack","A basic defensive move halving enemy damage", 2, Float, 2, 90),
-	    createSkill("Feign","Low power attack that never misses.", 3, Float, 2, 100),
-	    createSkill("Rage","Damages extra based on current health.", 3, Rage, 2, 80)
+  	    createSkill("Peck", "A basic melee attack using a beak", 1, Peck, 4, 90),
+	    createSkill("Heal", "Heal between 10 - 20 + your level in HP", 3, Heal, 0, 95),
+	    createSkill("Duck Kick", "A special magic attack that deals damage and lowers enemy accuracy", 1, genericSkill, 8, 85),
+	    createSkill("Float", "Protects you from half of enemy damage for encounter.", 1, Float, 5, 95),
+	    //createSkill("Duster", "A special magic attack that deals damage and lowers enemy accuracy", 2, Duster, 4, 85),
+	    createSkill("Sword\nAttack", "A basic defensive move halving enemy damage", 2, genericSkill, 2, 90),
+	    createSkill("Feign", "Low power attack that never misses.", 3, genericSkill, 3, 100),
+	    createSkill("Rage", "Take more damage and deal more damage for encounter.", 4, Rage, 2, 80)
 	];
+}
+
+function genericSkill(){
+    console.log("skill used");
 }
 
 function Rage(){
