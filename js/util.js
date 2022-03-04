@@ -409,6 +409,7 @@ function initplayer() {
 	stat.set("max_health", 100);
 	stat.set("current_health", 50);
 	stat.set("intelligence", 5);
+	h.player.encounter_Chance = 0;
 	h.player.killed = {
 		"total": 0,
 		"slime": 0,
