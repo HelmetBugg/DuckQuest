@@ -121,9 +121,9 @@ function createListMenu(list){
 			}
 		}			*/
 	}
-	var quitButton = button(leftMargin, 50 * list.length, "Quit");
-	skillsMenu.addChild(quitButton);
-	quitButton.press = function() {
+	var closeButton = button(leftMargin, 50 * list.length, "Close");
+	skillsMenu.addChild(closeButton);
+	closeButton.press = function() {
 		if(blurb_group != null){
 			blurb_group.x += 5000;
 			h.remove(blurb_group);
