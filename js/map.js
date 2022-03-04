@@ -90,18 +90,8 @@ function debugCollisions(map){
 
 function checkCollision(map, location) {
     // Check bitmap tiles for walls and boundaries
-    for (let i = 0; i <= map.tilesWide; i++) {
-        for (let j = 0; j <= map.tilesHigh; j++) {
-            var tileCollision = {
-                x: map.tileWidth * i,
-                y: map.tileHeight * j,
-                width: map.tileWidth,
-                height: map.tileHeight
-            }
-            if (h.hitTestRectangle(location, tileCollision) && h.map.tileCollisions[j][i] != 0) {
-                return true;
-            }
-        }
+    if (h.map.tileCollisions[location.y/16][location.x/16] != 0) {
+        return true;
     }
     // Check Trigger collisions for NPCs
     for(var j=0; j<map.triggers.length; j++){

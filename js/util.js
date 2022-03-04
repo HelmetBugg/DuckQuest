@@ -281,6 +281,9 @@ function initKeyboard() {
 
 
 function handleKeyboard(){
+	if(h.player.tweening){
+		return;
+	}
 	if(h.downArrowPressed == true){
         var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
