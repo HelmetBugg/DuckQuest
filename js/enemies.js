@@ -9,8 +9,8 @@ function enemy(name, sprite, health, damage, type) {
     stat.set("strength", damage);
     stat.set("health", health);
     stat.set("max_health", health);
-    stat.set("intelligence", 5);
-    stat.set("experience", 5);
+    var expReward = Math.round((health + damage) / 6);
+    stat.set("experience", expReward);
     sprite.type = type;
     sprite.scale.x = sprite.scale.y = 6;
     sprite.pixotX = 1;

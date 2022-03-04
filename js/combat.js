@@ -4,6 +4,7 @@ function updateHealth(menu){
     menu.enemyName.text = h.combatTurn.enemies[0].name;
 }
 
+
 function damageAnimation(){
     var damageFlash = h.rectangle(512, 512, 'red');
     damageFlash.alpha = h.player.stat.get("current_health") / h.player.stat.get("max_health");
@@ -14,6 +15,7 @@ function damageAnimation(){
 	return tween;
 }
 
+
 function getAttacked() {
 	h.inCombat = true;
     var combatMenu = spawnCombatMenu();
@@ -21,6 +23,7 @@ function getAttacked() {
 	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
+
 
 function spawnCombatMenu(){
 	var menu = h.rectangle(512, 512, color.background);

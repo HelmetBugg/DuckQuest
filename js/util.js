@@ -400,7 +400,7 @@ function initplayer() {
     h.player.directionFacingBox.visible = false;
 	let stat = new Map();
 	stat.set("experience", 0);
-	stat.set("next_level", 7);
+	stat.set("next_level", 14);
 	stat.set("level", 1);	
 	stat.set("strength", 5);
 	stat.set("max_health", 100);
@@ -423,13 +423,12 @@ function initplayer() {
 	h.player.skills = [];
 	h.player.quests = [];
 	h.player.tweening = false;
-
 	startKillAligatorBoss();
 }
 
 
 function gainExperience(experience){
-	current_experience = h.player.stat.get("experience");
+	var current_experience = h.player.stat.get("experience");
     h.player.stat.set("experience", current_experience + experience);
 	var experienceGainBox = createMenu(0, 0, 265, 100);
 	var experienceGainText = h.text("You have gained:\n" + experience + " experience.");
@@ -464,6 +463,9 @@ function levelUp(){
 	h.player.stat.set("next_level", (current_level + 2) * 2);
 	h.player.skills = checkSkills(h.player.stat.get("level"));
 
+	// Reset EXP.
+	h.player.stat.set("experience", 0);
+
 	var levelGainBox = createMenu(0, 100, 265, 300);
 	var levelGainText = h.text("Congrats, you\nleveled up!\n\nNew Stats:\n" +
 	"STR: " + current_str + " + " + strengthIncrease +
@@ -477,7 +479,7 @@ function levelUp(){
 
 
 // Takes in an element, waits X time and then fades and removes it.
-function popUp(element, timeInNS=3000){
+function popUp(element, timeInNS=4500){
 	h.wait(timeInNS, function() {
 		tween = h.slide(element, -514, 0, 30, "decelerationCubed");
 		tween.onComplete = () => {
