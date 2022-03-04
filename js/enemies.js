@@ -5,6 +5,9 @@ function createEnemy(jsoninput) {
 }
 
 function enemy(name, sprite, health, damage, type) {
+    h.player.talking = false;
+    h.player.tweening = false;
+    h.inCombat = false;
     let stat = new Map();
     stat.set("strength", damage);
     stat.set("health", health);

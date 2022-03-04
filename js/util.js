@@ -147,6 +147,8 @@ function startDialog(trigger){
 	var dialogueIncrement = 0;
 	dialogBox.Text.text = dialogueArray[dialogueIncrement];
 	dialogueIncrement++;
+	// GLobalized for button shortcut.
+	h.dialogBox = dialogBox;
 
 	dialogBox.Next.press = () => {
 		// If there is no more dialog, cleanup.
@@ -204,7 +206,7 @@ function createDialogBox(){
 
 
 function initKeyboard() {
-	speed = 16;//h.player.width;
+	speed = 16;
     let leftArrow = h.keyboard(37),
     upArrow = h.keyboard(38),
     rightArrow = h.keyboard(39),
@@ -217,13 +219,18 @@ function initKeyboard() {
 	dialogue = h.keyboard(67);
 
 	dialogue.press = () => {
-		for (i=0; i < h.map.triggers.length; i++) {
-			let trigger = h.map.layer.triggers[i];
-			if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
-				startDialog(h.map.layer.triggers[i]);
+		if (h.player.talking) {
+			h.dialogBox.Next.press();
+		} else {
+			for (i=0; i < h.map.triggers.length; i++) {
+				let trigger = h.map.layer.triggers[i];
+				if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
+					startDialog(h.map.layer.triggers[i]);
+				}
 			}
 		}
 	}
+
 	// Disabling for now because it's confusing.
     space.press = () => {
         h.menuGroup.toggle();
