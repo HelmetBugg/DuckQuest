@@ -1,3 +1,10 @@
+var questMap = {
+	"Kill Lord Gator": startKillAligatorBoss,
+	"Slime Hunt": startKillThreeSlimesQuest,
+	"Alternate Revenue Streams": startClearCavesForRat
+};
+
+
 function createQuest(name, desc, goal, effect){
 	popUp(button(100, 0, "New Quest Started!"), 5000);
 	var quest = {};
@@ -19,7 +26,6 @@ function createQuest(name, desc, goal, effect){
 
 
 function startKillThreeSlimesQuest(){
-	
     createQuest('Slime Hunt','Kill 3 slimes.',goalKillThreeSlimes,effectKillThreeSlimes);
 }
 function goalKillThreeSlimes(){

@@ -122,6 +122,17 @@ function saveGame(){
 	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
 }
 
+// Come back and only add in progress quests.
+// Iterate over all the player's quests, add the quest's name to the currentQuests array.
+function flattenQuests(){
+    var currentQuests = []; 
+    for (let i in h.player.quests) {
+        //console.log(h.player.quests[i].name); 
+        currentQuests.push(h.player.quests[i].name);
+    }
+    return currentQuests;
+}
+
 
 function loadGame(){
 	let data = JSON.parse(localStorage.getItem('duckQuest'));
