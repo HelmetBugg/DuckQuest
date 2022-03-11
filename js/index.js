@@ -61,6 +61,14 @@ function setup() {
     h.destroy = h.group(loadButton, startButton, title);
 }
 
+function flattenQuests(){
+    var currentQuests = []; 
+    for (let i in h.player.quests) {
+        console.log(h.player.quests[i].name); 
+    }
+    return currentQuests;
+}
+
 /*
 // Takes a bool to determine if game data should be loaded after init. 
 */
