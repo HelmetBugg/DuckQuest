@@ -61,6 +61,14 @@ function setup() {
     h.destroy = h.group(loadButton, startButton, title);
 }
 
+function flattenQuests(){
+    var currentQuests = []; 
+    for (let i in h.player.quests) {
+        console.log(h.player.quests[i].name); 
+    }
+    return currentQuests;
+}
+
 /*
 // Takes a bool to determine if game data should be loaded after init. 
 */
@@ -115,8 +123,10 @@ function saveGame(){
 		intelligence: h.player.stat.get("intelligence"),
 		max_health: h.player.stat.get("max_health"),
 		current_health: h.player.stat.get("current_health"),
-		map: h.map.layer.id
-		
+		map: h.map.layer.name,
+        killed: h.player.killed
+        //quests: h.player.quests,
+        //skills: h.player.skills
 	});
 	localStorage.setItem('duckQuest', data);
 	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
@@ -136,19 +146,25 @@ function flattenQuests(){
 
 function loadGame(){
 	let data = JSON.parse(localStorage.getItem('duckQuest'));
-    h.player.x = data.x;
-    h.player.y = data.y;
+
     h.player.stat.level = data.level;
     h.player.stat.next_level = data.next_level;
     h.player.stat.experience = data.experience;
-	h.player.stat= data.stat;
-	h.player.stat= data.strength;
-	h.player.stat= data.intelligence;
-	h.player.stat= data.max_health;
-	h.player.stat= data.current_health;
-	console.log(data.map);
-	initMap(maps[data.map]);
+	h.player.stat = data.strength;
+	h.player.stat = data.intelligence;
+	h.player.stat = data.max_health;
+	h.player.stat = data.current_health;
+    h.player.killed = data.killed;
+    h.player.quests = data.quests;
+    h.player.skills = data.skills;
+
+    console.log(data.map);
+    var targetMap = findMapByName(data.map);
+    initMap(targetMap);
 	
+    h.player.x = data.x;
+    h.player.y = data.y;
+
 	let stat = new Map();
 	stat.set("experience", data.experience);
 	stat.set("next_level", data.next_level);
