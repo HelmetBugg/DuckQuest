@@ -61,13 +61,6 @@ function setup() {
     h.destroy = h.group(loadButton, startButton, title);
 }
 
-function flattenQuests(){
-    var currentQuests = []; 
-    for (let i in h.player.quests) {
-        console.log(h.player.quests[i].name); 
-    }
-    return currentQuests;
-}
 
 /*
 // Takes a bool to determine if game data should be loaded after init. 
@@ -138,18 +131,22 @@ function saveGame(){
 function flattenQuests(){
     var currentQuests = []; 
     for (let i in h.player.quests) {
-        currentQuests.push(h.player.quests[i].name);
+        //currentQuests.push(h.player.quests[i].name);
+        currentQuests.push({
+            "name": h.player.quests[i].name,
+            "active": h.player.quests[i].active
+        });
     }
     return currentQuests;
 }
 
 
 function unFlattenQuests(quests){
-     
     for (let i in quests) {
-        questMap[quests[i]]();
+        questMap[quests[i].name]();
+        // Set quest as active/deactive.
+        h.player.quests[i].active = quests[i].active
     }
-    
 }
 
 
@@ -169,10 +166,8 @@ function loadGame(){
 
     unFlattenQuests(data.quests);
 
-    console.log(data.map);
     var targetMap = findMapByName(data.map);
     initMap(targetMap);
-	
     h.player.x = data.x;
     h.player.y = data.y;
 
@@ -185,8 +180,6 @@ function loadGame(){
 	stat.set("current_health", data.current_health);
 	stat.set("intelligence", data.intelligence);
 	h.player.stat = stat;
-
-    
 	
 	console.log("Game Loaded.. ");// + data.x);
 }
