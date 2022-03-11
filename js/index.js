@@ -126,30 +126,6 @@ function saveGame(){
 }
 
 
-// Come back and only add in progress quests.
-// Iterate over all the player's quests, add the quest's name to the currentQuests array.
-function flattenQuests(){
-    var currentQuests = []; 
-    for (let i in h.player.quests) {
-        //currentQuests.push(h.player.quests[i].name);
-        currentQuests.push({
-            "name": h.player.quests[i].name,
-            "active": h.player.quests[i].active
-        });
-    }
-    return currentQuests;
-}
-
-
-function unFlattenQuests(quests){
-    for (let i in quests) {
-        questMap[quests[i].name]();
-        // Set quest as active/deactive.
-        h.player.quests[i].active = quests[i].active
-    }
-}
-
-
 // Loading a game file. 
 function loadGame(){
 	let data = JSON.parse(localStorage.getItem('duckQuest'));
@@ -163,7 +139,6 @@ function loadGame(){
     h.player.killed = data.killed;
     h.player.quests = [];
     h.player.skills = data.skills;
-
     unFlattenQuests(data.quests);
 
     var targetMap = findMapByName(data.map);

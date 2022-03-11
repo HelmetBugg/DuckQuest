@@ -47,7 +47,7 @@ function spawnCombatMenu(){
 	menu.playerHealth.style = fontStyle;
 	menu.playerHealth.y = 30;
 
-	menu.combatLog = new createDialogBox();
+	menu.combatLog = new spawnDialogBox();
 	menu.combatLog.y = 250;
 	menu.combatLog.Text.text = "Select your next move.."
 	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, menu.combatLog, menu.yourName);

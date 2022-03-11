@@ -32,6 +32,7 @@ function button(x, y, text, width=undefined, height=undefined){
     return btn;
 }
 
+
 function createMenu(x, y, width=undefined, height=undefined){
     let menu = h.rectangle(width, height, color.background, color.border, 8, x, y);
     menu.pivotX = menu.pivotY = 0.5;
@@ -47,3 +48,46 @@ function createMenu(x, y, width=undefined, height=undefined){
     };
     return menu;
 }
+
+
+function spawnDialogBox(){
+	var dialogBox = button(0, 415, "", 505, 110);
+	dialogBox.Text = h.text("", "20px puzzler", "black");
+	dialogBox.Text.style = fontStyle;
+	dialogBox.Text.fontSize = 4;
+	dialogBox.Text.x = 0;
+	dialogBox.Text.y = -15;
+	dialogBox.Text.pivotX = dialogBox.Text.pivotY = 0.5;
+	dialogBox.Next = button(dialogBox.width/2 - 50, dialogBox.height/2 - 50, ">>");
+	dialogBox.Tag = button(-dialogBox.width/2, -dialogBox.height/2 - 30, "", 150, 28);
+	dialogBox.Tag.text.fontSize = 4;
+	dialogBox.addChild(dialogBox.Text, dialogBox.Next, dialogBox.Tag);
+	return dialogBox;
+}
+
+
+function spawnInstructions() {
+	let menuTitle = button(0, 0, "==Instructions==\n\nWASD Keys to\nmove.\n\nMouse to \ninteract.\n\n'c' to talk \nwith NPCs\n\n'space' to open\n menu.\n\n\n Click to \nClose", 200, 500);
+	menuTitle.text.style.fontSize = "12px";
+	menuTitle.press = function () {
+		cleanup([menuTitle]);
+	}
+}
+
+
+function spawnChoiceButton(text1="Yes", text2="No"){
+	var menu = button(0, 100, "Would you like\n   to travel to?", 400, 80);
+	menu.interactive = false;
+	var button1Text = button(0, 40, text1);
+	menu.addChild(button1Text);
+	var button2Text = button(0, 80, text2);
+	menu.addChild(button2Text);
+	var container = {
+		"menu": menu,
+		"title": menu.text,
+		"button1": button1Text,
+		"button2": button2Text
+	}
+	return container;
+}
+
