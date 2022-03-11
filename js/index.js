@@ -144,6 +144,16 @@ function flattenQuests(){
 }
 
 
+function unFlattenQuests(quests){
+     
+    for (let i in quests) {
+        questMap[quests[i]]();
+    }
+    
+}
+
+
+// Loading a game file. 
 function loadGame(){
 	let data = JSON.parse(localStorage.getItem('duckQuest'));
     h.player.stat.level = data.level;
@@ -154,8 +164,10 @@ function loadGame(){
 	h.player.stat = data.max_health;
 	h.player.stat = data.current_health;
     h.player.killed = data.killed;
-    h.player.quests = data.quests;
+    h.player.quests = [];
     h.player.skills = data.skills;
+
+    unFlattenQuests(data.quests);
 
     console.log(data.map);
     var targetMap = findMapByName(data.map);
@@ -173,6 +185,8 @@ function loadGame(){
 	stat.set("current_health", data.current_health);
 	stat.set("intelligence", data.intelligence);
 	h.player.stat = stat;
+
+    
 	
 	console.log("Game Loaded.. ");// + data.x);
 }
