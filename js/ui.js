@@ -91,3 +91,29 @@ function spawnChoiceButton(text1="Yes", text2="No"){
 	return container;
 }
 
+
+function spawnCard(skill){
+    console.log(skill.name);
+    var cardWidth = 135;
+    var cardHeight = 180;
+    var desc =  
+        "\nCHANCE: " + skill.accuracy + 
+        "%" + "\n\nDAMAGE: "+ skill.damage + "+" + 
+        h.player.stat.get("strength"); 
+
+    var btn = button(0, 0, desc, cardWidth, cardHeight);
+    btn.text.style.fontSize = "10px";
+    btn.text.y = 45;
+
+    btn.title = h.text(skill.name);
+    btn.title.style = fontStyle;
+    btn.title.style.fontSize = "12px";
+    btn.title.position.x = -(cardWidth/2) + 10;
+    btn.title.position.y = -(cardHeight/2) + 10;
+    btn.addChild(btn.title);
+
+    var portrait = h.rectangle(100, 80, color.border, color.border, 0, -(cardWidth/2) + 15, -(cardHeight/2) + 35);
+    btn.addChild(portrait);
+
+    return btn;
+}
