@@ -64,7 +64,7 @@ function pauseMenu() {
 
 	skillsButton = new button(50, 200, "Skills");
     skillsButton.press = function () {
-		createListMenu(checkSkills(h.player.stat.get("level")));
+		createListMenu(h.player.skills);
     }
 
 	pauseButton = new button(240, 0, "Menu");
@@ -99,14 +99,6 @@ function pauseMenu() {
 	}	
 }
 
-
-function spawnInstructions() {
-	let menuTitle = button(0, 0, "==Instructions==\n\nWASD Keys to\nmove.\n\nMouse to \ninteract.\n\n'c' to talk \nwith NPCs\n\n'space' to open\n menu.\n\n\n Click to \nClose", 200, 500);
-	menuTitle.text.style.fontSize = "12px";
-	menuTitle.press = function () {
-		cleanup([menuTitle]);
-	}
-}
 
 
 function createListMenu(list){
@@ -161,7 +153,7 @@ function createListMenu(list){
 function startDialog(trigger){
 	var dialogueArray = trigger.dialog;
 	h.player.talking = true;
-	var dialogBox = createDialogBox();
+	var dialogBox = spawnDialogBox();
 	// Add speaker's name tag.
 	dialogBox.Tag.text.text = trigger.name;
 	// Show first Dialog output before automatically adding.
@@ -181,7 +173,8 @@ function startDialog(trigger){
 			// Otherwise replace the current text with the next section.
 			if (typeof dialogueArray[dialogueIncrement] === 'string'){
 				dialogBox.Text.text = dialogueArray[dialogueIncrement];
-			// Else it's a function and we invoke it.
+
+				// Else it's a function and we invoke it.
 			}else{
 				dialogueArray[dialogueIncrement]();
 				dialogueIncrement++;
@@ -204,25 +197,6 @@ function toggleOffScreen(objectToToggle){
 			objectToToggle.x = objectToToggle.offScreen;
 		}
 	}
-}
-
-
-function createDialogBox(){
-	var dialogBox = button(0, 415, "", 505, 110);
-	dialogBox.Text = h.text("", "20px puzzler", "black");
-	dialogBox.Text.style = fontStyle;
-	dialogBox.Text.fontSize = 4;
-	dialogBox.Text.x = 0;
-	dialogBox.Text.y = -15;
-	//dialogBox.Text.text = "test";
-	dialogBox.Text.pivotX = dialogBox.Text.pivotY = 0.5;
-	dialogBox.Next = button(dialogBox.width/2 - 50, dialogBox.height/2 - 50, ">>");
-	//dialogBox.nextText = h.text(">", "12px puzzler", "black");
-	//dialogBox.Next.addChild(dialogBox.nextText);
-	dialogBox.Tag = button(-dialogBox.width/2, -dialogBox.height/2 - 30, "", 150, 28);
-	dialogBox.Tag.text.fontSize = 4;
-	dialogBox.addChild(dialogBox.Text, dialogBox.Next, dialogBox.Tag);
-	return dialogBox;
 }
 
 
@@ -352,22 +326,6 @@ function popUp(element, timeInNS=4500){
 	};
 }
 
-
-function spawnChoiceButton(text1="Yes", text2="No"){
-	var menu = button(0, 100, "Would you like\n   to travel to?", 400, 80);
-	menu.interactive = false;
-	var button1Text = button(0, 40, text1);
-	menu.addChild(button1Text);
-	var button2Text = button(0, 80, text2);
-	menu.addChild(button2Text);
-	var container = {
-		"menu": menu,
-		"title": menu.text,
-		"button1": button1Text,
-		"button2": button2Text
-	}
-	return container;
-}
 
 
 function spawnTeleporterChoice(destination, spawn){

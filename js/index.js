@@ -71,8 +71,8 @@ function newGame(load_data) {
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
     initMap(maps[1]);
-    initSkills();
 	initplayer();
+    initSkills();
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);
     h.map.addChild(h.player.directionFacingBox);

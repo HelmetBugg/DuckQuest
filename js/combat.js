@@ -106,7 +106,7 @@ function updateKills(currentFoe){
 
 
 function skillsMenu(){
-	var skillDeck = checkSkills(h.player.stat.get("level"));
+	var skillDeck = h.player.skills;
 	var runSkill = createSkill("Run","Flee to fight again another day.", 0, Run, 0, 100);
 	var menu = h.rectangle(1, 1, color.background);
 	menu.x = -25;

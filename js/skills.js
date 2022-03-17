@@ -10,15 +10,7 @@ function createSkill(name,description,level,effect,damage,accuracy){
 	return skill;
 }
 
-function checkSkills(level){
-	accumSkills = [];
-    for (var i=0; i<h.globalSkills.length; i++){
-        if (h.globalSkills[i].level <= level){
-            accumSkills.push(h.globalSkills[i]);
-		}
-	}
-	return accumSkills;
-}
+
 function initSkills(){
 	h.globalSkills = [
   	    createSkill("Peck", "A basic melee attack using a beak", 1, Peck, 4, 90),
@@ -30,6 +22,14 @@ function initSkills(){
 	    createSkill("Feign", "Low power attack that never misses.", 3, genericSkill, 3, 100),
 	    createSkill("Rage", "Take more damage and deal more damage for encounter.", 4, Rage, 2, 80)
 	];
+
+	// 6 Starting skills;
+	h.player.skills.push(h.globalSkills[0]);
+	h.player.skills.push(h.globalSkills[0]);
+	h.player.skills.push(h.globalSkills[0]);
+	h.player.skills.push(h.globalSkills[1]);
+	h.player.skills.push(h.globalSkills[2]);
+	h.player.skills.push(h.globalSkills[2]);
 }
 
 function genericSkill(){
