@@ -339,11 +339,11 @@ function createCardSelectionBox(){
 	cardChoiceTwo.y = 20;
 
 	cardChoiceOne.press = () =>{
-		h.player.skills.push(cardChoiceOne);
+		h.player.skills.push(newSkill[0]);
 		cleanup(cardChoiceMenu.parent);
 	};
 	cardChoiceTwo.press = () =>{
-		h.player.skills.push(cardChoiceTwo);
+		h.player.skills.push(newSkill[1]);
 		cleanup(cardChoiceMenu.parent);	
 	};
 
