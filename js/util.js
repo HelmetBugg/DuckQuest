@@ -292,22 +292,44 @@ function levelUp(){
 	// Set the next goal post.
 	current_level = h.player.stat.get("next_level");
 	h.player.stat.set("next_level", (current_level + 2) * 2);
-	h.player.skills = checkSkills(h.player.stat.get("level"));
 
 	// Reset EXP.
 	h.player.stat.set("experience", 0);
 
-	var levelGainBox = createMenu(0, 100, 265, 300);
+	var levelGainBox = createMenu(0, 100, 360, 400);
 	var levelGainText = h.text("Congrats, you\nleveled up!\n\nNew Stats:\n" +
 	"STR: " + current_str + " + " + strengthIncrease +
 	"\nHP: " + current_maxhealth + " + " + healthIncrease +
 	"\nINT: " + current_intel + " + " + intelligenceIncrease);
 	levelGainText.style = fontStyle;
+	levelGainText.position.x = 10;
+	levelGainText.position.y = 110;
 
-	levelGainBox.putCenter(levelGainText);
+	levelGainBox.addChild(createCardSelectionBox());
 	popUp(h.group(levelGainBox, levelGainText));
+
 }
 
+function createCardSelectionBox(){
+	cardChoiceOne = spawnCard(h.globalSkills[0]);
+	cardChoiceTwo = spawnCard(h.globalSkills[1]);
+	cardChoiceMenu = createMenu(-160, -75, 320, 250);
+
+	cardChoiceMenu.addChild(cardChoiceOne);
+	cardChoiceMenu.addChild(cardChoiceTwo);
+	cardChoiceTitle = h.text("Choose a new card");
+	cardChoiceMenu.addChild(cardChoiceTitle);
+	cardChoiceTitle.position.x = -90;
+	cardChoiceTitle.position.y = -100;
+	cardChoiceTitle.style = fontStyle;
+	cardChoiceTitle.style.fontSize = "12px";
+
+	cardChoiceOne.x = -80;
+	cardChoiceOne.y = 20;
+	cardChoiceTwo.x = cardChoiceOne.x + cardChoiceOne.width + 10;
+	cardChoiceTwo.y = 20;
+	return cardChoiceMenu;
+}
 
 // Takes in an element, waits X time and then fades and removes it.
 function popUp(element, timeInNS=4500){
