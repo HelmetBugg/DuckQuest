@@ -118,8 +118,8 @@ function saveGame(){
 		current_health: h.player.stat.get("current_health"),
 		map: h.map.layer.name,
         killed: h.player.killed,
-        quests: flattenQuests()
-        //skills: h.player.skills
+        quests: flattenQuests(),
+        skills: h.player.skills
 	});
 	localStorage.setItem('duckQuest', data);
 	console.log("Saving Game.. ");// + localStorage.getItem('duckQuest'));
