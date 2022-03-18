@@ -114,6 +114,7 @@ function spawnCard(skill){
 
     var portrait = h.rectangle(100, 80, color.border, color.border, 0, -(cardWidth/2) + 15, -(cardHeight/2) + 35);
     btn.addChild(portrait);
+    
 
     return btn;
 }

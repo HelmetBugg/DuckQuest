@@ -297,22 +297,31 @@ function levelUp(){
 	h.player.stat.set("experience", 0);
 
 	var levelGainBox = createMenu(0, 100, 360, 400);
+
+	levelGainBox.addChild(createCardSelectionBox());
+
+
 	var levelGainText = h.text("Congrats, you\nleveled up!\n\nNew Stats:\n" +
 	"STR: " + current_str + " + " + strengthIncrease +
 	"\nHP: " + current_maxhealth + " + " + healthIncrease +
 	"\nINT: " + current_intel + " + " + intelligenceIncrease);
 	levelGainText.style = fontStyle;
-	levelGainText.position.x = 10;
-	levelGainText.position.y = 110;
 
-	levelGainBox.addChild(createCardSelectionBox());
-	popUp(h.group(levelGainBox, levelGainText));
+	levelGainBox.addChild(levelGainText);
+
+	levelGainText.position.x = -125;
+	levelGainText.position.y = -188;
+
+
+	
+
 
 }
 
 function createCardSelectionBox(){
-	cardChoiceOne = spawnCard(h.globalSkills[0]);
-	cardChoiceTwo = spawnCard(h.globalSkills[1]);
+	newSkill = shuffleArray(h.globalSkills)
+	cardChoiceOne = spawnCard(newSkill[0]);
+	cardChoiceTwo = spawnCard(newSkill[1]);
 	cardChoiceMenu = createMenu(-160, -75, 320, 250);
 
 	cardChoiceMenu.addChild(cardChoiceOne);
@@ -328,6 +337,18 @@ function createCardSelectionBox(){
 	cardChoiceOne.y = 20;
 	cardChoiceTwo.x = cardChoiceOne.x + cardChoiceOne.width + 10;
 	cardChoiceTwo.y = 20;
+
+	cardChoiceOne.press = () =>{
+		h.player.skills.push(cardChoiceOne);
+		cleanup(cardChoiceMenu.parent);
+	};
+	cardChoiceTwo.press = () =>{
+		h.player.skills.push(cardChoiceTwo);
+		cleanup(cardChoiceMenu.parent);	
+	};
+
+
+
 	return cardChoiceMenu;
 }
 
@@ -347,6 +368,8 @@ function popUp(element, timeInNS=4500){
 		}
 	};
 }
+
+
 
 
 
