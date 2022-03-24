@@ -122,8 +122,19 @@ function skillsMenu(){
 		for (var i=0; i<skills.length; i++) {
 			var desc = skills[i].name + "" + "\n\nCHANCE:\n" + skills[i].accuracy + "%" + "\n\nDMG:"+ skills[i].damage + "+" + h.player.stat.get("strength"); ;
 			var btn = spawnCard(skills[i]);
-			h.slide(btn, 90+(130*i), h.canvas.height * 0.55, 3, "decelerationCubed");
+
+			// a really dumb if statement
+			if(i === 1 || i === 2 ){
+				btn.y = -32 + h.canvas.height * 0.55;
+			} else {
+				btn.y = h.canvas.height * 0.55;
+			}
+			btn.x = 110+(120*i);
+
+			//h.slide(btn, 100+(120*i), h.canvas.height * 0.55, 3, "decelerationCubed");
 			menu.addChild(btn);
+			// Rotate cards slightly.
+			btn.rotation = -0.33 + (i * 0.2);
 			btn.effect = skills[i].effect;
 			btn.damage = skills[i].damage;
 			btn.name = skills[i].name;
