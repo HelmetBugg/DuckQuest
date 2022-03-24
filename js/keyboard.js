@@ -10,6 +10,10 @@ function initKeyboard() {
     aKey = h.keyboard(65),
     space = h.keyboard(32);
 	dialogue = h.keyboard(67);
+	oneKey = h.keyboard(49);
+	twoKey = h.keyboard(50);
+	threeKey = h.keyboard(51);
+	fourKey = h.keyboard(52);
 
 	dialogue.press = () => {
 		if (h.player.talking) {
@@ -79,6 +83,31 @@ function initKeyboard() {
 	downArrow.release = () => {
 		h.downArrowPressed = false;
 	}
+
+	oneKey.press = () => {
+		h.oneKeyPressed = true;
+    };
+	oneKey.release = () => {
+		h.oneKeyPressed = false;
+    };
+	twoKey.press = () => {
+		h.twoKeyPressed = true;
+    };
+	twoKey.release = () => {
+		h.twoKeyPressed = false;
+    };
+	threeKey.press = () => {
+		h.threeKeyPressed = true;
+    };
+	threeKey.release = () => {
+		h.threeKeyPressed = false;
+    };
+	fourKey.press = () => {
+		h.fourKeyPressed = true;
+    };
+	fourKey.release = () => {
+		h.fourKeyPressed = false;
+    };
 }
 
 
@@ -86,7 +115,7 @@ function handleKeyboard(){
 	if(h.player.tweening){
 		return;
 	}
-	if(h.downArrowPressed == true){
+	if(h.downArrowPressed){
         var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
@@ -107,7 +136,7 @@ function handleKeyboard(){
 		checkQuests();
     }
 
-	if(h.upArrowPressed == true){
+	if(h.upArrowPressed){
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x, y: h.player.y-speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
@@ -130,7 +159,7 @@ function handleKeyboard(){
 		checkQuests();
 	}
 
-	if(h.leftArrowPressed == true){
+	if(h.leftArrowPressed){
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x-speed, y: h.player.y, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
@@ -152,7 +181,7 @@ function handleKeyboard(){
 		}
 	}
 
-	if(h.rightArrowPressed == true){
+	if(h.rightArrowPressed){
 		// Check if moving to this square would cause collision and prevent it.
 		var newLocation = {x: h.player.x+speed, y: h.player.y, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
@@ -172,6 +201,23 @@ function handleKeyboard(){
 			h.player.directionFacingBox.y = h.player.y;
 		}
 	}
+
+	if(h.oneKeyPressed && h.inCombat){
+		h.activeSkills[0].press();
+	}
+
+	if(h.twoKeyPressed && h.inCombat){
+		h.activeSkills[1].press();
+	}
+
+	if(h.threeKeyPressed && h.inCombat){
+		h.activeSkills[2].press();
+	}
+
+	if(h.fourKeyPressed && h.inCombat){
+		h.activeSkills[3].press();
+	}
+
 	// Player location is helpful.
 	//console.log(h.player.x/16+", "+h.player.y/16);
 }
