@@ -22,7 +22,7 @@ let thingsToLoad = [
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
-h.fps = 18;
+h.fps = 30;
 version = 0.6;
 h.scaleToWindow();
 h.start();
