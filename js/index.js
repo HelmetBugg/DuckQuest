@@ -102,6 +102,24 @@ function gameOver() {
     title = h.text("You Died", "90px puzzler", "red");
     h.stage.putCenter(title);
     h.pause();
+	
+	let startButton = button(100, 300, "New Game");
+    startButton.press = function() {
+        // Just to hide the button after click.
+        newGame(false);
+    }
+    let loadButton = button(250, 300, "Load Game");
+    if(localStorage.getItem('duckQuest') != null){
+        loadButton.interact = true;
+    } else {
+        loadButton.interact = false;
+        loadButton.alpha = 0.5;
+    }
+    loadButton.press = function() {
+        loadButton.x = -5000;
+        newGame(true);
+    }
+    h.destroy = h.group(loadButton, startButton, title);
 }
 
 
