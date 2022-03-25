@@ -2,6 +2,7 @@ function initMap(json_input) {
     if (h.map != undefined) {
         h.map.removeChild(h.player);
         h.remove(h.menuGroup);
+        h.remove(h.helpButton);
         h.remove(h.map);
         h.map = h.sprite(json_input.sprite);
         h.map.triggers = [];
@@ -14,6 +15,7 @@ function initMap(json_input) {
         h.map.tileCollisions = loadMapCollisions(json_input.collisionMap, json_input.tilesWide, json_input.tilesHigh);
         h.camera.centerOver(h.player);
         pauseMenu();
+        makeHelpButton();
     } else {
         h.map = h.sprite(json_input.sprite);
         h.map.triggers = [];

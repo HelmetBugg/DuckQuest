@@ -99,7 +99,14 @@ function pauseMenu() {
 	}	
 }
 
-
+function makeHelpButton(){
+	h.helpButton = new button(410, 0, "Help");
+	h.helpButton.press = function () {
+		if(!h.instructionsVisible){
+        	spawnInstructions();
+		}
+	}
+}
 
 function createListMenu(list){
 	var leftMargin = 20;

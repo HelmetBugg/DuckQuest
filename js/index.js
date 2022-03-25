@@ -80,6 +80,7 @@ function newGame(load_data) {
     h.player.y = h.player.directionFacingBox.y = h.map.layer.player_spawn_y;
     pauseMenu();
     initKeyboard();
+    makeHelpButton();
 	h.inCombat = false;
     // Must happen before camera is centered.
     if (load_data){

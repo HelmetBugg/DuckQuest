@@ -67,9 +67,11 @@ function spawnDialogBox(){
 
 
 function spawnInstructions() {
+    h.instructionsVisible = true;
 	let menuTitle = button(0, 0, "==Instructions==\n\nWASD Keys to\nmove.\n\nMouse to \ninteract.\n\n'c' to talk \nwith NPCs\n\n'space' to open\n menu.\n\n\n Click to \nClose", 200, 500);
 	menuTitle.text.style.fontSize = "12px";
 	menuTitle.press = function () {
+        h.instructionsVisible = false;
 		cleanup([menuTitle]);
 	}
 }
