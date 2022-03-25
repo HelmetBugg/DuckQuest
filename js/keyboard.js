@@ -116,6 +116,7 @@ function handleKeyboard(){
 		return;
 	}
 	if(h.downArrowPressed){
+		// Check if moving to this square would cause collision and prevent it.
         var newLocation = {x: h.player.x, y: h.player.y+speed, width: 16, height: 16};
 		wouldCollide = checkCollision(h.map.layer, newLocation);
         if (!h.player.tweening && !h.inCombat && !wouldCollide && !h.player.talking){
@@ -127,8 +128,8 @@ function handleKeyboard(){
 				h.player.directionFacingBox.y = h.player.y + 16;
 				resolveMove();
 			}
-			h.map.y -= speed * 2;
-			h.camera.centerOver(h.player);
+
+			tween2 = h.slide(h.map,h.map.x, h.map.y-(speed),4,"linear");
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y + 16;
@@ -147,11 +148,11 @@ function handleKeyboard(){
 				h.player.tweening = false;
 				h.player.directionFacingBox.x = h.player.x;
 				h.player.directionFacingBox.y = h.player.y - 16;
-				h.camera.centerOver(h.player);
+				
 				resolveMove();
 			}
-			h.map.y += speed * 2;
-			h.camera.centerOver(h.player);			
+
+			tween2 = h.slide(h.map,h.map.x, h.map.y+(speed),4,"linear");		
 		} else {
 			h.player.directionFacingBox.x = h.player.x;
 			h.player.directionFacingBox.y = h.player.y - 16;
@@ -173,8 +174,8 @@ function handleKeyboard(){
 				resolveMove();
 			}
             // Multiple by 2 because duck is a child of map which is scaled x2.
-			h.map.x += speed * 2;
-			h.camera.centerOver(h.player);			
+
+			tween2 = h.slide(h.map,h.map.x+(speed), h.map.y,4,"linear");			
         } else {
 			h.player.directionFacingBox.x = h.player.x - 16;
 			h.player.directionFacingBox.y = h.player.y;
@@ -194,8 +195,8 @@ function handleKeyboard(){
 				h.player.directionFacingBox.y = h.player.y;
 				resolveMove();
 			}
-			h.map.x -= speed * 2;
-			h.camera.centerOver(h.player);
+
+			tween2 = h.slide(h.map,h.map.x-(speed), h.map.y,4,"linear");
         } else {
 			h.player.directionFacingBox.x = h.player.x + 16;
 			h.player.directionFacingBox.y = h.player.y;
