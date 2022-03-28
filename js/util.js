@@ -302,11 +302,8 @@ function levelUp(){
 
 	// Reset EXP.
 	h.player.stat.set("experience", 0);
-
 	var levelGainBox = createMenu(0, 100, 360, 400);
-
 	levelGainBox.addChild(createCardSelectionBox());
-
 
 	var levelGainText = h.text("Congrats, you\nleveled up!\n\nNew Stats:\n" +
 	"STR: " + current_str + " + " + strengthIncrease +
@@ -318,12 +315,8 @@ function levelUp(){
 
 	levelGainText.position.x = -125;
 	levelGainText.position.y = -188;
-
-
-	
-
-
 }
+
 
 function createCardSelectionBox(){
 	newSkill = shuffleArray(h.globalSkills)
@@ -375,9 +368,6 @@ function popUp(element, timeInNS=4500){
 		}
 	};
 }
-
-
-
 
 
 function spawnTeleporterChoice(destination, spawn){
