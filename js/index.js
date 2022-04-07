@@ -18,7 +18,8 @@ let thingsToLoad = [
     "res/maps/aligator_hideout.png",
     "res/maps/spider_cave_collisions.bmp",
     "res/maps/spider_cave.png",
-	"res/images/Misc0.png"
+	"res/images/Misc0.png",
+    "res/fonts/PressStart.ttf"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
