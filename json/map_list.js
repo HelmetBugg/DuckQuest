@@ -364,4 +364,162 @@ maps = [{
         "destination": "Overworld",
         "spawn": {"x": 624, "y": 144}
     }]
-}];
+ 
+ },{
+    "name": "Alligator Hideout",
+	"id": 0,
+    "sprite": "res/maps/aligator_hideout.png",
+    "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+    "enemies": [{
+        "name": "Swamper",
+        "sprite": "res/images/Player0.png",
+        "health": 100,
+        "damage": 5,
+        "type": "reptile",
+        "index": 112
+    },{
+        "name": "GoonScale",
+        "sprite": "res/images/Player0.png",
+        "health": 100,
+        "damage": 6,
+        "type": "reptile",
+        "index": 113
+    },{
+        "name": "Brocodile",
+        "sprite": "res/images/Player0.png",
+        "health": 110,
+        "damage": 7,
+        "type": "reptile",
+        "index": 114
+    },{
+        "name": "Krush",
+        "sprite": "res/images/Player0.png",
+        "health": 120,
+        "damage": 8,
+        "type": "reptile",
+        "index": 115
+    }],
+    "player_spawn_x": 560,
+    "player_spawn_y": 576,
+    "tileWidth": 16,
+    "tileHeight": 16,
+    "tilesWide": 45,
+    "tilesHigh": 45,
+    "triggers": [{
+        "id": 112, 
+        "name": "Bossman",
+        "type": "npc",
+        "visible": true,
+        "x": 480,
+        "y": 352,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["...hahaha. Wait who is this guy?", "You've come to challenge.. ME?", AlligatorBossFight],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Swampy",
+        "type": "npc",
+        "visible": true,
+        "x": 576,
+        "y": 544,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["zzzZZZzzz.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Stinky",
+        "type": "npc",
+        "visible": true,
+        "x": 560,
+        "y": 400,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["Move along little duck.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 113,
+        "name": "Butch",
+        "type": "npc",
+        "visible": true,
+        "x": 320,
+        "y": 336,
+        "width": 16,
+        "height": 16,        
+        "dialog": ["Move along little duck.."],
+        "spriteSheet" : "res/images/Player0.png"
+    },{
+        "id": 6,
+        "name": "teleporterOverworld",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 560,
+        "y": 672,
+        "width": 16,
+        "height": 16,
+        "destination": "Overworld",
+        "spawn": {"x": 208, "y": 80}
+    }]
+    },{
+        "name": "Bog",
+        "id": 0,
+        "sprite": "res/maps/aligator_hideout.png",
+        "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+        "enemies": [
+        {
+            "name": "Sky Swipe",
+            "sprite": "res/images/Misc0.png",
+            "health": 100,
+            "damage": 6,
+            "type": "reptile",
+            "index": 32
+        },{
+            "name": "Swipe Larva",
+            "sprite": "res/images/Misc0.png",
+            "health": 110,
+            "damage": 7,
+            "type": "reptile",
+            "index": 23
+        },{
+            "name": "Skeeter",
+            "sprite": "res/images/Misc0.png",
+            "health": 120,
+            "damage": 8,
+            "type": "reptile",
+            "index": 10
+        }],
+        "player_spawn_x": 560,
+        "player_spawn_y": 576,
+        "tileWidth": 16,
+        "tileHeight": 16,
+        "tilesWide": 45,
+        "tilesHigh": 45,
+        "triggers": [{
+            "id": 6,
+            "name": "teleporterOverworld",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 560,
+            "y": 672,
+            "width": 16,
+            "height": 16,
+            "destination": "Overworld",
+            "spawn": {"x": 208, "y": 80}
+        },{
+            "id": 6,
+            "name": "teleporterSkyway",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 560,
+            "y": 672,
+            "width": 16,
+            "height": 16,
+            "destination": "Skyway",
+            "spawn": {"x": 208, "y": 80}
+        }]
+    }
+];
