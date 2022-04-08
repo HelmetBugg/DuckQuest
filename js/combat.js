@@ -43,6 +43,11 @@ function spawnCombatMenu(){
 	menu.yourName.style = fontStyle;
     menu.yourName.y = 10;
 
+	menu.deck = h.sprite("res/images/deck.png");
+    menu.deck.x = 5;
+    menu.deck.y = 260;
+	menu.deck.scale.x = menu.deck.scale.y = 3.5;
+
     menu.playerHealth = h.text("Your Health:\n " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health"));
 	menu.playerHealth.style = fontStyle;
 	menu.playerHealth.y = 30;
@@ -50,7 +55,7 @@ function spawnCombatMenu(){
 	menu.combatLog = new spawnDialogBox();
 	menu.combatLog.y = 250;
 	menu.combatLog.Text.text = "Select your next move.."
-	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, menu.combatLog, menu.yourName);
+	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, menu.combatLog, menu.yourName, menu.deck);
 	return menu;
 }
 
