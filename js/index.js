@@ -108,6 +108,7 @@ function gameOver() {
 	let startButton = button(100, 300, "New Game");
     startButton.press = function() {
         // Just to hide the button after click.
+        h.resume();
         newGame(false);
     }
     let loadButton = button(250, 300, "Load Game");
@@ -118,6 +119,7 @@ function gameOver() {
         loadButton.alpha = 0.5;
     }
     loadButton.press = function() {
+        h.resume();
         loadButton.x = -5000;
         newGame(true);
     }
