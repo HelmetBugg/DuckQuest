@@ -141,7 +141,7 @@ maps = [{
             "type": "slime",
             "index": 16
         },{
-            "name": "Green Shite",
+            "name": "Green Blite",
             "sprite": "res/images/Slime0.png",
             "health": 25,
             "damage": 4,
@@ -202,6 +202,18 @@ maps = [{
         "height": 16,
         "destination": "Spider Cave",
         "spawn": {"x": 192, "y": 368}
+    },{
+        "id": 6,
+        "name": "teleporterBog",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 624,
+        "y": 128,
+        "width": 16,
+        "height": 16,
+        "destination": "Bog",
+        "spawn": {"x": 96, "y": 608}
     }]
 },{
     "name": "Alligator Hideout",
