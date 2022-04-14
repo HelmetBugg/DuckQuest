@@ -141,7 +141,7 @@ maps = [{
             "type": "slime",
             "index": 16
         },{
-            "name": "Green Shite",
+            "name": "Green Blite",
             "sprite": "res/images/Slime0.png",
             "health": 25,
             "damage": 4,
@@ -202,6 +202,18 @@ maps = [{
         "height": 16,
         "destination": "Spider Cave",
         "spawn": {"x": 192, "y": 368}
+    },{
+        "id": 6,
+        "name": "teleporterBog",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 96,
+        "y": 608,
+        "width": 16,
+        "height": 16,
+        "destination": "Bog",
+        "spawn": {"x": 592, "y": 640}
     }]
 },{
     "name": "Alligator Hideout",
@@ -474,21 +486,28 @@ maps = [{
             "health": 100,
             "damage": 6,
             "type": "reptile",
-            "index": 32
+            "index": 28
         },{
             "name": "Swipe Larva",
             "sprite": "res/images/Misc0.png",
             "health": 110,
             "damage": 7,
             "type": "reptile",
-            "index": 23
+            "index": 20
         },{
             "name": "Skeeter",
             "sprite": "res/images/Misc0.png",
             "health": 120,
             "damage": 8,
             "type": "reptile",
-            "index": 10
+            "index": 27
+        },{
+            "name": "Jabberwalker",
+            "sprite": "res/images/Misc0.png",
+            "health": 120,
+            "damage": 8,
+            "type": "reptile",
+            "index": 12
         }],
         "player_spawn_x": 560,
         "player_spawn_y": 576,
