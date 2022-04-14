@@ -208,12 +208,12 @@ maps = [{
         "rotation": 0,
         "type": "teleporterTile",
         "visible": true,
-        "x": 624,
-        "y": 128,
+        "x": 96,
+        "y": 608,
         "width": 16,
         "height": 16,
         "destination": "Bog",
-        "spawn": {"x": 96, "y": 608}
+        "spawn": {"x": 592, "y": 640}
     }]
 },{
     "name": "Alligator Hideout",
@@ -486,21 +486,28 @@ maps = [{
             "health": 100,
             "damage": 6,
             "type": "reptile",
-            "index": 32
+            "index": 28
         },{
             "name": "Swipe Larva",
             "sprite": "res/images/Misc0.png",
             "health": 110,
             "damage": 7,
             "type": "reptile",
-            "index": 23
+            "index": 20
         },{
             "name": "Skeeter",
             "sprite": "res/images/Misc0.png",
             "health": 120,
             "damage": 8,
             "type": "reptile",
-            "index": 10
+            "index": 27
+        },{
+            "name": "Jabberwalker",
+            "sprite": "res/images/Misc0.png",
+            "health": 120,
+            "damage": 8,
+            "type": "reptile",
+            "index": 12
         }],
         "player_spawn_x": 560,
         "player_spawn_y": 576,
