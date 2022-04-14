@@ -477,7 +477,7 @@ maps = [{
     },{
         "name": "Bog",
         "id": 0,
-        "sprite": "res/maps/aligator_hideout.png",
+        "sprite": "res/maps/SkyCliffs.png",
         "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
         "enemies": [
         {
