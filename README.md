@@ -12,3 +12,7 @@ chrome.exe --disable-web-security  --user-data-dir=C:/Users/madig/chromeTemp
 
 # B
 chrome.exe --disable-web-security  --user-data-dir=C:/Users/b/chromeTemp
+
+# Reminders
+remember to import files in thingsToLoad in index.js
+only use monochrome bitmap
