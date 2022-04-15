@@ -213,7 +213,7 @@ maps = [{
         "width": 16,
         "height": 16,
         "destination": "Bog",
-        "spawn": {"x": 592, "y": 640}
+        "spawn": {"x": 180, "y": 704}
     }]
 },{
     "name": "Alligator Hideout",
@@ -478,7 +478,7 @@ maps = [{
         "name": "Bog",
         "id": 0,
         "sprite": "res/maps/SkyCliffs.png",
-        "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+        "collisionMap": "res/maps/skycliffscollisions.bmp",
         "enemies": [
         {
             "name": "Sky Swipe",
@@ -513,8 +513,8 @@ maps = [{
         "player_spawn_y": 576,
         "tileWidth": 16,
         "tileHeight": 16,
-        "tilesWide": 45,
-        "tilesHigh": 45,
+        "tilesWide": 64,
+        "tilesHigh": 64,
         "triggers": [{
             "id": 6,
             "name": "teleporterOverworld",
