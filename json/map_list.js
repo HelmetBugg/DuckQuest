@@ -537,6 +537,74 @@ maps = [{
             "y": 672,
             "width": 16,
             "height": 16,
+            "destination": "Ogre_swamp",
+            "spawn": {"x": 208, "y": 80}
+        }]
+    },
+
+    {
+        "name": "Ogre_swamp",
+        "id": 0,
+        "sprite": "/res/maps/new_swamp_map.png",
+        "collisionMap": "/res/maps/new_swamp_map_collisions.bmp",
+        "enemies": [
+        {
+            "name": "Sky Swipe",
+            "sprite": "res/images/Misc0.png",
+            "health": 100,
+            "damage": 6,
+            "type": "reptile",
+            "index": 28
+        },{
+            "name": "Swipe Larva",
+            "sprite": "res/images/Misc0.png",
+            "health": 110,
+            "damage": 7,
+            "type": "reptile",
+            "index": 20
+        },{
+            "name": "Skeeter",
+            "sprite": "res/images/Misc0.png",
+            "health": 120,
+            "damage": 8,
+            "type": "reptile",
+            "index": 27
+        },{
+            "name": "Jabberwalker",
+            "sprite": "res/images/Misc0.png",
+            "health": 120,
+            "damage": 8,
+            "type": "reptile",
+            "index": 12
+        }],
+        "player_spawn_x": 640,
+        "player_spawn_y": 640,
+        "tileWidth": 16,
+        "tileHeight": 16,
+        "tilesWide": 64,
+        "tilesHigh": 64,
+        "triggers": [{
+            "id": 6,
+            "name": "teleporterOverworld",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 560,
+            "y": 672,
+            "width": 16,
+            "height": 16,
+            "destination": "Overworld",
+            "spawn": {"x": 208, "y": 80}
+        },{
+            "id": 6,
+            "name": "teleporterSkyway",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 560,
+            "y": 672,
+            "width": 16,
+            "height": 16,
             "destination": "Skyway",
             "spawn": {"x": 208, "y": 80}
         }]
