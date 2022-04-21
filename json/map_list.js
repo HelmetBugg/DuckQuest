@@ -213,7 +213,7 @@ maps = [{
         "width": 16,
         "height": 16,
         "destination": "Bog",
-        "spawn": {"x": 180, "y": 704}
+        "spawn": {"x": 680, "y": 680}
     }]
 },{
     "name": "Alligator Hideout",
@@ -475,7 +475,7 @@ maps = [{
         "spawn": {"x": 208, "y": 80}
     }]
     },{
-        "name": "Bog",
+        "name": "Skycliffs",
         "id": 0,
         "sprite": "res/maps/SkyCliffs.png",
         "collisionMap": "res/maps/skycliffscollisions.bmp",
@@ -537,16 +537,16 @@ maps = [{
             "y": 672,
             "width": 16,
             "height": 16,
-            "destination": "Ogre_swamp",
+            "destination": "Bog",
             "spawn": {"x": 208, "y": 80}
         }]
     },
 
     {
-        "name": "Ogre_swamp",
+        "name": "Bog",
         "id": 0,
-        "sprite": "/res/maps/new_swamp_map.png",
-        "collisionMap": "/res/maps/new_swamp_map_collisions.bmp",
+        "sprite": "res/maps/new_swamp_map.png",
+        "collisionMap": "res/maps/new_swamp_map_collisions.bmp",
         "enemies": [
         {
             "name": "Sky Swipe",
