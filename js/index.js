@@ -17,6 +17,8 @@ let thingsToLoad = [
     "res/maps/empty_collisions.bmp",
     "res/maps/skycliffscollisions.bmp",
     "res/maps/alligator_hideout_collisions.bmp",
+    "res/maps/new_swamp_map_collisions.bmp",
+    "res/maps/new_swamp_map.png",
     "res/maps/aligator_hideout.png",
     "res/maps/spider_cave_collisions.bmp",
     "res/maps/spider_cave.png",
