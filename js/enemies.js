@@ -1,5 +1,10 @@
 function createEnemy(jsoninput) {
-    filmStrip = h.filmstrip(jsoninput.sprite, 16, 16);
+
+    var width = (jsoninput.width) ? jsoninput.width : 16;
+    var height = (jsoninput.height) ? jsoninput.height : 16;
+
+   
+    filmStrip = h.filmstrip(jsoninput.sprite, height, width);
     sprite = h.sprite(filmStrip[jsoninput.index]);
     return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage, jsoninput.type);
 }
@@ -75,6 +80,25 @@ function SpiderBossFight() {
         "damage": 50,
         "index": 44,
         "type": "SpiderBoss"
+    });
+    h.combatTurn = initCombatTurn(combatMenu, boss);
+    combatMenu.skillsMenu.runnable = false;
+    combatMenu.skillsMenu.drawSkills();
+    updateHealth(combatMenu);
+}
+
+function DragonFlyBoss() {
+    h.inCombat = true;
+    var combatMenu = spawnCombatMenu();
+    var boss = new createEnemy({
+        "name": "Great Hunter Oda",
+        "sprite": "res/images/Misc0.png",
+        "health": 400,
+        "damage": 60,
+        "index": 7,
+        "type": "Dragonfly" , 
+        "width" : "32" ,
+        "height" : "32" 
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
