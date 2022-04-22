@@ -532,7 +532,6 @@ maps = [{
         "destination": "Sky Cliffs",
         "spawn": {"x": 144, "y": 48}
     }]
-
     },{
         "name": "Sky Cliffs",
         "id": 0,
