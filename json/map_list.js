@@ -560,8 +560,8 @@ maps = [{
             "type": "reptile",
             "index": 27
         }],
-        "player_spawn_x": 560,
-        "player_spawn_y": 576,
+        "player_spawn_x": 640,
+        "player_spawn_y": 350,
         "tileWidth": 16,
         "tileHeight": 16,
         "tilesWide": 64,
@@ -590,6 +590,19 @@ maps = [{
             "height": 16,
             "destination": "Bog",
             "spawn": {"x": 144, "y": 160}
+        },{
+            "id": 7, 
+            "name": "Oda",
+            "type": "npc",
+            "visible": true,
+            "x": 800,
+            "y": 384,
+            "index" : 7,
+            "width": 32,
+            "height": 32,        
+            "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
+            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss],
+            "spriteSheet" : "res/images/Misc0.png"
         }]
     }
 ];
