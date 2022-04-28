@@ -1,18 +1,16 @@
 function createEnemy(jsoninput) {
-
     var width = (jsoninput.width) ? jsoninput.width : 16;
     var height = (jsoninput.height) ? jsoninput.height : 16;
 
-   
     filmStrip = h.filmstrip(jsoninput.sprite, height, width);
     sprite = h.sprite(filmStrip[jsoninput.index]);
     return enemy(jsoninput.name, sprite, jsoninput.health, jsoninput.damage, jsoninput.type);
 }
 
+
 function enemy(name, sprite, health, damage, type) {
     h.player.talking = false;
     h.player.tweening = false;
-    
     let stat = new Map();
     stat.set("strength", damage);
     stat.set("health", health);
@@ -21,9 +19,9 @@ function enemy(name, sprite, health, damage, type) {
     stat.set("experience", expReward);
     sprite.type = type;
     sprite.scale.x = sprite.scale.y = 6;
-    sprite.pixotX = 1;
-    sprite.x = 330;
-    sprite.y = 75;
+    sprite.pivotX = sprite.pivotY = 0.5;
+    sprite.x = 390;
+    sprite.y = 135;
     sprite.name = name;
     sprite.stat = stat;
     // Highly convuluted, need to come back and fix this up.
@@ -96,9 +94,9 @@ function DragonFlyBoss() {
         "health": 400,
         "damage": 60,
         "index": 7,
-        "type": "Dragonfly" , 
-        "width" : "32" ,
-        "height" : "32" 
+        "type": "Dragonfly", 
+        "width" : 32,
+        "height" : 32 
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
