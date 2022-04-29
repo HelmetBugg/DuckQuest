@@ -23,6 +23,8 @@ let thingsToLoad = [
     "res/maps/spider_cave_collisions.bmp",
     "res/maps/spider_cave.png",
 	"res/images/Misc0.png",
+    "res/maps/Tent.png",
+    "res/maps/TentCollisions.bmp",
     "res/fonts/PressStart.ttf"
 ];
 

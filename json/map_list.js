@@ -214,6 +214,18 @@ maps = [{
         "height": 16,
         "destination": "Bog",
         "spawn": {"x": 640, "y": 640}
+    },{
+        "id": 7,
+        "name": "teleporterTent",
+        "rotation": 0,
+        "type": "teleporterTile",
+        "visible": true,
+        "x": 528,
+        "y": 448,
+        "width": 16,
+        "height": 16,
+        "destination": "Tent",
+        "spawn": {"x": 144, "y": 288}
     }]
 },{
     "name": "Alligator Hideout",
@@ -597,12 +609,50 @@ maps = [{
             "visible": true,
             "x": 800,
             "y": 384,
+            "spriteSheet" : "res/images/Misc0.png",
             "index" : 7,
             "width": 32,
             "height": 32,        
             "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
-            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss],
-            "spriteSheet" : "res/images/Misc0.png"
+            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss]
+        }]
+    },{
+        "name": "Tent",
+        "id": 0,
+        "sprite": "res/maps/Tent.png",
+        "collisionMap": "res/maps/TentCollisions.bmp",
+        "enemies": [],
+        "player_spawn_x": 640,
+        "player_spawn_y": 350,
+        "tileWidth": 16,
+        "tileHeight": 16,
+        "tilesWide": 64,
+        "tilesHigh": 64,
+        "triggers": [{
+            "id": 6,
+            "name": "teleporterOverworld",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 128,
+            "y": 160,
+            "width": 128,
+            "height": 32,
+            "destination": "Maze",
+            "spawn": {"x": 208, "y": 80}
+        },{
+            "id": 7, 
+            "name": "Oda",
+            "type": "npc",
+            "visible": true,
+            "x": 800,
+            "y": 384,
+            "spriteSheet" : "res/images/Misc0.png",
+            "index" : 7,
+            "width": 32,
+            "height": 32,        
+            "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
+            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss]
         }]
     }
 ];
