@@ -25,6 +25,8 @@ let thingsToLoad = [
 	"res/images/Misc0.png",
     "res/maps/Tent.png",
     "res/maps/TentCollisions.bmp",
+    "res/maps/maze.png",
+    "res/maps/maze_collisions.bmp",
     "res/fonts/PressStart.ttf"
 ];
 

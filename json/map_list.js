@@ -639,7 +639,7 @@ maps = [{
             "width": 128,
             "height": 32,
             "destination": "Maze",
-            "spawn": {"x": 208, "y": 80}
+            "spawn": {"x": 576, "y": 592}
         },{
             "id": 7, 
             "name": "Oda",
@@ -653,6 +653,55 @@ maps = [{
             "height": 32,        
             "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
             " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss]
+        }]
+    },{
+        "name": "Maze",
+        "id": 0,
+        "sprite": "res/maps/maze.png",
+        "collisionMap": "res/maps/maze_collisions.bmp",
+        "enemies": [],
+        "player_spawn_x": 640,
+        "player_spawn_y": 350,
+        "tileWidth": 16,
+        "tileHeight": 16,
+        "tilesWide": 64,
+        "tilesHigh": 64,
+        "triggers": [{
+            "id": 6,
+            "name": "teleporterOverworld",
+            "rotation": 0,
+            "type": "teleporterTile",
+            "visible": true,
+            "x": 80,
+            "y": 16,
+            "width": 128,
+            "height": 32,
+            "destination": "Overworld",
+            "spawn": {"x": 528, "y": 464}
+        },{
+            "id": 7, 
+            "name": "Jasper",
+            "type": "npc",
+            "visible": true,
+            "x": 48,
+            "y": 16,
+            "spriteSheet" : "res/images/Player0.png",
+            "index" : 41,
+            "width": 16,
+            "height": 16,        
+            "dialog": ["You beat my maze!", "A-MAZE-ing!"]
+        },{
+            "id": 8, 
+            "name": "Sad Clown",
+            "type": "npc",
+            "visible": true,
+            "x": 560,
+            "y": 608,
+            "spriteSheet" : "res/images/Player0.png",
+            "index" : 41,
+            "width": 16,
+            "height": 16,        
+            "dialog": ["Help, I've been here for weeks!"]
         }]
     }
 ];
