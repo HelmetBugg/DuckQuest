@@ -47,10 +47,6 @@ function enemy(name, sprite, health, damage, type) {
     return sprite;
 }
 
-function createGoose() {
-    return enemy("goose", "res/images/goose.png", 10, 10, 10, 10);
-}
-
 function AlligatorBossFight() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
@@ -60,7 +56,7 @@ function AlligatorBossFight() {
         "health": 250,
         "damage": 40,
         "index": 112,
-        "type": "AligatorBoss"
+        "type": "aquatic"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
@@ -77,7 +73,7 @@ function SpiderBossFight() {
         "health": 350,
         "damage": 50,
         "index": 44,
-        "type": "SpiderBoss"
+        "type": "bug"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
@@ -94,9 +90,28 @@ function DragonFlyBoss() {
         "health": 400,
         "damage": 60,
         "index": 7,
-        "type": "Dragonfly", 
+        "type": "bug", 
         "width" : 32,
         "height" : 32 
+    });
+    h.combatTurn = initCombatTurn(combatMenu, boss);
+    combatMenu.skillsMenu.runnable = false;
+    combatMenu.skillsMenu.drawSkills();
+    updateHealth(combatMenu);
+}
+
+function ClownFishBoss() {
+    h.inCombat = true;
+    var combatMenu = spawnCombatMenu();
+    var boss = new createEnemy({
+        "name": "Jasper",
+        "sprite": "res/images/Player0.png",
+        "health": 650,
+        "damage": 120 ,
+        "index": 7,
+        "type": "bug", 
+        "width" : 16,
+        "height" : 16 
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;

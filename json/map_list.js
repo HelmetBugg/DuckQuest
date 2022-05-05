@@ -689,7 +689,7 @@ maps = [{
             "index" : 41,
             "width": 16,
             "height": 16,        
-            "dialog": ["You beat my maze!", "A-MAZE-ing!"]
+            "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss]
         },{
             "id": 8, 
             "name": "Sad Clown",

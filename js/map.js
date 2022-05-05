@@ -93,6 +93,7 @@ function debugCollisions(map){
 
 
 function checkCollision(map, location) {
+    return false;
     // Check bitmap tiles for walls and boundaries
     if (h.map.tileCollisions[location.y/16][location.x/16] != 0) {
         return true;
