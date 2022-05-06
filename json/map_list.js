@@ -589,7 +589,7 @@ maps = [{
             "width": 16,
             "height": 16,
             "destination": "Overworld",
-            "spawn": {"x": 208, "y": 80}
+            "spawn": {"x": 96, "y": 624}
         },{
             "id": 6,
             "name": "teleporterSkyway",
@@ -636,23 +636,10 @@ maps = [{
             "visible": true,
             "x": 128,
             "y": 160,
-            "width": 128,
+            "width": 64,
             "height": 32,
             "destination": "Maze",
             "spawn": {"x": 576, "y": 592}
-        },{
-            "id": 7, 
-            "name": "Oda",
-            "type": "npc",
-            "visible": true,
-            "x": 800,
-            "y": 384,
-            "spriteSheet" : "res/images/Misc0.png",
-            "index" : 7,
-            "width": 32,
-            "height": 32,        
-            "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
-            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss]
         }]
     },{
         "name": "Maze",
