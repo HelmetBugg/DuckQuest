@@ -264,6 +264,20 @@ function initplayer() {
 
 	// Kick off default quests
 	startKillAligatorBoss();
+	h.player.checkQuests = function(questName){
+		console.log("Starting with " + questName);
+		for (let i = 0 ; i < h.player.quests.length ; i++)   {
+			//console.log("comparing " +h.player.quests[i].name +" with " + questName);
+			if (h.player.quests[i].name == questName){
+				
+				return true;
+			}
+			
+
+		}
+		//console.log("out of loop");
+		return false;
+	}
 }
 
 
@@ -422,3 +436,4 @@ function shuffleArray(array) {
 function sleep (time) {
 	return new Promise((resolve) => setTimeout(resolve, time));
 }
+

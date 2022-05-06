@@ -277,6 +277,7 @@ maps = [{
         "width": 16,
         "height": 16,        
         "dialog": ["...hahaha. Wait who is this guy?", "You've come to challenge.. ME?", AlligatorBossFight],
+        "questTriggers" : "Kill Lord Gator",
         "spriteSheet" : "res/images/Player0.png"
     },{
         "id": 113,

@@ -50,6 +50,7 @@ function startKillAligatorBoss(){
 		return false;
 	},function(){
 		gainExperience(500);
+		
 	});
 }
 
