@@ -22,8 +22,8 @@ function initKeyboard() {
 			for (i=0; i < h.map.triggers.length; i++) {
 				let trigger = h.map.layer.triggers[i];
 				if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
-					if (trigger.questTriggers == undefined || h.player.checkQuests('Kill Lord Gator')  == true){
-					startDialog(h.map.layer.triggers[i]);
+					if (trigger.questTriggers == undefined || h.player.checkQuests(trigger.questTriggers)){
+						startDialog(h.map.layer.triggers[i]);
 					}	
 				}
 			}

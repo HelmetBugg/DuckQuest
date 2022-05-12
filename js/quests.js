@@ -18,7 +18,7 @@ function createQuest(name, desc, goal, effect){
 		if (goal()){
 			effect();
 			popUp(button(100, 0, "Quest Complete!"), 5000);
-			this.active = false;
+			quest.active = false;
 		}
 	};
 	h.player.quests.push(quest);
@@ -50,7 +50,6 @@ function startKillAligatorBoss(){
 		return false;
 	},function(){
 		gainExperience(500);
-		
 	});
 }
 

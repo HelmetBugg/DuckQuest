@@ -56,7 +56,7 @@ function AlligatorBossFight() {
         "health": 250,
         "damage": 40,
         "index": 112,
-        "type": "aquatic"
+        "type": "AligatorBoss"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
@@ -73,7 +73,7 @@ function SpiderBossFight() {
         "health": 350,
         "damage": 50,
         "index": 44,
-        "type": "bug"
+        "type": "SpiderBoss"
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
@@ -90,7 +90,7 @@ function DragonFlyBoss() {
         "health": 400,
         "damage": 60,
         "index": 7,
-        "type": "bug", 
+        "type": "DragonFlyBoss", 
         "width" : 32,
         "height" : 32 
     });
@@ -109,7 +109,7 @@ function ClownFishBoss() {
         "health": 650,
         "damage": 120 ,
         "index": 7,
-        "type": "bug", 
+        "type": "ClownFishBoss", 
         "width" : 16,
         "height" : 16 
     });
