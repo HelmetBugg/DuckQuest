@@ -264,6 +264,11 @@ function initplayer() {
 
 	// Kick off default quests
 	startKillAligatorBoss();
+	startClownfishQuest();
+	startDragonflyQuest();
+
+
+
 	h.player.checkQuests = function(questName){
 		for (let i=0; i < h.player.quests.length; i++)   {
 			if (h.player.quests[i].name == questName && h.player.quests[i].active){	

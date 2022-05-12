@@ -375,6 +375,7 @@ maps = [{
         "width": 16,
         "height": 16,        
         "dialog": ["Hiiiissss...", SpiderBossFight],
+        "questTriggers" : "Alternate Revenue Streams",
         "spriteSheet" : "res/images/Misc0.png"
     },{
         "id": 6,
@@ -615,7 +616,9 @@ maps = [{
             "width": 32,
             "height": 32,        
             "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
-            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss]
+            " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss],
+            "questTriggers" : "Kill Dragonfly"
+
         }]
     },{
         "name": "Tent",
@@ -677,7 +680,8 @@ maps = [{
             "index" : 41,
             "width": 16,
             "height": 16,        
-            "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss]
+            "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss],
+            "questTriggers" : "Kill Nemo"
         },{
             "id": 8, 
             "name": "Sad Clown",

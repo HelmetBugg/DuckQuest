@@ -1,6 +1,8 @@
 var questMap = {
 	"Kill Lord Gator": startKillAligatorBoss,
 	"Slime Hunt": startKillThreeSlimesQuest,
+	"Kill Nemo": startClownfishQuest,
+	"Kill Dragonfly": startDragonflyQuest,
 	"Alternate Revenue Streams": startClearCavesForRat
 };
 
@@ -64,3 +66,39 @@ function startClearCavesForRat() {
 			gainExperience(300);
 		});
 }
+
+function startClownfishQuest() {
+    createQuest('Kill Nemo','Clownfish needs ded. Kill they butt.',
+	function(){
+		if (h.player.killed.ClownFishBoss > 0) {
+			return true;
+		}
+		return false;
+	}, function () {
+		gainExperience(500);
+	
+
+	}
+	
+	);
+}
+
+function startDragonflyQuest() {
+	createQuest('Kill Dragonfly', 'Do the dragonfly dirty.',
+	function(){
+		if (h.player.killed.DragonFlyBoss > 0) {
+			return true;
+		}
+		return false;
+	}, function () {
+		gainExperience(500);
+	
+
+	}
+	
+	);
+	
+	
+}
+
+
