@@ -242,8 +242,9 @@ function initplayer() {
 		"slime": 0,
 		"AligatorBoss": 0,
 		"SpiderBoss": 0,
+		"DragonFlyBoss": 0,
 		"SnakeBoss": 0,
-		"ClownBoss": 0,
+		"ClownfishBoss": 0,
 		"GooseBoss": 0
 	};
 	h.player.status = {

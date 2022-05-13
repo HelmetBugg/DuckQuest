@@ -107,9 +107,9 @@ function ClownFishBoss() {
         "name": "Jasper",
         "sprite": "res/images/Player0.png",
         "health": 650,
-        "damage": 120 ,
+        "damage": 120,
         "index": 7,
-        "type": "ClownFishBoss", 
+        "type": "ClownfishBoss", 
         "width" : 16,
         "height" : 16 
     });

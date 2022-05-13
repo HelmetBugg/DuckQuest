@@ -586,7 +586,7 @@ maps = [{
             "rotation": 0,
             "type": "teleporterTile",
             "visible": true,
-            "x": 560,
+            "x": 608,
             "y": 672,
             "width": 16,
             "height": 16,
@@ -605,20 +605,18 @@ maps = [{
             "destination": "Bog",
             "spawn": {"x": 144, "y": 160}
         },{
-            "id": 7, 
+            "id": 27, 
             "name": "Oda",
             "type": "npc",
             "visible": true,
-            "x": 800,
-            "y": 384,
-            "spriteSheet" : "res/images/Misc0.png",
-            "index" : 7,
-            "width": 32,
-            "height": 32,        
+            "x": 672,
+            "y": 704,
+            "spriteSheet": "res/images/Misc0.png",
+            "width": 16,
+            "height": 16,
             "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
             " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss],
             "questTriggers" : "Kill Dragonfly"
-
         }]
     },{
         "name": "Tent",
