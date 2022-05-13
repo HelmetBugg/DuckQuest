@@ -36,6 +36,7 @@ version = 0.6;
 h.scaleToWindow();
 h.start();
 var blurb_group;
+var sentai = false;
 
 
 function load() {
