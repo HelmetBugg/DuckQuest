@@ -55,6 +55,7 @@ function startKillAligatorBoss(){
 	});
 }
 
+
 function startClearCavesForRat() {
 	createQuest('Alternate Revenue Streams', 'Rativan wants to expand out from sundries.  Clear out wildlife from a cave for payment and a discount on future spelunking tours (he says).',
 		function () {
@@ -67,6 +68,7 @@ function startClearCavesForRat() {
 		});
 }
 
+
 function startClownfishQuest() {
     createQuest('Kill Nemo','Clownfish needs ded. Kill they butt.',
 	function(){
@@ -75,13 +77,10 @@ function startClownfishQuest() {
 		}
 		return false;
 	}, function () {
-		gainExperience(500);
-	
-
-	}
-	
-	);
+		gainExperience(1000);
+	});
 }
+
 
 function startDragonflyQuest() {
 	createQuest('Kill Dragonfly', 'Do the dragonfly dirty.',
@@ -91,14 +90,8 @@ function startDragonflyQuest() {
 		}
 		return false;
 	}, function () {
-		gainExperience(500);
-	
-
-	}
-	
-	);
-	
-	
+		gainExperience(800);
+	});
 }
 
 
