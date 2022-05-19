@@ -85,7 +85,7 @@ function DragonFlyBoss() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
-        "name": "Great Hunter Oda",
+        "name": "Sky Hunter Oda",
         "sprite": "res/images/Misc0.png",
         "health": 400,
         "damage": 60,
@@ -104,14 +104,14 @@ function ClownFishBoss() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
-        "name": "Jasper",
-        "sprite": "res/images/Player0.png",
-        "health": 650,
-        "damage": 120,
-        "index": 7,
+        "name": "Jasper the Jester",
+        "sprite": "res/images/Misc0.png",
+        "health": 600,
+        "damage": 80,
+        "index": 14,
         "type": "ClownfishBoss", 
-        "width" : 16,
-        "height" : 16 
+        "width" : 32,
+        "height" : 32 
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
