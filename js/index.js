@@ -27,6 +27,10 @@ let thingsToLoad = [
     "res/maps/TentCollisions.bmp",
     "res/maps/maze.png",
     "res/maps/maze_collisions.bmp",
+    "res/maps/courtyard.png",
+    "res/maps/courtyard_collisions.bmp",
+    "res/maps/throne_room.png",
+    "res/maps/Throne_room_collisions.bmp",
     "res/fonts/PressStart.ttf"
 ];
 
