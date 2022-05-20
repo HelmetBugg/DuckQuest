@@ -30,7 +30,7 @@ let thingsToLoad = [
     "res/maps/courtyard.png",
     "res/maps/courtyard_collisions.bmp",
     "res/maps/throne_room.png",
-    "res/maps/Throne_room_collisions.bmp",
+    "res/maps/throne_room_collisions.bmp",
     "res/fonts/PressStart.ttf"
 ];
 

@@ -813,8 +813,8 @@ maps = [{
                 "player_spawn_y": 350,
                 "tileWidth": 16,
                 "tileHeight": 16,
-                "tilesWide": 64,
-                "tilesHigh": 64,
+                "tilesWide": 35,
+                "tilesHigh": 35,
                 "triggers": [{
                         "id": 6,
                         "name": "teleporterOverworld",
