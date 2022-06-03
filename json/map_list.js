@@ -757,7 +757,7 @@ maps = [{
             "collisionMap": "res/maps/courtyard_collisions.bmp",
             "enemies": [],
             "player_spawn_x": 336,
-            "player_spawn_y": 414,
+            "player_spawn_y": 416,
             "tileWidth": 16,
             "tileHeight": 16,
             "tilesWide": 64,
