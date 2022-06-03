@@ -768,14 +768,14 @@ maps = [{
                     "rotation": 0,
                     "type": "teleporterTile",
                     "visible": true,
-                    "x": 80,
-                    "y": 16,
+                    "x": 576,
+                    "y": 224,
                     "width": 128,
-                    "height": 32,
-                    "destination": "Overworld",
+                    "height": 16,
+                    "destination": "Throne Room",
                     "spawn": {
-                        "x": 528,
-                        "y": 464
+                        "x": 272,
+                        "y": 512
                     }
                 }, {
                     "id": 7,
@@ -831,30 +831,18 @@ maps = [{
                             "y": 464
                         }
                     }, {
-                        "id": 7,
-                        "name": "Jasper",
+                        "id": 109,
+                        "name": "Gooseman",
                         "type": "npc",
                         "visible": true,
-                        "x": 48,
-                        "y": 16,
+                        "x": 272,
+                        "y": 92,
                         "spriteSheet": "res/images/Player0.png",
-                        "index": 41,
+                        "index": 2,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss],
+                        "dialog": ["So, you're finally here Duckman.", "Unfortunately, for you, this battle will be no different than our last...", "Except this time I'll make sure I finish the job!", ClownFishBoss],
                         "questTriggers": "Kill Nemo"
-                    }, {
-                        "id": 8,
-                        "name": "Sad Clown",
-                        "type": "npc",
-                        "visible": true,
-                        "x": 560,
-                        "y": 608,
-                        "spriteSheet": "res/images/Player0.png",
-                        "index": 41,
-                        "width": 16,
-                        "height": 16,
-                        "dialog": ["Help, I've been here for weeks!"]
                     }
                 ]
             }
