@@ -94,9 +94,10 @@ function debugCollisions(map){
 
 function checkCollision(map, location) {
     if(sentai){
-		return false};
-    // Check bitmap tiles for walls and boundaries
-    if (h.map.tileCollisions[location.y/16][location.x/16] != 0) {
+		return false
+    };
+    // Check bitmap tiles for walls and boundaries 4.8111
+    if (h.map.tileCollisions[Math.floor(location.y/16)][Math.floor(location.x/16)] != 0) {
         return true;
     }
     // Check Trigger collisions for NPCs
