@@ -19,7 +19,7 @@ function initKeyboard() {
 		if (h.player.talking) {
 			h.dialogBox.Next.press();
 		} else {
-			for (i=0; i < h.map.triggers.length; i++) {
+			for (i=0; i < h.map.layer.triggers.length; i++) {
 				let trigger = h.map.layer.triggers[i];
 				if (checkTriggerCollision(trigger) && !h.player.talking && trigger.type == "npc"){
 					if (trigger.questTriggers == undefined || h.player.checkQuests(trigger.questTriggers)){

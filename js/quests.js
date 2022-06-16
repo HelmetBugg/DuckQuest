@@ -93,3 +93,25 @@ function startDragonflyQuest() {
 		gainExperience(800);
 	});
 }
+
+
+function startGoosemanQuest() {
+	createQuest('Kill Gooseman', 'Kill Gooseman, save the pond.',
+	function(){
+		if (h.player.killed.Gooseman > 0) {
+			return true;
+		}
+		return false;
+	}, function () {
+		gainExperience(2800);
+	});
+}
+
+function checkGoosemanQuest(){
+	/*
+	Check to make sure you completed the three original kill quests you started with, trigger new quest.
+	*/
+	if (!h.player.checkQuests("Kill Dragonfly") && !h.player.checkQuests("Kill Nemo") && !h.player.checkQuests("Kill Lord Gator")){
+		startGoosemanQuest();
+	}
+}

@@ -84,8 +84,8 @@ function newGame(load_data) {
     h.remove(h.destroy);
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
-    initMap(maps[1]);
 	initplayer();
+    initMap(maps[1]);
     initSkills();
     // Making the player a child of the map for easy movement.
     h.map.addChild(h.player);

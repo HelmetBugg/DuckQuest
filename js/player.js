@@ -21,7 +21,7 @@ function initplayer() {
 		"DragonFlyBoss": 0,
 		"SnakeBoss": 0,
 		"ClownfishBoss": 0,
-		"GooseBoss": 0
+		"Gooseman": 0
 	};
 	h.player.status = {
 		"protected": false,

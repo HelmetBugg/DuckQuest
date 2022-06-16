@@ -160,17 +160,29 @@ maps = [{
         "tilesWide": 45,
         "tilesHigh": 45,
         "triggers": [{
-                "id": 4,
-                "name": "turtleTrader",
-                "type": "npc",
-                "visible": true,
-                "x": 144,
-                "y": 256,
-                "width": 16,
-                "height": 16,
-                "dialog": [],
-                "spriteSheet": "res/images/Player0.png"
-            }, {
+            "id": 4,
+            "name": "Guard",
+            "type": "npc",
+            "visible": true,
+            "x": 208,
+            "y": 112,
+            "width": 16,
+            "height": 16,
+            "questTriggers": "Kill Lord Gator",
+            "dialog": ["Pay up for the new toll set by Lord Gator.", "...", "What you don't got money!? Scram!"],
+            "spriteSheet": "res/images/Player0.png"
+        },{
+            "id": 4,
+            "name": "turtleTrader",
+            "type": "npc",
+            "visible": true,
+            "x": 144,
+            "y": 256,
+            "width": 16,
+            "height": 16,
+            "dialog": [],
+            "spriteSheet": "res/images/Player0.png"
+        },{
                 "id": 6,
                 "name": "teleporterTown",
                 "rotation": 0,
@@ -241,6 +253,22 @@ maps = [{
                 "width": 16,
                 "height": 16,
                 "destination": "Tent",
+                "spawn": {
+                    "x": 144,
+                    "y": 288
+                }
+            }, {
+                "id": 8,
+                "name": "Boatman",
+                "rotation": 0,
+                "type": "teleporterTile",
+                "visible": true,
+                "x": 384,
+                "y": 512,
+                "width": 16,
+                "height": 16,
+                "questTriggers": 'Kill Gooseman',                
+                "destination": "Courtyard",
                 "spawn": {
                     "x": 144,
                     "y": 288

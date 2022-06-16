@@ -48,20 +48,41 @@ function loadMapCollisions(image, width, height){
 
 
 function placeTrigger(object, index) {
-    if(object.type == "npc"){
-        filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
-        trigger = h.sprite(filmStrip[object.id]);
+    if (object.questTriggers){
+        if (h.player.checkQuests(object.questTriggers)){
+            var trigger;
+            if(object.type == "npc"){
+                filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
+                trigger = h.sprite(filmStrip[object.id]);
+            } else {
+                trigger = h.rectangle(16, 16, "black", "black", 0, 0, 0);
+            }
+            h.map.addChild(trigger);
+            trigger.x = object.x;
+            trigger.y = object.y;
+            trigger.dialog = object.dialog;
+            if (!object.visible) {
+                trigger.visible = false;
+            }
+            h.map.triggers.push(trigger);
+        }
     } else {
-        trigger = h.rectangle(16, 16, "black", "black", 0, 0, 0);
-    }
-    h.map.addChild(trigger);
-    trigger.x = object.x;
-    trigger.y = object.y;
-    trigger.dialog = object.dialog;
-    if (!object.visible) {
-        trigger.visible = false;
-    }
-    h.map.triggers.push(trigger);
+        var trigger;
+        if (object.type == "npc"){
+            filmStrip = h.filmstrip(object.spriteSheet, 16, 16);
+            trigger = h.sprite(filmStrip[object.id]);
+        } else {
+            trigger = h.rectangle(16, 16, "black", "black", 0, 0, 0);
+        }
+        h.map.addChild(trigger);
+        trigger.x = object.x;
+        trigger.y = object.y;
+        trigger.dialog = object.dialog;
+        if (!object.visible) {
+            trigger.visible = false;
+        }
+        h.map.triggers.push(trigger);
+    } 
 }
 
 
@@ -102,6 +123,7 @@ function checkCollision(map, location) {
     }
     // Check Trigger collisions for NPCs
     for(var j=0; j<map.triggers.length; j++){
+        console.log(map.triggers[j])
         if(map.triggers[j].type == "npc" && h.hitTestRectangle(location, map.triggers[j])){
             return true;
         }
