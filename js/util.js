@@ -370,3 +370,7 @@ function shuffleArray(array) {
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+function GoosemanCastleBoatman(){
+    spawnTeleporterChoice("Courtyard", {'x': 336, 'y': 416});
+}

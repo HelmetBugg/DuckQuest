@@ -123,7 +123,6 @@ function checkCollision(map, location) {
     }
     // Check Trigger collisions for NPCs
     for(var j=0; j<map.triggers.length; j++){
-        console.log(map.triggers[j])
         if(map.triggers[j].type == "npc" && h.hitTestRectangle(location, map.triggers[j])){
             if (map.triggers[j].questTriggers && !h.player.checkQuests(map.triggers[j].questTriggers)){
                 return false;

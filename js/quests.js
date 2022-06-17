@@ -3,7 +3,8 @@ var questMap = {
 	"Slime Hunt": startKillThreeSlimesQuest,
 	"Kill Nemo": startClownfishQuest,
 	"Kill Dragonfly": startDragonflyQuest,
-	"Alternate Revenue Streams": startClearCavesForRat
+	"Alternate Revenue Streams": startClearCavesForRat,
+	"Kill Gooseman": startGoosemanQuest
 };
 
 
@@ -113,10 +114,9 @@ function startGoosemanQuest() {
 	});
 }
 
+
 function checkGoosemanQuest(){
-	/*
-	Check to make sure you completed the three original kill quests you started with, trigger new quest.
-	*/
+	// Check to make sure you completed the three original kill quests you started with, trigger new quest.
 	if (!h.player.checkQuests("Kill Dragonfly") && !h.player.checkQuests("Kill Nemo") && !h.player.checkQuests("Kill Lord Gator")){
 		startGoosemanQuest();
 	}

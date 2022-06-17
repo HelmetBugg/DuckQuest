@@ -272,10 +272,7 @@ maps = [{
                     "y": 288
                 },
                 "questTriggers": "Kill Gooseman",
-                "dialog": ["Good luck kid"]
-                   
-                
-                
+                "dialog": ["Oh want a ride out to Gooseman's castle?", GoosemanCastleBoatman]    
             }  
         ]
     }, {
