@@ -20,7 +20,7 @@ function initplayer() {
 		"SpiderBoss": 0,
 		"DragonFlyBoss": 0,
 		"SnakeBoss": 0,
-		"ClownfishBoss": 0,
+		"ClownFishBoss": 0,
 		"Gooseman": 0
 	};
 	h.player.status = {
@@ -34,7 +34,7 @@ function initplayer() {
 
 	// Kick off default quests
 	startKillAligatorBoss();
-	startClownfishQuest();
+	startClownFishQuest();
 	startDragonflyQuest();
 
 	h.player.checkQuests = function(questName){

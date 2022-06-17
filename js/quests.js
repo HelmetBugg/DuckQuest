@@ -18,9 +18,10 @@ function createQuest(name, desc, goal, effect){
 	quest.effect = effect;
 	quest.isComplete = function(){
 		if (goal()){
+			quest.active = false;
 			effect();
 			popUp(button(100, 0, "Quest Complete!"), 5000);
-			quest.active = false;
+			
 		}
 	};
 	h.player.quests.push(quest);
@@ -52,6 +53,7 @@ function startKillAligatorBoss(){
 		return false;
 	},function(){
 		gainExperience(500);
+		checkGoosemanQuest();
 	});
 }
 
@@ -69,7 +71,7 @@ function startClearCavesForRat() {
 }
 
 
-function startClownfishQuest() {
+function startClownFishQuest() {
     createQuest('Kill Nemo','Clownfish needs ded. Kill they butt.',
 	function(){
 		if (h.player.killed.ClownFishBoss > 0) {
@@ -78,6 +80,7 @@ function startClownfishQuest() {
 		return false;
 	}, function () {
 		gainExperience(1000);
+		checkGoosemanQuest();
 	});
 }
 
@@ -90,7 +93,9 @@ function startDragonflyQuest() {
 		}
 		return false;
 	}, function () {
+		console.log("Dragonfly exp.");
 		gainExperience(800);
+		checkGoosemanQuest();
 	});
 }
 
@@ -104,6 +109,7 @@ function startGoosemanQuest() {
 		return false;
 	}, function () {
 		gainExperience(2800);
+		
 	});
 }
 

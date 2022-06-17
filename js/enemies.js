@@ -109,7 +109,7 @@ function ClownFishBoss() {
         "health": 600,
         "damage": 80,
         "index": 14,
-        "type": "ClownfishBoss", 
+        "type": "ClownFishBoss", 
         "width" : 32,
         "height" : 32 
     });

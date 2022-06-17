@@ -258,22 +258,25 @@ maps = [{
                     "y": 288
                 }
             }, {
-                "id": 8,
-                "name": "Boatman",
-                "rotation": 0,
-                "type": "teleporterTile",
+                "id": 43,
+                "name": "BoatMan",
+                "type": "npc",
                 "visible": true,
-                "x": 384,
-                "y": 512,
+                "x": 336,
+                "y": 496,
                 "width": 16,
                 "height": 16,
-                "questTriggers": 'Kill Gooseman',                
-                "destination": "Courtyard",
+                "spriteSheet": "res/images/Player0.png",
                 "spawn": {
                     "x": 144,
                     "y": 288
-                }
-            }
+                },
+                "questTriggers": "Kill Gooseman",
+                "dialog": ["Good luck kid"]
+                   
+                
+                
+            }  
         ]
     }, {
         "name": "Alligator Hideout",
