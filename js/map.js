@@ -125,7 +125,11 @@ function checkCollision(map, location) {
     for(var j=0; j<map.triggers.length; j++){
         console.log(map.triggers[j])
         if(map.triggers[j].type == "npc" && h.hitTestRectangle(location, map.triggers[j])){
-            return true;
+            if (map.triggers[j].questTriggers && !h.player.checkQuests(map.triggers[j].questTriggers)){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
     return false;
