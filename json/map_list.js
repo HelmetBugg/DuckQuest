@@ -753,14 +753,13 @@ maps = [{
                     "y": 464
                 }
             }, {
-                "id": 7,
+                "id": 59,
                 "name": "Jasper",
                 "type": "npc",
                 "visible": true,
                 "x": 48,
                 "y": 16,
                 "spriteSheet": "res/images/Player0.png",
-                "index": 41,
                 "width": 16,
                 "height": 16,
                 "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss],
