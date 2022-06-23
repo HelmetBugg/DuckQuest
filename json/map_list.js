@@ -44,7 +44,7 @@ maps = [{
                 "dialog": ["It's unbelievable what Gooseman's done..", "He's left so many from our village dead in his quest to take over the pond.", "So many that we've started burying people outside the walls.", "My Brother James is out there now.", "Please stop him Duckman, not for me, but.. for them."],
                 "spriteSheet": "res/images/Player0.png"
             }, {
-                "id": 70,
+                "id": 62,
                 "name": "Mayor D.",
                 "type": "npc",
                 "visible": true,
