@@ -1,6 +1,9 @@
 function initplayer() {
     if (h.player == null) {
-        h.player = h.sprite("res/images/duckman.png");
+        //h.player = h.sprite("res/images/duckman.png");
+		filmStrip = h.filmstrip("res/images/Player0.png", 16, 16);
+		h.player = h.sprite(filmStrip[103]);
+
     }
     h.player.directionFacingBox = h.rectangle(16, 16, "white", "black", 0, 0, 0);
     h.player.directionFacingBox.visible = false;
