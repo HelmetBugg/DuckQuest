@@ -831,7 +831,7 @@ maps = [{
                     "dialog": ["Help, I've been here for weeks!"]
                 }, {
                     "id": 54,
-                    "name": "Mario",
+                    "name": "Miriam",
                     "type": "npc",
                     "visible": true,
                     "x": 688,
@@ -839,7 +839,7 @@ maps = [{
                     "spriteSheet": "res/images/Player0.png",
                     "width": 16,
                     "height": 16,
-                    "dialog": ["YOU ARE NOW HEALED"]
+                    "dialog": ["YOU ARE NOW HEALED", fullHeal]
                 }
 		]}, {
                 "name": "Throne Room",
