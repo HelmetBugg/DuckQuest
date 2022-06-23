@@ -868,9 +868,9 @@ maps = [{
                         "index": 2,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["So, you're finally here Duckman.", "Unfortunately, for you, this battle will be no different than our last...", "Except this time I'll make sure I finish the job!", ClownFishBoss],
+                        "dialog": ["So, you're finally here Duckman.", "Unfortunately, for you, this battle will be no different than our last...", "Except this time I'll make sure I finish the job!", GoosemanBoss],
                         "questTriggers": "Kill Nemo"
                     }
                 ]
             }
-            ];
+        ];

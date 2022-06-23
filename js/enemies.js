@@ -118,3 +118,22 @@ function ClownFishBoss() {
     combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
 }
+
+function GoosemanBoss() {
+    h.inCombat = true;
+    var combatMenu = spawnCombatMenu();
+    var boss = new createEnemy({
+        "name": "Gooseman",
+        "sprite": "res/images/Player0.png",
+        "health": 800,
+        "damage": 140,
+        "index": 109,
+        "type": "Gooseman", 
+        "width" : 16,
+        "height" : 16 
+    });
+    h.combatTurn = initCombatTurn(combatMenu, boss);
+    combatMenu.skillsMenu.runnable = false;
+    combatMenu.skillsMenu.drawSkills();
+    updateHealth(combatMenu);
+}
