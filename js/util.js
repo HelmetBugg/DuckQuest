@@ -374,3 +374,7 @@ function sleep(time) {
 function GoosemanCastleBoatman(){
     spawnTeleporterChoice("Courtyard", {'x': 336, 'y': 416});
 }
+
+function fullHeal(){
+	h.player.stat.set("current_health", h.player.stat.get("max_health"));
+}

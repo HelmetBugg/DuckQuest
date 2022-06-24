@@ -118,13 +118,12 @@ function gameOver() {
     h.stage.putCenter(title);
     h.pause();
 	
-	let startButton = button(100, 300, "New Game");
+	let startButton = button(100, 300, "Restart");
     startButton.press = function() {
         // Just to hide the button after click.
-        h.resume();
-        newGame(false);
+        window.location.reload();
     }
-    let loadButton = button(250, 300, "Load Game");
+    /*let loadButton = button(250, 300, "Load Game");
     if(localStorage.getItem('duckQuest') != null){
         loadButton.interact = true;
     } else {
@@ -135,7 +134,7 @@ function gameOver() {
         h.resume();
         loadButton.x = -5000;
         newGame(true);
-    }
+    }*/
     h.destroy = h.group(loadButton, startButton, title);
 }
 

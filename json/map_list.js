@@ -43,7 +43,7 @@ maps = [{
                 "dialog": ["It's unbelievable what Gooseman's done..", "He's left so many from our village dead in his quest to take over the pond.", "So many that we've started burying people outside the walls.", "My Brother James is out there now.", "Please stop him Duckman, not for me, but.. for them."],
                 "spriteSheet": "res/images/Player0.png"
             }, {
-                "id": 70,
+                "id": 62,
                 "name": "Mayor D.",
                 "type": "npc",
                 "visible": true,
@@ -781,7 +781,7 @@ maps = [{
             "tilesHigh": 64, 
             "triggers": [{
                     "id": 6,
-                    "name": "teleporterOverworld",
+                    "name": "teleporterThroneroom",
                     "rotation": 0,
                     "type": "teleporterTile",
                     "visible": true,
@@ -795,33 +795,19 @@ maps = [{
                         "y": 512
                     }
                 }, {
-                    "id": 7,
-                    "name": "Jasper",
+                    "id": 43,
+                    "name": "Boatman",
                     "type": "npc",
                     "visible": true,
-                    "x": 48,
-                    "y": 16,
+                    "x": 320,
+                    "y": 416,
                     "spriteSheet": "res/images/Player0.png",
-                    "index": 41,
                     "width": 16,
                     "height": 16,
-                    "dialog": ["You beat my maze!", "A-MAZE-ing!", "Now. You'll. Die.", ClownFishBoss],
-                    "questTriggers": "Kill Nemo"
-                }, {
-                    "id": 8,
-                    "name": "Sad Clown",
-                    "type": "npc",
-                    "visible": true,
-                    "x": 560,
-                    "y": 608,
-                    "spriteSheet": "res/images/Player0.png",
-                    "index": 41,
-                    "width": 16,
-                    "height": 16,
-                    "dialog": ["Help, I've been here for weeks!"]
+                    "dialog": ["Good luck Duckman."]
                 }, {
                     "id": 54,
-                    "name": "Mario",
+                    "name": "Miriam",
                     "type": "npc",
                     "visible": true,
                     "x": 688,
@@ -829,7 +815,7 @@ maps = [{
                     "spriteSheet": "res/images/Player0.png",
                     "width": 16,
                     "height": 16,
-                    "dialog": ["YOU ARE NOW HEALED"]
+                    "dialog": ["YOU ARE NOW HEALED", fullHeal]
                 }
 		]}, {
                 "name": "Throne Room",

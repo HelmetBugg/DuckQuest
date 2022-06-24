@@ -24,7 +24,8 @@ function initplayer() {
 		"DragonFlyBoss": 0,
 		"SnakeBoss": 0,
 		"ClownFishBoss": 0,
-		"Gooseman": 0
+		"Gooseman": 0,
+		"Goosedora": 0
 	};
 	h.player.status = {
 		"protected": false,
