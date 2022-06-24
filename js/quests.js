@@ -109,8 +109,8 @@ function startGoosemanQuest() {
 		}
 		return false;
 	}, function () {
-		gainExperience(2800);
-		
+		// Teleport to the saved version of townville.
+		initMap(maps[11]);
 	});
 }
 
