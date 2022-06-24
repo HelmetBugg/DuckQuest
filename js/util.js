@@ -277,7 +277,7 @@ function levelUp() {
 
 function createCardSelectionBox() {
     newSkill = shuffleArray(h.globalSkills)
-        cardChoiceOne = spawnCard(newSkill[0]);
+    cardChoiceOne = spawnCard(newSkill[0]);
     cardChoiceTwo = spawnCard(newSkill[1]);
     cardChoiceMenu = createMenu(-160, -75, 320, 250);
 
@@ -377,4 +377,13 @@ function GoosemanCastleBoatman(){
 
 function fullHeal(){
 	h.player.stat.set("current_health", h.player.stat.get("max_health"));
+}
+
+function theEndDrop(){
+    var endText = h.text("The End", fontStyle.font, color.text);
+    endText.text.fontize = 26;
+    endText.pivotX = endText.pivotY = 0.5;
+    endText.x = h.canvas.width/2;
+    endText.y = -50;
+    h.slide(endText, h.canvas.height/2,  h.canvas.width/2, 180);
 }

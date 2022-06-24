@@ -8,6 +8,7 @@ let thingsToLoad = [
     "res/maps/1_lvl_map.png",
     "res/images/Elemental0.png",
     "res/images/plant1.png",
+    "res/images/Misc1.png",
     "res/maps/SkyCliffs.png",
     "res/maps/map_collisions_1.bmp",
     "res/maps/overworld_collision.bmp",
