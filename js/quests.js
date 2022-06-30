@@ -111,8 +111,9 @@ function startGoosemanQuest() {
 	}, function () {
 		// Teleport to the saved version of townville.
 		//initMap(maps[11]);
-		gainExperience(1000);
-		startGoosedoraQuest()
+		gainExperience(0);
+		startGoosedoraQuest();
+		
 	});
 }
 
@@ -127,7 +128,7 @@ function checkGoosemanQuest(){
 function startGoosedoraQuest() {
 	createQuest('Kill Goosedora', 'Kill Goosedora, save the pond.',
 	function(){
-		if (h.player.killed.Gooseman > 1) {
+		if (h.player.killed.Goosedora > 0) {
 			return true;
 		}
 		return false;

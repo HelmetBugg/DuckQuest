@@ -854,7 +854,21 @@ maps = [{
                         "index": 2,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["So, you're finally here Duckman.", "Unfortunately, for you, this battle will be no different than our last...", "Except this time I'll make sure I finish the job!", GoosemanBoss]
+                        "dialog": ["So, you're finally here Duckman.", "Unfortunately, for you, this battle will be no different than our last...", "Except this time I'll make sure I finish the job!", GoosemanBoss],
+                        "questTriggers": 'Kill Gooseman'
+                    }, {
+                        "id": 109,
+                        "name": "Goosedora",
+                        "type": "npc",
+                        "visible": true,
+                        "x": 272,
+                        "y": 92,
+                        "spriteSheet": "res/images/Player0.png",
+                        "index": 2,
+                        "width": 16,
+                        "height": 16,
+                        "dialog": ["You fricking frick", "I'm gonna give you a spanking in a sec, lemme powerup", GoosedoraBoss],
+                        "questTriggers": 'Kill Goosedora'
                     }
                 ]
             },{
@@ -877,7 +891,7 @@ maps = [{
                         "y": 320,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["Duckman, you did it dude!", "Thanks for beating up Gooseman!", "One time, I saw him double dip in the dip bowl at a party.", "And another time he told me I was bad at Pondball, which is true but like kinda mean.", "I'm sure Princess Swan will take notice of you now!"],
+                        "dialog": ["Duckman, you're alive dude!", "Wh-what has Gooseman done to you?", "He's clipped your wings and cut your feet webs!?", "I see.. you won't be able to swim or fly again.", "But at least you came back with your life."],
                         "spriteSheet": "res/images/Player0.png"
                     }, {
                         "id": 29,
@@ -899,7 +913,7 @@ maps = [{
                         "y": 448,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["It's unbelievable what you've done!", "You defeated the mighty Gooseman! Even with your injuries!", "I can't wait to tell James!", "I'm sure all those people who fell by Gooseman's hand will rest easy now."],
+                        "dialog": ["It's unbelievable what Gooseman's done..", "He's left so many from our village dead in his quest to take over the pond.", "So many that we've started burying people outside the walls.", "My Brother James is out there now.", "Please stop him Duckman, not for me, but.. for them."],
                         "spriteSheet": "res/images/Player0.png"
                     }, {
                         "id": 70,
@@ -910,11 +924,11 @@ maps = [{
                         "y": 272,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["Thank you...", "Duckman...", "the Pond...", "is safe now!", "You're a...", "true hero!"],
+                        "dialog": ["I am very concerned...", "The Goose Gang...", "has taken over...", "the Pond...", "Please.. ", "Save us Duckman!"],
                         "spriteSheet": "res/images/Player0.png"
                     }, {
                         "id": 2,
-                        "name": "Croaky", //change Croaky's song x2
+                        "name": "Croaky",
                         "type": "npc",
                         "visible": true,
                         "x": 528,
@@ -932,7 +946,7 @@ maps = [{
                         "y": 128,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["I still haven't found any...", "Why is everyone so excited?"],
+                        "dialog": ["I've been searching for monster friends in the grass all day!", "I hope I can find a \nshiny one!"],
                         "spriteSheet": "res/images/Player0.png"
                     }, {
                         "id": 35,
@@ -943,7 +957,7 @@ maps = [{
                         "y": 448,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["Good looking out Kid, I always knew you could do it!", "With my brains and your brawn, this could be the start of a lucrative business!!"],
+                        "dialog": ["Welcome to Rattavan's Gently \nUsed Fine Goods!", "No Refunds kid.", "Hey kid, buisiness has been slow.  Why don't you go uh... clean out the cave to the east.", "I might be able to sell the local yuppies some spelunking tours.", "How about it?", "...", "You dont talk much do ya?", startClearCavesForRat],
                         "spriteSheet": "res/images/Player0.png"
                     }, {
                         "id": 6,
