@@ -110,7 +110,9 @@ function startGoosemanQuest() {
 		return false;
 	}, function () {
 		// Teleport to the saved version of townville.
-		initMap(maps[11]);
+		//initMap(maps[11]);
+		gainExperience(1000);
+		startGoosedoraQuest()
 	});
 }
 
@@ -120,4 +122,17 @@ function checkGoosemanQuest(){
 	if (!h.player.checkQuests("Kill Dragonfly") && !h.player.checkQuests("Kill Nemo") && !h.player.checkQuests("Kill Lord Gator")){
 		startGoosemanQuest();
 	}
+}
+
+function startGoosedoraQuest() {
+	createQuest('Kill Goosedora', 'Kill Goosedora, save the pond.',
+	function(){
+		if (h.player.killed.Gooseman > 1) {
+			return true;
+		}
+		return false;
+	}, function () {
+		// Teleport to the saved version of townville.
+		initMap(maps[11]);
+	});
 }

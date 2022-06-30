@@ -143,13 +143,13 @@ function GoosedoraBoss() {
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
         "name": "Goosedora",
-        "sprite": "res/images/Misc0.png",
+        "sprite": "res/images/Misc1.png",
         "health": 1200,
         "damage": 180,
-        "index": 14,
+        "index": 3,
         "type": "Goosedora", 
-        "width" : 32,
-        "height" : 32 
+        "width" : 48,
+        "height" : 64
     });
     h.combatTurn = initCombatTurn(combatMenu, boss);
     combatMenu.skillsMenu.runnable = false;
