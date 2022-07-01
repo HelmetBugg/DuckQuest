@@ -867,7 +867,7 @@ maps = [{
                         "index": 2,
                         "width": 16,
                         "height": 16,
-                        "dialog": ["You fricking frick", "I'm gonna give you a spanking in a sec, lemme powerup", GoosedoraBoss],
+                        "dialog": ["You fricking frick", "I'm gonna give you a spanking in a sec, lemme powerup", "SCREEEEEEEEEEEEEEE", GoosedoraBoss],
                         "questTriggers": 'Kill Goosedora'
                     }
                 ]
