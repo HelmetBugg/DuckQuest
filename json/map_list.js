@@ -904,21 +904,18 @@ maps = [{
                         "height": 16,
                         "dialog": ["Duckman, you did it dude!", "Thanks for beating up Gooseman!", "One time, I saw him double dip in the dip bowl at a party.", "And another time he told me I was bad at Pondball, which is true but like kinda mean.", "I'm sure Princess Swan will take notice of you now!"],
                         "spriteSheet": "res/images/Player0.png"
-                    }, 
-                    {
-                        "id": 70,
+                    }, {
+                        "id": 62,
                         "name": "Mayor D.",
                         "type": "npc",
                         "visible": true,
-                        "x": 336,
-                        "y": 272,
+                        "x": 592,
+                        "y": 320,
                         "width": 16,
                         "height": 16,
                         "dialog": ["Thank you...", "Duckman...", "the Pond...", "is safe now!", "You're a...", "true hero!", theEndDrop],
                         "spriteSheet": "res/images/Player0.png"
-                    },                    
-                    
-                    {
+                    }, {
                         "id": 24,
                         "name": "Jim",
                         "type": "npc",
@@ -929,9 +926,7 @@ maps = [{
                         "height": 16,
                         "dialog": ["..."],
                         "spriteSheet": "res/images/Player0.png"
-                    }, 
-                                                     
-                    {
+                    }, {
                         "id": 2,
                         "name": "Croaky",
                         "type": "npc",
