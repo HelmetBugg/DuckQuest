@@ -15,7 +15,7 @@ function enemy(name, sprite, health, damage, type) {
     stat.set("strength", damage);
     stat.set("health", health);
     stat.set("max_health", health);
-    var expReward = Math.round((health + damage) / 6);
+    var expReward = Math.round((health + damage) / 3);
     stat.set("experience", expReward);
     sprite.type = type;
     sprite.scale.x = sprite.scale.y = 6;
@@ -104,7 +104,7 @@ function ClownFishBoss() {
     h.inCombat = true;
     var combatMenu = spawnCombatMenu();
     var boss = new createEnemy({
-        "name": "Jasper the Jester",
+        "name": "Jasper Jester",
         "sprite": "res/images/Misc0.png",
         "health": 600,
         "damage": 80,

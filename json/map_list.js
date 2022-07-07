@@ -171,15 +171,15 @@ maps = [{
             "spriteSheet": "res/images/Player0.png"
         },{
             "id": 4,
-            "name": "turtleTrader",
+            "name": "Turtleman",
             "type": "npc",
             "visible": true,
             "x": 144,
             "y": 256,
             "width": 16,
             "height": 16,
-            "dialog": [],
-            "spriteSheet": "res/images/Player0.png"
+            "spriteSheet": "res/images/Player0.png",
+            "dialog": ["This used to be such a nice place."]    
         },{
                 "id": 6,
                 "name": "teleporterTown",
