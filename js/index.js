@@ -32,7 +32,8 @@ let thingsToLoad = [
     "res/maps/courtyard_collisions.bmp",
     "res/maps/throne_room.png",
     "res/maps/throne_room_collisions_small2.bmp",
-    "res/fonts/PressStart.ttf"
+    "res/fonts/PressStart.ttf",
+    "res/images/card_icons.png"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
