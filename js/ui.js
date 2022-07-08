@@ -111,7 +111,10 @@ function spawnCard(skill){
     btn.title.position.y = -(cardHeight/2) + 10;
     btn.addChild(btn.title);
 
-    var portrait = h.rectangle(100, 80, color.border, color.border, 0, -(cardWidth/2) + 15, -(cardHeight/2) + 35);
+    filmStrip = h.filmstrip("res/images/card_icons.png", 100, 80);
+    var portrait = h.sprite(filmStrip[skill.spriteIndex]);
+    portrait.x = -(cardWidth/2) + 15;
+    portrait.y = -(cardHeight/2) + 35;
     btn.addChild(portrait);
     return btn;
 }
