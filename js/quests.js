@@ -9,6 +9,9 @@ var questMap = {
 
 
 function createQuest(name, desc, goal, effect){
+	if (h.player.checkQuests(name)){
+		return;
+	}
 	popUp(button(100, 0, "New Quest Started!"), 5000);
 	var quest = {};
 	quest.type = 'quest';

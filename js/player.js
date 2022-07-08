@@ -35,10 +35,7 @@ function initplayer() {
 	h.player.quests = [];
 	h.player.tweening = false;
 
-	// Kick off default quests
-	startKillAligatorBoss();
-	startClownFishQuest();
-	startDragonflyQuest();
+	
 
 	h.player.checkQuests = function(questName){
 		for (let i=0; i < h.player.quests.length; i++)   {
@@ -48,6 +45,11 @@ function initplayer() {
 		}
 		return false;
 	}
+
+// Kick off default quests
+	startKillAligatorBoss();
+	startClownFishQuest();
+	startDragonflyQuest();
 
     h.player.henshin = function () {
         sentai = true
