@@ -82,7 +82,10 @@ function initCombatTurn(menu, currentFoe){
 		currentFoe.doTurn();
 		updateHealth(menu);
 		if (h.player.stat.get("current_health") <= 0) {
-			h.state = gameOver;
+			h.remove(combatTurn.enemies[0]);
+			cleanupCombat(menu);
+			gameOver();
+			return false;
 		}
 		return true;
 	}

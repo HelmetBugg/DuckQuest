@@ -115,14 +115,18 @@ function play() {
 
 function gameOver() {
     h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
-    title = h.text("You Died", "90px puzzler", "red");
+    title = h.text("Goose'd", "45px puzzler", "red");
     h.stage.putCenter(title);
-    h.pause();
+    
+    
 	
-	let startButton = button(100, 300, "Restart");
+	let startButton = button(100, 300, "Revive");
     startButton.press = function() {
         // Just to hide the button after click.
-        window.location.reload();
+        initMap(maps[0]);
+        fullHeal();
+        h.remove(title);
+        h.state = play;
     }
     /*let loadButton = button(250, 300, "Load Game");
     if(localStorage.getItem('duckQuest') != null){
@@ -136,7 +140,7 @@ function gameOver() {
         loadButton.x = -5000;
         newGame(true);
     }*/
-    h.destroy = h.group(loadButton, startButton, title);
+    
 }
 
 
