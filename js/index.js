@@ -61,7 +61,8 @@ function setup() {
     let startButton = button(100, 200, "New Game");
     startButton.press = function() {
         // Just to hide the button after click.
-        newGame(false);
+        introduction();
+        //newGame(false);
     }
     let loadButton = button(100, 320, "Load Game");
     if(localStorage.getItem('duckQuest') != null){
@@ -77,6 +78,18 @@ function setup() {
     h.destroy = h.group(loadButton, startButton, title);
 }
 
+function introduction(){
+    h.rectangle(h.canvas.width, h.canvas.height, "black")
+    var trigger = {
+        "name":"",
+        "dialog": ["hello", newGameDefault]
+    }
+    startDialog(trigger);
+}
+
+function newGameDefault(){
+    newGame(false);
+}
 
 /*
 // Takes a bool to determine if game data should be loaded after init. 
@@ -118,8 +131,6 @@ function gameOver() {
     h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
     title = h.text("Goose'd", "45px puzzler", "red");
     h.stage.putCenter(title);
-    
-    
 	
 	let startButton = button(100, 300, "Revive");
     startButton.press = function() {

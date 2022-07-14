@@ -684,8 +684,7 @@ maps = [{
                 "spriteSheet": "res/images/Misc0.png",
                 "width": 16,
                 "height": 16,
-                "dialog": ["You are here to challenge the great hunter Oda!?", "You sad fool.", "Prepare to be.... Hunted!",
-                    " ", "Listen Its great hunter Oda not great poet.", DragonFlyBoss],
+                "dialog": ["Bzzzzzzz...", "Suddenly a shadow sweaps down and consumes the Sky Swipe!", DragonFlyBoss],
                 "questTriggers": "Kill Dragonfly"
             }
         ]

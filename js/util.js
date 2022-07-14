@@ -156,7 +156,7 @@ function createListMenu(list) {
 
 function startDialog(trigger) {
     var dialogueArray = trigger.dialog;
-    h.player.talking = true;
+    //h.player.talking = true;
     var dialogBox = spawnDialogBox();
     // Add speaker's name tag.
     dialogBox.Tag.text.text = trigger.name;
@@ -387,3 +387,4 @@ function theEndDrop(){
     endText.y = -50;
     h.slide(endText, h.canvas.height/2,  h.canvas.width/2, 180);
 }
+
