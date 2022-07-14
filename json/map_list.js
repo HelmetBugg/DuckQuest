@@ -417,7 +417,7 @@ maps = [{
         "tilesHigh": 25,
         "triggers": [{
                 "id": 44,
-                "name": "Spider Queen",
+                "name": "Queen",
                 "type": "npc",
                 "visible": true,
                 "x": 160,
