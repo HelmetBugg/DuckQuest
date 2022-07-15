@@ -2,6 +2,7 @@ function updateHealth(menu){
     menu.playerHealth.text = "Player Health:\n " + h.player.stat.get("current_health") + " / " + h.player.stat.get("max_health");
     menu.enemyHealth.text = "Enemy Health:\n " + h.combatTurn.enemies[0].stat.get("health") + " / " + h.combatTurn.enemies[0].stat.get("max_health");
     menu.enemyName.text = h.combatTurn.enemies[0].name;
+	menu.enemyType.text = "Type: " + h.combatTurn.enemies[0].type;
 }
 
 
@@ -33,10 +34,15 @@ function spawnCombatMenu(){
 	menu.enemyName.style = fontStyle;
     menu.enemyName.y = 10;
     menu.enemyName.x = 270;
+    
+	menu.enemyType = h.text("Enemy Type:\n");
+	menu.enemyType.style = fontStyle;
+	menu.enemyType.y = 30;
+	menu.enemyType.x = 270;
 
     menu.enemyHealth = h.text("Enemy Health:\n " + 0/0);
 	menu.enemyHealth.style = fontStyle;
-    menu.enemyHealth.y = 30;
+    menu.enemyHealth.y = 50;
     menu.enemyHealth.x = 270;
 
 	menu.yourName = h.text("Duckman");
@@ -55,7 +61,7 @@ function spawnCombatMenu(){
 	menu.combatLog = new spawnDialogBox();
 	menu.combatLog.y = 250;
 	menu.combatLog.Text.text = "Select your next move.."
-	menu.addChild(menu.enemyName, menu.enemyHealth, menu.playerHealth, menu.combatLog, menu.yourName, menu.deck);
+	menu.addChild(menu.enemyName, menu.enemyHealth, menu.enemyType, menu.playerHealth, menu.combatLog, menu.yourName, menu.deck);
 	return menu;
 }
 
