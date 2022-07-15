@@ -81,8 +81,8 @@ function setup() {
 function introduction(){
     h.rectangle(h.canvas.width, h.canvas.height, "black")
     var trigger = {
-        "name":"",
-        "dialog": ["hello", newGameDefault]
+        "name":"Gooseman",
+        "dialog": ["Hold him...", "How the mighty have fallen, Duckman.", "Now, be one with the pond you love so much.", "So long... Duckman.", newGameDefault]
     }
     startDialog(trigger);
 }
