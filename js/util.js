@@ -110,6 +110,13 @@ function createListMenu(list) {
     var leftMargin = 20;
     let skillsMenu = createMenu(h.menuGroup.width - h.menuGroup.togglebutton.width, 0, 250, 505);
     skillsMenu.pivotY = skillsMenu.pivotX = 0;
+
+    descriptionText = h.text("", "10px Press Start 2p", color.text);
+    descriptionText.x += 250;
+    descriptionText.y = 50 * (list.length + 1);
+    descriptionText.style.wordWrap = true;
+    descriptionText.style.wordWrapWidth = 250;
+
     for (var i = 0; i < list.length; i++) {
         boxText = h.text(list[i].name, "10px Press Start 2p", color.text);
         boxText.interact = true;
@@ -119,37 +126,19 @@ function createListMenu(list) {
         boxText.type = list[i].type;
         boxText.effect = list[i].effect;
         skillsMenu.addChild(boxText);
-        /*	boxText.press = function() {
-        if(blurb_group != null){
-        blurb_group.x += 5000;
-        h.remove(blurb_group);
-        blurb_group = null;
-        }
-        var box =  createMenu(100, 100, 200, 200);
-        var blurb = h.text(this.description, fontStyle.font, "black");
-        blurb_group = h.group(box, blurb);
-        blurb_group.x = 120;
-        if (boxText.type == 'skill'){
-        var invokeSkillEffect=h.text("ACTIVATE", "18px puzzler", "black",80,100);
-        invokeSkillEffect.interact = true;
-        invokeSkillEffect.press = function(){
-        boxText.effect();
-        }
-        blurb_group.addChild(invokeSkillEffect);
-        }
-        }			*/
+        boxText.over = function() {
+			descriptionText.text = this.description;
+	    }
     }
+    
+
     var closeButton = button(leftMargin, 50 * list.length, "Close");
     skillsMenu.addChild(closeButton);
     closeButton.press = function () {
-        if (blurb_group != null) {
-            blurb_group.x += 5000;
-            h.remove(blurb_group);
-            blurb_group = null;
-        }
         skillsMenu.x += 50000;
         if (skillsMenu != null) {
             h.remove(skillsMenu);
+            h.remove(descriptionText);
         }
     }
 }
