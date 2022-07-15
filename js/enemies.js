@@ -35,7 +35,7 @@ function enemy(name, sprite, health, damage, type) {
 				popUp(button(0, 0, "Protected!"));
             }
             if(h.player.status["rage"]){
-                damageTaken = Math.round(damageTaken * 1.2);
+                damageTaken = Math.round(damageTaken * 1.5);
             }
             h.combatTurn.menu.combatLog.Text.text = "Enemy hit for " + damageTaken;
             h.player.stat.set('current_health', currentHP - damageTaken);

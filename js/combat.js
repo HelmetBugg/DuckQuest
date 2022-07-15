@@ -171,7 +171,7 @@ function skillsMenu(){
 						var enemy = h.combatTurn.enemies[0];
 						damageDone = (this.damage + h.player.stat.get("strength"));
 						if(h.player.status["rage"]){
-							damageDone = Math.round((damageDone * 1.2));
+							damageDone = Math.round((damageDone * 1.5));
 						}
 						if(this.name != "Heal"){
 							h.combatTurn.menu.combatLog.Text.text = "You hit for " + (this.damage + h.player.stat.get("strength"));
