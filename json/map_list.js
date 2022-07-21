@@ -765,7 +765,8 @@ maps = [{
                 "index": 41,
                 "width": 16,
                 "height": 16,
-                "dialog": ["Help, I've been here for weeks!"]
+                "questTriggers": "Kill Nemo",
+                "dialog": ["Help, I've been here for weeks!", "What, you'll help me get out?", "Thank you Duckman!"]
             }
 	]}, {
             "name": "Courtyard",

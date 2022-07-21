@@ -55,30 +55,24 @@ function load() {
 
 
 function setup() {
-    title = h.text("Duck\n    Quest", "50px Press Start 2P", "purple");
+    h.rectangle(h.canvas.width, h.canvas.height, "black");
+    title = h.text("Duck  \n Quest", "75px Press Start 2P", "Red");
     title.font = fontStyle.font;
-    title.x =  title.y = 35;
-    let startButton = button(100, 200, "New Game");
+    title.x = 35;
+    title.y = 135;
+    let startButton = button((h.canvas.width/2)-70, (h.canvas.height/2)+100, "Start");
     startButton.press = function() {
         // Just to hide the button after click.
         introduction();
         //newGame(false);
     }
-    let loadButton = button(100, 320, "Load Game");
-    if(localStorage.getItem('duckQuest') != null){
-        loadButton.interact = true;
-    } else {
-        loadButton.interact = false;
-        loadButton.alpha = 0.5;
-    }
-    loadButton.press = function() {
-        loadButton.x = -5000;
-        newGame(true);
-    }
-    h.destroy = h.group(loadButton, startButton, title);
+
+    h.destroy = h.group(startButton, title);
 }
 
 function introduction(){
+    h.destroy.x = -50000;
+    h.remove(h.destroy);
     h.rectangle(h.canvas.width, h.canvas.height, "black")
     var trigger = {
         "name":"Gooseman",
@@ -95,8 +89,8 @@ function newGameDefault(){
 // Takes a bool to determine if game data should be loaded after init. 
 */
 function newGame(load_data) {
-    h.destroy.x = -50000;
-    h.remove(h.destroy);
+
+
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
 	initplayer();
