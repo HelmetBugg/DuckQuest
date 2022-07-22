@@ -606,8 +606,8 @@ maps = [{
                 "height": 16,
                 "destination": "Sky Cliffs",
                 "spawn": {
-                    "x": 144,
-                    "y": 48
+                    "x": 48,
+                    "y": 960
                 }
             }
         ]
