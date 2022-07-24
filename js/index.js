@@ -33,7 +33,9 @@ let thingsToLoad = [
     "res/maps/throne_room.png",
     "res/maps/throne_room_collisions_small2.bmp",
     "res/fonts/PressStart.ttf",
-    "res/images/card_icons.png"
+    "res/images/card_icons.png",
+    "res/images/panel_1.bmp",
+    "res/images/panel_2.bmp"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -70,27 +72,28 @@ function setup() {
     h.destroy = h.group(startButton, title);
 }
 
+
 function introduction(){
     h.destroy.x = -50000;
     h.remove(h.destroy);
     h.rectangle(h.canvas.width, h.canvas.height, "black")
     var trigger = {
         "name":"Gooseman",
-        "dialog": ["Hold him...", "How the mighty have fallen, Duckman.", "Now, be one with the pond you love so much.", "So long... Duckman.", newGameDefault]
+        "dialog": ["res/images/panel_1.bmp:Hold him...", "How the mighty have fallen, Duckman.", "res/images/panel_2.bmp:Now, be one with the pond you love so much.", "So long... Duckman.", newGameDefault]
     }
     startDialog(trigger);
 }
+
 
 function newGameDefault(){
     newGame(false);
 }
 
+
 /*
 // Takes a bool to determine if game data should be loaded after init. 
 */
 function newGame(load_data) {
-
-
     // Make the space around the map black.
     h.backgroundColor = 0x000000;
 	initplayer();

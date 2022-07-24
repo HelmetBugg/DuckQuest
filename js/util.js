@@ -145,15 +145,12 @@ function createListMenu(list) {
 
 function startDialog(trigger) {
     var dialogueArray = trigger.dialog;
-    //h.player.talking = true;
+    let optionalSprite = h.sprite("");
     var dialogBox = spawnDialogBox();
-    // Add speaker's name tag.
+    
     dialogBox.Tag.text.text = trigger.name;
-    // Show first Dialog output before automatically adding.
-    var dialogueIncrement = 0;
-    dialogBox.Text.text = dialogueArray[dialogueIncrement];
+    var dialogueIncrement = -1;
     dialogueIncrement++;
-    // GLobalized for button shortcut.
     h.dialogBox = dialogBox;
 
     dialogBox.Next.press = () => {
@@ -161,13 +158,20 @@ function startDialog(trigger) {
         if (dialogueIncrement >= dialogueArray.length) {
             cleanup(dialogBox.children);
             cleanup(dialogBox);
+            cleanup(optionalSprite);
             h.player.talking = false;
         } else {
             // Otherwise replace the current text with the next section.
             if (typeof dialogueArray[dialogueIncrement] === 'string') {
-                dialogBox.Text.text = dialogueArray[dialogueIncrement];
-
-                // Else it's a function and we invoke it.
+                // If it has a collon it has an image to go with it.
+                if (dialogueArray[dialogueIncrement].includes(":")){
+                    var subStringArray = dialogueArray[dialogueIncrement].split(":");
+                    optionalSprite.setTexture(PIXI.Texture.from(subStringArray[0]));
+                    dialogBox.Text.text = subStringArray[1];
+                } else {
+                    dialogBox.Text.text = dialogueArray[dialogueIncrement];
+                }
+            // Else it's a function and we invoke it.
             } else {
                 dialogueArray[dialogueIncrement]();
                 dialogueIncrement++;
@@ -176,6 +180,7 @@ function startDialog(trigger) {
             dialogueIncrement++;
         }
     }
+    dialogBox.Next.press();
 }
 
 function toggleOffScreen(objectToToggle) {

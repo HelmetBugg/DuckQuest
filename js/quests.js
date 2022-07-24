@@ -1,7 +1,7 @@
 var questMap = {
 	"Kill Lord Gator": startKillAligatorBoss,
 	"Slime Hunt": startKillThreeSlimesQuest,
-	"Kill Nemo": startClownfishQuest,
+	"Kill Nemo": startClownFishQuest,
 	"Kill Dragonfly": startDragonflyQuest,
 	"Alternate Revenue Streams": startClearCavesForRat,
 	"Kill Gooseman": startGoosemanQuest
