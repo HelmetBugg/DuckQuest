@@ -76,6 +76,7 @@ function spawnInstructions() {
 
 
 function spawnChoiceButton(text1="Yes", text2="No"){
+    h.sound("res/sounds/prompt.wav").play();
 	var menu = button(0, 100, "Would you like\n   to travel to?", 400, 80);
 	menu.interactive = false;
 	var button1Text = button(0, 40, text1);
