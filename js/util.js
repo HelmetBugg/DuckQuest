@@ -267,6 +267,8 @@ function levelUp() {
 
     levelGainText.position.x = -125;
     levelGainText.position.y = -188;
+
+   h.sound("res/sounds/level_up.wav").play();
 }
 
 function createCardSelectionBox() {

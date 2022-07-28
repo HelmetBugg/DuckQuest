@@ -35,7 +35,19 @@ let thingsToLoad = [
     "res/fonts/PressStart.ttf",
     "res/images/card_icons.png",
     "res/images/panel_1.bmp",
-    "res/images/panel_2.bmp"
+    "res/images/panel_2.bmp",
+
+    "res/sounds/damage.wav",
+    "res/sounds/death.wav",
+    "res/sounds/draw_card.wav",
+    "res/sounds/hitHurt.wav",
+    "res/sounds/level_up.wav",
+    "res/sounds/powerUp.wav",
+    "res/sounds/prompt.wav",
+    "res/sounds/random.wav",
+    "res/sounds/synth.wav",
+    "res/sounds/tone.wav",
+    "res/sounds/wonder.wav"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
