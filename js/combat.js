@@ -129,7 +129,7 @@ function skillsMenu(){
 	menu.drawSkills = function() {
 		// Shuffle and pick only 3 skills a round. Plus the run skill!
 		var skills = shuffleArray(skillDeck).slice(0, 3);
-		
+		h.sound("res/sounds/draw_card.wav").play();
 		h.activeSkills = [];
 
 		if(menu.runnable){
@@ -165,6 +165,7 @@ function skillsMenu(){
 				menu.clear();
 				var successful = rollHitChance(this.accuracy);
 				if(successful){
+					h.sound("res/sounds/hitHurt.wav").play();
 					this.effect();					
 					if(this.name != "Run"){
 						// Need to come back and fix enemies if we are only going to do singles.
