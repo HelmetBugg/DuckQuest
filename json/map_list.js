@@ -384,28 +384,28 @@ maps = [{
                 "sprite": "res/images/Misc0.png",
                 "health": 100,
                 "damage": 5,
-                "type": "reptile",
+                "type": "arachnid",
                 "index": 41
             }, {
                 "name": "Ben",
                 "sprite": "res/images/Misc0.png",
                 "health": 100,
                 "damage": 6,
-                "type": "reptile",
+                "type": "arachnid",
                 "index": 42
             }, {
                 "name": "Gwen",
                 "sprite": "res/images/Misc0.png",
                 "health": 110,
                 "damage": 7,
-                "type": "reptile",
+                "type": "arachnid",
                 "index": 43
             }, {
                 "name": "Miles",
                 "sprite": "res/images/Misc0.png",
                 "health": 120,
                 "damage": 8,
-                "type": "reptile",
+                "type": "arachnid",
                 "index": 40
             }
         ],

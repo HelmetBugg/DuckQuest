@@ -329,6 +329,7 @@ function spawnTeleporterChoice(destination, spawn) {
         map.player_spawn_x = spawn.x;
         map.player_spawn_y = spawn.y;
         initMap(map);
+		h.sound("res/sounds/tone.wav").play();
         cleanup(contents);
     }
     choiceMenu.button2.press = function () {
