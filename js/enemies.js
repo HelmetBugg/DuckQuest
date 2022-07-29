@@ -28,6 +28,7 @@ function enemy(name, sprite, health, damage, type) {
     sprite.doTurn = function () {
         if (h.randomInt(0, 100) < 80) {
             currentHP = h.player.stat.get("current_health");
+            h.sound("res/sounds/enemy_attack.wav").play();
             damageAnimation();
 			damageTaken = stat.get('strength');
             if (h.player.status["protected"]) {
