@@ -47,13 +47,9 @@ let thingsToLoad = [
     "res/sounds/random.wav",
     "res/sounds/synth.wav",
     "res/sounds/tone.wav",
-
     "res/sounds/wonder.wav",
     "res/sounds/QuestUpdate.wav",
-
     "res/sounds/enemy_attack.wav"
-
-
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
