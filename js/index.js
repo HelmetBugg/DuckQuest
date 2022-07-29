@@ -47,7 +47,8 @@ let thingsToLoad = [
     "res/sounds/random.wav",
     "res/sounds/synth.wav",
     "res/sounds/tone.wav",
-    "res/sounds/wonder.wav"
+    "res/sounds/wonder.wav",
+    "res/sounds/QuestUpdate.wav"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -138,6 +139,7 @@ function play() {
 
 function gameOver() {
     h.rectangle(h.canvas.width, h.canvas.height, "black", "black", 0, 0, 0);
+    h.sound("res/sounds/death.wav").play();
     title = h.text("Goose'd", "45px puzzler", "red");
     h.stage.putCenter(title);
 	
