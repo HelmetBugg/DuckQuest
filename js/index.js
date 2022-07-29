@@ -47,6 +47,7 @@ let thingsToLoad = [
     "res/sounds/random.wav",
     "res/sounds/synth.wav",
     "res/sounds/tone.wav",
+    "res/sounds/enemy_attack.wav",
     "res/sounds/wonder.wav"
 ];
 
