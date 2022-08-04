@@ -379,6 +379,7 @@ maps = [{
         "name": "Spider Cave",
         "sprite": "res/maps/spider_cave.png",
         "collisionMap": "res/maps/spider_cave_collisions.bmp",
+        "music": "res/songs/mystery_theme.wav",
         "enemies": [{
                 "name": "Peter",
                 "sprite": "res/images/Misc0.png",

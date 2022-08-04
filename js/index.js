@@ -49,7 +49,12 @@ let thingsToLoad = [
     "res/sounds/tone.wav",
     "res/sounds/wonder.wav",
     "res/sounds/QuestUpdate.wav",
-    "res/sounds/enemy_attack.wav"
+    "res/sounds/enemy_attack.wav",
+    "res/songs/mystery_theme.wav",
+    "res/songs/alligator_hideout_theme.mp3",
+    "res/songs/circus_tent_theme.wav",
+    "res/songs/dungeon_theme.mp3",
+    "res/songs/goosemans_theme.wav"
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
@@ -82,6 +87,8 @@ function setup() {
         introduction();
         //newGame(false);
     }
+
+    h.music = new MusicHandler();
 
     h.destroy = h.group(startButton, title);
 }

@@ -1,5 +1,6 @@
 function initMap(json_input) {
     if (h.map != undefined) {
+
         h.map.removeChild(h.player);
         h.remove(h.menuGroup);
         h.remove(h.helpButton);
@@ -9,6 +10,10 @@ function initMap(json_input) {
         h.map.addChild(h.player);
         h.camera = h.worldCamera(h.map, h.canvas.width * 20, h.canvas.height * 20);
         h.map.layer = json_input;
+        h.music.pause();
+        if(h.map.layer.music != undefined){
+            h.music.setSong(h.map.layer.music);
+        }
         h.map.layer.triggers.forEach(placeTrigger);
         h.player.x = h.player.directionFacingBox.x = h.map.layer.player_spawn_x;
         h.player.y = h.player.directionFacingBox.y = h.map.layer.player_spawn_y;

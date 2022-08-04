@@ -16,4 +16,7 @@ class MusicHandler {
 		this.music.play();
 	}
 
+	pause(){
+		this.music.pause();
+	}
 };
