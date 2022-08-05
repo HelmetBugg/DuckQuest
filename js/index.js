@@ -157,6 +157,7 @@ function gameOver() {
         initMap(maps[0]);
         fullHeal();
         h.remove(title);
+        cleanup(startButton);
         h.state = play;
     }
     /*let loadButton = button(250, 300, "Load Game");
