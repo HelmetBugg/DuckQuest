@@ -25,7 +25,7 @@ function createQuest(name, desc, goal, effect){
 			quest.active = false;
 			effect();
 			popUp(button(100, 0, "Quest Complete!"), 5000);
-			
+			h.sound("res/sounds/QuestUpdate.wav").play();
 		}
 	};
 	h.player.quests.push(quest);

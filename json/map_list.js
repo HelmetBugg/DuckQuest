@@ -277,6 +277,7 @@ maps = [{
         "name": "Alligator Hideout",
         "sprite": "res/maps/aligator_hideout.png",
         "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+        "music":  "res/songs/alligator_hideout_theme.mp3",
         "enemies": [{
                 "name": "Swamper",
                 "sprite": "res/images/Player0.png",
@@ -450,6 +451,7 @@ maps = [{
         "name": "Alligator Hideout",
         "sprite": "res/maps/aligator_hideout.png",
         "collisionMap": "res/maps/alligator_hideout_collisions.bmp",
+        "music":  "res/songs/alligator_hideout_theme.mp3",
         "enemies": [{
                 "name": "Swamper",
                 "sprite": "res/images/Player0.png",
@@ -551,6 +553,7 @@ maps = [{
         "name": "Bog",
         "sprite": "res/maps/new_swamp_map.png",
         "collisionMap": "res/maps/new_swamp_map_collisions.bmp",
+        "music":  "res/songs/mystery_theme.wav",
         "enemies": [{
                 "name": "Sky Swipe",
                 "sprite": "res/images/Misc0.png",
@@ -693,6 +696,7 @@ maps = [{
         "name": "Tent",
         "sprite": "res/maps/Tent.png",
         "collisionMap": "res/maps/TentCollisions.bmp",
+        "music": "res/songs/circus_tent_theme.wav",
         "enemies": [],
         "player_spawn_x": 640,
         "player_spawn_y": 350,
