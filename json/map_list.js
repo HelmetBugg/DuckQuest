@@ -104,7 +104,7 @@ maps = [{
                 }
             }
         ]
-    }, {
+    },{
         "name": "Overworld",
         "sprite": "res/maps/overworld_map.png",
         "collisionMap": "res/maps/overworld_collision.bmp",
@@ -621,7 +621,7 @@ maps = [{
         "name": "Sky Cliffs",
         "sprite": "res/maps/SkyCliffs.png",
         "collisionMap": "res/maps/skycliffscollisions.bmp",
-        "music":  "res/songs/mystery_theme.mp3",
+        "music":  "res/songs/mystery_theme.wav",
         "enemies": [{
                 "name": "Sky Swipe",
                 "sprite": "res/images/Misc0.png",
@@ -728,7 +728,7 @@ maps = [{
         "name": "Maze",
         "sprite": "res/maps/maze.png",
         "collisionMap": "res/maps/maze_collisions.bmp",
-        "music":  "res/songs/mystery_theme.mp3",
+        "music":  "res/songs/mystery_theme.wav",
         "enemies": [],
         "player_spawn_x": 640,
         "player_spawn_y": 350,
