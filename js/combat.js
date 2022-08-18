@@ -20,6 +20,9 @@ function damageAnimation(){
 function getAttacked() {
 	h.inCombat = true;
     var combatMenu = spawnCombatMenu();
+	combatMenu.lastSong = h.music.music.source;
+	h.music.pause();
+	h.music.setSong("res/songs/dungeon_theme.mp3");
     h.combatTurn = initCombatTurn(combatMenu, undefined);
 	combatMenu.skillsMenu.drawSkills();
     updateHealth(combatMenu);
@@ -27,8 +30,10 @@ function getAttacked() {
 
 
 function spawnCombatMenu(){
+	
 	var menu = h.rectangle(512, 512, color.background);
 	menu.skillsMenu = skillsMenu();
+	menu.lastSong = h.music.music.source;
 
 	menu.enemyName = h.text("Enemy Name:\n");
 	menu.enemyName.style = fontStyle;
@@ -230,4 +235,6 @@ function cleanupCombat(combatMenu){
 		h.player.status[currentStatus] = false;
 	}
 	checkQuests();
+	h.music.pause();
+	h.music.setSong(combatMenu.lastSong);
 }
