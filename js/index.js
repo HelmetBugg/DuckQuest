@@ -86,18 +86,17 @@ function setup() {
     title.y = 135;
     let startButton = button((h.canvas.width/2)-70, (h.canvas.height/2)+100, "Start");
     startButton.press = function() {
-        // Just to hide the button after click.
         introduction();
-        //newGame(false);
     }
 
     h.music = new MusicHandler();
-
     h.destroy = h.group(startButton, title);
 }
 
 
 function introduction(){
+    h.music.pause();
+    h.music.setSong("res/songs/goosemans_theme.wav");
     h.destroy.x = -50000;
     h.remove(h.destroy);
     h.rectangle(h.canvas.width, h.canvas.height, "black")
