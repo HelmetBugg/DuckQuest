@@ -1,6 +1,7 @@
 maps = [{
         "name": "Pondville",
         "sprite": "res/maps/village_map.png",
+        "music":  "res/songs/village.wav",
         "collisionMap": "res/maps/village_collisions.bmp",
         "enemies": [],
         "player_spawn_x": 640,
@@ -107,6 +108,7 @@ maps = [{
         "name": "Overworld",
         "sprite": "res/maps/overworld_map.png",
         "collisionMap": "res/maps/overworld_collision.bmp",
+        "music":  "res/songs/traveling.wav",
         "enemies": [{
                 "name": "Slimon",
                 "sprite": "res/images/Slime0.png",
@@ -619,6 +621,7 @@ maps = [{
         "name": "Sky Cliffs",
         "sprite": "res/maps/SkyCliffs.png",
         "collisionMap": "res/maps/skycliffscollisions.bmp",
+        "music":  "res/songs/mystery_theme.mp3",
         "enemies": [{
                 "name": "Sky Swipe",
                 "sprite": "res/images/Misc0.png",
@@ -725,6 +728,7 @@ maps = [{
         "name": "Maze",
         "sprite": "res/maps/maze.png",
         "collisionMap": "res/maps/maze_collisions.bmp",
+        "music":  "res/songs/mystery_theme.mp3",
         "enemies": [],
         "player_spawn_x": 640,
         "player_spawn_y": 350,
@@ -824,6 +828,7 @@ maps = [{
                 }
 		]}, {
                 "name": "Throne Room",
+                "music":  "res/songs/goosemans_theme.wav",
                 "sprite": "res/maps/throne_room.png",
                 "collisionMap": "res/maps/throne_room_collisions_small2.bmp",
                 "enemies": [],
@@ -880,6 +885,7 @@ maps = [{
                 "name": "PondvilleEndOfGame",
                 "sprite": "res/maps/village_map.png",
                 "collisionMap": "res/maps/village_collisions.bmp",
+                "music":  "res/songs/main_theme.wav",
                 "enemies": [],
                 "player_spawn_x": 592,
                 "player_spawn_y": 336,

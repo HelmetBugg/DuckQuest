@@ -54,7 +54,10 @@ let thingsToLoad = [
     "res/songs/alligator_hideout_theme.mp3",
     "res/songs/circus_tent_theme.wav",
     "res/songs/dungeon_theme.mp3",
-    "res/songs/goosemans_theme.wav"
+    "res/songs/goosemans_theme.wav",
+    "res/songs/village.wav",
+    "res/songs/traveling.wav",
+    "res/songs/main_theme.wav"    
 ];
 
 let h = hexi(512, 512, setup, thingsToLoad, load);
